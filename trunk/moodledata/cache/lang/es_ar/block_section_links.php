@@ -1,0 +1,15 @@
+<?php $this->cache['es_ar']['block_section_links'] = array (
+  'incbydesc1' => 'Este es el valor en que se incrementa la sección cada vez que se muestra un enlace de sección comenzando por 1.',
+  'incbydesc2' => 'Este es el valor en que se incrementa la sección cada vez que se muestra un enlace de sección comenzando por 1.',
+  'incby1' => 'Incrementar en',
+  'incby2' => 'Incremento alternativo en',
+  'jumptocurrenttopic' => 'Ir al tema actual',
+  'jumptocurrentweek' => 'Ir a la semana actual',
+  'numsectionsdesc1' => 'Una vez que el número de secciones del curso alcanza este número, se usa el incremento por el valor.',
+  'numsectionsdesc2' => 'Una vez que el número de secciones del curso alcanza este número, se usa el incremento alternativo por el valor.',
+  'numsections1' => 'Número de secciones',
+  'numsections2' => 'Número alternativo de secciones',
+  'pluginname' => 'Enlaces de sección',
+  'topics' => 'Temas',
+  'weeks' => 'Semanas',
+);

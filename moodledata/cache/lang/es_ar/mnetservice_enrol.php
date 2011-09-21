@@ -1,0 +1,15 @@
+<?php $this->cache['es_ar']['mnetservice_enrol'] = array (
+  'availablecourseson' => 'Cursos disponibles en {$a}',
+  'availablecoursesonnone' => 'El host remoto <a href="{$a->hosturl}">{$a->hostname}</a> no ofrece ningún curso a nuestros usuarios.',
+  'clientname' => 'Cliente de matriculaciones remoto',
+  'clientname_help' => 'Matricular y desmatricular usuarios de su instalación en los Hosts de Moodle que le permitan hacerlo a través del conector (\'plugin\') de matriculación de la Red Moodle.',
+  'editenrolments' => 'Editar matriculaciones',
+  'hostappname' => 'Aplicación',
+  'hostname' => 'Nombre del host',
+  'hosturl' => 'URL del host remoto',
+  'nopublishers' => 'No hay disponibles pares remotos.',
+  'noroamingusers' => 'Users require the capability \'{$a}\' in the system context to be enrolled to remote courses, however there are currently no users with this capability. Click the continue button to assign the required capability to one or more roles on your site.',
+  'otherenrolledusers' => 'Otros usuarios matriculados',
+  'pluginname' => 'Servicio de matriculación remota',
+  'refetch' => 'Volver a buscar estado actualizado desde hosts remotos',
+);

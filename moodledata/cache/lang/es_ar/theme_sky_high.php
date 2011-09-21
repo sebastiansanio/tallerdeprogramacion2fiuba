@@ -1,0 +1,17 @@
+<?php $this->cache['es_ar']['theme_sky_high'] = array (
+  'pluginname' => 'Sky High',
+  'region-side-post' => 'Derecha',
+  'region-side-pre' => 'Izquierda',
+  'choosereadme' => '<div class="clearfix"><div class="theme_screenshot"><h2>Sky High</h2><img src="sky_high/pix/screenshot.png" />Tema Moodle 2.0 por Julian Ridden (<a href="http://www.moodleman.net/">www.moodleman.net</a>)<h3>Foro de discusión del tema:</h3><p><a href="http://moodle.org/mod/forum/view.php?id=46">http://moodle.org/mod/forum/view.php?id=46</a></p><h3>Theme Credits</h3><p><a href="http://docs.moodle.org/en/Theme_credits">http://docs.moodle.org/en/Theme_credits</a></p><h3>Documentación del tema:</h3><p><a href="http://docs.moodle.org/en/Themes">http://docs.moodle.org/en/Themes</a></p><h3>Report a bug:</h3><p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p></div><div class="theme_description">Se puede encontrar más información sobre la modificación de temas en <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p><h3>License</h3><p>Éste y los demás temas incluidos en el núcleo de Moodle están bajo licencia <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.</div></div>',
+  'configtitle' => 'Ajustes Sky High',
+  'customcss' => 'CSS personalizado',
+  'customcssdesc' => 'Cualquier CSS que escriba aquí se agregará a todas las páginas, permitiéndole personalizar con facilidad este tema.',
+  'footnote' => 'Nota al pie',
+  'footnotedesc' => 'El contenido de este área de texto se mostrará en el pie de cada página, e.g., su información de copyright.',
+  'tagline' => 'Tagline',
+  'taglinedesc' => 'El contenido de este área de texto se mostrará debajo del logo del sitio en la portada',
+  'logo' => 'Logo',
+  'logodesc' => 'Escriba la URL enlazada a una imagen para usar como logo de este sitio, e.g: http://www.yoursite.com/path/to/logo.png. El logo deberá tener 50 píxels de altura.',
+  'regionwidth' => 'Ancho de columna',
+  'regionwidthdesc' => 'Esta opción ajusta la anchura de las regiones de dos bloques que forman las columnas izquierda y derecha.',
+);

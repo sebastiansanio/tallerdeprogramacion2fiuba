@@ -1,0 +1,17 @@
+<?php $this->cache['es_ar']['report_spamcleaner'] = array (
+  'pluginname' => 'Limpiador de spam',
+  'spamauto' => 'Detectar automáticamente patrones comunes de spam',
+  'spamcannotdelete' => 'No se puede eliminar este usuario',
+  'spamcannotfinduser' => 'No hay usuarios que se ajusten a su búsqueda',
+  'spamcleanerintro' => 'Este scipt le permite buscar todos los perfiles de usuario para ciertas cadenas y luego eliminar esas cuentas que han sido creadas por difusores de spam. Puede buscar por múltiples palabras clave usando comas (e.g., casino, porno)<br /><br />Moodle docs tiene más información sobre este asunto en <a href="http://docs.moodle.org/en/Reducing_spam_in_Moodle">Reducción del spam en Moodle</a>.',
+  'spamdeleteall' => 'Eliminar las cuentas de estos usuarios',
+  'spamdeleteallconfirm' => '¿Está seguro de que quiere eliminar todas estas cuentas? No podrá deshacer esta operación.',
+  'spamdeleteconfirm' => '¿Está seguro de que quiere eliminar esta entrada? No podrá deshacer esta operación.',
+  'spamdesc' => 'Descripción',
+  'spameg' => 'e.g., casino, porno, xxx',
+  'spamfromblog' => 'Del mensaje del blog:',
+  'spaminvalidresult' => 'Resultado desconocido pero no válido',
+  'spamoperation' => 'Operación',
+  'spamresult' => 'Resultado de la búsqueda de perfiles del usuario que contienen:',
+  'spamsearch' => 'Buscar por estas palabras clave',
+);

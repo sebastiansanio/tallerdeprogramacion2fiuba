@@ -1,0 +1,18 @@
+<?php $this->cache['es_ar']['mod_imscp'] = array (
+  'areabackup' => 'Paquete de archivo',
+  'areacontent' => 'Contenido',
+  'contentheader' => 'Contenido',
+  'deploymenterror' => 'Error en el paquete de contenidos',
+  'keepold' => 'Archivo de paquetes',
+  'keepoldexplain' => '¿Cuántos paquetes desea archivar?',
+  'imscp:view' => 'Mostrar contenido IMS',
+  'modulename' => 'Paquete de contenido IMS',
+  'modulename_help' => 'Un paquete de contenidos IMS permite mostrar dentro del curso paquetes de contenidos creados conforme a la especificación <b>IMS Content Packaging</b>.',
+  'modulenameplural' => 'Paquete de contenidos IMS',
+  'navigation' => 'Navegación',
+  'page-mod-imscp-x' => 'Cualquier página del módulo Paquete de contenidos IMS',
+  'packagefile' => 'Paquete de archivos',
+  'pluginadministration' => 'Administración IMSCP',
+  'pluginname' => 'Paquete de contenidos IMS',
+  'toc' => 'TOC',
+);

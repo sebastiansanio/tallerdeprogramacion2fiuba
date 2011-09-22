@@ -118,7 +118,7 @@
 
     // Carry on with the user listing
 
-    $columns = array("firstname", "lastname", "email", "city", "country", "lastaccess");
+    $columns = array("firstname", "lastname", "email", "city", "country", "dni", "padron", "rolsolicitado");
 
     foreach ($columns as $column) {
         $string[$column] = get_string("$column");
@@ -208,8 +208,8 @@
         }
 
         $table = new html_table();
-        $table->head = array ($fullnamedisplay, $email, $city, $country, $lastaccess, "", "", "");
-        $table->align = array ("left", "left", "left", "left", "left", "center", "center", "center");
+        $table->head = array ($fullnamedisplay, $email, $city, $country, $dni, $padron, $rolsolicitado,"","","");
+        $table->align = array ("left", "left", "left", "left", "left", "left", "left", "center", "center", "center");
         $table->width = "95%";
         foreach ($users as $user) {
             if (isguestuser($user)) {
@@ -271,12 +271,30 @@
                 $strlastaccess = get_string('never');
             }
             $fullname = fullname($user, true);
+	    
+            //Voy a buscar los campos de usuario
+
+            if ($userdata = $DB->get_records('user_info_data')) {
+                foreach ($userdata as $data) {
+                    if($data->userid == $user->id){
+                        if($data->fieldid == 3 ){
+                            $userdni=$data->data;
+                        } else if ($data->fieldid == 4 ){
+                            $userpadron=$data->data;
+                        } else if ($data->fieldid == 5 ){
+                            $userrolsolicitado=$data->data;
+                        }
+                    }
+                }
+            }
 
             $table->data[] = array ("<a href=\"../user/view.php?id=$user->id&amp;course=$site->id\">$fullname</a>",
                                 "$user->email",
                                 "$user->city",
                                 "$user->country",
-                                $strlastaccess,
+                                $userdni,
+                                $userpadron,
+                                $userrolsolicitado,
                                 $editbutton,
                                 $deletebutton,
                                 $confirmbutton);

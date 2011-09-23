@@ -315,7 +315,7 @@ $string['courseavailablenot'] = 'Este curso no está disponible para los estudia
 $string['coursebackup'] = 'Copia de seguridad del curso';
 $string['coursecategories'] = 'Categorías de cursos';
 $string['coursecategory'] = 'Categoría de cursos';
-$string['coursecategorydeleted'] = 'Eliminada la categoría de curso {$a}';
+$string['coursecategorydeleted'] = 'Eliminada la materia {$a}';
 $string['coursecompletion'] = 'Finalización del curso';
 $string['coursecompletions'] = 'Finalizaciones del curso';
 $string['coursecreators'] = 'Creador de curso';
@@ -449,7 +449,7 @@ $string['deleteallratings'] = 'Eliminar todas las calificaciones';
 $string['deletecategory'] = 'Eliminar categoría: {$a}';
 $string['deletecategorycheck'] = '¿Está totalmente seguro que quiere eliminar por completo la categoría <b>\'{$a}\'</b>?<br /> Esta acción trasladará todos los cursos a la categoría padre (si existe) o a Miscelánea.';
 $string['deletecategorycheck2'] = 'Si elimina esta categoría, necesita decidir qué hacer con los cursos y subcategorías que contiene.';
-$string['deletecategoryempty'] = 'Esta categoría está vacía';
+$string['deletecategoryempty'] = 'Esta materia está vacía';
 $string['deletecheck'] = 'Borrar {$a} ?';
 $string['deletecheckfiles'] = '¿Está totalmente seguro que quiere borrar estos archivos?';
 $string['deletecheckfull'] = '¿Está totalmente seguro que quiere borrar definitivamente {$a}?';
@@ -551,9 +551,7 @@ Si necesita ayuda, contacte por favor con el administrador
 del sitio,
 {$a->admin}';
 $string['emailconfirmationsubject'] = 'Confirmación de la cuenta  {$a}';
-$string['emailconfirmsent'] = '<p>Hemos enviado un correo electrónico a <b>{$a}</b></p>
-<p>En él encontrará instrucciones sencillas para concluir el proceso.</p>
-<p>Si tuviera alguna dificultad, contacte con el Administrador del Sistema.</p>';
+$string['emailconfirmsent'] = '<p>Su solicitud de registro ha sido recibida. Debe esperar a que el administrador del sitio confirme su registro.</p>';
 $string['emaildigest'] = 'Tipo de resumen de correo';
 $string['emaildigestcomplete'] = 'Completo (correo diario con mensajes completos)';
 $string['emaildigestoff'] = 'Sin resumen (un correo por cada mensaje del foro)';
@@ -1099,7 +1097,7 @@ $string['movetoanotherfolder'] = 'Mover a otro directrorio';
 $string['moveup'] = 'Mover hacia arriba';
 $string['msnid'] = 'ID MSN';
 $string['mustchangepassword'] = 'La nueva contraseña debe ser diferente a la actual';
-$string['mustconfirm'] = 'Necesita confirmar el acceso';
+$string['mustconfirm'] = 'La confirmación se encuentra pendiente';
 $string['mycourses'] = 'Mis cursos';
 $string['myfiles'] = 'Mis archivos privados';
 $string['myfilesmanage'] = 'Gestionar mis archivos privados';
@@ -1679,7 +1677,7 @@ $string['sitefilesused'] = 'Archivos del sitio usados en este curso';
 $string['sitehome'] = 'Inicio del sitio';
 $string['sitelegacyfiles'] = 'Archivos heredados del sitio';
 $string['sitelogs'] = 'Registros del sitio';
-$string['sitenews'] = 'Novedades del sitio';
+$string['sitenews'] = 'Cartelera';
 $string['sitepages'] = 'Páginas del sitio';
 $string['sitepartlist'] = 'No dispone de los permisos necesarios para ver la lista de participantes';
 $string['sitepartlist0'] = 'Para poder ver la lista de participantes, usted debe ser un profesor del sitio';

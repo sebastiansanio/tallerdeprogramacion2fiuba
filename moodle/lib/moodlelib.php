@@ -4904,7 +4904,8 @@ function reset_password_and_mail($user) {
  * @return bool Returns true if mail was sent OK and false if there was an error.
  */
  function send_confirmation_email($user) {
-    global $CFG;
+    return true;
+ /*   global $CFG;
 
     $site = get_site();
     $supportuser = generate_email_supportuser();
@@ -4923,7 +4924,7 @@ function reset_password_and_mail($user) {
     $user->mailformat = 1;  // Always send HTML version as well
 
     //directly email rather than using the messaging system to ensure its not routed to a popup or jabber
-    return email_to_user($user, $supportuser, $subject, $message, $messagehtml);
+    return email_to_user($user, $supportuser, $subject, $message, $messagehtml);*/
 
 }
 

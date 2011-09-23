@@ -21,7 +21,7 @@ if ($id) {
     $categorycontext = get_context_instance(CONTEXT_COURSECAT, $id);
     $PAGE->set_context($categorycontext);
     require_capability('moodle/category:manage', $categorycontext);
-    $strtitle = get_string('editcategorysettings');
+    $strtitle = 'Editar materia';
     $editorcontext = $categorycontext;
     $title = $strtitle;
     $fullname = $category->name;
@@ -41,9 +41,9 @@ if ($id) {
     $category->id = 0;
     $category->parent = $parent;
     require_capability('moodle/category:manage', $context);
-    $strtitle = get_string("addnewcategory");
+    $strtitle = 'Agregar nueva materia';
     $editorcontext = null;
-    $title = "$SITE->shortname: ".get_string('addnewcategory');
+    $title = "$SITE->shortname: ".'Agregar nueva materia';
     $fullname = $SITE->fullname;
 }
 

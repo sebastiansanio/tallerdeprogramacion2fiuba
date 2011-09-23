@@ -58,8 +58,8 @@ if (can_edit_in_category()) {
 }
 
 $stradministration = get_string('administration');
-$strcategories = get_string('categories');
-$strcategory = get_string('category');
+$strcategories = 'Materias';
+$strcategory = 'Materia';
 $strcourses = get_string('courses');
 $stredit = get_string('edit');
 $strdelete = get_string('delete');
@@ -75,7 +75,7 @@ if (!$adminediting) {
 
     if ($countcategories > 1 || ($countcategories == 1 && $DB->count_records('course') > 200)) {
         $strcourses = get_string('courses');
-        $strcategories = get_string('categories');
+        $strcategories = 'Materias';
 
         $PAGE->navbar->add($strcategories);
         $PAGE->set_title("$site->shortname: $strcategories");
@@ -125,7 +125,7 @@ if (!empty($delete) and confirm_sesskey()) {
     require_capability('moodle/category:manage', $context);
     require_capability('moodle/category:manage', get_category_or_system_context($deletecat->parent));
 
-    $heading = get_string('deletecategory', 'moodle', format_string($deletecat->name));
+    $heading = 'Borrar materias';
     require_once('delete_category_form.php');
     $mform = new delete_category_form(null, $deletecat);
     $mform->set_data(array('delete'=>$delete));
@@ -242,9 +242,9 @@ echo $OUTPUT->header();
 echo $OUTPUT->heading($strcategories);
 
 /// Print out the categories with all the knobs
-$strcategories = get_string('categories');
+$strcategories = 'Materias';
 $strcourses = get_string('courses');
-$strmovecategoryto = get_string('movecategoryto');
+$strmovecategoryto = 'Mover materia a';
 $stredit = get_string('edit');
 
 $displaylist = array();
@@ -257,7 +257,7 @@ echo '<table class="generalbox editcourse boxaligncenter"><tr class="header">';
 echo '<th class="header" scope="col">'.$strcategories.'</th>';
 echo '<th class="header" scope="col">'.$strcourses.'</th>';
 echo '<th class="header" scope="col">'.$stredit.'</th>';
-echo '<th class="header" scope="col">'.$strmovecategoryto.'</th>';
+//echo '<th class="header" scope="col">'.$strmovecategoryto.'</th>';
 echo '</tr>';
 
 print_category_edit(NULL, $displaylist, $parentlist);
@@ -274,7 +274,7 @@ if (has_capability('moodle/course:create', $systemcontext)) {
 // Print button for creating new categories
 if (has_capability('moodle/category:manage', $systemcontext)) {
     $options = array('parent'=>0);
-    echo $OUTPUT->single_button(new moodle_url('editcategory.php', $options), get_string('addnewcategory'), 'get');
+    echo $OUTPUT->single_button(new moodle_url('editcategory.php', $options), 'Agregar nueva materia', 'get');
 }
 
 print_course_request_buttons($systemcontext);
@@ -295,7 +295,7 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
         $str->delete   = get_string('delete');
         $str->moveup   = get_string('moveup');
         $str->movedown = get_string('movedown');
-        $str->edit     = get_string('editthiscategory');
+        $str->edit     = 'Editar materia';
         $str->hide     = get_string('hide');
         $str->show     = get_string('show');
         $str->cohorts  = get_string('cohorts', 'cohort');
@@ -357,7 +357,7 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
         }
         echo '</td>';
 
-        echo '<td align="left">';
+/*        echo '<td align="left">';
         if (has_capability('moodle/category:manage', $category->context)) {
             $tempdisplaylist = $displaylist;
             unset($tempdisplaylist[$category->id]);
@@ -370,7 +370,7 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
             $select = new single_select($popupurl, 'moveto', $tempdisplaylist, $category->parent, null, "moveform$category->id");
             echo $OUTPUT->render($select);
         }
-        echo '</td>';
+        echo '</td>';*/
         echo '</tr>';
     } else {
         $category->id = '0';

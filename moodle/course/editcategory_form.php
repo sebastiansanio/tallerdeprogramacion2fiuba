@@ -21,19 +21,19 @@ class editcategory_form extends moodleform {
         $parents = array();
         if ($category->id) {
             // Editing an existing category.
-            make_categories_list($options, $parents, 'moodle/category:manage', $category->id);
+            //make_categories_list($options, $parents, 'moodle/category:manage', $category->id);
             if (empty($options[$category->parent])) {
                 $options[$category->parent] = $DB->get_field('course_categories', 'name', array('id'=>$category->parent));
             }
             $strsubmit = get_string('savechanges');
         } else {
             // Making a new category
-            make_categories_list($options, $parents, 'moodle/category:manage');
-            $strsubmit = get_string('createcategory');
+            //make_categories_list($options, $parents, 'moodle/category:manage');
+            $strsubmit = 'Crear materia';
         }
 
-        $mform->addElement('select', 'parent', get_string('parentcategory'), $options);
-        $mform->addElement('text', 'name', get_string('categoryname'), array('size'=>'30'));
+        $mform->addElement('select', 'parent', 'Materia padre', $options);
+        $mform->addElement('text', 'name', 'Nombre de la materia', array('size'=>'30'));
         $mform->addRule('name', get_string('required'), 'required', null);
         $mform->addElement('editor', 'description_editor', get_string('description'), null, $editoroptions);
         $mform->setType('description_editor', PARAM_RAW);

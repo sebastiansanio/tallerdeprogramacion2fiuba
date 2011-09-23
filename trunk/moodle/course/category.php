@@ -152,8 +152,8 @@
     $numcategories = $DB->count_records('course_categories');
 
     $stradministration = get_string('administration');
-    $strcategories = get_string('categories');
-    $strcategory = get_string('category');
+    $strcategories = 'Materias';
+    $strcategory = 'Materia';
     $strcourses = get_string('courses');
 
     if ($editingon && can_edit_in_category()) {
@@ -209,11 +209,11 @@
 
         // Print button to update this category
         $options = array('id' => $category->id);
-        echo $OUTPUT->single_button(new moodle_url('/course/editcategory.php', $options), get_string('editcategorythis'), 'get');
+        echo $OUTPUT->single_button(new moodle_url('/course/editcategory.php', $options), 'Editar esta materia', 'get');
 
         // Print button for creating new categories
         $options = array('parent' => $category->id);
-        echo $OUTPUT->single_button(new moodle_url('/course/editcategory.php', $options), get_string('addsubcategory'), 'get');
+        //echo $OUTPUT->single_button(new moodle_url('/course/editcategory.php', $options), 'Agregar sub-materia', 'get');
 
         echo $OUTPUT->container_end();
     }
@@ -226,7 +226,7 @@
                 $subcategorieswereshown = true;
                 if ($firstentry) {
                     echo '<table border="0" cellspacing="2" cellpadding="4" class="generalbox boxaligncenter">';
-                    echo '<tr><th scope="col">'.get_string('subcategories').'</th></tr>';
+                    echo '<tr><th scope="col">'.'Sub-materias'.'</th></tr>';
                     echo '<tr><td style="white-space: nowrap">';
                     $firstentry = false;
                 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2011 at 01:31 
+-- Generation Time: Sep 24, 2011 at 01:45 
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_blocinst_parshopagsub_ix` (`parentcontextid`,`showinsubcontexts`,`pagetypepattern`,`subpagepattern`),
   KEY `mdl_blocinst_par_ix` (`parentcontextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `mdl_block_instances`
@@ -343,7 +343,11 @@ INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showin
 (7, 'private_files', 1, 0, 'my-index', '2', 'side-post', 0, ''),
 (8, 'online_users', 1, 0, 'my-index', '2', 'side-post', 1, ''),
 (9, 'course_overview', 1, 0, 'my-index', '2', 'content', 0, ''),
-(10, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo0OiJNZW51IjtzOjY6ImZvcm1hdCI7czoxOiIxIjtzOjQ6InRleHQiO3M6MTQwOiI8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2FkbWluL3VzZXIucGhwIj5Vc3VhcmlvczwvYT48L3A+DQo8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS9pbmRleC5waHA/Y2F0ZWdvcnllZGl0PW9uIj5DdXJzb3M8L2E+PC9wPiI7fQ==');
+(10, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo0OiJNZW51IjtzOjY6ImZvcm1hdCI7czoxOiIxIjtzOjQ6InRleHQiO3M6MTQwOiI8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2FkbWluL3VzZXIucGhwIj5Vc3VhcmlvczwvYT48L3A+DQo8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS9pbmRleC5waHA/Y2F0ZWdvcnllZGl0PW9uIj5DdXJzb3M8L2E+PC9wPiI7fQ=='),
+(11, 'search_forums', 24, 0, 'course-view-*', NULL, 'side-post', 0, ''),
+(12, 'news_items', 24, 0, 'course-view-*', NULL, 'side-post', 1, ''),
+(13, 'calendar_upcoming', 24, 0, 'course-view-*', NULL, 'side-post', 2, ''),
+(14, 'recent_activity', 24, 0, 'course-view-*', NULL, 'side-post', 3, '');
 
 -- --------------------------------------------------------
 
@@ -522,22 +526,25 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1316567503, '1', 1316574703),
-(2, 'accesslib/dirtycontexts', '/1', 1316732463, '1', 1316739663),
+(1, 'userpreferenceschanged', '2', 1316811427, '1', 1316818627),
+(2, 'accesslib/dirtycontexts', '/1', 1316811858, '1', 1316819058),
 (3, 'accesslib/dirtycontexts', '/1/2/16', 1316650870, '1', 1316658070),
 (4, 'accesslib/dirtycontexts', '/1/14', 1316715379, '1', 1316722579),
 (5, 'accesslib/dirtycontexts', '/1/3', 1316724834, '1', 1316732034),
 (6, 'accesslib/dirtycontexts', '/1/18', 1316731622, '1', 1316738822),
 (7, 'accesslib/dirtycontexts', '/1/19', 1316732460, '1', 1316739660),
 (8, 'accesslib/dirtycontexts', '/1/20', 1316732271, '1', 1316739471),
-(9, 'accesslib/dirtycontexts', '/1/21', 1316732463, '1', 1316739663);
+(9, 'accesslib/dirtycontexts', '/1/21', 1316810207, '1', 1316817407),
+(10, 'accesslib/dirtycontexts', '/1/22', 1316810170, '1', 1316817370),
+(11, 'accesslib/dirtycontexts', '/1/23', 1316810501, '1', 1316817701),
+(12, 'accesslib/dirtycontexts', '/1/23/24', 1316813637, '1', 1316820837);
 
 -- --------------------------------------------------------
 
@@ -553,15 +560,15 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316732447),
-(2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316732448),
+(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316813155),
+(2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316813155),
 (3, '3f753a864e451dd63c50e2914e848ffa', '<p>Para transformar el texto en un enlace, introduzca una URL que contenga $$, donde $$ se sustituye por el texto. Por ejemplo, para transformar una ID de Twitter en un enlace, introduzca http://twitter.com/$$.</p>\n', 1316642136),
 (4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316728745),
 (5, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642917),
@@ -571,15 +578,15 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (9, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316642930),
 (10, '7df7723cf476d69bc13eed1ea208b702', '12345678', 1316648440),
 (11, '3cacbd06d2cea41568697793c94a8361', '1234567890', 1316648440),
-(12, '2aff888c5cc7ceed5dc32f6967ff349b', 'Aprendiz', 1316648441),
+(12, '2aff888c5cc7ceed5dc32f6967ff349b', 'Aprendiz', 1316813121),
 (13, '4112d23e812cc2a4810ca926101d527f', 'Ninguno', 1316648049),
 (14, '85e62ac1e3b1c50e55dcd86a33077a48', 'Los gestores pueden acceder a los cursos y modificarlos, por lo general no participan en los cursos.', 1316650407),
 (15, '4c6057364a06af0ffaae37777cb4a742', 'Los creadores de cursos pueden crear nuevos cursos.', 1316650407),
-(16, '2d5e7b787f4219cdb7b5b4a6ed1aaba6', 'Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.', 1316650524),
+(16, '2d5e7b787f4219cdb7b5b4a6ed1aaba6', 'Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.', 1316811068),
 (17, '58582df6214224706d388f3035818bb5', 'Los profesores sin permiso de edición pueden enseñar en los cursos y calificar a los estudiantes, pero no pueden modificar las actividades.', 1316650407),
-(18, '652850f711ea69d77aa95c95bd3f91bd', 'Los estudiantes tienen por lo general menos privilegios dentro de un curso.', 1316650524),
-(19, '192d5947cde4c040297beb0c12ebec84', 'Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.', 1316650524),
-(20, '4ec84abe62cb010e906d6254616ed901', 'Todos los usuarios identificados.', 1316650524),
+(18, '652850f711ea69d77aa95c95bd3f91bd', 'Los estudiantes tienen por lo general menos privilegios dentro de un curso.', 1316811068),
+(19, '192d5947cde4c040297beb0c12ebec84', 'Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.', 1316811068),
+(20, '4ec84abe62cb010e906d6254616ed901', 'Todos los usuarios identificados.', 1316810966),
 (21, '5498b85cb9de8e8bcbb269601f250be0', 'Todos los usuarios identificados en el curso de la página principal', 1316650524),
 (22, '275f923851211239b5f6e90a3d5696fe', '<div class="no-overflow"><p>&lt;p&gt; Titulo &lt;/p&gt;</p></div>', 1316650916),
 (23, '34065e52d2a2f6219b518e3025df79b0', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316729154),
@@ -588,7 +595,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (26, '939ba169d7d0017b408a9f518d2d251d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316715653),
 (27, '4e46d06bdcc733e932e24c0fbc687d08', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316716394),
 (28, 'bbdda4b15cd915a4f3462f32602cc8c1', '<div class="no-overflow">Novedades y anuncios</div>', 1316716394),
-(29, '9a9bd2a65551cb9b76beafd3cbb69de0', '<p>Hola, mensaje</p>', 1316732448),
+(29, '9a9bd2a65551cb9b76beafd3cbb69de0', '<p>Hola, mensaje</p>', 1316813155),
 (30, 'df2fc47fd0e90fe782622f30f04f7acf', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316728783),
 (31, '0e7c9686c7a27fb05e7b6881d3539fc7', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316728783),
 (32, 'f5857128b28b59b68311e5bb07e38383', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316728784),
@@ -598,10 +605,23 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (36, 'd942e310a907a09adc8463584aed488d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316728621),
 (37, '17855839ab06a3b822aafcc5f7edff58', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316731180),
 (38, 'bfa2be5909c89bbcf80726df70c4ebff', '<p>\nAl asignar un rol a un usuario en un contexto, usted\nle está garantizando los permisos propios de ese rol\nen el contexto actual y en todos los contextos de\nrango ''inferior''.\n</p>\n\n<p>\nContextos:\n</p><ol><li>Sitio/Sistema</li>\n<li>Categorías de cursos</li>\n<li>Cursos</li>\n<li>Bloques y Actividades</li>\n</ol><p>\nAsí, si le da a un estudiante el rol de usuario de un\ncurso, tendrá ese rol para ese curso, pero también para\ntodos los bloques y actividades dentro del curso. Sus\npermisos reales dependerán de otros roles y anularán\nlos que han sido definidos.\n</p>\n\n<p>\nVea también\n<a href="help.php?file=roles.html">Roles</a>,\n<a href="help.php?file=contexts.html">Contextos</a>,\n<a href="help.php?file=permissions.html">Permisos</a> y\n<a href="help.php?file=overrides.html">Anulaciones</a>.\n</p>\n', 1316730372),
-(39, '6c267be72733d7408cd14a7c0b0f9738', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316732754),
-(40, 'dc0c25f44e821d01208f946aa7557ec1', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316732447),
+(39, '6c267be72733d7408cd14a7c0b0f9738', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813173),
+(40, 'dc0c25f44e821d01208f946aa7557ec1', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813154),
 (41, '59871fc49db985e89d186c5a35554903', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316731646),
-(42, '2501233af784821fb22eb3768ce564a4', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316731767);
+(42, '2501233af784821fb22eb3768ce564a4', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316731767),
+(43, 'f802718b074a605d9164fb8d1c6bd7e3', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316810640),
+(44, '1cb32bc21655a4db4d3a4fbb97a5ea77', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813551),
+(45, 'eef0c21466656d7766dd28f53532b100', '<p>El resumen del curso se muestra en la lista de cursos. Una búsqueda de cursos busca el texto del resumen del curso además de los nombres de curso.</p>\n', 1316810776),
+(46, '1ab20d6dfe938bb5b31e7c2b7a2647ed', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813732),
+(47, '20f7045625c732dacecc561e779e2a54', '<p>Todos los usuarios identificados.</p>', 1316811859),
+(48, '2f8b7530669537817ae18e6d154e46ef', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 1316811859),
+(49, 'e63ec5279c3fa2c91bffa8483df0b5dc', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 1316811859),
+(50, '24b187e2a604187bea9b705924302adb', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 1316811859),
+(51, '94b1894cfac1a77a856b6fc9ccb3b0f2', '23434342', 1316813121),
+(52, 'c20116423ad3f827fe97167b30c8aa33', '345345', 1316813121),
+(53, '9ecd690dfe37057f51c226f62ba6040e', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813144),
+(54, 'a7f816d772a520164e2465ba05acd10d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813762),
+(55, 'bfabbb51f75ddc1f1fba6d1ae1cade8f', '<div class="no-overflow">Novedades y anuncios</div>', 1316813762);
 
 -- --------------------------------------------------------
 
@@ -1253,7 +1273,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (36, 'enableavailability', '0'),
 (37, 'enableplagiarism', '0'),
 (38, 'autologinguests', '0'),
-(39, 'hiddenuserfields', ''),
+(39, 'hiddenuserfields', 'icqnumber,skypeid,yahooid,aimid,msnid,firstaccess,lastaccess'),
 (40, 'extrauserselectorfields', 'email'),
 (41, 'enablecourserequests', '0'),
 (43, 'courserequestnotify', ''),
@@ -1623,7 +1643,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
   PRIMARY KEY (`id`),
   KEY `mdl_conflog_tim_ix` (`timemodified`),
   KEY `mdl_conflog_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=741 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=742 ;
 
 --
 -- Dumping data for table `mdl_config_log`
@@ -2369,7 +2389,8 @@ INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, 
 (737, 2, 1316641637, NULL, 'minpasswordnonalphanum', '0', '1'),
 (738, 2, 1316715774, NULL, 'defaultfrontpageroleid', '0', '8'),
 (739, 2, 1316715819, NULL, 'frontpage', '0', '1'),
-(740, 2, 1316715819, NULL, 'frontpageloggedin', '0', '1');
+(740, 2, 1316715819, NULL, 'frontpageloggedin', '0', '1'),
+(741, 2, 1316810951, NULL, 'hiddenuserfields', 'icqnumber,skypeid,yahooid,aimid,msnid,firstaccess,lastaccess', '');
 
 -- --------------------------------------------------------
 
@@ -2504,7 +2525,7 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 (111, 'enrol_ldap', 'user_type', 'default'),
 (112, 'enrol_ldap', 'opt_deref', '0'),
 (113, 'enrol_ldap', 'idnumber_attribute', ''),
-(114, 'enrol_ldap', 'objectclass', ''),
+(114, 'enrol_ldap', 'objectclass', '(objectClass=*)'),
 (115, 'enrol_ldap', 'course_idnumber', ''),
 (116, 'enrol_ldap', 'course_shortname', ''),
 (117, 'enrol_ldap', 'course_fullname', ''),
@@ -2961,7 +2982,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `mdl_context`
@@ -2983,7 +3004,15 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (15, 80, 10, '/1/2/15', 3),
 (16, 30, 9, '/1/16', 2),
 (17, 70, 1, '/1/2/17', 3),
-(21, 40, 5, '/1/21', 2);
+(22, 40, 6, '/1/22', 2),
+(23, 40, 7, '/1/23', 2),
+(24, 50, 2, '/1/23/24', 3),
+(25, 80, 11, '/1/23/24/25', 4),
+(26, 80, 12, '/1/23/24/26', 4),
+(27, 80, 13, '/1/23/24/27', 4),
+(28, 80, 14, '/1/23/24/28', 4),
+(29, 70, 2, '/1/23/24/29', 4),
+(30, 30, 10, '/1/30', 2);
 
 -- --------------------------------------------------------
 
@@ -3042,14 +3071,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course` (
   KEY `mdl_cour_cat_ix` (`category`),
   KEY `mdl_cour_idn_ix` (`idnumber`),
   KEY `mdl_cour_sho_ix` (`shortname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Central course table' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Central course table' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mdl_course`
 --
 
 INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`, `idnumber`, `summary`, `summaryformat`, `format`, `showgrades`, `modinfo`, `newsitems`, `startdate`, `numsections`, `marker`, `maxbytes`, `legacyfiles`, `showreports`, `visible`, `visibleold`, `hiddensections`, `groupmode`, `groupmodeforce`, `defaultgroupingid`, `lang`, `theme`, `timecreated`, `timemodified`, `requested`, `restrictmodules`, `enablecompletion`, `completionstartonenrol`, `completionnotify`) VALUES
-(1, 0, 1, 'Red Social FIUBA', 'Red Social FIUBA', '', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 0, 'site', 1, 'a:1:{i:1;O:8:"stdClass":10:{s:2:"id";s:1:"1";s:2:"cm";s:1:"1";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:1:"1";s:6:"module";s:1:"7";s:5:"added";s:10:"1316715825";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:19:"Novedades del sitio";}}', 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, '', '', 1316566411, 1316715819, 0, 0, 0, 0, 0);
+(1, 0, 1, 'Red Social FIUBA', 'Red Social FIUBA', '', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 0, 'site', 1, 'a:1:{i:1;O:8:"stdClass":10:{s:2:"id";s:1:"1";s:2:"cm";s:1:"1";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:1:"1";s:6:"module";s:1:"7";s:5:"added";s:10:"1316715825";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:19:"Novedades del sitio";}}', 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, '', '', 1316566411, 1316715819, 0, 0, 0, 0, 0),
+(2, 7, 10001, 'Azcurra', 'Azcurra', '1', '', 1, 'weeks', 1, 'a:1:{i:2;O:8:"stdClass":10:{s:2:"id";s:1:"2";s:2:"cm";s:1:"2";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:1:"2";s:6:"module";s:1:"7";s:5:"added";s:10:"1316810832";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:9:"Novedades";}}', 5, 1316815200, 10, 0, 2097152, 0, 0, 1, 1, 0, 0, 0, 0, '', '', 1316810792, 1316813550, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3088,14 +3118,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
   `theme` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_courcate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course categories' AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course categories' AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `mdl_course_categories`
 --
 
 INSERT INTO `mdl_course_categories` (`id`, `name`, `description`, `descriptionformat`, `parent`, `sortorder`, `coursecount`, `visible`, `visibleold`, `timemodified`, `depth`, `path`, `theme`) VALUES
-(5, 'Miscelánea', NULL, 0, 0, 10000, 0, 1, 1, 0, 1, '/5', NULL);
+(6, 'Algoritmos y Programacion II', '<p>Algoritmos y Programacion II</p>', 1, 0, 20000, 0, 1, 1, 0, 1, '/6', NULL),
+(7, 'Taller de programación', '', 1, 0, 10000, 1, 1, 1, 0, 1, '/7', NULL);
 
 -- --------------------------------------------------------
 
@@ -3245,14 +3276,15 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
   KEY `mdl_courmodu_ins_ix` (`instance`),
   KEY `mdl_courmodu_idncou_ix` (`idnumber`,`course`),
   KEY `mdl_courmodu_gro_ix` (`groupingid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mdl_course_modules`
 --
 
 INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section`, `idnumber`, `added`, `score`, `indent`, `visible`, `visibleold`, `groupmode`, `groupingid`, `groupmembersonly`, `completion`, `completiongradeitemnumber`, `completionview`, `completionexpected`, `availablefrom`, `availableuntil`, `showavailability`) VALUES
-(1, 1, 7, 1, 1, NULL, 1316715825, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0);
+(1, 1, 7, 1, 1, NULL, 1316715825, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
+(2, 2, 7, 2, 2, NULL, 1316810832, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3346,14 +3378,25 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
   `visible` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `mdl_coursect_cousec_ix` (`course`,`section`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to define the sections for each course' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to define the sections for each course' AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `mdl_course_sections`
 --
 
 INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`, `summaryformat`, `sequence`, `visible`) VALUES
-(1, 1, 0, NULL, '', 1, '1', 1);
+(1, 1, 0, NULL, '', 1, '1', 1),
+(2, 2, 0, NULL, NULL, 1, '2', 1),
+(3, 2, 1, NULL, '', 1, NULL, 1),
+(4, 2, 2, NULL, '', 1, NULL, 1),
+(5, 2, 3, NULL, '', 1, NULL, 1),
+(6, 2, 4, NULL, '', 1, NULL, 1),
+(7, 2, 5, NULL, '', 1, NULL, 1),
+(8, 2, 6, NULL, '', 1, NULL, 1),
+(9, 2, 7, NULL, '', 1, NULL, 1),
+(10, 2, 8, NULL, '', 1, NULL, 1),
+(11, 2, 9, NULL, '', 1, NULL, 1),
+(12, 2, 10, NULL, '', 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -3502,7 +3545,16 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
   PRIMARY KEY (`id`),
   KEY `mdl_enro_enr_ix` (`enrol`),
   KEY `mdl_enro_cou_ix` (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `mdl_enrol`
+--
+
+INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name`, `enrolperiod`, `enrolstartdate`, `enrolenddate`, `expirynotify`, `expirythreshold`, `notifyall`, `password`, `cost`, `currency`, `roleid`, `customint1`, `customint2`, `customint3`, `customint4`, `customchar1`, `customchar2`, `customdec1`, `customdec2`, `customtext1`, `customtext2`, `timecreated`, `timemodified`) VALUES
+(1, 'manual', 0, 2, 0, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1316810794, 1316810794),
+(2, 'guest', 1, 2, 1, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1316810794, 1316813550),
+(3, 'self', 1, 2, 2, NULL, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, 5, 0, 0, 0, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1316810794, 1316810794);
 
 -- --------------------------------------------------------
 
@@ -4185,14 +4237,15 @@ CREATE TABLE IF NOT EXISTS `mdl_forum` (
   `completionposts` int(9) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_foru_cou_ix` (`course`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mdl_forum`
 --
 
 INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`, `assessed`, `assesstimestart`, `assesstimefinish`, `scale`, `maxbytes`, `maxattachments`, `forcesubscribe`, `trackingtype`, `rsstype`, `rssarticles`, `timemodified`, `warnafter`, `blockafter`, `blockperiod`, `completiondiscussions`, `completionreplies`, `completionposts`) VALUES
-(1, 1, 'news', 'Cartelera', 'Novedades y anuncios', 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1316715824, 0, 0, 0, 0, 0, 0);
+(1, 1, 'news', 'Cartelera', 'Novedades y anuncios', 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1316715824, 0, 0, 0, 0, 0, 0),
+(2, 2, 'news', 'Novedades', 'Novedades y anuncios', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1316810832, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4216,14 +4269,15 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
   PRIMARY KEY (`id`),
   KEY `mdl_forudisc_use_ix` (`userid`),
   KEY `mdl_forudisc_for_ix` (`forum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mdl_forum_discussions`
 --
 
 INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost`, `userid`, `groupid`, `assessed`, `timemodified`, `usermodified`, `timestart`, `timeend`) VALUES
-(1, 1, 1, 'Prueba', 1, 2, -1, 1, 1316715845, 2, 0, 0);
+(1, 1, 1, 'Prueba', 1, 2, -1, 1, 1316715845, 2, 0, 0),
+(2, 2, 2, 'Tema 1', 2, 2, -1, 1, 1316813778, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4252,14 +4306,15 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
   KEY `mdl_forupost_mai_ix` (`mailed`),
   KEY `mdl_forupost_dis_ix` (`discussion`),
   KEY `mdl_forupost_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `mdl_forum_posts`
 --
 
 INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`, `modified`, `mailed`, `subject`, `message`, `messageformat`, `messagetrust`, `attachment`, `totalscore`, `mailnow`) VALUES
-(1, 1, 0, 2, 1316715845, 1316715845, 0, 'Prueba', '<p>Hola, mensaje</p>', 1, 0, '', 0, 0);
+(1, 1, 0, 2, 1316715845, 1316715845, 0, 'Prueba', '<p>Hola, mensaje</p>', 1, 0, '', 0, 0),
+(2, 2, 0, 2, 1316813778, 1316813778, 0, 'Tema 1', '<p>sdfsadgf adsf dsfg dfs sdfd</p>', 1, 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5200,7 +5255,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=106 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=141 ;
 
 --
 -- Dumping data for table `mdl_log`
@@ -5311,7 +5366,42 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (102, 1316731376, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
 (103, 1316731382, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
 (104, 1316731416, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
-(105, 1316732447, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
+(105, 1316732447, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(106, 1316800115, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(107, 1316800117, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(108, 1316800147, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(109, 1316800162, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(110, 1316800163, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(111, 1316800548, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(112, 1316800617, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(113, 1316800624, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(114, 1316800687, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(115, 1316800697, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(116, 1316809503, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(117, 1316809514, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(118, 1316810065, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(119, 1316810078, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(120, 1316810615, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(121, 1316810794, 2, '127.0.0.1', 1, 'course', 0, 'new', 'view.php?id=2', 'Azcurra (ID 2)'),
+(122, 1316810831, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(123, 1316811067, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=7', 'Miembro'),
+(124, 1316811085, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=6', 'Visitante'),
+(125, 1316811100, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=5', 'Aprendiz'),
+(126, 1316811114, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=3', 'Mediador'),
+(127, 1316811391, 2, '127.0.0.1', 1, 'role', 0, 'add', 'admin/roles/define.php?action=view&roleid=8', 'Adminstrador'),
+(128, 1316811774, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=8', 'Adminstrador'),
+(129, 1316811858, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=8', 'Adminstrador'),
+(130, 1316813049, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(131, 1316813052, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(132, 1316813154, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(133, 1316813550, 2, '127.0.0.1', 2, 'course', 0, 'update', 'edit.php?id=2', '2'),
+(134, 1316813555, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(135, 1316813732, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(136, 1316813750, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(137, 1316813750, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(138, 1316813778, 2, '127.0.0.1', 2, 'forum', 2, 'add discussion', 'discuss.php?d=2', '2'),
+(139, 1316813780, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(140, 1316813786, 2, '127.0.0.1', 2, 'forum', 2, 'view forum', 'view.php?id=2', '2');
 
 -- --------------------------------------------------------
 
@@ -7194,17 +7284,18 @@ CREATE TABLE IF NOT EXISTS `mdl_role` (
   UNIQUE KEY `mdl_role_sor_uix` (`sortorder`),
   UNIQUE KEY `mdl_role_nam_uix` (`name`),
   UNIQUE KEY `mdl_role_sho_uix` (`shortname`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle roles' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle roles' AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `mdl_role`
 --
 
 INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `archetype`) VALUES
-(3, 'Profesor', 'editingteacher', 'Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.', 3, 'editingteacher'),
-(5, 'Estudiante', 'student', 'Los estudiantes tienen por lo general menos privilegios dentro de un curso.', 5, 'student'),
-(6, 'Invitado', 'guest', 'Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.', 6, 'guest'),
-(7, 'Usuario identificado', 'user', 'Todos los usuarios identificados.', 7, 'user');
+(3, 'Mediador', 'editingteacher', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 5, 'editingteacher'),
+(5, 'Aprendiz', 'student', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 6, 'student'),
+(6, 'Visitante', 'guest', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 7, 'guest'),
+(7, 'Miembro', 'user', '<p>Todos los usuarios identificados.</p>', 8, 'user'),
+(8, 'Adminstrador', 'admin', '', 3, 'manager');
 
 -- --------------------------------------------------------
 
@@ -7305,7 +7396,14 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_role_assignments`
+--
+
+INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
+(1, 5, 24, 9, 1316813637, 2, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7327,7 +7425,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
   KEY `mdl_rolecapa_con_ix` (`contextid`),
   KEY `mdl_rolecapa_mod_ix` (`modifierid`),
   KEY `mdl_rolecapa_cap_ix` (`capability`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=864 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1124 ;
 
 --
 -- Dumping data for table `mdl_role_capabilities`
@@ -7723,7 +7821,267 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 (857, 1, 7, 'repository/youtube:view', 1, 1316566930, 0),
 (859, 1, 3, 'quiz/grading:viewstudentnames', 1, 1316566940, 0),
 (861, 1, 3, 'quiz/grading:viewidnumber', 1, 1316566940, 0),
-(863, 1, 3, 'quiz/statistics:view', 1, 1316566943, 0);
+(863, 1, 3, 'quiz/statistics:view', 1, 1316566943, 0),
+(864, 1, 8, 'enrol/authorize:managepayments', 1, 1316811759, 2),
+(865, 1, 8, 'enrol/authorize:uploadcsv', 1, 1316811759, 2),
+(866, 1, 8, 'enrol/category:synchronised', 1, 1316811759, 2),
+(867, 1, 8, 'moodle/blog:create', 1, 1316811759, 2),
+(868, 1, 8, 'moodle/blog:manageentries', 1, 1316811759, 2),
+(869, 1, 8, 'moodle/blog:manageexternal', 1, 1316811759, 2),
+(870, 1, 8, 'moodle/blog:search', 1, 1316811759, 2),
+(871, 1, 8, 'moodle/blog:view', 1, 1316811759, 2),
+(872, 1, 8, 'moodle/blog:viewdrafts', 1, 1316811759, 2),
+(873, 1, 8, 'moodle/community:add', 1, 1316811759, 2),
+(874, 1, 8, 'moodle/community:download', 1, 1316811759, 2),
+(875, 1, 8, 'moodle/course:publish', 1, 1316811759, 2),
+(876, 1, 8, 'moodle/course:request', 1, 1316811759, 2),
+(877, 1, 8, 'moodle/my:configsyspages', 1, 1316811759, 2),
+(878, 1, 8, 'moodle/my:manageblocks', 1, 1316811759, 2),
+(879, 1, 8, 'moodle/portfolio:export', 1, 1316811759, 2),
+(880, 1, 8, 'moodle/question:config', 1, 1316811760, 2),
+(881, 1, 8, 'moodle/restore:createuser', 1, 1316811760, 2),
+(882, 1, 8, 'moodle/role:manage', 1, 1316811760, 2),
+(883, 1, 8, 'moodle/site:approvecourse', 1, 1316811760, 2),
+(884, 1, 8, 'moodle/site:config', 1, 1316811760, 2),
+(885, 1, 8, 'moodle/site:doclinks', 1, 1316811760, 2),
+(886, 1, 8, 'moodle/site:mnetlogintoremote', 1, 1316811760, 2),
+(887, 1, 8, 'moodle/site:readallmessages', 1, 1316811760, 2),
+(888, 1, 8, 'moodle/site:sendmessage', 1, 1316811760, 2),
+(889, 1, 8, 'moodle/site:uploadusers', 1, 1316811760, 2),
+(890, 1, 8, 'moodle/site:viewparticipants', 1, 1316811760, 2),
+(891, 1, 8, 'moodle/tag:create', 1, 1316811760, 2),
+(892, 1, 8, 'moodle/tag:edit', 1, 1316811760, 2),
+(893, 1, 8, 'moodle/tag:editblocks', 1, 1316811760, 2),
+(894, 1, 8, 'moodle/tag:manage', 1, 1316811760, 2),
+(895, 1, 8, 'moodle/user:changeownpassword', 1, 1316811760, 2),
+(896, 1, 8, 'moodle/user:create', 1, 1316811760, 2),
+(897, 1, 8, 'moodle/user:delete', 1, 1316811760, 2),
+(898, 1, 8, 'moodle/user:editownmessageprofile', 1, 1316811761, 2),
+(899, 1, 8, 'moodle/user:editownprofile', 1, 1316811761, 2),
+(900, 1, 8, 'moodle/user:manageownblocks', 1, 1316811761, 2),
+(901, 1, 8, 'moodle/user:manageownfiles', 1, 1316811761, 2),
+(902, 1, 8, 'moodle/user:managesyspages', 1, 1316811761, 2),
+(903, 1, 8, 'moodle/user:update', 1, 1316811761, 2),
+(904, 1, 8, 'moodle/webservice:createmobiletoken', 1, 1316811761, 2),
+(905, 1, 8, 'moodle/webservice:createtoken', 1, 1316811761, 2),
+(906, 1, 8, 'report/courseoverview:view', 1, 1316811761, 2),
+(907, 1, 8, 'report/customlang:edit', 1, 1316811761, 2),
+(908, 1, 8, 'report/customlang:view', 1, 1316811761, 2),
+(909, 1, 8, 'report/questioninstances:view', 1, 1316811761, 2),
+(910, 1, 8, 'report/security:view', 1, 1316811761, 2),
+(911, 1, 8, 'report/unittest:view', 1, 1316811761, 2),
+(912, 1, 8, 'moodle/user:editmessageprofile', 1, 1316811761, 2),
+(913, 1, 8, 'moodle/user:editprofile', 1, 1316811761, 2),
+(914, 1, 8, 'moodle/user:manageblocks', 1, 1316811761, 2),
+(915, 1, 8, 'moodle/user:readuserblogs', 1, 1316811762, 2),
+(916, 1, 8, 'moodle/user:readuserposts', 1, 1316811762, 2),
+(917, 1, 8, 'moodle/user:viewalldetails', 1, 1316811762, 2),
+(918, 1, 8, 'moodle/user:viewuseractivitiesreport', 1, 1316811762, 2),
+(919, 1, 8, 'moodle/category:manage', 1, 1316811762, 2),
+(920, 1, 8, 'moodle/category:viewhiddencategories', 1, 1316811762, 2),
+(921, 1, 8, 'moodle/cohort:assign', 1, 1316811762, 2),
+(922, 1, 8, 'moodle/cohort:manage', 1, 1316811762, 2),
+(923, 1, 8, 'moodle/course:create', 1, 1316811762, 2),
+(924, 1, 8, 'coursereport/completion:view', 1, 1316811762, 2),
+(925, 1, 8, 'coursereport/log:view', 1, 1316811762, 2),
+(926, 1, 8, 'coursereport/log:viewlive', 1, 1316811762, 2),
+(927, 1, 8, 'coursereport/log:viewtoday', 1, 1316811762, 2),
+(928, 1, 8, 'coursereport/outline:view', 1, 1316811762, 2),
+(929, 1, 8, 'coursereport/participation:view', 1, 1316811762, 2),
+(930, 1, 8, 'coursereport/progress:view', 1, 1316811762, 2),
+(931, 1, 8, 'coursereport/stats:view', 1, 1316811762, 2),
+(932, 1, 8, 'enrol/authorize:config', 1, 1316811763, 2),
+(933, 1, 8, 'enrol/authorize:manage', 1, 1316811763, 2),
+(934, 1, 8, 'enrol/authorize:unenrol', 1, 1316811763, 2),
+(935, 1, 8, 'enrol/authorize:unenrolself', 1, 1316811763, 2),
+(936, 1, 8, 'enrol/cohort:config', 1, 1316811763, 2),
+(937, 1, 8, 'enrol/guest:config', 1, 1316811763, 2),
+(938, 1, 8, 'enrol/ldap:manage', 1, 1316811763, 2),
+(939, 1, 8, 'enrol/manual:config', 1, 1316811763, 2),
+(940, 1, 8, 'enrol/manual:enrol', 1, 1316811763, 2),
+(941, 1, 8, 'enrol/manual:manage', 1, 1316811763, 2),
+(942, 1, 8, 'enrol/manual:unenrol', 1, 1316811763, 2),
+(943, 1, 8, 'enrol/manual:unenrolself', 1, 1316811763, 2),
+(944, 1, 8, 'enrol/meta:config', 1, 1316811763, 2),
+(945, 1, 8, 'enrol/meta:selectaslinked', 1, 1316811764, 2),
+(946, 1, 8, 'enrol/paypal:config', 1, 1316811764, 2),
+(947, 1, 8, 'enrol/paypal:manage', 1, 1316811764, 2),
+(948, 1, 8, 'enrol/paypal:unenrol', 1, 1316811764, 2),
+(949, 1, 8, 'enrol/paypal:unenrolself', 1, 1316811764, 2),
+(950, 1, 8, 'enrol/self:config', 1, 1316811764, 2),
+(951, 1, 8, 'enrol/self:manage', 1, 1316811764, 2),
+(952, 1, 8, 'enrol/self:unenrol', 1, 1316811764, 2),
+(953, 1, 8, 'enrol/self:unenrolself', 1, 1316811764, 2),
+(954, 1, 8, 'gradeexport/ods:publish', 1, 1316811764, 2),
+(955, 1, 8, 'gradeexport/ods:view', 1, 1316811764, 2),
+(956, 1, 8, 'gradeexport/txt:publish', 1, 1316811764, 2),
+(957, 1, 8, 'gradeexport/txt:view', 1, 1316811764, 2),
+(958, 1, 8, 'gradeexport/xls:publish', 1, 1316811764, 2),
+(959, 1, 8, 'gradeexport/xls:view', 1, 1316811764, 2),
+(960, 1, 8, 'gradeexport/xml:publish', 1, 1316811765, 2),
+(961, 1, 8, 'gradeexport/xml:view', 1, 1316811765, 2),
+(962, 1, 8, 'gradeimport/csv:view', 1, 1316811765, 2),
+(963, 1, 8, 'gradeimport/xml:publish', 1, 1316811765, 2),
+(964, 1, 8, 'gradeimport/xml:view', 1, 1316811765, 2),
+(965, 1, 8, 'gradereport/grader:view', 1, 1316811765, 2),
+(966, 1, 8, 'gradereport/outcomes:view', 1, 1316811765, 2),
+(967, 1, 8, 'gradereport/overview:view', 1, 1316811765, 2),
+(968, 1, 8, 'gradereport/user:view', 1, 1316811765, 2),
+(969, 1, 8, 'moodle/backup:anonymise', 1, 1316811765, 2),
+(970, 1, 8, 'moodle/backup:backupcourse', 1, 1316811765, 2),
+(971, 1, 8, 'moodle/backup:backupsection', 1, 1316811765, 2),
+(972, 1, 8, 'moodle/backup:backuptargethub', 1, 1316811765, 2),
+(973, 1, 8, 'moodle/backup:backuptargetimport', 1, 1316811765, 2),
+(974, 1, 8, 'moodle/backup:configure', 1, 1316811765, 2),
+(975, 1, 8, 'moodle/backup:downloadfile', 1, 1316811766, 2),
+(976, 1, 8, 'moodle/backup:userinfo', 1, 1316811766, 2),
+(977, 1, 8, 'moodle/blog:associatecourse', 1, 1316811766, 2),
+(978, 1, 8, 'moodle/calendar:manageentries', 1, 1316811766, 2),
+(979, 1, 8, 'moodle/calendar:managegroupentries', 1, 1316811766, 2),
+(980, 1, 8, 'moodle/calendar:manageownentries', 1, 1316811766, 2),
+(981, 1, 8, 'moodle/cohort:view', 1, 1316811766, 2),
+(982, 1, 8, 'moodle/comment:delete', 1, 1316811766, 2),
+(983, 1, 8, 'moodle/comment:post', 1, 1316811766, 2),
+(984, 1, 8, 'moodle/comment:view', 1, 1316811766, 2),
+(985, 1, 8, 'moodle/course:activityvisibility', 1, 1316811766, 2),
+(986, 1, 8, 'moodle/course:bulkmessaging', 1, 1316811766, 2),
+(987, 1, 8, 'moodle/course:changecategory', 1, 1316811766, 2),
+(988, 1, 8, 'moodle/course:changefullname', 1, 1316811766, 2),
+(989, 1, 8, 'moodle/course:changeidnumber', 1, 1316811766, 2),
+(990, 1, 8, 'moodle/course:changeshortname', 1, 1316811766, 2),
+(991, 1, 8, 'moodle/course:changesummary', 1, 1316811766, 2),
+(992, 1, 8, 'moodle/course:delete', 1, 1316811767, 2),
+(993, 1, 8, 'moodle/course:enrolconfig', 1, 1316811767, 2),
+(994, 1, 8, 'moodle/course:enrolreview', 1, 1316811767, 2),
+(995, 1, 8, 'moodle/course:manageactivities', 1, 1316811767, 2),
+(996, 1, 8, 'moodle/course:managefiles', 1, 1316811767, 2),
+(997, 1, 8, 'moodle/course:managegroups', 1, 1316811767, 2),
+(998, 1, 8, 'moodle/course:managescales', 1, 1316811767, 2),
+(999, 1, 8, 'moodle/course:markcomplete', 1, 1316811767, 2),
+(1000, 1, 8, 'moodle/course:reset', 1, 1316811767, 2),
+(1001, 1, 8, 'moodle/course:sectionvisibility', 1, 1316811767, 2),
+(1002, 1, 8, 'moodle/course:setcurrentsection', 1, 1316811767, 2),
+(1003, 1, 8, 'moodle/course:update', 1, 1316811767, 2),
+(1004, 1, 8, 'moodle/course:useremail', 1, 1316811767, 2),
+(1005, 1, 8, 'moodle/course:view', 1, 1316811767, 2),
+(1006, 1, 8, 'moodle/course:viewhiddenactivities', 1, 1316811767, 2),
+(1007, 1, 8, 'moodle/course:viewhiddencourses', 1, 1316811767, 2),
+(1008, 1, 8, 'moodle/course:viewhiddensections', 1, 1316811767, 2),
+(1009, 1, 8, 'moodle/course:viewhiddenuserfields', 1, 1316811768, 2),
+(1010, 1, 8, 'moodle/course:viewparticipants', 1, 1316811768, 2),
+(1011, 1, 8, 'moodle/course:viewscales', 1, 1316811768, 2),
+(1012, 1, 8, 'moodle/course:visibility', 1, 1316811768, 2),
+(1013, 1, 8, 'moodle/filter:manage', 1, 1316811768, 2),
+(1014, 1, 8, 'moodle/grade:edit', 1, 1316811769, 2),
+(1015, 1, 8, 'moodle/grade:export', 1, 1316811769, 2),
+(1016, 1, 8, 'moodle/grade:hide', 1, 1316811769, 2),
+(1017, 1, 8, 'moodle/grade:import', 1, 1316811769, 2),
+(1018, 1, 8, 'moodle/grade:lock', 1, 1316811769, 2),
+(1019, 1, 8, 'moodle/grade:manage', 1, 1316811769, 2),
+(1020, 1, 8, 'moodle/grade:manageletters', 1, 1316811769, 2),
+(1021, 1, 8, 'moodle/grade:manageoutcomes', 1, 1316811769, 2),
+(1022, 1, 8, 'moodle/grade:unlock', 1, 1316811769, 2),
+(1023, 1, 8, 'moodle/grade:view', 1, 1316811769, 2),
+(1024, 1, 8, 'moodle/grade:viewall', 1, 1316811770, 2),
+(1025, 1, 8, 'moodle/grade:viewhidden', 1, 1316811770, 2),
+(1026, 1, 8, 'moodle/notes:manage', 1, 1316811770, 2),
+(1027, 1, 8, 'moodle/notes:view', 1, 1316811770, 2),
+(1028, 1, 8, 'moodle/question:add', 1, 1316811770, 2),
+(1029, 1, 8, 'moodle/question:editall', 1, 1316811770, 2),
+(1030, 1, 8, 'moodle/question:editmine', 1, 1316811770, 2),
+(1031, 1, 8, 'moodle/question:flag', 1, 1316811770, 2),
+(1032, 1, 8, 'moodle/question:managecategory', 1, 1316811770, 2),
+(1033, 1, 8, 'moodle/question:moveall', 1, 1316811770, 2),
+(1034, 1, 8, 'moodle/question:movemine', 1, 1316811770, 2),
+(1035, 1, 8, 'moodle/question:useall', 1, 1316811770, 2),
+(1036, 1, 8, 'moodle/question:usemine', 1, 1316811770, 2),
+(1037, 1, 8, 'moodle/question:viewall', 1, 1316811770, 2),
+(1038, 1, 8, 'moodle/question:viewmine', 1, 1316811770, 2),
+(1039, 1, 8, 'moodle/rating:rate', 1, 1316811770, 2),
+(1040, 1, 8, 'moodle/rating:view', 1, 1316811770, 2),
+(1041, 1, 8, 'moodle/rating:viewall', 1, 1316811770, 2),
+(1042, 1, 8, 'moodle/rating:viewany', 1, 1316811771, 2),
+(1043, 1, 8, 'moodle/restore:configure', 1, 1316811771, 2),
+(1044, 1, 8, 'moodle/restore:restoreactivity', 1, 1316811771, 2),
+(1045, 1, 8, 'moodle/restore:restorecourse', 1, 1316811771, 2),
+(1046, 1, 8, 'moodle/restore:restoresection', 1, 1316811771, 2),
+(1047, 1, 8, 'moodle/restore:restoretargethub', 1, 1316811771, 2),
+(1048, 1, 8, 'moodle/restore:restoretargetimport', 1, 1316811771, 2),
+(1049, 1, 8, 'moodle/restore:rolldates', 1, 1316811771, 2),
+(1050, 1, 8, 'moodle/restore:uploadfile', 1, 1316811771, 2),
+(1051, 1, 8, 'moodle/restore:userinfo', 1, 1316811771, 2),
+(1052, 1, 8, 'moodle/restore:viewautomatedfilearea', 1, 1316811771, 2),
+(1053, 1, 8, 'moodle/role:assign', 1, 1316811771, 2),
+(1054, 1, 8, 'moodle/role:override', 1, 1316811771, 2),
+(1055, 1, 8, 'moodle/role:review', 1, 1316811771, 2),
+(1056, 1, 8, 'moodle/role:safeoverride', 1, 1316811772, 2),
+(1057, 1, 8, 'moodle/role:switchroles', 1, 1316811772, 2),
+(1058, 1, 8, 'moodle/site:accessallgroups', 1, 1316811772, 2),
+(1059, 1, 8, 'moodle/site:trustcontent', 1, 1316811772, 2),
+(1060, 1, 8, 'moodle/site:viewfullnames', 1, 1316811772, 2),
+(1061, 1, 8, 'moodle/site:viewreports', 1, 1316811772, 2),
+(1062, 1, 8, 'moodle/user:loginas', 1, 1316811772, 2),
+(1063, 1, 8, 'moodle/user:viewdetails', 1, 1316811772, 2),
+(1064, 1, 8, 'moodle/user:viewhiddendetails', 1, 1316811772, 2),
+(1065, 1, 8, 'webservice/amf:use', 1, 1316811772, 2),
+(1066, 1, 8, 'webservice/rest:use', 1, 1316811772, 2),
+(1067, 1, 8, 'webservice/soap:use', 1, 1316811772, 2),
+(1068, 1, 8, 'webservice/xmlrpc:use', 1, 1316811772, 2),
+(1069, 1, 8, 'mod/assignment:exportownsubmission', 1, 1316811772, 2),
+(1070, 1, 8, 'mod/assignment:grade', 1, 1316811772, 2),
+(1071, 1, 8, 'mod/assignment:submit', 1, 1316811772, 2),
+(1072, 1, 8, 'mod/assignment:view', 1, 1316811772, 2),
+(1073, 1, 8, 'mod/chat:chat', 1, 1316811773, 2),
+(1074, 1, 8, 'mod/chat:deletelog', 1, 1316811773, 2),
+(1075, 1, 8, 'mod/chat:exportparticipatedsession', 1, 1316811773, 2),
+(1076, 1, 8, 'mod/chat:exportsession', 1, 1316811773, 2),
+(1077, 1, 8, 'mod/chat:readlog', 1, 1316811773, 2),
+(1078, 1, 8, 'mod/choice:choose', 1, 1316811773, 2),
+(1079, 1, 8, 'mod/choice:deleteresponses', 1, 1316811773, 2),
+(1080, 1, 8, 'mod/choice:downloadresponses', 1, 1316811773, 2),
+(1081, 1, 8, 'mod/choice:readresponses', 1, 1316811773, 2),
+(1082, 1, 8, 'mod/data:approve', 1, 1316811773, 2),
+(1083, 1, 8, 'mod/data:comment', 1, 1316811773, 2),
+(1084, 1, 8, 'mod/data:exportallentries', 1, 1316811773, 2),
+(1085, 1, 8, 'mod/data:exportentry', 1, 1316811773, 2),
+(1086, 1, 8, 'mod/data:exportownentry', 1, 1316811773, 2),
+(1087, 1, 8, 'mod/data:managecomments', 1, 1316811773, 2),
+(1088, 1, 8, 'mod/data:manageentries', 1, 1316811773, 2),
+(1089, 1, 8, 'mod/data:managetemplates', 1, 1316811856, 2),
+(1090, 1, 8, 'mod/data:manageuserpresets', 1, 1316811856, 2),
+(1091, 1, 8, 'mod/data:rate', 1, 1316811856, 2),
+(1092, 1, 8, 'mod/data:viewallratings', 1, 1316811856, 2),
+(1093, 1, 8, 'mod/data:viewalluserpresets', 1, 1316811856, 2),
+(1094, 1, 8, 'mod/data:viewanyrating', 1, 1316811856, 2),
+(1095, 1, 8, 'mod/data:viewentry', 1, 1316811856, 2),
+(1096, 1, 8, 'mod/data:viewrating', 1, 1316811856, 2),
+(1097, 1, 8, 'mod/data:writeentry', 1, 1316811856, 2),
+(1098, 1, 8, 'quiz/statistics:view', 1, 1316811856, 2),
+(1099, 1, 8, 'repository/alfresco:view', 1, 1316811857, 2),
+(1100, 1, 8, 'repository/boxnet:view', 1, 1316811857, 2),
+(1101, 1, 8, 'repository/coursefiles:view', 1, 1316811857, 2),
+(1102, 1, 8, 'repository/dropbox:view', 1, 1316811857, 2),
+(1103, 1, 8, 'repository/filesystem:view', 1, 1316811857, 2),
+(1104, 1, 8, 'repository/flickr:view', 1, 1316811857, 2),
+(1105, 1, 8, 'repository/flickr_public:view', 1, 1316811857, 2),
+(1106, 1, 8, 'repository/googledocs:view', 1, 1316811857, 2),
+(1107, 1, 8, 'repository/local:view', 1, 1316811857, 2),
+(1108, 1, 8, 'repository/merlot:view', 1, 1316811857, 2),
+(1109, 1, 8, 'repository/picasa:view', 1, 1316811857, 2),
+(1110, 1, 8, 'repository/recent:view', 1, 1316811857, 2),
+(1111, 1, 8, 'repository/s3:view', 1, 1316811857, 2),
+(1112, 1, 8, 'repository/upload:view', 1, 1316811857, 2),
+(1113, 1, 8, 'repository/url:view', 1, 1316811857, 2),
+(1114, 1, 8, 'repository/user:view', 1, 1316811857, 2),
+(1115, 1, 8, 'repository/webdav:view', 1, 1316811857, 2),
+(1116, 1, 8, 'repository/wikimedia:view', 1, 1316811857, 2),
+(1117, 1, 8, 'repository/youtube:view', 1, 1316811857, 2),
+(1118, 1, 8, 'block/online_users:viewlist', 1, 1316811857, 2),
+(1119, 1, 8, 'block/rss_client:manageanyfeeds', 1, 1316811858, 2),
+(1120, 1, 8, 'block/rss_client:manageownfeeds', 1, 1316811858, 2),
+(1121, 1, 8, 'moodle/block:edit', 1, 1316811858, 2),
+(1122, 1, 8, 'moodle/block:view', 1, 1316811858, 2),
+(1123, 1, 8, 'moodle/site:manageblocks', 1, 1316811858, 2);
 
 -- --------------------------------------------------------
 
@@ -7738,17 +8096,23 @@ CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_rolecontleve_conrol_uix` (`contextlevel`,`roleid`),
   KEY `mdl_rolecontleve_rol_ix` (`roleid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `mdl_role_context_levels`
 --
 
 INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
-(6, 3, 50),
-(10, 5, 50),
-(7, 3, 70),
-(11, 5, 70);
+(28, 8, 10),
+(29, 8, 30),
+(30, 8, 40),
+(14, 3, 50),
+(12, 5, 50),
+(31, 8, 50),
+(15, 3, 70),
+(13, 5, 70),
+(32, 8, 70),
+(33, 8, 80);
 
 -- --------------------------------------------------------
 
@@ -8068,7 +8432,7 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=41 ;
 
 --
 -- Dumping data for table `mdl_sessions`
@@ -8077,7 +8441,10 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
 (26, 0, '23lv6vl84tackprvaaqv3b6ud4', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo1OntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI7czo4OiJ3YW50c3VybCI7czozMToiaHR0cDovL2xvY2FsaG9zdC9hZG1pbi91c2VyLnBocCI7czo3OiJmcm9tdXJsIjtzOjE3OiJodHRwOi8vbG9jYWxob3N0LyI7fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Nzp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo5OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrMWhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjE6e3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMTY3MTYwMjA7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjc6InNlc3NrZXkiO3M6MTA6ImREVmZVTEpYa0MiO30=', 1316716019, 1316716664, '127.0.0.1', '127.0.0.1'),
 (28, 0, '5r9tf8j0gisga1v52qjhm49474', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czoxNjoiaHR0cDovL2xvY2FsaG9zdCI7czoxMjoiZmxhc2h2ZXJzaW9uIjtzOjg6IjEwLjMuMTgzIjtzOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjQ6e3M6MTc6ImNvdXJzZV9zZWN0aW9uc18xIjthOjM6e2k6MDtpOjEzMTY3MjYwNjI7aToxO3M6MToiMiI7aToyO3M6MjIxOiJhOjE6e2k6MDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMCI7czoyOiJpZCI7czoxOiIxIjtzOjY6ImNvdXJzZSI7czoxOiIxIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtzOjE6IjEiO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MTt9fSI7fXM6MTg6ImNvdXJzZV9hY3Rpdml0ZXNfMSI7YTozOntpOjA7aToxMzE2NzI2MDYyO2k6MTtzOjE6IjIiO2k6MjtzOjI5MToiYToxOntpOjE7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6MTk6Ik5vdmVkYWRlcyBkZWwgc2l0aW8iO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTEiO3M6NzoiZGlzcGxheSI7YjoxO319Ijt9czoxNjoidXNlcmJsb2dvcHRpb25zMiI7YTozOntpOjA7aToxMzE2NzI2MDYyO2k6MTtzOjE6IjIiO2k6MjtzOjY5MzoiYToyOntzOjQ6InZpZXciO2E6Mjp7czo2OiJzdHJpbmciO3M6MjI6IlZlciB0b2RhcyBtaXMgZW50cmFkYXMiO3M6NDoibGluayI7TzoxMDoibW9vZGxlX3VybCI6OTp7czo5OiIAKgBzY2hlbWUiO3M6NDoiaHR0cCI7czo3OiIAKgBob3N0IjtzOjk6ImxvY2FsaG9zdCI7czo3OiIAKgBwb3J0IjtzOjA6IiI7czo3OiIAKgB1c2VyIjtzOjA6IiI7czo3OiIAKgBwYXNzIjtzOjA6IiI7czo3OiIAKgBwYXRoIjtzOjE1OiIvYmxvZy9pbmRleC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6InVzZXJpZCI7czoxOiIyIjt9fX1zOjM6ImFkZCI7YToyOntzOjY6InN0cmluZyI7czoyNToiQWdyZWdhciB1bmEgbnVldmEgZW50cmFkYSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMTMiO2E6Mzp7aTowO2k6MTMxNjcyNjA2MjtpOjE7czoxOiIyIjtpOjI7czo0OiJiOjA7Ijt9fX19VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY3MjY3NDU7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY3MTU2MzYiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2NzI0NzQzO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6IkJDb3RiMVdmWHkiO3M6MTA6InByZWZlcmVuY2UiO2E6NDp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY3MjY3NDY7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToxMjp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6NzoiZWRpdGluZyI7aToxO3M6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjc7czoxOiI3Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjciO2E6NTE6e3M6MjI6InJlcG9zaXRvcnkvd2ViZGF2OnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6MjU6InJlcG9zaXRvcnkvd2lraW1lZGlhOnZpZXciO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS91c2VyOm1hbmFnZW93bmJsb2NrcyI7czoxOiIxIjtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVtb2R1bGUiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6Y3JlYXRlIjtzOjE6IjEiO3M6MzU6Im1vb2RsZS93ZWJzZXJ2aWNlOmNyZWF0ZW1vYmlsZXRva2VuIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9ibG9nOm1hbmFnZWV4dGVybmFsIjtzOjE6IjEiO3M6MjQ6InJlcG9zaXRvcnkvYWxmcmVzY286dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9ib3huZXQ6dmlldyI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6Mjc6InJlcG9zaXRvcnkvY291cnNlZmlsZXM6dmlldyI7czoxOiIxIjtzOjMyOiJtb29kbGUvY2FsZW5kYXI6bWFuYWdlb3duZW50cmllcyI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L2Ryb3Bib3g6dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZmlsZXN5c3RlbTp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyOToicmVwb3NpdG9yeS9mbGlja3JfcHVibGljOnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL2NvdXJzZTpyZXF1ZXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO3M6MToiMSI7czoyMjoibW9vZGxlL215Om1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2dvb2dsZWRvY3M6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7czoxOiIxIjtzOjIxOiJyZXBvc2l0b3J5L2xvY2FsOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvbWVybG90OnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcGljYXNhOnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YWxsIjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FueSI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoxODoicmVwb3NpdG9yeS9zMzp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9zaXRlOnNlbmRtZXNzYWdlIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoxMzoibW9kL3BhZ2U6dmlldyI7czoxOiIxIjtzOjE5OiJyZXBvc2l0b3J5L3VybDp2aWV3IjtzOjE6IjEiO3M6MTU6Im1vb2RsZS90YWc6ZWRpdCI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvc2l0b3J5L3VzZXI6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7fX1zOjY6ImxvYWRlZCI7YTowOnt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNjcyNDg1MDt9fQ==', 1316724743, 1316726748, '127.0.0.1', '127.0.0.1'),
-(30, 0, '5ahd9khh46r9mb55b5evfk0a04', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo4OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6NDoibGFuZyI7czo1OiJlc19hciI7czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7aTowO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjoxO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjE2OiJodHRwOi8vbG9jYWxob3N0IjtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e319VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY3MzI3NTM7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY3MjQ3NDMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2NzI4NTc4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6IjN5aFduRW1maUoiO3M6MTA6InByZWZlcmVuY2UiO2E6NDp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY3MzI3NTM7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToxODp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNyI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV84IjtzOjM6ImludCI7czoxMjoiYmxvY2s3aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrOGhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfOSI7czozOiJpbnQiO3M6MTI6ImJsb2NrOWhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6NzoiZWRpdGluZyI7aToxO3M6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjc7czoxOiI3Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjciO2E6NTE6e3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS90YWc6Y3JlYXRlIjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxOToicmVwb3NpdG9yeS91cmw6dmlldyI7czoxOiIxIjtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7fX1zOjY6ImxvYWRlZCI7YTowOnt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNjczMjU4Nzt9fQ==', 1316728578, 1316732754, '127.0.0.1', '127.0.0.1');
+(30, 0, '5ahd9khh46r9mb55b5evfk0a04', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo4OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6NDoibGFuZyI7czo1OiJlc19hciI7czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7aTowO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjoxO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjE2OiJodHRwOi8vbG9jYWxob3N0IjtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e319VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY3MzI3NTM7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY3MjQ3NDMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2NzI4NTc4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6IjN5aFduRW1maUoiO3M6MTA6InByZWZlcmVuY2UiO2E6NDp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY3MzI3NTM7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToxODp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNyI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV84IjtzOjM6ImludCI7czoxMjoiYmxvY2s3aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrOGhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfOSI7czozOiJpbnQiO3M6MTI6ImJsb2NrOWhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6NzoiZWRpdGluZyI7aToxO3M6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjc7czoxOiI3Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjciO2E6NTE6e3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS90YWc6Y3JlYXRlIjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxOToicmVwb3NpdG9yeS91cmw6dmlldyI7czoxOiIxIjtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7fX1zOjY6ImxvYWRlZCI7YTowOnt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNjczMjU4Nzt9fQ==', 1316728578, 1316732754, '127.0.0.1', '127.0.0.1'),
+(34, 0, 'j0ddukpkehqpvv9frck1n1p3m1', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6ODoibmF2Y2FjaGUiO086ODoic3RkQ2xhc3MiOjE6e3M6MTA6Im5hdmlnYXRpb24iO2E6NDp7czoxNzoiY291cnNlX3NlY3Rpb25zXzEiO2E6Mzp7aTowO2k6MTMxNjgwMDE2MztpOjE7czoxOiIyIjtpOjI7czoyMjE6ImE6MTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiY291cnNlIjtzOjE6IjEiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO3M6MToiMSI7czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjoxO319Ijt9czoxODoiY291cnNlX2FjdGl2aXRlc18xIjthOjM6e2k6MDtpOjEzMTY4MDAxNjM7aToxO3M6MToiMiI7aToyO3M6MjkxOiJhOjE6e2k6MTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czoxOToiTm92ZWRhZGVzIGRlbCBzaXRpbyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MToiMSI7czo2OiJoaWRkZW4iO2I6MDtzOjc6Im1vZG5hbWUiO3M6NToiZm9ydW0iO3M6ODoibm9kZXR5cGUiO2k6MDtzOjM6InVybCI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE2OiJ1c2VyYmxvZ29wdGlvbnMyIjthOjM6e2k6MDtpOjEzMTY4MDAxNjM7aToxO3M6MToiMiI7aToyO3M6NjkzOiJhOjI6e3M6NDoidmlldyI7YToyOntzOjY6InN0cmluZyI7czoyMjoiVmVyIHRvZGFzIG1pcyBlbnRyYWRhcyI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTU6Ii9ibG9nL2luZGV4LnBocCI7czoxNjoiACoAc2xhc2hhcmd1bWVudCI7czowOiIiO3M6OToiACoAYW5jaG9yIjtOO3M6OToiACoAcGFyYW1zIjthOjE6e3M6NjoidXNlcmlkIjtzOjE6IjIiO319fXM6MzoiYWRkIjthOjI6e3M6Njoic3RyaW5nIjtzOjI1OiJBZ3JlZ2FyIHVuYSBudWV2YSBlbnRyYWRhIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNDoiL2Jsb2cvZWRpdC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6ImFjdGlvbiI7czozOiJhZGQiO319fX0iO31zOjE3OiJjb250ZXh0aGFzcmVwb3MxMyI7YTozOntpOjA7aToxMzE2ODAwMTYzO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czoxNjoiaHR0cDovL2xvY2FsaG9zdCI7czoxMjoiZmxhc2h2ZXJzaW9uIjtzOjg6IjEwLjMuMTgzIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2MDp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MDA2ODc7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MDAxMTUiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODAwMTYyO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjY6ImFjY2VzcyI7YTo1OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo3O3M6MToiNyI7fX1zOjQ6InJkZWYiO2E6MTp7czo0OiIvMTo3IjthOjUxOntzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7czoxOiIxIjtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZ29vZ2xlZG9jczp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9wb3J0Zm9saW86ZXhwb3J0IjtzOjE6IjEiO3M6MjE6InJlcG9zaXRvcnkvbG9jYWw6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO319czo2OiJsb2FkZWQiO2E6MDp7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTY4MDAxNjI7fXM6Nzoic2Vzc2tleSI7czoxMDoiUVdBWVBPU0JxdSI7czoxMDoicHJlZmVyZW5jZSI7YTo0OntzOjI0OiJhdXRoX2ZvcmNlcGFzc3dvcmRjaGFuZ2UiO3M6MToiMCI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMSI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMxNjgwMDY5Nzt9czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjEwOntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrMWhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6ImRpc3BsYXkiO2E6MTp7aToxO2k6MDt9fQ==', 1316800162, 1316800697, '127.0.0.1', '127.0.0.1'),
+(38, 0, 'q7hqisf7l8509fds57gjo3h8l0', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo2OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjM3OiJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS92aWV3LnBocD9pZD0yIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MTE4NTU7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MDk1MDMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODEwMDc4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjE6e2k6MjtpOjEzMTY4MTA3OTQ7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6Mzp7czozOiJkbmkiO3M6MDoiIjtzOjY6InBhZHJvbiI7czowOiIiO3M6MTM6InJvbHNvbGljaXRhZG8iO3M6NzoiTmluZ3VubyI7fXM6Nzoic2Vzc2tleSI7czoxMDoibnhhc0pyS1lNTiI7czoxMDoicHJlZmVyZW5jZSI7YTo1OntzOjI0OiJhdXRoX2ZvcmNlcGFzc3dvcmRjaGFuZ2UiO3M6MToiMCI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMSI7czoyMzoiZGVmaW5lcm9sZV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMxNjgxMTg1ODt9czo3OiJlZGl0aW5nIjtpOjE7czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjIwOntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV82IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMSI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMiI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMyI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xNCI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMmhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEzaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTRoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NzoiZGlzcGxheSI7YToxOntpOjI7aTowO31zOjY6ImFjY2VzcyI7YTo1OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo3O3M6MToiNyI7fX1zOjQ6InJkZWYiO2E6MTp7czo0OiIvMTo3IjthOjUxOntzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO319czo2OiJsb2FkZWQiO2E6MDp7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTY4MTE4NTg7fX0=', 1316810079, 1316811859, '127.0.0.1', '127.0.0.1'),
+(40, 0, 'e0a8r6grb9ebsv3kj7iht59f12', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo5OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e31zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjU6e3M6MTc6ImNvdXJzZV9zZWN0aW9uc18yIjthOjM6e2k6MDtpOjEzMTY4MTM1NTU7aToxO3M6MToiMiI7aToyO3M6MjMxMjoiYToxMTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjIiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO047czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtzOjE6IjIiO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MTt9aToxO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIxIjtzOjI6ImlkIjtzOjE6IjMiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjI7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjIiO3M6MjoiaWQiO3M6MToiNCI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MztPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMyI7czoyOiJpZCI7czoxOiI1IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo0O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI0IjtzOjI6ImlkIjtzOjE6IjYiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjU7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjUiO3M6MjoiaWQiO3M6MToiNyI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NjtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNiI7czoyOiJpZCI7czoxOiI4IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo3O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI3IjtzOjI6ImlkIjtzOjE6IjkiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjg7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjgiO3M6MjoiaWQiO3M6MjoiMTAiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjk7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjkiO3M6MjoiaWQiO3M6MjoiMTEiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjEwO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxMCI7czoyOiJpZCI7czoyOiIxMiI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fX0iO31zOjE4OiJjb3Vyc2VfYWN0aXZpdGVzXzIiO2E6Mzp7aTowO2k6MTMxNjgxMzU1NTtpOjE7czoxOiIyIjtpOjI7czoyODA6ImE6MTp7aToyO086ODoic3RkQ2xhc3MiOjEwOntzOjc6InNlY3Rpb24iO3M6MToiMCI7czo0OiJuYW1lIjtzOjk6Ik5vdmVkYWRlcyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MToiMiI7czo2OiJoaWRkZW4iO2I6MDtzOjc6Im1vZG5hbWUiO3M6NToiZm9ydW0iO3M6ODoibm9kZXR5cGUiO2k6MDtzOjM6InVybCI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MiI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE2OiJ1c2VyYmxvZ29wdGlvbnMyIjthOjM6e2k6MDtpOjEzMTY4MTM1NTU7aToxO3M6MToiMiI7aToyO3M6NjkzOiJhOjI6e3M6NDoidmlldyI7YToyOntzOjY6InN0cmluZyI7czoyMjoiVmVyIHRvZGFzIG1pcyBlbnRyYWRhcyI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTU6Ii9ibG9nL2luZGV4LnBocCI7czoxNjoiACoAc2xhc2hhcmd1bWVudCI7czowOiIiO3M6OToiACoAYW5jaG9yIjtOO3M6OToiACoAcGFyYW1zIjthOjE6e3M6NjoidXNlcmlkIjtzOjE6IjIiO319fXM6MzoiYWRkIjthOjI6e3M6Njoic3RyaW5nIjtzOjI1OiJBZ3JlZ2FyIHVuYSBudWV2YSBlbnRyYWRhIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNDoiL2Jsb2cvZWRpdC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6ImFjdGlvbiI7czozOiJhZGQiO319fX0iO31zOjE3OiJjb250ZXh0aGFzcmVwb3MxMyI7YTozOntpOjA7aToxMzE2ODEzNTU1O2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO31zOjE3OiJjb250ZXh0aGFzcmVwb3MyNCI7YTozOntpOjA7aToxMzE2ODEzNTU1O2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6NzoiZnJvbXVybCI7czozNToiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vcG9zdC5waHAiO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjQwOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD0yIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2Mjp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MTM3MzI7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MTAwNzgiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODEzMDQ5O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjE6e2k6MjtzOjEwOiIxMzE2ODEwNzk0Ijt9czoxOToiY3VycmVudGNvdXJzZWFjY2VzcyI7YToxOntpOjI7aToxMzE2ODEzNzMyO31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6InA4MHBXY1ppQnUiO3M6MTA6InByZWZlcmVuY2UiO2E6NTp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MjM6ImRlZmluZXJvbGVfc2hvd2FkdmFuY2VkIjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY4MTM3ODY7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToyNDp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3Jfb3B0aW9uc2NvbGxhcHNlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czo0OiJib29sIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6NDoiYm9vbCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzExIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEyIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEzIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzE0IjtzOjM6ImludCI7czoxMzoiYmxvY2sxMWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNGhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MjtpOjA7fXM6NzoiZWRpdGluZyI7aTowO3M6MTM6InVzZXJzZWxlY3RvcnMiO2E6Mjp7czozMjoiNDM5N2E4Y2IwMmE1NTRhNzY2Njk0NmM1NzcwZjRhMWUiO2E6ODp7czo1OiJjbGFzcyI7czoyMToiZXhpc3Rpbmdfcm9sZV9ob2xkZXJzIjtzOjQ6Im5hbWUiO3M6MTI6InJlbW92ZXNlbGVjdCI7czo3OiJleGNsdWRlIjthOjA6e31zOjExOiJleHRyYWZpZWxkcyI7YToxOntpOjA7czo1OiJlbWFpbCI7fXM6MTE6Im11bHRpc2VsZWN0IjtiOjE7czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aTo4O3M6OToiY29udGV4dGlkIjtzOjI6IjMwIjt9czozMjoiMDU2MWQ2YzNkZjUxYzYwMTBlOWNkZWU5ZjA1YjYzN2YiO2E6ODp7czo1OiJjbGFzcyI7czozNjoicG90ZW50aWFsX2Fzc2lnbmVlc19jb3Vyc2VfYW5kX2Fib3ZlIjtzOjQ6Im5hbWUiO3M6OToiYWRkc2VsZWN0IjtzOjc6ImV4Y2x1ZGUiO2E6MDp7fXM6MTE6ImV4dHJhZmllbGRzIjthOjE6e2k6MDtzOjU6ImVtYWlsIjt9czoxMToibXVsdGlzZWxlY3QiO2I6MTtzOjQ6ImZpbGUiO3M6MTk6ImFkbWluL3JvbGVzL2xpYi5waHAiO3M6Njoicm9sZWlkIjtpOjg7czo5OiJjb250ZXh0aWQiO3M6MjoiMzAiO319czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NztzOjE6IjciO319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NyI7YTo1MTp7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjt9fXM6NjoibG9hZGVkIjthOjA6e31zOjI6ImRyIjtzOjE6IjciO3M6NDoidGltZSI7aToxMzE2ODEzNjUzO319', 1316813049, 1316813787, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -9023,7 +9390,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
   KEY `mdl_user_ema_ix` (`email`),
   KEY `mdl_user_aut_ix` (`auth`),
   KEY `mdl_user_idn_ix` (`idnumber`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `mdl_user`
@@ -9031,14 +9398,15 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `htmleditor`, `ajax`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `screenreader`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', '78b15a258e709d0ac9d6bd1e024fcdc3', '', 'Invitado', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'es_ar', '', '99', 0, 0, 0, 0, '', '', 0, '', 'Este usuario sólo tiene acceso de lectura en ciertos cursos.', 0, 1, 0, 2, 1, 1, 1, 0, 0, 1316566413, 0, NULL, 0),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'f13240f987eb73af968e9e5c5df9b461', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1316732753, 1316724743, 1316728578, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'f13240f987eb73af968e9e5c5df9b461', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1316813732, 1316810078, 1316813049, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
 (3, 'email', 1, 0, 1, 0, 1, 'damiancalabresi@gmail.com.1316715379', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '8dc07c4331811471f76c7afd1ef2d9a8', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es', '', '99', 1316650555, 0, 0, 0, '', 'kyQ4Tj9nnkgXyOO', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316644852, 1316715379, 0, NULL, 0),
 (4, 'email', 0, 0, 1, 0, 1, 'damiancalabresi2@gmail.com.1316715386', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '1eb69a1a1b94c672d7514a810b76823a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316713930, 0, 0, 0, '', 'rQM8FnJPP6TbON5', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316713930, 1316715386, 0, NULL, 0),
 (5, 'email', 0, 0, 1, 0, 1, 'damiancalabresi3@gmail.com.1316715393', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '4e4561b6b5529ff7b8a1ee20aaf91609', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714434, 0, 0, 0, '', '06qcs0poh4XB5rk', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714434, 1316715393, 0, NULL, 0),
 (6, 'email', 0, 0, 1, 0, 1, 'damiancalabresi4@gmail.com.1316715400', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '063fdc3a99263df10f43cc156664699b', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714534, 0, 0, 0, '', 'QgOopNbJHuiBGb6', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714534, 1316715400, 0, NULL, 0),
 (7, 'email', 0, 0, 1, 0, 1, 'damiancalabresi6@gmail.com.1316715408', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'e18b1aac6719285d7f1f46c825947d3a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714844, 0, 0, 0, '', 'PlkyoZcAoJjsGSM', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714844, 1316715408, 0, NULL, 0),
 (8, 'email', 0, 0, 1, 0, 1, 'damiancalabresi7@gmail.com.1316715373', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '3a28fae53c9aeff9fcb8fc1da5556a05', 0, '', '', '', '', '', '', '', '', '', '', 'Bue', 'AR', 'es_ar', '', '99', 1316714949, 0, 0, 0, '', 'gPHS3wQ3rJSQfRg', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714949, 1316715373, 0, NULL, 0),
-(9, 'email', 1, 0, 0, 0, 1, 'damian7', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'damiancalabresi8@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 0, 0, NULL, 0);
+(9, 'email', 1, 0, 0, 0, 1, 'damian7', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'damiancalabresi8@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 0, 0, NULL, 0),
+(10, 'email', 1, 0, 0, 0, 1, 'aprendiz1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Damian', 'Aprendiz', 'damiancalabresi10@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316813116, 0, 0, 0, '', '5LFPbQXnijqNGzZ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316813040, 0, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -9061,7 +9429,14 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_user_enrolments`
+--
+
+INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timestart`, `timeend`, `modifierid`, `timecreated`, `timemodified`) VALUES
+(1, 0, 1, 9, 1316728800, 0, 2, 1316813637, 1316813637);
 
 -- --------------------------------------------------------
 
@@ -9098,7 +9473,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
   `dataformat` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_userinfodata_usefie_ix` (`userid`,`fieldid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `mdl_user_info_data`
@@ -9107,7 +9482,10 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
 INSERT INTO `mdl_user_info_data` (`id`, `userid`, `fieldid`, `data`, `dataformat`) VALUES
 (19, 9, 3, '23432423', 0),
 (20, 9, 4, '234234', 0),
-(21, 9, 5, 'Ninguno', 0);
+(21, 9, 5, 'Ninguno', 0),
+(22, 10, 3, '23434342', 0),
+(23, 10, 4, '345345', 0),
+(24, 10, 5, 'Aprendiz', 0);
 
 -- --------------------------------------------------------
 
@@ -9163,7 +9541,14 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
   UNIQUE KEY `mdl_userlast_usecou_uix` (`userid`,`courseid`),
   KEY `mdl_userlast_use_ix` (`userid`),
   KEY `mdl_userlast_cou_ix` (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_user_lastaccess`
+--
+
+INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
+(1, 2, 2, 1316813732);
 
 -- --------------------------------------------------------
 
@@ -9178,7 +9563,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_userpref_usenam_uix` (`userid`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `mdl_user_preferences`
@@ -9187,7 +9572,8 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
 INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 (1, 2, 'auth_forcepasswordchange', '0'),
 (2, 2, 'email_bounce_count', '1'),
-(3, 2, 'email_send_count', '1');
+(3, 2, 'email_send_count', '1'),
+(4, 2, 'definerole_showadvanced', '1');
 
 -- --------------------------------------------------------
 

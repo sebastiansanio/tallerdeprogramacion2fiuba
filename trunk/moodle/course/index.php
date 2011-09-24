@@ -268,7 +268,7 @@ if (has_capability('moodle/course:create', $systemcontext)) {
     // print create course link to first category
     $options = array('category' => $CFG->defaultrequestcategory);
     $options['returnto'] = 'topcat';
-    echo $OUTPUT->single_button(new moodle_url('edit.php', $options), get_string('addnewcourse'), 'get');
+/*    echo $OUTPUT->single_button(new moodle_url('edit.php', $options), get_string('addnewcourse'), 'get');*/
 }
 
 // Print button for creating new categories
@@ -329,7 +329,7 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
             echo '<a title="'.$str->delete.'" href="index.php?delete='.$category->id.'&amp;sesskey='.sesskey().'"><img'.
                  ' src="'.$OUTPUT->pix_url('t/delete') . '" class="iconsmall" alt="'.$str->delete.'" /></a> ';
 
-            if (!empty($category->visible)) {
+/*            if (!empty($category->visible)) {
                 echo '<a title="'.$str->hide.'" href="index.php?hide='.$category->id.'&amp;sesskey='.sesskey().'"><img'.
                      ' src="'.$OUTPUT->pix_url('t/hide') . '" class="iconsmall" alt="'.$str->hide.'" /></a> ';
             } else {
@@ -353,7 +353,7 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
                      ' src="'.$OUTPUT->pix_url('t/down') . '" class="iconsmall" alt="'.$str->movedown.'" /></a> ';
             } else {
                 echo $str->spacer;
-            }
+            }*/
         }
         echo '</td>';
 

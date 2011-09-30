@@ -77,10 +77,11 @@ class mod_forum_post_form extends moodleform {
                 $mform->addElement('static', 'subscribemessage', get_string('subscription', 'forum'), get_string('disallowsubscribe', 'forum'));
                 $mform->addElement('hidden', 'subscribe');
                 $mform->setType('subscribe', PARAM_INT);
-                $mform->addHelpButton('subscribemessage', 'subscription', 'forum');
+                //$mform->addHelpButton('subscribemessage', 'subscription', 'forum');
             }
 
-        if (!empty($forum->maxattachments) && $forum->maxbytes != 1 && has_capability('mod/forum:createattachment', $modcontext))  {  //  1 = No attachments at all
+        /*
+		if (!empty($forum->maxattachments) && $forum->maxbytes != 1 && has_capability('mod/forum:createattachment', $modcontext))  {  //  1 = No attachments at all
             $mform->addElement('filemanager', 'attachments', get_string('attachment', 'forum'), null,
                 array('subdirs'=>0,
                       'maxbytes'=>$forum->maxbytes,
@@ -89,11 +90,14 @@ class mod_forum_post_form extends moodleform {
                       'return_types'=>FILE_INTERNAL));
             $mform->addHelpButton('attachments', 'attachment', 'forum');
         }
+		*/
 
-        if (empty($post->id) && has_capability('moodle/course:manageactivities', $coursecontext)) { // hack alert
+        /*
+		if (empty($post->id) && has_capability('moodle/course:manageactivities', $coursecontext)) { // hack alert
             $mform->addElement('checkbox', 'mailnow', get_string('mailnow', 'forum'));
         }
-
+		*/
+		
         if (!empty($CFG->forum_enabletimedposts) && !$post->parent && has_capability('mod/forum:viewhiddentimedposts', $coursecontext)) { // hack alert
             $mform->addElement('header', '', get_string('displayperiod', 'forum'));
 

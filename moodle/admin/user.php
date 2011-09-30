@@ -288,6 +288,15 @@
                 }
             }
 
+            if($userrolsolicitado == 'Aprendiz' ){
+                $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=5\">$userrolsolicitado</a>";
+            } else if ($userrolsolicitado == 'Administrador') {
+                $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=8\">$userrolsolicitado</a>";
+            } else if ($userrolsolicitado == 'Mediador') {
+                $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=3\">$userrolsolicitado</a>";
+            }
+
+
             $table->data[] = array ("<a href=\"../user/view.php?id=$user->id&amp;course=$site->id\">$fullname</a>",
                                 "$user->email",
                                 "$user->city",

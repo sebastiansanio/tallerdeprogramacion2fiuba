@@ -17,7 +17,7 @@ $CFG->dboptions = array (
 );
 
 $CFG->wwwroot   = 'http://localhost';
-$CFG->dataroot  = '/home/damian/moodledata';
+$CFG->dataroot  = 'C:\\Program Files\\EasyPHP-5.3.8.0\\www\\moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;

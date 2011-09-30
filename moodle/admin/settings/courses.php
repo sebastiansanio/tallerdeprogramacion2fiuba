@@ -18,13 +18,15 @@ if ($hassiteconfig
     $courseformats = get_plugin_list('format');
     $formcourseformats = array();
     foreach ($courseformats as $courseformat => $courseformatdir) {
-        $formcourseformats[$courseformat] = get_string('pluginname', "format_$courseformat");
-    }
-    $temp->add(new admin_setting_configselect('moodlecourse/format', get_string('format'), get_string('coursehelpformat'), 'weeks',$formcourseformats));
+		if($courseformat == 'weeks'){
+			$formcourseformats[$courseformat] = get_string('pluginname', "format_$courseformat");
+		}
+	}
+    $temp->add(new admin_setting_configselect('moodlecourse/format', get_string('format'), "Semanas", 'weeks',$formcourseformats));
 
-    $temp->add(new admin_setting_configtext('moodlecourse/maxsections', get_string('maxnumberweeks'), get_string('maxnumberweeks_desc'), 52));
+    $temp->add(new admin_setting_configtext('moodlecourse/maxsections', get_string('maxnumberweeks'), "Cantidad maxima de semanas del curso", 52));
 
-    $temp->add(new admin_settings_num_course_sections('moodlecourse/numsections', get_string('numberweeks'), get_string('coursehelpnumberweeks'), 10));
+    $temp->add(new admin_settings_num_course_sections('moodlecourse/numsections', get_string('numberweeks'), get_string('coursehelpnumberweeks'), 16));
 
     $choices = array();
     $choices['0'] = get_string('hiddensectionscollapsed');
@@ -63,11 +65,11 @@ if ($hassiteconfig
     $temp->add(new admin_setting_configselect('moodlecourse/visible', get_string('visible'), '', 1,$choices));
 
 
-    $temp->add(new admin_setting_heading('language', get_string('language'), ''));
-    $languages=array();
-    $languages[''] = get_string('forceno');
-    $languages += get_string_manager()->get_list_of_translations();
-    $temp->add(new admin_setting_configselect('moodlecourse/lang', get_string('forcelanguage'), '',key($languages),$languages));
+    //$temp->add(new admin_setting_heading('language', get_string('language'), ''));
+    //$languages=array();
+    //$languages[''] = get_string('forceno');
+    //$languages += get_string_manager()->get_list_of_translations();
+    //$temp->add(new admin_setting_configselect('moodlecourse/lang', get_string('forcelanguage'), '',key($languages),$languages));
 
     $temp->add(new admin_setting_heading('progress', get_string('progress','completion'), ''));
     $temp->add(new admin_setting_configselect('moodlecourse/enablecompletion', get_string('completion','completion'), '',

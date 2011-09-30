@@ -116,8 +116,8 @@ class course_edit_form extends moodleform {
         foreach ($courseformats as $courseformat => $formatdir) {
             $formcourseformats[$courseformat] = get_string('pluginname', "format_$courseformat");
         }
-        $mform->addElement('select', 'format', get_string('format'), $formcourseformats);
-        $mform->addHelpButton('format', 'format');
+        //$mform->addElement('select', 'format', get_string('format'), $formcourseformats);
+        //$mform->addHelpButton('format', 'format');
         $mform->setDefault('format', $courseconfig->format);
 
         for ($i = 0; $i <= $courseconfig->maxsections; $i++) {
@@ -138,21 +138,21 @@ class course_edit_form extends moodleform {
         $mform->setDefault('hiddensections', $courseconfig->hiddensections);
 
         $options = range(0, 10);
-        $mform->addElement('select', 'newsitems', get_string('newsitemsnumber'), $options);
-        $mform->addHelpButton('newsitems', 'newsitemsnumber');
+        //$mform->addElement('select', 'newsitems', get_string('newsitemsnumber'), $options);
+        //$mform->addHelpButton('newsitems', 'newsitemsnumber');
         $mform->setDefault('newsitems', $courseconfig->newsitems);
 
         $mform->addElement('selectyesno', 'showgrades', get_string('showgrades'));
         $mform->addHelpButton('showgrades', 'showgrades');
         $mform->setDefault('showgrades', $courseconfig->showgrades);
 
-        $mform->addElement('selectyesno', 'showreports', get_string('showreports'));
-        $mform->addHelpButton('showreports', 'showreports');
+        //$mform->addElement('selectyesno', 'showreports', get_string('showreports'));
+        //$mform->addHelpButton('showreports', 'showreports');
         $mform->setDefault('showreports', $courseconfig->showreports);
 
         $choices = get_max_upload_sizes($CFG->maxbytes);
-        $mform->addElement('select', 'maxbytes', get_string('maximumupload'), $choices);
-        $mform->addHelpButton('maxbytes', 'maximumupload');
+        //$mform->addElement('select', 'maxbytes', get_string('maximumupload'), $choices);
+        //$mform->addHelpButton('maxbytes', 'maximumupload');
         $mform->setDefault('maxbytes', $courseconfig->maxbytes);
 
         if (!empty($course->legacyfiles) or !empty($CFG->legacyfilesinnewcourses)) {
@@ -182,7 +182,7 @@ class course_edit_form extends moodleform {
         }
 
 //--------------------------------------------------------------------------------
-        enrol_course_edit_form($mform, $course, $context);
+        //enrol_course_edit_form($mform, $course, $context);
 
 //--------------------------------------------------------------------------------
         $mform->addElement('header','', get_string('groups', 'group'));
@@ -208,14 +208,17 @@ class course_edit_form extends moodleform {
         $mform->addElement('select', 'defaultgroupingid', get_string('defaultgrouping', 'group'), $options);
 
 //--------------------------------------------------------------------------------
-        $mform->addElement('header','', get_string('availability'));
+        /*
+		$mform->addElement('header','', get_string('availability'));
 
         $choices = array();
         $choices['0'] = get_string('courseavailablenot');
         $choices['1'] = get_string('courseavailable');
         $mform->addElement('select', 'visible', get_string('availability'), $choices);
         $mform->addHelpButton('visible', 'availability');
-        $mform->setDefault('visible', $courseconfig->visible);
+        */
+		
+		$mform->setDefault('visible', $courseconfig->visible);
         if (!has_capability('moodle/course:visibility', $context)) {
             $mform->hardFreeze('visible');
             if (!empty($course->id)) {
@@ -226,13 +229,15 @@ class course_edit_form extends moodleform {
         }
 
 //--------------------------------------------------------------------------------
-        $mform->addElement('header','', get_string('language'));
+        /*$mform->addElement('header','', get_string('language'));
 
         $languages=array();
         $languages[''] = get_string('forceno');
         $languages += get_string_manager()->get_list_of_translations();
         $mform->addElement('select', 'lang', get_string('forcelanguage'), $languages);
-        $mform->setDefault('lang', $courseconfig->lang);
+        */
+		
+		$mform->setDefault('lang', $courseconfig->lang);
 
 //--------------------------------------------------------------------------------
         if (completion_info::is_enabled_for_site()) {
@@ -290,7 +295,7 @@ class course_edit_form extends moodleform {
 
 /// customizable role names in this course
 //--------------------------------------------------------------------------------
-        $mform->addElement('header','rolerenaming', get_string('rolerenaming'));
+        /*$mform->addElement('header','rolerenaming', get_string('rolerenaming'));
         $mform->addHelpButton('rolerenaming', 'rolerenaming');
 
         if ($roles = get_all_roles()) {
@@ -309,6 +314,7 @@ class course_edit_form extends moodleform {
                 }
             }
         }
+		*/
 
 //--------------------------------------------------------------------------------
         $this->add_action_buttons();

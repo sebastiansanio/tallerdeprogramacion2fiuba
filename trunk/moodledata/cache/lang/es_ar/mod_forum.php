@@ -181,7 +181,7 @@ Los usuarios con el permiso \'moodle/forum:ostwithoutthrottling\' están exentos
   'generalforums' => 'Foros generales',
   'inforum' => 'en {$a}',
   'introblog' => 'Los mensajes de este foro fueron copiados aquí de forma automática a partir de los blogs de los usuarios de este curso debido a que esas entradas de blog ya no están disponibles',
-  'intronews' => 'Novedades y anuncios',
+  'intronews' => 'Cartelera',
   'introsocial' => 'Foro abierto a todos los temas',
   'introteacher' => 'Foro exclusivo para profesores',
   'invalidaccess' => 'No se ha accedido correctamente a esta página',

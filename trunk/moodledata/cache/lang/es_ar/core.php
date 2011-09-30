@@ -185,7 +185,7 @@ Si desea más información sobre cómo recuperar correctamente la copia, puede c
   'cachecontrols' => 'Controles de caché',
   'cancel' => 'Cancelar',
   'cancelled' => 'Cancelado',
-  'categories' => 'Categorías',
+  'categories' => 'Materias',
   'category' => 'Categoría',
   'category_help' => 'Este ajuste determina la categoría en la que aparecerá el curso en la lista de cursos.',
   'categoryadded' => 'Se instaló la categoría \'{$a}\'',

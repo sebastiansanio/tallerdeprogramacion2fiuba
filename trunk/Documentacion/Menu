@@ -1,0 +1,20 @@
+Menu
+	Visitante
+		Pagina Principal
+		Conectarse http://localhost/login/
+		Registrarse http://localhost/login/signup.php
+	Miembro
+		Pagina Principal
+	Aprendiz
+		Pagina Principal
+		Cursos
+	Mediador
+		Pagina Principal
+		Mis cursos
+	Administrador
+		Pagina Principal
+		Cartelera
+		Configuración
+		Materias
+		Miembros
+		Asignar roles

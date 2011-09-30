@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 24, 2011 at 01:45 
+-- Generation Time: Sep 30, 2011 at 12:27 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -327,7 +327,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_blocinst_parshopagsub_ix` (`parentcontextid`,`showinsubcontexts`,`pagetypepattern`,`subpagepattern`),
   KEY `mdl_blocinst_par_ix` (`parentcontextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `mdl_block_instances`
@@ -336,18 +336,22 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
 INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showinsubcontexts`, `pagetypepattern`, `subpagepattern`, `defaultregion`, `defaultweight`, `configdata`) VALUES
 (1, 'site_main_menu', 2, 0, 'site-index', NULL, 'side-pre', -1, ''),
 (2, 'course_summary', 2, 0, 'site-index', NULL, 'side-post', 0, ''),
-(3, 'calendar_month', 2, 0, 'site-index', NULL, 'side-post', 1, ''),
 (4, 'navigation', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6NTp7czoxMDoiZW5hYmxlZG9jayI7czozOiJ5ZXMiO3M6MTQ6ImxpbmtjYXRlZ29yaWVzIjtzOjI6Im5vIjtzOjg6InRyaW1tb2RlIjtzOjE6IjEiO3M6MTA6InRyaW1sZW5ndGgiO2k6NTA7czoxNDoiZXhwYW5zaW9ubGltaXQiO3M6MToiMCI7fQ=='),
 (5, 'settings', 1, 1, '*', NULL, 'side-pre', 1, ''),
 (6, 'admin_bookmarks', 1, 0, 'admin-*', NULL, 'side-pre', 0, ''),
 (7, 'private_files', 1, 0, 'my-index', '2', 'side-post', 0, ''),
 (8, 'online_users', 1, 0, 'my-index', '2', 'side-post', 1, ''),
 (9, 'course_overview', 1, 0, 'my-index', '2', 'content', 0, ''),
-(10, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo0OiJNZW51IjtzOjY6ImZvcm1hdCI7czoxOiIxIjtzOjQ6InRleHQiO3M6MTQwOiI8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2FkbWluL3VzZXIucGhwIj5Vc3VhcmlvczwvYT48L3A+DQo8cD48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS9pbmRleC5waHA/Y2F0ZWdvcnllZGl0PW9uIj5DdXJzb3M8L2E+PC9wPiI7fQ=='),
+(10, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czoxMzoiQWRtaW5pc3RyYWRvciI7czo2OiJmb3JtYXQiO3M6MToiMSI7czo0OiJ0ZXh0IjtzOjM5ODoiPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvIj5QYWdpbmEgcHJpbmNpcGFsPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI+Q2FydGVsZXJhPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iIyI+Q29uZmlndXJhY2lvbjwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvY291cnNlLyI+TWF0ZXJpYXM8L2E+PC9saT4NCjxsaT48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0L2FkbWluL3VzZXIucGhwIj5NaWVtYnJvczwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvYWRtaW4vcm9sZXMvYXNzaWduLnBocD9jb250ZXh0aWQ9MSI+QXNpZ25hciByb2xlczwvYT48L2xpPg0KPC91bD4iO30='),
 (11, 'search_forums', 24, 0, 'course-view-*', NULL, 'side-post', 0, ''),
 (12, 'news_items', 24, 0, 'course-view-*', NULL, 'side-post', 1, ''),
 (13, 'calendar_upcoming', 24, 0, 'course-view-*', NULL, 'side-post', 2, ''),
-(14, 'recent_activity', 24, 0, 'course-view-*', NULL, 'side-post', 3, '');
+(14, 'recent_activity', 24, 0, 'course-view-*', NULL, 'side-post', 3, ''),
+(15, 'course_list', 1, 1, '*', NULL, 'side-pre', 5, 'Tzo4OiJzdGRDbGFzcyI6MDp7fQ=='),
+(16, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo5OiJWaXNpdGFudGUiO3M6NjoiZm9ybWF0IjtzOjE6IjEiO3M6NDoidGV4dCI7czoxOTk6Ijx1bD4NCjxsaT48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0LyI+UGFnaW5hIHByaW5jaXBhbDwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvbG9naW4vIj5Db25lY3RhcnNlPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9sb2dpbi9zaWdudXAucGhwIj5SZWdpc3RyYXJzZTwvYT48L2xpPg0KPC91bD4iO30='),
+(17, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo3OiJNaWVtYnJvIjtzOjY6ImZvcm1hdCI7czoxOiIxIjtzOjQ6InRleHQiO3M6NzA6Ijx1bD4NCjxsaT48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0LyI+UGFnaW5hIHByaW5jaXBhbDwvYT48L2xpPg0KPC91bD4iO30='),
+(18, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo0OiJ0ZXh0IjtzOjcwOiI8dWw+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC8iPlBhZ2luYSBwcmluY2lwYWw8L2E+PC9saT4NCjwvdWw+IjtzOjU6InRpdGxlIjtzOjg6IkFwcmVuZGl6IjtzOjY6ImZvcm1hdCI7czoxOiIxIjt9'),
+(19, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo4OiJNZWRpYWRvciI7czo2OiJmb3JtYXQiO3M6MToiMSI7czo0OiJ0ZXh0IjtzOjEwNzoiPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvIj5QYWdpbmEgcHJpbmNpcGFsPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iIyI+TWlzIGN1cnNvczwvYT48L2xpPg0KPC91bD4iO30=');
 
 -- --------------------------------------------------------
 
@@ -409,14 +413,21 @@ CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
   UNIQUE KEY `mdl_blocposi_bloconpagsub_uix` (`blockinstanceid`,`contextid`,`pagetype`,`subpage`),
   KEY `mdl_blocposi_blo_ix` (`blockinstanceid`),
   KEY `mdl_blocposi_con_ix` (`contextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the position of a sticky block_instance on a another ' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the position of a sticky block_instance on a another ' AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `mdl_block_positions`
 --
 
 INSERT INTO `mdl_block_positions` (`id`, `blockinstanceid`, `contextid`, `pagetype`, `subpage`, `visible`, `region`, `weight`) VALUES
-(1, 4, 2, 'site-index', '', 1, 'side-pre', -1);
+(1, 4, 2, 'site-index', '', 1, 'side-pre', -1),
+(2, 5, 2, 'site-index', '', 1, 'side-pre', 4),
+(3, 15, 2, 'site-index', '', 1, 'side-pre', 3),
+(4, 10, 2, 'site-index', '', 1, 'side-pre', -6),
+(5, 17, 2, 'site-index', '', 1, 'side-pre', -5),
+(6, 18, 2, 'site-index', '', 1, 'side-pre', -4),
+(7, 16, 2, 'site-index', '', 1, 'side-pre', -3),
+(8, 19, 2, 'site-index', '', 1, 'side-pre', -2);
 
 -- --------------------------------------------------------
 
@@ -526,15 +537,15 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1316811427, '1', 1316818627),
-(2, 'accesslib/dirtycontexts', '/1', 1316811858, '1', 1316819058),
+(1, 'userpreferenceschanged', '2', 1317326363, '1', 1317333563),
+(2, 'accesslib/dirtycontexts', '/1', 1317326307, '1', 1317333507),
 (3, 'accesslib/dirtycontexts', '/1/2/16', 1316650870, '1', 1316658070),
 (4, 'accesslib/dirtycontexts', '/1/14', 1316715379, '1', 1316722579),
 (5, 'accesslib/dirtycontexts', '/1/3', 1316724834, '1', 1316732034),
@@ -544,7 +555,21 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (9, 'accesslib/dirtycontexts', '/1/21', 1316810207, '1', 1316817407),
 (10, 'accesslib/dirtycontexts', '/1/22', 1316810170, '1', 1316817370),
 (11, 'accesslib/dirtycontexts', '/1/23', 1316810501, '1', 1316817701),
-(12, 'accesslib/dirtycontexts', '/1/23/24', 1316813637, '1', 1316820837);
+(12, 'accesslib/dirtycontexts', '/1/23/24', 1317248061, '1', 1317255261),
+(13, 'accesslib/dirtycontexts', '/1/16', 1317244268, '1', 1317251468),
+(14, 'accesslib/dirtycontexts', '/1/30', 1317244276, '1', 1317251476),
+(15, 'userpreferenceschanged', '12', 1317245757, '1', 1317252957),
+(16, 'accesslib/dirtycontexts', '/1/2/15', 1317328396, '1', 1317335596),
+(17, 'accesslib/dirtycontexts', '/1/2/6', 1317326393, '1', 1317333593),
+(18, 'accesslib/dirtycontexts', '/1/2/35', 1317330318, '1', 1317337518),
+(19, 'accesslib/dirtycontexts', '/1/2/36', 1317329846, '1', 1317337046),
+(20, 'accesslib/dirtycontexts', '/1/2/34', 1317328910, '1', 1317336110),
+(21, 'accesslib/dirtycontexts', '/1/2/37', 1317329034, '1', 1317336234),
+(22, 'userpreferenceschanged', '14', 1317329502, '1', 1317336702),
+(23, 'accesslib/dirtycontexts', '/1/7', 1317329906, '1', 1317337106),
+(24, 'accesslib/dirtycontexts', '/1/8', 1317330050, '1', 1317337250),
+(25, 'accesslib/dirtycontexts', '/1/2/4', 1317330134, '1', 1317337334),
+(26, 'accesslib/dirtycontexts', '/1/2/17', 1317332730, '1', 1317339930);
 
 -- --------------------------------------------------------
 
@@ -560,15 +585,15 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=146 ;
 
 --
 -- Dumping data for table `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316813155),
-(2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316813155),
+(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1317335181),
+(2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1317330296),
 (3, '3f753a864e451dd63c50e2914e848ffa', '<p>Para transformar el texto en un enlace, introduzca una URL que contenga $$, donde $$ se sustituye por el texto. Por ejemplo, para transformar una ID de Twitter en un enlace, introduzca http://twitter.com/$$.</p>\n', 1316642136),
 (4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316728745),
 (5, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642917),
@@ -576,7 +601,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (7, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316728745),
 (8, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316642921),
 (9, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316642930),
-(10, '7df7723cf476d69bc13eed1ea208b702', '12345678', 1316648440),
+(10, '7df7723cf476d69bc13eed1ea208b702', '12345678', 1317329459),
 (11, '3cacbd06d2cea41568697793c94a8361', '1234567890', 1316648440),
 (12, '2aff888c5cc7ceed5dc32f6967ff349b', 'Aprendiz', 1316813121),
 (13, '4112d23e812cc2a4810ca926101d527f', 'Ninguno', 1316648049),
@@ -594,8 +619,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (25, '9fdbfd394e20d03ba3468e3cb6b267ac', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316730367),
 (26, '939ba169d7d0017b408a9f518d2d251d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316715653),
 (27, '4e46d06bdcc733e932e24c0fbc687d08', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316716394),
-(28, 'bbdda4b15cd915a4f3462f32602cc8c1', '<div class="no-overflow">Novedades y anuncios</div>', 1316716394),
-(29, '9a9bd2a65551cb9b76beafd3cbb69de0', '<p>Hola, mensaje</p>', 1316813155),
+(28, 'bbdda4b15cd915a4f3462f32602cc8c1', '<div class="no-overflow">Novedades y anuncios</div>', 1317333329),
+(29, '9a9bd2a65551cb9b76beafd3cbb69de0', '<p>Hola, mensaje</p>', 1317332070),
 (30, 'df2fc47fd0e90fe782622f30f04f7acf', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316728783),
 (31, '0e7c9686c7a27fb05e7b6881d3539fc7', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316728783),
 (32, 'f5857128b28b59b68311e5bb07e38383', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316728784),
@@ -605,23 +630,113 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (36, 'd942e310a907a09adc8463584aed488d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316728621),
 (37, '17855839ab06a3b822aafcc5f7edff58', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p></div>', 1316731180),
 (38, 'bfa2be5909c89bbcf80726df70c4ebff', '<p>\nAl asignar un rol a un usuario en un contexto, usted\nle está garantizando los permisos propios de ese rol\nen el contexto actual y en todos los contextos de\nrango ''inferior''.\n</p>\n\n<p>\nContextos:\n</p><ol><li>Sitio/Sistema</li>\n<li>Categorías de cursos</li>\n<li>Cursos</li>\n<li>Bloques y Actividades</li>\n</ol><p>\nAsí, si le da a un estudiante el rol de usuario de un\ncurso, tendrá ese rol para ese curso, pero también para\ntodos los bloques y actividades dentro del curso. Sus\npermisos reales dependerán de otros roles y anularán\nlos que han sido definidos.\n</p>\n\n<p>\nVea también\n<a href="help.php?file=roles.html">Roles</a>,\n<a href="help.php?file=contexts.html">Contextos</a>,\n<a href="help.php?file=permissions.html">Permisos</a> y\n<a href="help.php?file=overrides.html">Anulaciones</a>.\n</p>\n', 1316730372),
-(39, '6c267be72733d7408cd14a7c0b0f9738', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813173),
-(40, 'dc0c25f44e821d01208f946aa7557ec1', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813154),
+(39, '6c267be72733d7408cd14a7c0b0f9738', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317326311),
+(40, 'dc0c25f44e821d01208f946aa7557ec1', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317326394),
 (41, '59871fc49db985e89d186c5a35554903', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316731646),
 (42, '2501233af784821fb22eb3768ce564a4', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316731767),
 (43, 'f802718b074a605d9164fb8d1c6bd7e3', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316810640),
-(44, '1cb32bc21655a4db4d3a4fbb97a5ea77', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813551),
+(44, '1cb32bc21655a4db4d3a4fbb97a5ea77', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317247980),
 (45, 'eef0c21466656d7766dd28f53532b100', '<p>El resumen del curso se muestra en la lista de cursos. Una búsqueda de cursos busca el texto del resumen del curso además de los nombres de curso.</p>\n', 1316810776),
-(46, '1ab20d6dfe938bb5b31e7c2b7a2647ed', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813732),
-(47, '20f7045625c732dacecc561e779e2a54', '<p>Todos los usuarios identificados.</p>', 1316811859),
-(48, '2f8b7530669537817ae18e6d154e46ef', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 1316811859),
-(49, 'e63ec5279c3fa2c91bffa8483df0b5dc', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 1316811859),
-(50, '24b187e2a604187bea9b705924302adb', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 1316811859),
+(46, '1ab20d6dfe938bb5b31e7c2b7a2647ed', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317248098),
+(47, '20f7045625c732dacecc561e779e2a54', '<p>Todos los usuarios identificados.</p>', 1317331461),
+(48, '2f8b7530669537817ae18e6d154e46ef', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 1317331461),
+(49, 'e63ec5279c3fa2c91bffa8483df0b5dc', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 1317331461),
+(50, '24b187e2a604187bea9b705924302adb', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 1317331460),
 (51, '94b1894cfac1a77a856b6fc9ccb3b0f2', '23434342', 1316813121),
 (52, 'c20116423ad3f827fe97167b30c8aa33', '345345', 1316813121),
 (53, '9ecd690dfe37057f51c226f62ba6040e', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813144),
 (54, 'a7f816d772a520164e2465ba05acd10d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813762),
-(55, 'bfabbb51f75ddc1f1fba6d1ae1cade8f', '<div class="no-overflow">Novedades y anuncios</div>', 1316813762);
+(55, 'bfabbb51f75ddc1f1fba6d1ae1cade8f', '<div class="no-overflow">Novedades y anuncios</div>', 1317333399),
+(56, 'd30db130a82f97d30d9e1f1c9afaa176', 'Miembro', 1317325325),
+(57, 'fcca811611401a01ceb09816c3989b74', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317245192),
+(58, '602071f25b5bcbc3026d0da986fb326d', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317245582),
+(59, 'a5a85a51a52a3412f636096d39cf3ef0', 'Administrador', 1317325193),
+(60, '124c8350d6e670d45cd486ca8a451ab2', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317248266),
+(61, '00d773fecf83a0bce46749c38b177b07', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317327015),
+(62, '3d824d758ff3f74993a15f54cc06a3b0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317326596),
+(63, '59b6f47d40d02cb0245b52b1b01d05a5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317327026),
+(64, 'e510fad5ee54a504abc4aed6c66a3c64', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317326855),
+(65, '4b84ed279509738500523186aa8c7e21', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317326903),
+(66, 'f4cf63cc59c7fdf2bfef8bf2f83b5e4f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/admin/user.php">Usuarios</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></li>\r\n</ul></div>', 1317326905),
+(67, 'a8361c23b8a0b7947c0e72d22169344c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul>\r\n<!--?php \r\necho "hola";\r\n?--></div>', 1317327126),
+(68, 'cc112a688eba41486f4e86c935b6bcd5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334824),
+(69, '6adeb3dd2a825f7e2da5e75b91a373c2', '<div class="no-overflow"><p>&lt;ul&gt;<br />&lt;li&gt;&lt;a href="http://localhost/"&gt;Pagina principal&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/"&gt;Conectarse&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/signup.php"&gt;Registrarse&lt;/a&gt;&lt;/li&gt;<br />&lt;/ul&gt;</p></div>', 1317327622),
+(70, '5785be5644a37e1e2a92bbad5ad400c8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317335180),
+(71, 'eb6d13ec293bbe8a1bd37d9fd5b621ed', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317335180),
+(72, 'd3e72cf14d54fc5e32abab06615022de', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317335180),
+(73, 'b50ef70b15eabc200fcc0a9390ccc28a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333778),
+(74, 'f1d08970e62175b134a45b63add57a3c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317333778),
+(75, 'a32e1267da8f9409bc87cbbca0f91327', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317333778),
+(76, 'd3498adfda2af7dfe98a9c3eadae1576', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317333778),
+(77, 'b554e142a7d5e36413f89c02b4a68e30', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330306),
+(78, 'b582b68ec63d676baab69ca7c1eb0d08', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330306),
+(79, 'ae38ebec3415cf5040bfc996be07d8a1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317330307),
+(80, 'dee29e80b7dd1fe4254b04cf5657919f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317330307),
+(81, 'fdd3658a69465e936c4fa65472f3841b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333803),
+(82, '26707685f1bed9fb61fb92af33c2f43a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317333803),
+(83, 'a7930a81125039770799fad751ba0dba', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317333803),
+(84, '7d7525b466f3e93dc5534b5f353be990', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317333803),
+(85, '317dde190059be76f67576497a07a386', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317328869),
+(86, '2d31f1811643c89ee4dcd4f9b8484113', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317328869),
+(87, 'ab8f54c08af342a7f8384778c1c570e7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317328869),
+(88, 'e19cadaceadf2956db384e0a02b77ac3', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317328869),
+(89, '5fd1e97ecb5d4f687d48b8a55360064c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317328995),
+(90, 'd30adb645e340764d8e6020035cb3d5b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317328995),
+(91, 'a4936508bbba7861ed242402b944d7e1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317328995),
+(92, '3b202ad55fe28e3088f89933f2b4268d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317328995),
+(93, 'dde8df9a240bb80cdf2ce3d6e680cadd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334840),
+(94, '902bb1b65c14de5a8e4fa3c119868548', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317334916),
+(95, 'accb44e0b7b275b2c44e114ff7ec97c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317334916),
+(96, '3e28232ab741397c660d75cb585df966', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317334916),
+(97, 'd0c07d03ac2b8277c3b7e613a0353719', 'Mediador', 1317329459),
+(98, 'e7641c731f17c40f2e82ba4dca8864b2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317329483),
+(99, '2139dbc3bbaf2810d066414dc7a49a16', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317329483),
+(100, '275626ba65608869220ece90f5fb5a52', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317329483),
+(101, '53daf2cb5cb49e5a00471f3dbbbdc36f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317329483),
+(102, '4ab8707618279a8c5d8868525d4aea18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317329864),
+(103, '6e91a78975d7dd4556d9bb58384bd900', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317329864),
+(104, '415040be377970c64e57d543dc2be33f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317329864),
+(105, '32d80999868c82ee00eef0f23cca167f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317329864),
+(106, '660ab809fdbfeb1935c15939573bc9d2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330008),
+(107, '301353ca6b97914181368846b4181b54', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330008),
+(108, '56bd6bcd539adb69972e50fd6ea3d477', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317330008),
+(109, '92e0a59e5b10637509d11e7662110025', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317330008),
+(110, '0c66907b7f758e732061540d8c22a7ca', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330090),
+(111, 'bb60ead94f34918e786642f177d32785', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330090),
+(112, 'f191c57b0e8996b6f0ab9495872d2512', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317330090),
+(113, '82ee22f3b054a30d13b8a8b5146dcd3b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317330090),
+(114, '61be6b25497dead6a87afcd8e69784f6', '<div class="text_to_html"> <div class="clearfix"><div class="theme_screenshot"><h2>Arialist</h2><img src="arialist/pix/screenshot.png" alt="screenshot.png" /><h3>Theme Discussion Forum:</h3><p><a href="http://moodle.org/mod/forum/view.php?id=46">http://moodle.org/mod/forum/view.php?id=46</a></p><h3>Theme Credits</h3><p><a href="http://docs.moodle.org/en/Theme_credits">http://docs.moodle.org/en/Theme_credits</a></p><h3>Theme Documentation:</h3><p><a href="http://docs.moodle.org/en/Themes">http://docs.moodle.org/en/Themes</a></p><h3>Report a bug:</h3><p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p></div><div class="theme_description"><h2>About</h2><p>Arialist is a very clean and simple two-column, fluid-width theme for Moodle 2.0.</p><h2>Tweaks</h2><p>This theme is built upon both Base and Canvas, two parent themes included in the Moodle core. If you want to modify this theme, we recommend that you first duplicate it, then rename it before making your changes. This will prevent your customized theme from being overwritten by future Moodle upgrades, and you''ll still have the original files if you make a mess. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p><h2>Credits</h2><p>This theme was coded and is maintained by Patrick Malley of NewSchool Learning. He can be contacted by email at contact@newschoollearning.com. </p><h2>License</h2><p>This, and all other themes included in the Moodle core, are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.<br /></p></div></div></div>', 1317330356),
+(115, '57df01b8f5e2bd6c9e0bb8882cdede35', '<div class="text_to_html"><div class="clearfix"><div class="theme_screenshot"><h2>Magazine</h2><img src="magazine/pix/screenshot.png" alt="screenshot.png" /><h3>Theme Discussion Forum:</h3><p><a href="http://moodle.org/mod/forum/view.php?id=46">http://moodle.org/mod/forum/view.php?id=46</a></p><h3>Theme Credits</h3><p><a href="http://docs.moodle.org/en/Theme_credits">http://docs.moodle.org/en/Theme_credits</a></p><h3>Theme Documentation:</h3><p><a href="http://docs.moodle.org/en/Themes">http://docs.moodle.org/en/Themes</a></p><h3>Report a bug:</h3><p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p></div><div class="theme_description"><h2>About</h2><p>Magazine is a three column fluid-width theme for Moodle 2.0. </p><h2>Tweaks</h2><p>This theme is built upon both Base and Canvas, two parent themes included in the Moodle core. If you want to modify this theme, we recommend that you first duplicate it, then rename it before making your changes. This will prevent your customized theme from being overwritten by future Moodle upgrades, and you''ll still have the original files if you make a mess. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p><h2>Credits</h2><p>This theme was coded and is maintained by John Stabinger of NewSchool Learning. He can be contacted by email at contact@newschoollearning.com. </p><h2>License</h2><p>This, and all other themes included in the Moodle core, are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>. Some icons used in this theme are from the Splashy Icon set and are freely available at http://splashyfish.com/icons/. </p></div></div></div>', 1317330463),
+(116, 'a67eccd10b31be3b451f057603e16b1b', '<div class="text_to_html"><div class="clearfix"><div class="theme_screenshot"><h2>Boxxie</h2><img src="boxxie/pix/screenshot.jpg" alt="screenshot.jpg" /><h3>Theme Discussion Forum:</h3><p><a href="http://moodle.org/mod/forum/view.php?id=46">http://moodle.org/mod/forum/view.php?id=46</a></p><h3>Theme Credits</h3><p><a href="http://docs.moodle.org/en/Theme_credits">http://docs.moodle.org/en/Theme_credits</a></p><h3>Theme Documentation:</h3><p><a href="http://docs.moodle.org/en/Themes">http://docs.moodle.org/en/Themes</a></p><h3>Report a bug:</h3><p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p></div><div class="theme_description"><h2>About</h2><p>Boxxie is a fluid-width, three-column theme for Moodle 2.0.</p><h2>Tweaks</h2><p>This theme is built upon both Base and Canvas, two parent themes included in the Moodle core. If you want to modify this theme, we recommend that you first duplicate it then rename it before making your changes. This will prevent your customized theme from being overwritten by future Moodle upgrades, and you''ll still have the original files if you make a mess. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p><h2>Credits</h2><p>This theme was coded and is maintained by Patrick Malley. He can be contacted by email at contact@newschoollearning.com. </p><h3>License</h3><p>This, and all other themes included in the Moodle core, are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.</p></div></div></div>', 1317330514),
+(117, '4072232ae161c4a7df3e8eb36be8b305', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330635),
+(118, '7f31490f75b039ab6da2a1bda263e237', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330635),
+(119, '2402956ff6ed40c13a8d8dc1d5c76b94', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317330635),
+(120, '7896621777293376979252a30c62122f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317330635),
+(121, '950a1079fc15a6e04a067e767261d79b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334694),
+(122, '73f95a6e78124d1c288f06133d909888', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317334694),
+(123, 'd4c38b96d242ee0a167340fb6b1420c1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317334695),
+(124, '825bbf4a8897f60e38fb65f498618f66', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317334695),
+(125, '8e1544fde6ea77a3f41d2966fc2d432c', '<p>Hola</p>', 1317335181),
+(126, 'af8eff36b9230c7b6fa5fc15dd368b29', '<div class="no-overflow">Cartelera</div>', 1317334695),
+(127, 'cf3bd191758ceb96e7dbd366b36b95f5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333398),
+(128, 'a9b6da6c5e5bb6d899677614f67e3381', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317333398),
+(129, '6133a4ff96f14360be28c246ce9bcc0c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317333399),
+(130, 'da794beba1ffc626ddb54f2b5c237180', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317333399),
+(131, '053823953400172ced4ad219ba81a682', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334692),
+(132, 'e23f21d8ebbb668ec9cfd9f9447711b5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317334692),
+(133, '47858c8f8b05b79f401673d3c89ab975', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317334692),
+(134, '6d710633304ffb47dca9e9d06b6142a9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317334692),
+(135, 'a6a16af75ba435e2092732fd89334633', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334518),
+(136, '4337335dea34aa355d23718dd0999cd6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317334518),
+(137, 'a62e163da1b0b48a5a04bca0be387acd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317334518),
+(138, 'a64f5f5461c4f9af5929ec1d4f4d986a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317334518),
+(139, '661a403c78552a1b0e7ec3dba052ffb2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334633),
+(140, '37264307d7f333f897d72d5ef57ed479', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317334633),
+(141, '6fab7e2702a4ead5cd97348e420544d5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317334634),
+(142, '3387e72aa930def576af8969f7161cd1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317334634),
+(143, 'cd16fd7259edb638a20d47ec183beb35', '<div class="no-overflow"><p>Algoritmos y Programacion II</p></div>', 1317334634),
+(144, 'c939646ad08660364f0904ed23cda2e4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317335180),
+(145, '116df8caaee3764c94f84ecce7f62b30', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334916);
 
 -- --------------------------------------------------------
 
@@ -1229,7 +1344,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config` (
   `value` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_conf_nam_uix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle configuration variables' AUTO_INCREMENT=394 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle configuration variables' AUTO_INCREMENT=395 ;
 
 --
 -- Dumping data for table `mdl_config`
@@ -1240,7 +1355,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (3, 'auth', 'email'),
 (4, 'auth_pop3mailbox', 'INBOX'),
 (5, 'enrol_plugins_enabled', 'manual,guest,self,cohort'),
-(6, 'theme', 'standard'),
+(6, 'theme', 'boxxie'),
 (7, 'filter_multilang_converted', '1'),
 (8, 'siteidentifier', 'rnSXXzYmFqSh99D8StpWQ2RlVY8pXxtElocalhost'),
 (9, 'backup_version', '2008111700'),
@@ -1624,7 +1739,8 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 (390, 'defaultfrontpageroleid', '0'),
 (391, 'supportname', 'admin Usuario'),
 (392, 'supportemail', 'tallerdeprogramacioniifiuba2011@googlegroups.com'),
-(393, 'registerauth', 'email');
+(393, 'registerauth', 'email'),
+(394, 'themelegacy', 'arialist');
 
 -- --------------------------------------------------------
 
@@ -2982,7 +3098,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=31 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `mdl_context`
@@ -2993,7 +3109,6 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (2, 50, 1, '/1/2', 2),
 (4, 80, 1, '/1/2/4', 3),
 (5, 80, 2, '/1/2/5', 3),
-(6, 80, 3, '/1/2/6', 3),
 (7, 80, 4, '/1/7', 2),
 (8, 80, 5, '/1/8', 2),
 (9, 80, 6, '/1/9', 2),
@@ -3002,7 +3117,6 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (12, 80, 9, '/1/12', 2),
 (13, 30, 2, '/1/13', 2),
 (15, 80, 10, '/1/2/15', 3),
-(16, 30, 9, '/1/16', 2),
 (17, 70, 1, '/1/2/17', 3),
 (22, 40, 6, '/1/22', 2),
 (23, 40, 7, '/1/23', 2),
@@ -3012,7 +3126,15 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (27, 80, 13, '/1/23/24/27', 4),
 (28, 80, 14, '/1/23/24/28', 4),
 (29, 70, 2, '/1/23/24/29', 4),
-(30, 30, 10, '/1/30', 2);
+(31, 30, 11, '/1/31', 2),
+(32, 30, 12, '/1/32', 2),
+(33, 80, 15, '/1/2/33', 3),
+(34, 80, 16, '/1/2/34', 3),
+(35, 80, 17, '/1/2/35', 3),
+(36, 80, 18, '/1/2/36', 3),
+(37, 80, 19, '/1/2/37', 3),
+(38, 30, 14, '/1/38', 2),
+(39, 30, 13, '/1/39', 2);
 
 -- --------------------------------------------------------
 
@@ -3741,7 +3863,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
   `timecreated` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_evenqueu_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing queued events. It stores only one ' AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing queued events. It stores only one ' AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `mdl_events_queue`
@@ -3759,7 +3881,11 @@ INSERT INTO `mdl_events_queue` (`id`, `eventdata`, `stackdump`, `userid`, `timec
 (9, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiNiI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIwIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW40IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaTRAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNDUzNCI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiUWdPb3BOYkpIdWlCR2I2IjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjcxNDUzNCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1316715400),
 (10, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiNiI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIwIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW40IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaTRAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNDUzNCI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiUWdPb3BOYkpIdWlCR2I2IjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjcxNDUzNCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1316715400),
 (11, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiNyI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIwIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW41IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaTZAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNDg0NCI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiUGxreW9aY0FvSmpzR1NNIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjcxNDg0NCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1316715408),
-(12, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiNyI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIwIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW41IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaTZAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNDg0NCI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiUGxreW9aY0FvSmpzR1NNIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjcxNDg0NCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1316715408);
+(12, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiNyI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIwIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW41IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaTZAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNDg0NCI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiUGxreW9aY0FvSmpzR1NNIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjcxNDg0NCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1316715408),
+(13, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiOSI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW43IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaThAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNTU5NSI7czoxMDoibGFzdGFjY2VzcyI7czoxMDoiMTMxNjcxNTYxNiI7czo5OiJsYXN0bG9naW4iO3M6MToiMCI7czoxMjoiY3VycmVudGxvZ2luIjtzOjEwOiIxMzE2NzE1NjE2IjtzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjE1OiJ3cXNoNkpkaXZOa3ZEN0EiO3M6NzoicGljdHVyZSI7czoxOiIwIjtzOjM6InVybCI7czowOiIiO3M6MTE6ImRlc2NyaXB0aW9uIjtOO3M6MTc6ImRlc2NyaXB0aW9uZm9ybWF0IjtzOjE6IjAiO3M6MTA6Im1haWxmb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGRpZ2VzdCI7czoxOiIwIjtzOjExOiJtYWlsZGlzcGxheSI7czoxOiIyIjtzOjEwOiJodG1sZWRpdG9yIjtzOjE6IjEiO3M6NDoiYWpheCI7czoxOiIxIjtzOjEzOiJhdXRvc3Vic2NyaWJlIjtzOjE6IjEiO3M6MTE6InRyYWNrZm9ydW1zIjtzOjE6IjAiO3M6MTE6InRpbWVjcmVhdGVkIjtzOjEwOiIxMzE2NzE1MzM5IjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MToiMCI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO047czoxMjoic2NyZWVucmVhZGVyIjtzOjE6IjAiO30=', '', 2, 1317244268),
+(14, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MToiOSI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo3OiJkYW1pYW43IjtzOjg6InBhc3N3b3JkIjtzOjMyOiI0NTM0ZTM5MGY4OTViNGZhOWM3Zjk5YjJiNmVmNDRiNSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo5OiJDYWxhYnJlc2kiO3M6NToiZW1haWwiO3M6MjY6ImRhbWlhbmNhbGFicmVzaThAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjcxNTU5NSI7czoxMDoibGFzdGFjY2VzcyI7czoxMDoiMTMxNjcxNTYxNiI7czo5OiJsYXN0bG9naW4iO3M6MToiMCI7czoxMjoiY3VycmVudGxvZ2luIjtzOjEwOiIxMzE2NzE1NjE2IjtzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjE1OiJ3cXNoNkpkaXZOa3ZEN0EiO3M6NzoicGljdHVyZSI7czoxOiIwIjtzOjM6InVybCI7czowOiIiO3M6MTE6ImRlc2NyaXB0aW9uIjtOO3M6MTc6ImRlc2NyaXB0aW9uZm9ybWF0IjtzOjE6IjAiO3M6MTA6Im1haWxmb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGRpZ2VzdCI7czoxOiIwIjtzOjExOiJtYWlsZGlzcGxheSI7czoxOiIyIjtzOjEwOiJodG1sZWRpdG9yIjtzOjE6IjEiO3M6NDoiYWpheCI7czoxOiIxIjtzOjEzOiJhdXRvc3Vic2NyaWJlIjtzOjE6IjEiO3M6MTE6InRyYWNrZm9ydW1zIjtzOjE6IjAiO3M6MTE6InRpbWVjcmVhdGVkIjtzOjEwOiIxMzE2NzE1MzM5IjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MToiMCI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO047czoxMjoic2NyZWVucmVhZGVyIjtzOjE6IjAiO30=', '', 2, 1317244268),
+(15, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTAiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6OToiYXByZW5kaXoxIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo4OiJBcHJlbmRpeiI7czo1OiJlbWFpbCI7czoyNzoiZGFtaWFuY2FsYWJyZXNpMTBAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjgxMzExNiI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiNUxGUGJRWG5panFOR3paIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjgxMzA0MCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1317244276),
+(16, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTAiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6OToiYXByZW5kaXoxIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo4OiJBcHJlbmRpeiI7czo1OiJlbWFpbCI7czoyNzoiZGFtaWFuY2FsYWJyZXNpMTBAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjgxMzExNiI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiNUxGUGJRWG5panFOR3paIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjgxMzA0MCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1317244276);
 
 -- --------------------------------------------------------
 
@@ -3777,7 +3903,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
   PRIMARY KEY (`id`),
   KEY `mdl_evenqueuhand_que_ix` (`queuedeventid`),
   KEY `mdl_evenqueuhand_han_ix` (`handlerid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This is the list of queued handlers for processing. The even' AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This is the list of queued handlers for processing. The even' AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `mdl_events_queue_handlers`
@@ -3795,7 +3921,11 @@ INSERT INTO `mdl_events_queue_handlers` (`id`, `queuedeventid`, `handlerid`, `st
 (9, 9, 16, 0, '', 1316715400),
 (10, 10, 17, 0, '', 1316715401),
 (11, 11, 16, 0, '', 1316715408),
-(12, 12, 17, 0, '', 1316715408);
+(12, 12, 17, 0, '', 1316715408),
+(13, 13, 16, 0, '', 1317244268),
+(14, 14, 17, 0, '', 1317244268),
+(15, 15, 16, 0, '', 1317244276),
+(16, 16, 17, 0, '', 1317244276);
 
 -- --------------------------------------------------------
 
@@ -4244,8 +4374,8 @@ CREATE TABLE IF NOT EXISTS `mdl_forum` (
 --
 
 INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`, `assessed`, `assesstimestart`, `assesstimefinish`, `scale`, `maxbytes`, `maxattachments`, `forcesubscribe`, `trackingtype`, `rsstype`, `rssarticles`, `timemodified`, `warnafter`, `blockafter`, `blockperiod`, `completiondiscussions`, `completionreplies`, `completionposts`) VALUES
-(1, 1, 'news', 'Cartelera', 'Novedades y anuncios', 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1316715824, 0, 0, 0, 0, 0, 0),
-(2, 2, 'news', 'Novedades', 'Novedades y anuncios', 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1316810832, 0, 0, 0, 0, 0, 0);
+(1, 1, 'news', 'Cartelera', 'Cartelera', 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1316715824, 0, 0, 0, 0, 0, 0),
+(2, 2, 'news', 'Novedades', 'Novedades y anuncios', 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1316810832, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4269,15 +4399,15 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
   PRIMARY KEY (`id`),
   KEY `mdl_forudisc_use_ix` (`userid`),
   KEY `mdl_forudisc_for_ix` (`forum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `mdl_forum_discussions`
 --
 
 INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost`, `userid`, `groupid`, `assessed`, `timemodified`, `usermodified`, `timestart`, `timeend`) VALUES
-(1, 1, 1, 'Prueba', 1, 2, -1, 1, 1316715845, 2, 0, 0),
-(2, 2, 2, 'Tema 1', 2, 2, -1, 1, 1316813778, 2, 0, 0);
+(2, 2, 2, 'Tema 1', 2, 2, -1, 1, 1316813778, 2, 0, 0),
+(3, 1, 1, 'Cartelera mensaje 1', 3, 12, -1, 1, 1317332152, 12, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4306,15 +4436,15 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
   KEY `mdl_forupost_mai_ix` (`mailed`),
   KEY `mdl_forupost_dis_ix` (`discussion`),
   KEY `mdl_forupost_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `mdl_forum_posts`
 --
 
 INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`, `modified`, `mailed`, `subject`, `message`, `messageformat`, `messagetrust`, `attachment`, `totalscore`, `mailnow`) VALUES
-(1, 1, 0, 2, 1316715845, 1316715845, 0, 'Prueba', '<p>Hola, mensaje</p>', 1, 0, '', 0, 0),
-(2, 2, 0, 2, 1316813778, 1316813778, 0, 'Tema 1', '<p>sdfsadgf adsf dsfg dfs sdfd</p>', 1, 0, '', 0, 0);
+(2, 2, 0, 2, 1316813778, 1316813778, 0, 'Tema 1', '<p>sdfsadgf adsf dsfg dfs sdfd</p>', 1, 0, '', 0, 0),
+(3, 3, 0, 12, 1317332152, 1317332152, 0, 'Cartelera mensaje 1', '<p>Hola</p>', 1, 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4367,14 +4497,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
   PRIMARY KEY (`id`),
   KEY `mdl_forusubs_use_ix` (`userid`),
   KEY `mdl_forusubs_for_ix` (`forum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of who is subscribed to what forum' AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `mdl_forum_subscriptions`
---
-
-INSERT INTO `mdl_forum_subscriptions` (`id`, `userid`, `forum`) VALUES
-(1, 2, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of who is subscribed to what forum' AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -4558,7 +4681,14 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_gradcate_cou_ix` (`courseid`),
   KEY `mdl_gradcate_par_ix` (`parent`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_grade_categories`
+--
+
+INSERT INTO `mdl_grade_categories` (`id`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`, `timecreated`, `timemodified`, `hidden`) VALUES
+(1, 1, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 1317331334, 1317331335, 0);
 
 -- --------------------------------------------------------
 
@@ -4590,7 +4720,15 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
   KEY `mdl_gradcatehist_cou_ix` (`courseid`),
   KEY `mdl_gradcatehist_par_ix` (`parent`),
   KEY `mdl_gradcatehist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_categories' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_categories' AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `mdl_grade_categories_history`
+--
+
+INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`) VALUES
+(1, 1, 1, 'system', 1317331334, 2, 1, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(2, 2, 1, 'system', 1317331335, 2, 1, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4751,7 +4889,14 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
   KEY `mdl_graditem_cat_ix` (`categoryid`),
   KEY `mdl_graditem_sca_ix` (`scaleid`),
   KEY `mdl_graditem_out_ix` (`outcomeid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_grade_items`
+--
+
+INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `display`, `decimals`, `hidden`, `locked`, `locktime`, `needsupdate`, `timecreated`, `timemodified`) VALUES
+(1, 1, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, NULL, 0, 0, 0, 1, 1317331334, 1317331334);
 
 -- --------------------------------------------------------
 
@@ -4798,7 +4943,14 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
   KEY `mdl_graditemhist_sca_ix` (`scaleid`),
   KEY `mdl_graditemhist_out_ix` (`outcomeid`),
   KEY `mdl_graditemhist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_items' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_items' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_grade_items_history`
+--
+
+INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `hidden`, `locked`, `locktime`, `needsupdate`) VALUES
+(1, 1, 1, 'system', 1317331334, 2, 1, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -5255,7 +5407,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=141 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=578 ;
 
 --
 -- Dumping data for table `mdl_log`
@@ -5401,7 +5553,444 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (137, 1316813750, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
 (138, 1316813778, 2, '127.0.0.1', 2, 'forum', 2, 'add discussion', 'discuss.php?d=2', '2'),
 (139, 1316813780, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
-(140, 1316813786, 2, '127.0.0.1', 2, 'forum', 2, 'view forum', 'view.php?id=2', '2');
+(140, 1316813786, 2, '127.0.0.1', 2, 'forum', 2, 'view forum', 'view.php?id=2', '2'),
+(141, 1317244247, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(142, 1317244250, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(143, 1317244286, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(144, 1317244308, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(145, 1317244316, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(146, 1317244317, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(147, 1317244574, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=8', 'Administrador'),
+(148, 1317244617, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(149, 1317244666, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(150, 1317244672, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(151, 1317244863, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=3', 'Mediador'),
+(152, 1317244905, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=5', 'Aprendiz'),
+(153, 1317244923, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=6', 'Visitante'),
+(154, 1317244939, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=7', 'Miembro'),
+(155, 1317244969, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=5', 'Aprendiz'),
+(156, 1317245011, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(157, 1317245154, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(158, 1317245155, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(159, 1317245293, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(160, 1317245445, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(161, 1317245476, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(162, 1317245559, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(163, 1317245692, 2, '127.0.0.1', 1, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=1&roleid=8', 'Administrador'),
+(164, 1317245709, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(165, 1317245727, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(166, 1317245728, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(167, 1317245827, 12, '127.0.0.1', 1, 'user', 0, 'view all', 'index.php?id=1', ''),
+(168, 1317245841, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(169, 1317245875, 12, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(170, 1317247691, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(171, 1317247693, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(172, 1317247695, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=12&course=1', '12'),
+(173, 1317247696, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(174, 1317247868, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(175, 1317247878, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(176, 1317247879, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(177, 1317247983, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(178, 1317247988, 2, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(179, 1317248167, 2, '127.0.0.1', 1, 'role', 0, 'edit allow assign', 'admin/roles/allow.php?mode=assign', ''),
+(180, 1317248177, 2, '127.0.0.1', 1, 'role', 0, 'edit allow assign', 'admin/roles/allow.php?mode=assign', ''),
+(181, 1317248198, 2, '127.0.0.1', 1, 'role', 0, 'edit allow assign', 'admin/roles/allow.php?mode=assign', ''),
+(182, 1317248227, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(183, 1317325143, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(184, 1317325145, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(185, 1317325153, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(186, 1317325174, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'administradorpopper1'),
+(187, 1317325182, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(188, 1317325183, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(189, 1317325259, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(190, 1317325264, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(191, 1317325265, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(192, 1317325295, 2, '127.0.0.1', 1, 'user', 0, 'change password', 'view.php?id=2&course=1', '2'),
+(193, 1317325492, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(194, 1317325500, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(195, 1317325501, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(196, 1317325523, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(197, 1317325533, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(198, 1317325534, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(199, 1317325860, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(200, 1317325873, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(201, 1317325874, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(202, 1317325965, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(203, 1317326176, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(204, 1317326177, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(205, 1317326279, 2, '127.0.0.1', 1, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=1&roleid=3', 'Mediador'),
+(206, 1317326290, 2, '127.0.0.1', 1, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=1&roleid=5', 'Aprendiz'),
+(207, 1317326307, 2, '127.0.0.1', 1, 'role', 0, 'assign', 'admin/roles/assign.php?contextid=1&roleid=7', 'Miembro'),
+(208, 1317326322, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(209, 1317326327, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(210, 1317326328, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(211, 1317326336, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(212, 1317326337, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(213, 1317326337, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(214, 1317326393, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(215, 1317326394, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(216, 1317326400, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(217, 1317326442, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(218, 1317326558, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(219, 1317326559, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(220, 1317326569, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(221, 1317326606, 2, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(222, 1317326618, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(223, 1317326638, 2, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(224, 1317326905, 2, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(225, 1317326924, 2, '127.0.0.1', 2, 'user', 0, 'view all', 'index.php?id=2', ''),
+(226, 1317327015, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(227, 1317327125, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(228, 1317327126, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(229, 1317327134, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(230, 1317327155, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(231, 1317327156, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(232, 1317327250, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(233, 1317327296, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(234, 1317327297, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(235, 1317327306, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(236, 1317327306, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(237, 1317327307, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(238, 1317327324, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(239, 1317327325, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(240, 1317327335, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(241, 1317327338, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(242, 1317327339, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(243, 1317327346, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(244, 1317327400, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(245, 1317327401, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(246, 1317327406, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(247, 1317327413, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(248, 1317327419, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(249, 1317327420, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(250, 1317327441, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(251, 1317327454, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(252, 1317327455, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(253, 1317327495, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(254, 1317327496, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(255, 1317327501, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(256, 1317327506, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(257, 1317327507, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(258, 1317327512, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(259, 1317327518, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(260, 1317327533, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(261, 1317327621, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(262, 1317327621, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(263, 1317327642, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(264, 1317327668, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(265, 1317327669, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(266, 1317327675, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(267, 1317327689, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(268, 1317327690, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(269, 1317327742, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(270, 1317327743, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(271, 1317327755, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(272, 1317327771, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(273, 1317327775, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(274, 1317327797, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(275, 1317327797, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(276, 1317327804, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(277, 1317327819, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(278, 1317327820, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(279, 1317327829, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(280, 1317327836, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(281, 1317327836, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(282, 1317327942, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(283, 1317327943, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(284, 1317327951, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(285, 1317327999, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(286, 1317328000, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(287, 1317328127, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(288, 1317328131, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(289, 1317328132, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(290, 1317328139, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(291, 1317328142, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(292, 1317328142, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(293, 1317328148, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(294, 1317328151, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(295, 1317328151, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(296, 1317328155, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(297, 1317328158, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(298, 1317328159, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(299, 1317328164, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(300, 1317328168, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(301, 1317328168, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(302, 1317328184, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(303, 1317328185, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(304, 1317328193, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(305, 1317328243, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(306, 1317328243, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(307, 1317328253, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(308, 1317328263, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(309, 1317328263, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(310, 1317328267, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(311, 1317328272, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(312, 1317328273, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(313, 1317328401, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(314, 1317328406, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(315, 1317328413, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(316, 1317328414, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(317, 1317328452, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(318, 1317328452, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(319, 1317328453, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(320, 1317328490, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(321, 1317328558, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(322, 1317328565, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(323, 1317328573, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(324, 1317328574, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(325, 1317328597, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(326, 1317328598, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(327, 1317328598, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(328, 1317328666, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(329, 1317328679, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(330, 1317328680, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(331, 1317328689, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(332, 1317328689, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(333, 1317328690, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(334, 1317328792, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(335, 1317328803, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(336, 1317328804, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(337, 1317328836, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(338, 1317328850, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(339, 1317328851, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(340, 1317328861, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(341, 1317328862, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(342, 1317328862, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(343, 1317328925, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(344, 1317328930, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(345, 1317328947, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(346, 1317328948, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(347, 1317328970, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(348, 1317328978, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(349, 1317328979, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(350, 1317328986, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(351, 1317328986, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(352, 1317328987, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(353, 1317329151, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(354, 1317329162, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(355, 1317329163, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(356, 1317329177, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(357, 1317329187, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(358, 1317329188, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(359, 1317329276, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(360, 1317329277, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(361, 1317329277, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(362, 1317329305, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(363, 1317329319, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(364, 1317329320, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(365, 1317329353, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(366, 1317329375, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'mediadorpopper1'),
+(367, 1317329381, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'mediadorpopper1'),
+(368, 1317329401, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'mediadorpopper1'),
+(369, 1317329421, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(370, 1317329422, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(371, 1317329425, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(372, 1317329437, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(373, 1317329438, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(374, 1317329502, 12, '127.0.0.1', 1, 'user', 0, 'update', 'view.php?id=14&course=1', ''),
+(375, 1317329505, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(376, 1317329522, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(377, 1317329522, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(378, 1317329528, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(379, 1317329561, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(380, 1317329571, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'admin}'),
+(381, 1317329578, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(382, 1317329579, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(383, 1317329735, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(384, 1317329737, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(385, 1317329743, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(386, 1317329743, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(387, 1317329744, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(388, 1317329850, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(389, 1317329921, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(390, 1317329925, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(391, 1317329933, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(392, 1317329934, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(393, 1317329942, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(394, 1317329958, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(395, 1317329959, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(396, 1317329999, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(397, 1317330000, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(398, 1317330000, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(399, 1317330083, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(400, 1317330145, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(401, 1317330152, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(402, 1317330167, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(403, 1317330168, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(404, 1317330176, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(405, 1317330197, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(406, 1317330198, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(407, 1317330224, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(408, 1317330240, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(409, 1317330241, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(410, 1317330251, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(411, 1317330263, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(412, 1317330264, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(413, 1317330272, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(414, 1317330294, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(415, 1317330295, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(416, 1317330302, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(417, 1317330303, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(418, 1317330303, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(419, 1317330326, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(420, 1317330527, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(421, 1317330536, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(422, 1317330537, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(423, 1317330566, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(424, 1317330577, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(425, 1317330578, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(426, 1317330595, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(427, 1317330595, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(428, 1317330595, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(429, 1317330612, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(430, 1317330626, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(431, 1317330626, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(432, 1317330649, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(433, 1317330961, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(434, 1317330962, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(435, 1317330995, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(436, 1317330995, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(437, 1317330996, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(438, 1317331025, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(439, 1317331026, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(440, 1317331026, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(441, 1317331029, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(442, 1317331039, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(443, 1317331040, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(444, 1317331044, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(445, 1317331053, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(446, 1317331053, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(447, 1317331058, 13, '127.0.0.1', 1, 'forum', 1, 'subscribe', 'view.php?f=1', '1'),
+(448, 1317331060, 13, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(449, 1317331072, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(450, 1317331079, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(451, 1317331080, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(452, 1317331082, 13, '127.0.0.1', 1, 'forum', 1, 'unsubscribe', 'view.php?f=1', '1'),
+(453, 1317331084, 13, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(454, 1317331085, 13, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(455, 1317331087, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(456, 1317331098, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'med'),
+(457, 1317331102, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'media'),
+(458, 1317331107, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(459, 1317331108, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(460, 1317331113, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(461, 1317331122, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(462, 1317331123, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(463, 1317331177, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(464, 1317331184, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(465, 1317331185, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(466, 1317331197, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(467, 1317331198, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(468, 1317331198, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(469, 1317331279, 2, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(470, 1317331324, 2, '127.0.0.1', 1, 'forum', 1, 'view subscribers', 'subscribers.php?id=1', '1'),
+(471, 1317331511, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(472, 1317331993, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(473, 1317331998, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(474, 1317332009, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(475, 1317332010, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(476, 1317332020, 11, '127.0.0.1', 1, 'forum', 1, 'subscribe', 'view.php?f=1', '1'),
+(477, 1317332022, 11, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(478, 1317332034, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(479, 1317332037, 11, '127.0.0.1', 1, 'forum', 1, 'unsubscribe', 'view.php?f=1', '1'),
+(480, 1317332039, 11, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(481, 1317332039, 11, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(482, 1317332044, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(483, 1317332047, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(484, 1317332063, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(485, 1317332069, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(486, 1317332081, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(487, 1317332096, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(488, 1317332097, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(489, 1317332100, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(490, 1317332110, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(491, 1317332111, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(492, 1317332123, 12, '127.0.0.1', 1, 'forum', 1, 'delete discussion', 'view.php?id=1', '1'),
+(493, 1317332124, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(494, 1317332153, 12, '127.0.0.1', 1, 'forum', 1, 'add discussion', 'discuss.php?d=3', '3'),
+(495, 1317332156, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(496, 1317332163, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(497, 1317332174, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(498, 1317332182, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(499, 1317332183, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(500, 1317332399, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(501, 1317332415, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(502, 1317332416, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(503, 1317332617, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(504, 1317332623, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(505, 1317332624, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(506, 1317332633, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(507, 1317332634, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(508, 1317332634, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(509, 1317332755, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(510, 1317332763, 2, '127.0.0.1', 1, 'forum', 1, 'unsubscribe', 'view.php?f=1', '1'),
+(511, 1317332765, 2, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(512, 1317332766, 2, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(513, 1317332769, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(514, 1317333067, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(515, 1317333077, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(516, 1317333088, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(517, 1317333089, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(518, 1317333107, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(519, 1317333124, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(520, 1317333125, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(521, 1317333131, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(522, 1317333329, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(523, 1317333396, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(524, 1317333399, 12, '127.0.0.1', 2, 'forum', 2, 'view forum', 'view.php?id=2', '2'),
+(525, 1317333404, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(526, 1317333407, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(527, 1317333626, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(528, 1317333631, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(529, 1317333666, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(530, 1317333717, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(531, 1317333747, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(532, 1317333798, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(533, 1317333817, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(534, 1317333828, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(535, 1317333829, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(536, 1317333832, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(537, 1317333835, 11, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(538, 1317333838, 11, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(539, 1317334539, 11, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '11'),
+(540, 1317334547, 11, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(541, 1317334568, 11, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(542, 1317334575, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(543, 1317334587, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(544, 1317334588, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(545, 1317334617, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(546, 1317334629, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(547, 1317334630, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(548, 1317334663, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(549, 1317334681, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(550, 1317334683, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(551, 1317334692, 12, '127.0.0.1', 2, 'course', 0, 'view', 'view.php?id=2', '2'),
+(552, 1317334695, 12, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(553, 1317334763, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(554, 1317334768, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(555, 1317334775, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(556, 1317334776, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(557, 1317334786, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(558, 1317334786, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(559, 1317334786, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(560, 1317334795, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(561, 1317334823, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(562, 1317334834, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(563, 1317334835, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(564, 1317334850, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(565, 1317334858, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(566, 1317334859, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(567, 1317334872, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(568, 1317334872, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(569, 1317334873, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(570, 1317334877, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(571, 1317334898, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(572, 1317334899, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(573, 1317334902, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(574, 1317334910, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(575, 1317334911, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(576, 1317334981, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(577, 1317335180, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
 
 -- --------------------------------------------------------
 
@@ -7295,7 +7884,7 @@ INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `
 (5, 'Aprendiz', 'student', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 6, 'student'),
 (6, 'Visitante', 'guest', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 7, 'guest'),
 (7, 'Miembro', 'user', '<p>Todos los usuarios identificados.</p>', 8, 'user'),
-(8, 'Adminstrador', 'admin', '', 3, 'manager');
+(8, 'Administrador', 'admin', '', 3, 'manager');
 
 -- --------------------------------------------------------
 
@@ -7311,14 +7900,19 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
   UNIQUE KEY `mdl_rolealloassi_rolall_uix` (`roleid`,`allowassign`),
   KEY `mdl_rolealloassi_rol_ix` (`roleid`),
   KEY `mdl_rolealloassi_all_ix` (`allowassign`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can assign what role' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can assign what role' AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `mdl_role_allow_assign`
 --
 
 INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
-(7, 3, 5);
+(6, 3, 5),
+(2, 8, 3),
+(3, 8, 5),
+(4, 8, 6),
+(5, 8, 7),
+(1, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -7396,14 +7990,17 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `mdl_role_assignments`
 --
 
 INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
-(1, 5, 24, 9, 1316813637, 2, '', 0, 0);
+(2, 8, 1, 12, 1317245692, 2, '', 0, 0),
+(3, 3, 1, 14, 1317326278, 2, '', 0, 0),
+(4, 5, 1, 13, 1317326290, 2, '', 0, 0),
+(5, 7, 1, 11, 1317326306, 2, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -7425,7 +8022,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
   KEY `mdl_rolecapa_con_ix` (`contextid`),
   KEY `mdl_rolecapa_mod_ix` (`modifierid`),
   KEY `mdl_rolecapa_cap_ix` (`capability`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1124 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1325 ;
 
 --
 -- Dumping data for table `mdl_role_capabilities`
@@ -8081,7 +8678,207 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 (1120, 1, 8, 'block/rss_client:manageownfeeds', 1, 1316811858, 2),
 (1121, 1, 8, 'moodle/block:edit', 1, 1316811858, 2),
 (1122, 1, 8, 'moodle/block:view', 1, 1316811858, 2),
-(1123, 1, 8, 'moodle/site:manageblocks', 1, 1316811858, 2);
+(1123, 1, 8, 'moodle/site:manageblocks', 1, 1316811858, 2),
+(1124, 1, 8, 'mod/feedback:complete', 1, 1317244566, 2),
+(1125, 1, 8, 'mod/feedback:createprivatetemplate', 1, 1317244566, 2),
+(1126, 1, 8, 'mod/feedback:createpublictemplate', 1, 1317244567, 2),
+(1127, 1, 8, 'mod/feedback:deletesubmissions', 1, 1317244567, 2),
+(1128, 1, 8, 'mod/feedback:deletetemplate', 1, 1317244567, 2),
+(1129, 1, 8, 'mod/feedback:edititems', 1, 1317244567, 2),
+(1130, 1, 8, 'mod/feedback:mapcourse', 1, 1317244567, 2),
+(1131, 1, 8, 'mod/feedback:receivemail', 1, 1317244567, 2),
+(1132, 1, 8, 'mod/feedback:view', 1, 1317244567, 2),
+(1133, 1, 8, 'mod/feedback:viewanalysepage', 1, 1317244567, 2),
+(1134, 1, 8, 'mod/feedback:viewreports', 1, 1317244567, 2),
+(1135, 1, 8, 'mod/folder:managefiles', 1, 1317244567, 2),
+(1136, 1, 8, 'mod/folder:view', 1, 1317244567, 2),
+(1137, 1, 8, 'mod/forum:addnews', 1, 1317244567, 2),
+(1138, 1, 8, 'mod/forum:createattachment', 1, 1317244567, 2),
+(1139, 1, 8, 'mod/forum:deleteanypost', 1, 1317244567, 2),
+(1140, 1, 8, 'mod/forum:deleteownpost', 1, 1317244567, 2),
+(1141, 1, 8, 'mod/forum:editanypost', 1, 1317244567, 2),
+(1142, 1, 8, 'mod/forum:exportdiscussion', 1, 1317244567, 2),
+(1143, 1, 8, 'mod/forum:exportownpost', 1, 1317244568, 2),
+(1144, 1, 8, 'mod/forum:exportpost', 1, 1317244568, 2),
+(1145, 1, 8, 'mod/forum:initialsubscriptions', 1, 1317244568, 2),
+(1146, 1, 8, 'mod/forum:managesubscriptions', 1, 1317244568, 2),
+(1147, 1, 8, 'mod/forum:movediscussions', 1, 1317244568, 2),
+(1148, 1, 8, 'mod/forum:postwithoutthrottling', 1, 1317244568, 2),
+(1149, 1, 8, 'mod/forum:rate', 1, 1317244568, 2),
+(1150, 1, 8, 'mod/forum:replynews', 1, 1317244568, 2),
+(1151, 1, 8, 'mod/forum:replypost', 1, 1317244568, 2),
+(1152, 1, 8, 'mod/forum:splitdiscussions', 1, 1317244568, 2),
+(1153, 1, 8, 'mod/forum:startdiscussion', 1, 1317244568, 2),
+(1154, 1, 8, 'mod/forum:viewallratings', 1, 1317244568, 2),
+(1155, 1, 8, 'mod/forum:viewanyrating', 1, 1317244568, 2),
+(1156, 1, 8, 'mod/forum:viewdiscussion', 1, 1317244568, 2),
+(1157, 1, 8, 'mod/forum:viewhiddentimedposts', 1, 1317244569, 2),
+(1158, 1, 8, 'mod/forum:viewqandawithoutposting', 1, 1317244569, 2),
+(1159, 1, 8, 'mod/forum:viewrating', 1, 1317244569, 2),
+(1160, 1, 8, 'mod/forum:viewsubscribers', 1, 1317244569, 2),
+(1161, 1, 8, 'mod/glossary:approve', 1, 1317244569, 2),
+(1162, 1, 8, 'mod/glossary:comment', 1, 1317244569, 2),
+(1163, 1, 8, 'mod/glossary:export', 1, 1317244569, 2),
+(1164, 1, 8, 'mod/glossary:exportentry', 1, 1317244569, 2),
+(1165, 1, 8, 'mod/glossary:exportownentry', 1, 1317244569, 2),
+(1166, 1, 8, 'mod/glossary:import', 1, 1317244569, 2),
+(1167, 1, 8, 'mod/glossary:managecategories', 1, 1317244569, 2),
+(1168, 1, 8, 'mod/glossary:managecomments', 1, 1317244569, 2),
+(1169, 1, 8, 'mod/glossary:manageentries', 1, 1317244569, 2),
+(1170, 1, 8, 'mod/glossary:rate', 1, 1317244569, 2),
+(1171, 1, 8, 'mod/glossary:viewallratings', 1, 1317244570, 2),
+(1172, 1, 8, 'mod/glossary:viewanyrating', 1, 1317244570, 2),
+(1173, 1, 8, 'mod/glossary:viewrating', 1, 1317244570, 2),
+(1174, 1, 8, 'mod/glossary:write', 1, 1317244570, 2),
+(1175, 1, 8, 'mod/imscp:view', 1, 1317244570, 2),
+(1176, 1, 8, 'mod/lesson:edit', 1, 1317244570, 2),
+(1177, 1, 8, 'mod/lesson:manage', 1, 1317244570, 2),
+(1178, 1, 8, 'mod/page:view', 1, 1317244570, 2),
+(1179, 1, 8, 'mod/quiz:attempt', 1, 1317244570, 2),
+(1180, 1, 8, 'mod/quiz:deleteattempts', 1, 1317244570, 2),
+(1181, 1, 8, 'mod/quiz:emailconfirmsubmission', 1, 1317244570, 2),
+(1182, 1, 8, 'mod/quiz:emailnotifysubmission', 1, 1317244570, 2),
+(1183, 1, 8, 'mod/quiz:grade', 1, 1317244570, 2),
+(1184, 1, 8, 'mod/quiz:ignoretimelimits', 1, 1317244570, 2),
+(1185, 1, 8, 'mod/quiz:manage', 1, 1317244570, 2),
+(1186, 1, 8, 'mod/quiz:manageoverrides', 1, 1317244570, 2),
+(1187, 1, 8, 'mod/quiz:preview', 1, 1317244570, 2),
+(1188, 1, 8, 'mod/quiz:regrade', 1, 1317244570, 2),
+(1189, 1, 8, 'mod/quiz:reviewmyattempts', 1, 1317244571, 2),
+(1190, 1, 8, 'mod/quiz:view', 1, 1317244571, 2),
+(1191, 1, 8, 'mod/quiz:viewreports', 1, 1317244571, 2),
+(1192, 1, 8, 'mod/resource:view', 1, 1317244571, 2),
+(1193, 1, 8, 'mod/scorm:deleteresponses', 1, 1317244571, 2),
+(1194, 1, 8, 'mod/scorm:savetrack', 1, 1317244571, 2),
+(1195, 1, 8, 'mod/scorm:skipview', 1, 1317244571, 2),
+(1196, 1, 8, 'mod/scorm:viewreport', 1, 1317244571, 2),
+(1197, 1, 8, 'mod/scorm:viewscores', 1, 1317244571, 2),
+(1198, 1, 8, 'mod/survey:download', 1, 1317244571, 2),
+(1199, 1, 8, 'mod/survey:participate', 1, 1317244572, 2),
+(1200, 1, 8, 'mod/survey:readresponses', 1, 1317244572, 2),
+(1201, 1, 8, 'mod/url:view', 1, 1317244572, 2),
+(1202, 1, 8, 'mod/wiki:createpage', 1, 1317244572, 2),
+(1203, 1, 8, 'mod/wiki:editcomment', 1, 1317244572, 2),
+(1204, 1, 8, 'mod/wiki:editpage', 1, 1317244572, 2),
+(1205, 1, 8, 'mod/wiki:managecomment', 1, 1317244572, 2),
+(1206, 1, 8, 'mod/wiki:managefiles', 1, 1317244572, 2),
+(1207, 1, 8, 'mod/wiki:managewiki', 1, 1317244572, 2),
+(1208, 1, 8, 'mod/wiki:overridelock', 1, 1317244572, 2),
+(1209, 1, 8, 'mod/wiki:viewcomment', 1, 1317244572, 2),
+(1210, 1, 8, 'mod/wiki:viewpage', 1, 1317244572, 2),
+(1211, 1, 8, 'mod/workshop:allocate', 1, 1317244572, 2),
+(1212, 1, 8, 'mod/workshop:editdimensions', 1, 1317244572, 2),
+(1213, 1, 8, 'mod/workshop:ignoredeadlines', 1, 1317244572, 2),
+(1214, 1, 8, 'mod/workshop:manageexamples', 1, 1317244572, 2),
+(1215, 1, 8, 'mod/workshop:overridegrades', 1, 1317244573, 2),
+(1216, 1, 8, 'mod/workshop:peerassess', 1, 1317244573, 2),
+(1217, 1, 8, 'mod/workshop:publishsubmissions', 1, 1317244573, 2),
+(1218, 1, 8, 'mod/workshop:submit', 1, 1317244573, 2),
+(1219, 1, 8, 'mod/workshop:switchphase', 1, 1317244573, 2),
+(1220, 1, 8, 'mod/workshop:view', 1, 1317244573, 2),
+(1221, 1, 8, 'mod/workshop:viewallassessments', 1, 1317244573, 2),
+(1222, 1, 8, 'mod/workshop:viewallsubmissions', 1, 1317244573, 2),
+(1223, 1, 8, 'mod/workshop:viewauthornames', 1, 1317244573, 2),
+(1224, 1, 8, 'mod/workshop:viewauthorpublished', 1, 1317244573, 2),
+(1225, 1, 8, 'mod/workshop:viewpublishedsubmissions', 1, 1317244574, 2),
+(1226, 1, 8, 'mod/workshop:viewreviewernames', 1, 1317244574, 2),
+(1227, 1, 8, 'moodle/backup:backupactivity', 1, 1317244574, 2),
+(1228, 1, 8, 'moodle/blog:associatemodule', 1, 1317244574, 2),
+(1229, 1, 8, 'quiz/grading:viewidnumber', 1, 1317244574, 2),
+(1230, 1, 8, 'quiz/grading:viewstudentnames', 1, 1317244574, 2),
+(1231, 15, 3, 'moodle/block:edit', -1, 1317248262, 2),
+(1232, 15, 7, 'moodle/block:view', -1, 1317248268, 2),
+(1233, 15, 6, 'moodle/block:view', -1, 1317248274, 2),
+(1234, 15, 5, 'moodle/block:view', -1, 1317248281, 2),
+(1235, 15, 3, 'moodle/block:view', -1, 1317328396, 2),
+(1236, 35, 3, 'moodle/block:edit', -1, 1317328475, 2),
+(1237, 35, 6, 'moodle/block:view', -1, 1317328512, 2),
+(1238, 35, 5, 'moodle/block:view', -1000, 1317330318, 2),
+(1239, 35, 3, 'moodle/block:view', -1000, 1317329765, 2),
+(1240, 35, 8, 'moodle/block:edit', -1, 1317328531, 2),
+(1241, 35, 8, 'moodle/block:view', -1000, 1317329300, 2),
+(1242, 36, 3, 'moodle/block:edit', -1, 1317328716, 2),
+(1243, 36, 8, 'moodle/block:edit', -1, 1317328722, 2),
+(1244, 36, 7, 'moodle/block:view', -1, 1317328743, 2),
+(1245, 36, 6, 'moodle/block:view', -1, 1317328748, 2),
+(1247, 36, 8, 'moodle/block:view', -1000, 1317328787, 2),
+(1248, 34, 3, 'moodle/block:edit', -1, 1317328882, 2),
+(1249, 34, 8, 'moodle/block:edit', -1, 1317328887, 2),
+(1250, 34, 7, 'moodle/block:view', -1, 1317328894, 2),
+(1251, 34, 5, 'moodle/block:view', -1, 1317328899, 2),
+(1252, 34, 3, 'moodle/block:view', -1, 1317328904, 2),
+(1253, 34, 8, 'moodle/block:view', -1, 1317328910, 2),
+(1254, 37, 8, 'moodle/block:edit', -1, 1317329008, 2),
+(1255, 37, 3, 'moodle/block:edit', -1, 1317329013, 2),
+(1256, 37, 7, 'moodle/block:view', -1, 1317329019, 2),
+(1257, 37, 6, 'moodle/block:view', -1, 1317329025, 2),
+(1258, 37, 5, 'moodle/block:view', -1, 1317329030, 2),
+(1259, 37, 8, 'moodle/block:view', -1, 1317329034, 2),
+(1260, 36, 3, 'moodle/block:view', -1, 1317329845, 2),
+(1261, 7, 3, 'moodle/block:edit', -1, 1317329879, 2),
+(1262, 7, 8, 'moodle/block:edit', -1, 1317329883, 2),
+(1263, 7, 7, 'moodle/block:view', -1, 1317329888, 2),
+(1264, 7, 6, 'moodle/block:view', -1, 1317329892, 2),
+(1265, 7, 5, 'moodle/block:view', -1, 1317329897, 2),
+(1266, 7, 3, 'moodle/block:view', -1, 1317329901, 2),
+(1267, 7, 8, 'moodle/block:view', -1, 1317329906, 2),
+(1268, 8, 7, 'moodle/block:view', -1, 1317330019, 2),
+(1269, 8, 3, 'moodle/block:edit', -1, 1317330024, 2),
+(1270, 8, 8, 'moodle/block:edit', -1, 1317330029, 2),
+(1271, 8, 6, 'moodle/block:view', -1, 1317330034, 2),
+(1272, 8, 5, 'moodle/block:view', -1, 1317330039, 2),
+(1273, 8, 3, 'moodle/block:view', -1, 1317330045, 2),
+(1274, 8, 8, 'moodle/block:view', -1, 1317330050, 2),
+(1275, 4, 3, 'moodle/block:edit', -1, 1317330101, 2),
+(1276, 4, 8, 'moodle/block:edit', -1, 1317330106, 2),
+(1277, 4, 7, 'moodle/block:view', -1, 1317330111, 2),
+(1278, 4, 6, 'moodle/block:view', -1, 1317330116, 2),
+(1279, 4, 5, 'moodle/block:view', -1, 1317330121, 2),
+(1280, 4, 3, 'moodle/block:view', -1, 1317330128, 2),
+(1281, 4, 8, 'moodle/block:view', -1, 1317330134, 2),
+(1282, 17, 3, 'mod/forum:addnews', -1, 1317331550, 2),
+(1283, 17, 5, 'mod/forum:createattachment', -1, 1317331576, 2),
+(1284, 17, 3, 'mod/forum:createattachment', -1, 1317331587, 2),
+(1285, 17, 3, 'mod/forum:deleteanypost', -1, 1317331594, 2),
+(1286, 17, 5, 'mod/forum:deleteownpost', -1, 1317331610, 2),
+(1287, 17, 3, 'mod/forum:deleteownpost', -1, 1317331618, 2),
+(1288, 17, 3, 'mod/forum:editanypost', -1, 1317331627, 2),
+(1289, 17, 3, 'mod/forum:exportdiscussion', -1, 1317331636, 2),
+(1290, 17, 5, 'mod/forum:exportownpost', -1, 1317331675, 2),
+(1291, 17, 3, 'mod/forum:exportownpost', -1, 1317331685, 2),
+(1292, 17, 8, 'mod/forum:exportdiscussion', -1, 1317331703, 2),
+(1293, 17, 8, 'mod/forum:exportownpost', -1, 1317331712, 2),
+(1294, 17, 3, 'mod/forum:exportpost', -1, 1317331721, 2),
+(1295, 17, 8, 'mod/forum:exportpost', -1, 1317331733, 2),
+(1296, 17, 5, 'mod/forum:initialsubscriptions', -1, 1317331740, 2),
+(1297, 17, 3, 'mod/forum:initialsubscriptions', -1, 1317331750, 2),
+(1298, 17, 8, 'mod/forum:initialsubscriptions', -1, 1317331757, 2),
+(1299, 17, 3, 'mod/forum:managesubscriptions', -1, 1317331765, 2),
+(1300, 17, 8, 'mod/forum:managesubscriptions', -1, 1317331773, 2),
+(1301, 17, 3, 'mod/forum:movediscussions', -1, 1317331781, 2),
+(1302, 17, 3, 'mod/forum:splitdiscussions', -1, 1317331795, 2),
+(1303, 17, 3, 'mod/forum:postwithoutthrottling', -1, 1317331806, 2),
+(1304, 17, 3, 'mod/forum:rate', -1, 1317331816, 2),
+(1305, 17, 3, 'mod/forum:replynews', -1, 1317331824, 2),
+(1306, 17, 5, 'mod/forum:replypost', -1, 1317331831, 2),
+(1307, 17, 3, 'mod/forum:replypost', -1, 1317331838, 2),
+(1308, 17, 5, 'mod/forum:startdiscussion', -1, 1317331845, 2),
+(1309, 17, 3, 'mod/forum:startdiscussion', -1, 1317331853, 2),
+(1310, 17, 3, 'mod/forum:viewallratings', -1, 1317331885, 2),
+(1311, 17, 3, 'mod/forum:viewanyrating', -1, 1317331892, 2),
+(1312, 17, 7, 'mod/forum:viewdiscussion', 1, 1317331916, 2),
+(1313, 17, 3, 'mod/forum:viewsubscribers', -1, 1317331926, 2),
+(1314, 17, 3, 'mod/forum:viewrating', -1, 1317331938, 2),
+(1315, 17, 5, 'mod/forum:viewrating', -1, 1317331944, 2),
+(1316, 17, 3, 'mod/forum:viewhiddentimedposts', -1, 1317331974, 2),
+(1317, 17, 3, 'mod/forum:viewqandawithoutposting', -1, 1317331986, 2),
+(1318, 17, 3, 'moodle/course:viewhiddenactivities', -1, 1317332700, 2),
+(1319, 17, 7, 'moodle/rating:rate', -1, 1317332706, 2),
+(1320, 17, 5, 'moodle/rating:rate', -1, 1317332710, 2),
+(1321, 17, 3, 'moodle/rating:rate', -1, 1317332715, 2),
+(1322, 17, 7, 'moodle/rating:view', -1, 1317332720, 2),
+(1323, 17, 5, 'moodle/rating:view', -1, 1317332725, 2),
+(1324, 17, 3, 'moodle/rating:view', -1, 1317332730, 2);
 
 -- --------------------------------------------------------
 
@@ -8096,23 +8893,43 @@ CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_rolecontleve_conrol_uix` (`contextlevel`,`roleid`),
   KEY `mdl_rolecontleve_rol_ix` (`roleid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=34 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=70 ;
 
 --
 -- Dumping data for table `mdl_role_context_levels`
 --
 
 INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
-(28, 8, 10),
-(29, 8, 30),
-(30, 8, 40),
-(14, 3, 50),
-(12, 5, 50),
-(31, 8, 50),
-(15, 3, 70),
-(13, 5, 70),
-(32, 8, 70),
-(33, 8, 80);
+(42, 3, 10),
+(64, 5, 10),
+(52, 6, 10),
+(58, 7, 10),
+(34, 8, 10),
+(43, 3, 30),
+(65, 5, 30),
+(53, 6, 30),
+(59, 7, 30),
+(35, 8, 30),
+(44, 3, 40),
+(66, 5, 40),
+(54, 6, 40),
+(60, 7, 40),
+(36, 8, 40),
+(40, 3, 50),
+(67, 5, 50),
+(55, 6, 50),
+(61, 7, 50),
+(37, 8, 50),
+(41, 3, 70),
+(68, 5, 70),
+(56, 6, 70),
+(62, 7, 70),
+(38, 8, 70),
+(45, 3, 80),
+(69, 5, 80),
+(57, 6, 80),
+(63, 7, 80),
+(39, 8, 80);
 
 -- --------------------------------------------------------
 
@@ -8167,7 +8984,14 @@ CREATE TABLE IF NOT EXISTS `mdl_scale` (
   `timemodified` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_scal_cou_ix` (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines grading scales' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines grading scales' AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `mdl_scale`
+--
+
+INSERT INTO `mdl_scale` (`id`, `courseid`, `userid`, `name`, `scale`, `description`, `descriptionformat`, `timemodified`) VALUES
+(1, 0, 0, 'Vías de conocimiento separadas y conectadas', 'Muy individualista,Término medio,Muy comunicativo', 'La escala está basada en la teoría de las vías de conocimiento separadas (aprendizaje individual)  y conectadas (aprendizaje colaborativo). Esta teoría describe dos maneras diferentes con las que podemos evaluar y aprender a partir de lo que vemos y oímos. <li><strong> Conocedores separados (individulaistas) </strong> se mantiene lo la más objetivso posible, sin incluir sentimientos y emociones. En una discusión con otras personas, les gusta defender sus propias ideas, usando la lógica para encontrar fisuras en las ideas del adversario. </li> <li> <strong> Conocedores conectados (colaborativos) </strong> son más sensibles a otras personas. Son expertos en empatía y tienden a escuchar y hacer preguntas hasta que sienten que pueden conectar y "entender las cosas desde otros punto de vista". Aprenden tratando de compartir experiencias lo que les permite encontrar el conocimiento en las demás personas.', 0, 1317331335);
 
 -- --------------------------------------------------------
 
@@ -8432,19 +9256,15 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=173 ;
 
 --
 -- Dumping data for table `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
-(26, 0, '23lv6vl84tackprvaaqv3b6ud4', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo1OntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6MjE6ImNhbGVuZGFyc2hvd2V2ZW50dHlwZSI7aToxNTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI7czo4OiJ3YW50c3VybCI7czozMToiaHR0cDovL2xvY2FsaG9zdC9hZG1pbi91c2VyLnBocCI7czo3OiJmcm9tdXJsIjtzOjE3OiJodHRwOi8vbG9jYWxob3N0LyI7fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Nzp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo5OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrMWhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazNoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjYiO2E6MjE6e3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMTY3MTYwMjA7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjc6InNlc3NrZXkiO3M6MTA6ImREVmZVTEpYa0MiO30=', 1316716019, 1316716664, '127.0.0.1', '127.0.0.1'),
-(28, 0, '5r9tf8j0gisga1v52qjhm49474', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czoxNjoiaHR0cDovL2xvY2FsaG9zdCI7czoxMjoiZmxhc2h2ZXJzaW9uIjtzOjg6IjEwLjMuMTgzIjtzOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjQ6e3M6MTc6ImNvdXJzZV9zZWN0aW9uc18xIjthOjM6e2k6MDtpOjEzMTY3MjYwNjI7aToxO3M6MToiMiI7aToyO3M6MjIxOiJhOjE6e2k6MDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMCI7czoyOiJpZCI7czoxOiIxIjtzOjY6ImNvdXJzZSI7czoxOiIxIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtzOjE6IjEiO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MTt9fSI7fXM6MTg6ImNvdXJzZV9hY3Rpdml0ZXNfMSI7YTozOntpOjA7aToxMzE2NzI2MDYyO2k6MTtzOjE6IjIiO2k6MjtzOjI5MToiYToxOntpOjE7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6MTk6Ik5vdmVkYWRlcyBkZWwgc2l0aW8iO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTEiO3M6NzoiZGlzcGxheSI7YjoxO319Ijt9czoxNjoidXNlcmJsb2dvcHRpb25zMiI7YTozOntpOjA7aToxMzE2NzI2MDYyO2k6MTtzOjE6IjIiO2k6MjtzOjY5MzoiYToyOntzOjQ6InZpZXciO2E6Mjp7czo2OiJzdHJpbmciO3M6MjI6IlZlciB0b2RhcyBtaXMgZW50cmFkYXMiO3M6NDoibGluayI7TzoxMDoibW9vZGxlX3VybCI6OTp7czo5OiIAKgBzY2hlbWUiO3M6NDoiaHR0cCI7czo3OiIAKgBob3N0IjtzOjk6ImxvY2FsaG9zdCI7czo3OiIAKgBwb3J0IjtzOjA6IiI7czo3OiIAKgB1c2VyIjtzOjA6IiI7czo3OiIAKgBwYXNzIjtzOjA6IiI7czo3OiIAKgBwYXRoIjtzOjE1OiIvYmxvZy9pbmRleC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6InVzZXJpZCI7czoxOiIyIjt9fX1zOjM6ImFkZCI7YToyOntzOjY6InN0cmluZyI7czoyNToiQWdyZWdhciB1bmEgbnVldmEgZW50cmFkYSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMTMiO2E6Mzp7aTowO2k6MTMxNjcyNjA2MjtpOjE7czoxOiIyIjtpOjI7czo0OiJiOjA7Ijt9fX19VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY3MjY3NDU7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY3MTU2MzYiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2NzI0NzQzO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6IkJDb3RiMVdmWHkiO3M6MTA6InByZWZlcmVuY2UiO2E6NDp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY3MjY3NDY7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToxMjp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6NzoiZWRpdGluZyI7aToxO3M6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjc7czoxOiI3Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjciO2E6NTE6e3M6MjI6InJlcG9zaXRvcnkvd2ViZGF2OnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6MjU6InJlcG9zaXRvcnkvd2lraW1lZGlhOnZpZXciO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS91c2VyOm1hbmFnZW93bmJsb2NrcyI7czoxOiIxIjtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVtb2R1bGUiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6Y3JlYXRlIjtzOjE6IjEiO3M6MzU6Im1vb2RsZS93ZWJzZXJ2aWNlOmNyZWF0ZW1vYmlsZXRva2VuIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9ibG9nOm1hbmFnZWV4dGVybmFsIjtzOjE6IjEiO3M6MjQ6InJlcG9zaXRvcnkvYWxmcmVzY286dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9ib3huZXQ6dmlldyI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6Mjc6InJlcG9zaXRvcnkvY291cnNlZmlsZXM6dmlldyI7czoxOiIxIjtzOjMyOiJtb29kbGUvY2FsZW5kYXI6bWFuYWdlb3duZW50cmllcyI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L2Ryb3Bib3g6dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZmlsZXN5c3RlbTp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyOToicmVwb3NpdG9yeS9mbGlja3JfcHVibGljOnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL2NvdXJzZTpyZXF1ZXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO3M6MToiMSI7czoyMjoibW9vZGxlL215Om1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2dvb2dsZWRvY3M6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7czoxOiIxIjtzOjIxOiJyZXBvc2l0b3J5L2xvY2FsOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvbWVybG90OnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcGljYXNhOnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YWxsIjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FueSI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoxODoicmVwb3NpdG9yeS9zMzp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9zaXRlOnNlbmRtZXNzYWdlIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoxMzoibW9kL3BhZ2U6dmlldyI7czoxOiIxIjtzOjE5OiJyZXBvc2l0b3J5L3VybDp2aWV3IjtzOjE6IjEiO3M6MTU6Im1vb2RsZS90YWc6ZWRpdCI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvc2l0b3J5L3VzZXI6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7fX1zOjY6ImxvYWRlZCI7YTowOnt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNjcyNDg1MDt9fQ==', 1316724743, 1316726748, '127.0.0.1', '127.0.0.1'),
-(30, 0, '5ahd9khh46r9mb55b5evfk0a04', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo4OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6NDoibGFuZyI7czo1OiJlc19hciI7czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7aTowO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjoxO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjE2OiJodHRwOi8vbG9jYWxob3N0IjtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e319VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY3MzI3NTM7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY3MjQ3NDMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2NzI4NTc4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6IjN5aFduRW1maUoiO3M6MTA6InByZWZlcmVuY2UiO2E6NDp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY3MzI3NTM7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToxODp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNyI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV84IjtzOjM6ImludCI7czoxMjoiYmxvY2s3aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrOGhpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfOSI7czozOiJpbnQiO3M6MTI6ImJsb2NrOWhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6NzoiZWRpdGluZyI7aToxO3M6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjc7czoxOiI3Ijt9fXM6NDoicmRlZiI7YToxOntzOjQ6Ii8xOjciO2E6NTE6e3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS90YWc6Y3JlYXRlIjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxOToicmVwb3NpdG9yeS91cmw6dmlldyI7czoxOiIxIjtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7fX1zOjY6ImxvYWRlZCI7YTowOnt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNjczMjU4Nzt9fQ==', 1316728578, 1316732754, '127.0.0.1', '127.0.0.1'),
-(34, 0, 'j0ddukpkehqpvv9frck1n1p3m1', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6ODoibmF2Y2FjaGUiO086ODoic3RkQ2xhc3MiOjE6e3M6MTA6Im5hdmlnYXRpb24iO2E6NDp7czoxNzoiY291cnNlX3NlY3Rpb25zXzEiO2E6Mzp7aTowO2k6MTMxNjgwMDE2MztpOjE7czoxOiIyIjtpOjI7czoyMjE6ImE6MTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiY291cnNlIjtzOjE6IjEiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO3M6MToiMSI7czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjoxO319Ijt9czoxODoiY291cnNlX2FjdGl2aXRlc18xIjthOjM6e2k6MDtpOjEzMTY4MDAxNjM7aToxO3M6MToiMiI7aToyO3M6MjkxOiJhOjE6e2k6MTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czoxOToiTm92ZWRhZGVzIGRlbCBzaXRpbyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MToiMSI7czo2OiJoaWRkZW4iO2I6MDtzOjc6Im1vZG5hbWUiO3M6NToiZm9ydW0iO3M6ODoibm9kZXR5cGUiO2k6MDtzOjM6InVybCI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE2OiJ1c2VyYmxvZ29wdGlvbnMyIjthOjM6e2k6MDtpOjEzMTY4MDAxNjM7aToxO3M6MToiMiI7aToyO3M6NjkzOiJhOjI6e3M6NDoidmlldyI7YToyOntzOjY6InN0cmluZyI7czoyMjoiVmVyIHRvZGFzIG1pcyBlbnRyYWRhcyI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTU6Ii9ibG9nL2luZGV4LnBocCI7czoxNjoiACoAc2xhc2hhcmd1bWVudCI7czowOiIiO3M6OToiACoAYW5jaG9yIjtOO3M6OToiACoAcGFyYW1zIjthOjE6e3M6NjoidXNlcmlkIjtzOjE6IjIiO319fXM6MzoiYWRkIjthOjI6e3M6Njoic3RyaW5nIjtzOjI1OiJBZ3JlZ2FyIHVuYSBudWV2YSBlbnRyYWRhIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNDoiL2Jsb2cvZWRpdC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6ImFjdGlvbiI7czozOiJhZGQiO319fX0iO31zOjE3OiJjb250ZXh0aGFzcmVwb3MxMyI7YTozOntpOjA7aToxMzE2ODAwMTYzO2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjE0OiJmcm9tZGlzY3Vzc2lvbiI7czoxNjoiaHR0cDovL2xvY2FsaG9zdCI7czoxMjoiZmxhc2h2ZXJzaW9uIjtzOjg6IjEwLjMuMTgzIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2MDp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MDA2ODc7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MDAxMTUiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODAwMTYyO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjA6e31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjY6ImFjY2VzcyI7YTo1OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo3O3M6MToiNyI7fX1zOjQ6InJkZWYiO2E6MTp7czo0OiIvMTo3IjthOjUxOntzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7czoxOiIxIjtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZ29vZ2xlZG9jczp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9wb3J0Zm9saW86ZXhwb3J0IjtzOjE6IjEiO3M6MjE6InJlcG9zaXRvcnkvbG9jYWw6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO319czo2OiJsb2FkZWQiO2E6MDp7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTY4MDAxNjI7fXM6Nzoic2Vzc2tleSI7czoxMDoiUVdBWVBPU0JxdSI7czoxMDoicHJlZmVyZW5jZSI7YTo0OntzOjI0OiJhdXRoX2ZvcmNlcGFzc3dvcmRjaGFuZ2UiO3M6MToiMCI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMSI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMxNjgwMDY5Nzt9czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjEwOntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMSI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfMyI7czozOiJpbnQiO3M6MTI6ImJsb2NrMWhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMGhpZGRlbiI7czo0OiJib29sIjtzOjEyOiJibG9jazVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6ImRpc3BsYXkiO2E6MTp7aToxO2k6MDt9fQ==', 1316800162, 1316800697, '127.0.0.1', '127.0.0.1'),
-(38, 0, 'q7hqisf7l8509fds57gjo3h8l0', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo2OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjM3OiJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS92aWV3LnBocD9pZD0yIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MTE4NTU7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MDk1MDMiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODEwMDc4O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjE6e2k6MjtpOjEzMTY4MTA3OTQ7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6Mzp7czozOiJkbmkiO3M6MDoiIjtzOjY6InBhZHJvbiI7czowOiIiO3M6MTM6InJvbHNvbGljaXRhZG8iO3M6NzoiTmluZ3VubyI7fXM6Nzoic2Vzc2tleSI7czoxMDoibnhhc0pyS1lNTiI7czoxMDoicHJlZmVyZW5jZSI7YTo1OntzOjI0OiJhdXRoX2ZvcmNlcGFzc3dvcmRjaGFuZ2UiO3M6MToiMCI7czoxODoiZW1haWxfYm91bmNlX2NvdW50IjtzOjE6IjEiO3M6MTY6ImVtYWlsX3NlbmRfY291bnQiO3M6MToiMSI7czoyMzoiZGVmaW5lcm9sZV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMxNjgxMTg1ODt9czo3OiJlZGl0aW5nIjtpOjE7czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjIwOntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV82IjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEyOiJibG9jazRoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xIjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2szaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMSI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMiI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMyI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xNCI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxMmhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEzaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTRoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NzoiZGlzcGxheSI7YToxOntpOjI7aTowO31zOjY6ImFjY2VzcyI7YTo1OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo3O3M6MToiNyI7fX1zOjQ6InJkZWYiO2E6MTp7czo0OiIvMTo3IjthOjUxOntzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L21lcmxvdDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTpzZW5kbWVzc2FnZSI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO319czo2OiJsb2FkZWQiO2E6MDp7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTY4MTE4NTg7fX0=', 1316810079, 1316811859, '127.0.0.1', '127.0.0.1'),
-(40, 0, 'e0a8r6grb9ebsv3kj7iht59f12', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo5OntzOjIxOiJjYWxlbmRhcnNob3dldmVudHR5cGUiO2k6MTU7czoxMDoibG9naW5jb3VudCI7aTowO3M6MjI6ImFkbWluX2NyaXRpY2FsX3dhcm5pbmciO2k6MDtzOjIxOiJsb2FkX25hdmlnYXRpb25fYWRtaW4iO2I6MTtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e31zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjU6e3M6MTc6ImNvdXJzZV9zZWN0aW9uc18yIjthOjM6e2k6MDtpOjEzMTY4MTM1NTU7aToxO3M6MToiMiI7aToyO3M6MjMxMjoiYToxMTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjIiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO047czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtzOjE6IjIiO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MTt9aToxO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIxIjtzOjI6ImlkIjtzOjE6IjMiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjI7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjIiO3M6MjoiaWQiO3M6MToiNCI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MztPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMyI7czoyOiJpZCI7czoxOiI1IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo0O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI0IjtzOjI6ImlkIjtzOjE6IjYiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjU7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjUiO3M6MjoiaWQiO3M6MToiNyI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NjtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNiI7czoyOiJpZCI7czoxOiI4IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo3O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI3IjtzOjI6ImlkIjtzOjE6IjkiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjg7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjgiO3M6MjoiaWQiO3M6MjoiMTAiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjk7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjkiO3M6MjoiaWQiO3M6MjoiMTEiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjEwO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxMCI7czoyOiJpZCI7czoyOiIxMiI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fX0iO31zOjE4OiJjb3Vyc2VfYWN0aXZpdGVzXzIiO2E6Mzp7aTowO2k6MTMxNjgxMzU1NTtpOjE7czoxOiIyIjtpOjI7czoyODA6ImE6MTp7aToyO086ODoic3RkQ2xhc3MiOjEwOntzOjc6InNlY3Rpb24iO3M6MToiMCI7czo0OiJuYW1lIjtzOjk6Ik5vdmVkYWRlcyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MToiMiI7czo2OiJoaWRkZW4iO2I6MDtzOjc6Im1vZG5hbWUiO3M6NToiZm9ydW0iO3M6ODoibm9kZXR5cGUiO2k6MDtzOjM6InVybCI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MiI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE2OiJ1c2VyYmxvZ29wdGlvbnMyIjthOjM6e2k6MDtpOjEzMTY4MTM1NTU7aToxO3M6MToiMiI7aToyO3M6NjkzOiJhOjI6e3M6NDoidmlldyI7YToyOntzOjY6InN0cmluZyI7czoyMjoiVmVyIHRvZGFzIG1pcyBlbnRyYWRhcyI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTU6Ii9ibG9nL2luZGV4LnBocCI7czoxNjoiACoAc2xhc2hhcmd1bWVudCI7czowOiIiO3M6OToiACoAYW5jaG9yIjtOO3M6OToiACoAcGFyYW1zIjthOjE6e3M6NjoidXNlcmlkIjtzOjE6IjIiO319fXM6MzoiYWRkIjthOjI6e3M6Njoic3RyaW5nIjtzOjI1OiJBZ3JlZ2FyIHVuYSBudWV2YSBlbnRyYWRhIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNDoiL2Jsb2cvZWRpdC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6ImFjdGlvbiI7czozOiJhZGQiO319fX0iO31zOjE3OiJjb250ZXh0aGFzcmVwb3MxMyI7YTozOntpOjA7aToxMzE2ODEzNTU1O2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO31zOjE3OiJjb250ZXh0aGFzcmVwb3MyNCI7YTozOntpOjA7aToxMzE2ODEzNTU1O2k6MTtzOjE6IjIiO2k6MjtzOjQ6ImI6MDsiO319fXM6NzoiZnJvbXVybCI7czozNToiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vcG9zdC5waHAiO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjQwOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD0yIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo2Mjp7czoyOiJpZCI7czoxOiIyIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJhZG1pbiI7czo4OiJwYXNzd29yZCI7czozMjoiZjEzMjQwZjk4N2ViNzNhZjk2OGU5ZTVjNWRmOWI0NjEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo1OiJhZG1pbiI7czo4OiJsYXN0bmFtZSI7czo3OiJVc3VhcmlvIjtzOjU6ImVtYWlsIjtzOjQ4OiJ0YWxsZXJkZXByb2dyYW1hY2lvbmlpZml1YmEyMDExQGdvb2dsZWdyb3Vwcy5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTY4MTM3MzI7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTY4MTAwNzgiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE2ODEzMDQ5O3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MDoiIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMSI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxOiIwIjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIxIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjE6e2k6MjtzOjEwOiIxMzE2ODEwNzk0Ijt9czoxOToiY3VycmVudGNvdXJzZWFjY2VzcyI7YToxOntpOjI7aToxMzE2ODEzNzMyO31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjA6IiI7czo2OiJwYWRyb24iO3M6MDoiIjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik5pbmd1bm8iO31zOjc6InNlc3NrZXkiO3M6MTA6InA4MHBXY1ppQnUiO3M6MTA6InByZWZlcmVuY2UiO2E6NTp7czoyNDoiYXV0aF9mb3JjZXBhc3N3b3JkY2hhbmdlIjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6MjM6ImRlZmluZXJvbGVfc2hvd2FkdmFuY2VkIjtzOjE6IjEiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTY4MTM3ODY7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YToyNDp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjQ6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV8xMCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzMiO3M6MzoiaW50IjtzOjEyOiJibG9jazFoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s0aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTBoaWRkZW4iO3M6NDoiYm9vbCI7czoxMjoiYmxvY2s1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrM2hpZGRlbiI7czo0OiJib29sIjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNiI7czozOiJpbnQiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3Jfb3B0aW9uc2NvbGxhcHNlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czo0OiJib29sIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6NDoiYm9vbCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzExIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEyIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEzIjtzOjM6ImludCI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzE0IjtzOjM6ImludCI7czoxMzoiYmxvY2sxMWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazEyaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNGhpZGRlbiI7czo0OiJib29sIjt9czo3OiJkaXNwbGF5IjthOjE6e2k6MjtpOjA7fXM6NzoiZWRpdGluZyI7aTowO3M6MTM6InVzZXJzZWxlY3RvcnMiO2E6Mjp7czozMjoiNDM5N2E4Y2IwMmE1NTRhNzY2Njk0NmM1NzcwZjRhMWUiO2E6ODp7czo1OiJjbGFzcyI7czoyMToiZXhpc3Rpbmdfcm9sZV9ob2xkZXJzIjtzOjQ6Im5hbWUiO3M6MTI6InJlbW92ZXNlbGVjdCI7czo3OiJleGNsdWRlIjthOjA6e31zOjExOiJleHRyYWZpZWxkcyI7YToxOntpOjA7czo1OiJlbWFpbCI7fXM6MTE6Im11bHRpc2VsZWN0IjtiOjE7czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aTo4O3M6OToiY29udGV4dGlkIjtzOjI6IjMwIjt9czozMjoiMDU2MWQ2YzNkZjUxYzYwMTBlOWNkZWU5ZjA1YjYzN2YiO2E6ODp7czo1OiJjbGFzcyI7czozNjoicG90ZW50aWFsX2Fzc2lnbmVlc19jb3Vyc2VfYW5kX2Fib3ZlIjtzOjQ6Im5hbWUiO3M6OToiYWRkc2VsZWN0IjtzOjc6ImV4Y2x1ZGUiO2E6MDp7fXM6MTE6ImV4dHJhZmllbGRzIjthOjE6e2k6MDtzOjU6ImVtYWlsIjt9czoxMToibXVsdGlzZWxlY3QiO2I6MTtzOjQ6ImZpbGUiO3M6MTk6ImFkbWluL3JvbGVzL2xpYi5waHAiO3M6Njoicm9sZWlkIjtpOjg7czo5OiJjb250ZXh0aWQiO3M6MjoiMzAiO319czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NztzOjE6IjciO319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NyI7YTo1MTp7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MjA6InJlcG9zaXRvcnkvdXNlcjp2aWV3IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjIzOiJyZXBvc2l0b3J5L3lvdXR1YmU6dmlldyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOm1hbmFnZW93bmZpbGVzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6cG9zdCI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2ZpbGVzeXN0ZW06dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cmVxdWVzdCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2ZsaWNrcjp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjt9fXM6NjoibG9hZGVkIjthOjA6e31zOjI6ImRyIjtzOjE6IjciO3M6NDoidGltZSI7aToxMzE2ODEzNjUzO319', 1316813049, 1316813787, '127.0.0.1', '127.0.0.1');
+(156, 0, 'nkr1fulapb7tv5a0078sui5e72', 11, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo2OntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czo4OiJuYXZjYWNoZSI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMDoibmF2aWdhdGlvbiI7YTo2OntzOjE3OiJjb3Vyc2Vfc2VjdGlvbnNfMSI7YTozOntpOjA7aToxMzE3MzMzODI5O2k6MTtzOjI6IjExIjtpOjI7czoyMjE6ImE6MTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiY291cnNlIjtzOjE6IjEiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO3M6MToiMSI7czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjoxO319Ijt9czoxODoiY291cnNlX2FjdGl2aXRlc18xIjthOjM6e2k6MDtpOjEzMTczMzM4Mjk7aToxO3M6MjoiMTEiO2k6MjtzOjI5MToiYToxOntpOjE7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6MTk6Ik5vdmVkYWRlcyBkZWwgc2l0aW8iO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTEiO3M6NzoiZGlzcGxheSI7YjoxO319Ijt9czoxNzoidXNlcmJsb2dvcHRpb25zMTEiO2E6Mzp7aTowO2k6MTMxNzMzMzgyOTtpOjE7czoyOiIxMSI7aToyO3M6Njk0OiJhOjI6e3M6NDoidmlldyI7YToyOntzOjY6InN0cmluZyI7czoyMjoiVmVyIHRvZGFzIG1pcyBlbnRyYWRhcyI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTU6Ii9ibG9nL2luZGV4LnBocCI7czoxNjoiACoAc2xhc2hhcmd1bWVudCI7czowOiIiO3M6OToiACoAYW5jaG9yIjtOO3M6OToiACoAcGFyYW1zIjthOjE6e3M6NjoidXNlcmlkIjtzOjI6IjExIjt9fX1zOjM6ImFkZCI7YToyOntzOjY6InN0cmluZyI7czoyNToiQWdyZWdhciB1bmEgbnVldmEgZW50cmFkYSI7czo0OiJsaW5rIjtPOjEwOiJtb29kbGVfdXJsIjo5OntzOjk6IgAqAHNjaGVtZSI7czo0OiJodHRwIjtzOjc6IgAqAGhvc3QiO3M6OToibG9jYWxob3N0IjtzOjc6IgAqAHBvcnQiO3M6MDoiIjtzOjc6IgAqAHVzZXIiO3M6MDoiIjtzOjc6IgAqAHBhc3MiO3M6MDoiIjtzOjc6IgAqAHBhdGgiO3M6MTQ6Ii9ibG9nL2VkaXQucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJhY3Rpb24iO3M6MzoiYWRkIjt9fX19Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMzEiO2E6Mzp7aTowO2k6MTMxNzMzMzgyOTtpOjE7czoyOiIxMSI7aToyO3M6NDoiYjowOyI7fXM6MTc6ImNvdXJzZV9zZWN0aW9uc18yIjthOjM6e2k6MDtpOjEzMTczMzM4MzU7aToxO3M6MjoiMTEiO2k6MjtzOjIzMTI6ImE6MTE6e2k6MDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMCI7czoyOiJpZCI7czoxOiIyIjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtOO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7czoxOiIyIjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjE7fWk6MTtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMSI7czoyOiJpZCI7czoxOiIzIjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToyO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIyIjtzOjI6ImlkIjtzOjE6IjQiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjM7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjMiO3M6MjoiaWQiO3M6MToiNSI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNCI7czoyOiJpZCI7czoxOiI2IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo1O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI1IjtzOjI6ImlkIjtzOjE6IjciO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjY7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjYiO3M6MjoiaWQiO3M6MToiOCI7czo2OiJjb3Vyc2UiO3M6MToiMiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NztPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNyI7czoyOiJpZCI7czoxOiI5IjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo4O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI4IjtzOjI6ImlkIjtzOjI6IjEwIjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo5O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI5IjtzOjI6ImlkIjtzOjI6IjExIjtzOjY6ImNvdXJzZSI7czoxOiIyIjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToxMDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MjoiMTAiO3M6MjoiaWQiO3M6MjoiMTIiO3M6NjoiY291cnNlIjtzOjE6IjIiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO319Ijt9czoxODoiY291cnNlX2FjdGl2aXRlc18yIjthOjM6e2k6MDtpOjEzMTczMzM4MzU7aToxO3M6MjoiMTEiO2k6MjtzOjI4MDoiYToxOntpOjI7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6OToiTm92ZWRhZGVzIjtzOjQ6Imljb24iO3M6MDoiIjtzOjEzOiJpY29uY29tcG9uZW50IjtzOjA6IiI7czoyOiJpZCI7czoxOiIyIjtzOjY6ImhpZGRlbiI7YjowO3M6NzoibW9kbmFtZSI7czo1OiJmb3J1bSI7czo4OiJub2RldHlwZSI7aTowO3M6MzoidXJsIjtzOjQwOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD0yIjtzOjc6ImRpc3BsYXkiO2I6MTt9fSI7fX19czoyMToibG9hZF9uYXZpZ2F0aW9uX2FkbWluIjtiOjA7czoxNDoiZnJvbWRpc2N1c3Npb24iO3M6MTY6Imh0dHA6Ly9sb2NhbGhvc3QiO3M6MTI6ImZsYXNodmVyc2lvbiI7czo4OiIxMC4zLjE4MyI7czoyMToiY2FsZW5kYXJzaG93ZXZlbnR0eXBlIjtpOjE1O31VU0VSfE86ODoic3RkQ2xhc3MiOjYyOntzOjI6ImlkIjtzOjI6IjExIjtzOjQ6ImF1dGgiO3M6NToiZW1haWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjE0OiJtaWVtYnJvcG9wcGVyMSI7czo4OiJwYXNzd29yZCI7czozMjoiZTZkMGEyOThlMGUwNDU0NWM5MGY0ZmUyODcyMDViZDEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo4OiJtaWVtYnJvMSI7czo4OiJsYXN0bmFtZSI7czo2OiJwb3BwZXIiO3M6NToiZW1haWwiO3M6MjQ6Im1pZW1icm9wb3BwZXIxQGdtYWlsLmNvbSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjEyOiJCdWVub3MgQWlyZXMiO3M6NzoiY291bnRyeSI7czoyOiJBUiI7czo0OiJsYW5nIjtzOjU6ImVzX2FyIjtzOjU6InRoZW1lIjtzOjA6IiI7czo4OiJ0aW1lem9uZSI7czoyOiI5OSI7czoxMToiZmlyc3RhY2Nlc3MiO3M6MTA6IjEzMTcyNDU1NzgiO3M6MTA6Imxhc3RhY2Nlc3MiO2k6MTMxNzMzMzgyOTtzOjk6Imxhc3Rsb2dpbiI7czoxMDoiMTMxNzMzMjA2MyI7czoxMjoiY3VycmVudGxvZ2luIjtpOjEzMTczMzM4Mjg7czo2OiJsYXN0aXAiO3M6OToiMTI3LjAuMC4xIjtzOjY6InNlY3JldCI7czoxNToibVN5Qm40eE05Y1QzU2tCIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNzI0NTE0NiI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjtzOjE2OiJsYXN0Y291cnNlYWNjZXNzIjthOjA6e31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjE6e2k6MjtpOjEzMTczMzM4MzQ7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6Mzp7czozOiJkbmkiO3M6ODoiMTIzNDU2NzgiO3M6NjoicGFkcm9uIjtzOjg6IjEyMzQ1Njc4IjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjc6Ik1pZW1icm8iO31zOjY6ImFjY2VzcyI7YTo1OntzOjI6InJhIjthOjI6e3M6MjoiLzEiO2E6MTp7aTo3O3M6MToiNyI7fXM6ODoiLzEvMjMvMjQiO2E6MDp7fX1zOjQ6InJkZWYiO2E6OTp7czo0OiIvMTo3IjthOjUxOntzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVtb2R1bGUiO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6Y3JlYXRlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9ibG9nOm1hbmFnZWV4dGVybmFsIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MzI6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2Vvd25lbnRyaWVzIjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnBvc3QiO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO3M6MToiMSI7czoyMjoibW9vZGxlL215Om1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoxNToibW9vZGxlL3RhZzplZGl0IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO3M6MToiMSI7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO3M6MToiMSI7czoyNDoicmVwb3NpdG9yeS9hbGZyZXNjbzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoyNzoicmVwb3NpdG9yeS9jb3Vyc2VmaWxlczp2aWV3IjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkvZHJvcGJveDp2aWV3IjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZmlsZXN5c3RlbTp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvbWVybG90OnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS93ZWJkYXY6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtzOjE6IjEiO31zOjg6Ii8xLzIvNDo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzY6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNDo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE3OjciO2E6Mzp7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtzOjI6Ii0xIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MjoiLTEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjt9czo5OiIvMS8yLzE1OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjQ6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO2k6MztzOjg6Ii8xLzIzLzI0Ijt9czoyOiJkciI7czoxOiI3IjtzOjQ6InRpbWUiO2k6MTMxNzMzMzgyODt9czo3OiJzZXNza2V5IjtzOjEwOiJWN3JmcnR0R1liIjtzOjEwOiJwcmVmZXJlbmNlIjthOjE6e3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMTczMzM4Mzk7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czo3OiJkaXNwbGF5IjthOjE6e2k6MTtpOjA7fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6Nzp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTdoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazExaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTNoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNGhpZGRlbiI7czo0OiJib29sIjt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjE6e2k6MjtpOjEzMTczMzU2MzQ7fXM6OToidGVtcGd1ZXN0IjthOjA6e319czo3OiJlZGl0aW5nIjtpOjA7fQ==', 1317333829, 1317333839, '127.0.0.1', '127.0.0.1'),
+(172, 0, 'fnibcp78vqn2otqo931ka5gn23', 12, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7aTowO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjoxO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjE2OiJodHRwOi8vbG9jYWxob3N0IjtzOjEyOiJmbGFzaHZlcnNpb24iO3M6ODoiMTAuMy4xODMiO3M6MTQ6InVzZXJfZmlsdGVyaW5nIjthOjA6e31zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjQ6e3M6MTc6ImNvdXJzZV9zZWN0aW9uc18xIjthOjM6e2k6MDtpOjEzMTczMzQ5ODE7aToxO3M6MjoiMTIiO2k6MjtzOjIyMToiYToxOntpOjA7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6MjoiaWQiO3M6MToiMSI7czo2OiJjb3Vyc2UiO3M6MToiMSI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7czoxOiIxIjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjE7fX0iO31zOjE4OiJjb3Vyc2VfYWN0aXZpdGVzXzEiO2E6Mzp7aTowO2k6MTMxNzMzNDk4MTtpOjE7czoyOiIxMiI7aToyO3M6MjkxOiJhOjE6e2k6MTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czoxOToiTm92ZWRhZGVzIGRlbCBzaXRpbyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MToiMSI7czo2OiJoaWRkZW4iO2I6MDtzOjc6Im1vZG5hbWUiO3M6NToiZm9ydW0iO3M6ODoibm9kZXR5cGUiO2k6MDtzOjM6InVybCI7czo0MDoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vdmlldy5waHA/aWQ9MSI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE3OiJ1c2VyYmxvZ29wdGlvbnMxMiI7YTozOntpOjA7aToxMzE3MzM0OTgxO2k6MTtzOjI6IjEyIjtpOjI7czo2OTQ6ImE6Mjp7czo0OiJ2aWV3IjthOjI6e3M6Njoic3RyaW5nIjtzOjIyOiJWZXIgdG9kYXMgbWlzIGVudHJhZGFzIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNToiL2Jsb2cvaW5kZXgucGhwIjtzOjE2OiIAKgBzbGFzaGFyZ3VtZW50IjtzOjA6IiI7czo5OiIAKgBhbmNob3IiO047czo5OiIAKgBwYXJhbXMiO2E6MTp7czo2OiJ1c2VyaWQiO3M6MjoiMTIiO319fXM6MzoiYWRkIjthOjI6e3M6Njoic3RyaW5nIjtzOjI1OiJBZ3JlZ2FyIHVuYSBudWV2YSBlbnRyYWRhIjtzOjQ6ImxpbmsiO086MTA6Im1vb2RsZV91cmwiOjk6e3M6OToiACoAc2NoZW1lIjtzOjQ6Imh0dHAiO3M6NzoiACoAaG9zdCI7czo5OiJsb2NhbGhvc3QiO3M6NzoiACoAcG9ydCI7czowOiIiO3M6NzoiACoAdXNlciI7czowOiIiO3M6NzoiACoAcGFzcyI7czowOiIiO3M6NzoiACoAcGF0aCI7czoxNDoiL2Jsb2cvZWRpdC5waHAiO3M6MTY6IgAqAHNsYXNoYXJndW1lbnQiO3M6MDoiIjtzOjk6IgAqAGFuY2hvciI7TjtzOjk6IgAqAHBhcmFtcyI7YToxOntzOjY6ImFjdGlvbiI7czozOiJhZGQiO319fX0iO31zOjE3OiJjb250ZXh0aGFzcmVwb3MzMiI7YTozOntpOjA7aToxMzE3MzM0OTgxO2k6MTtzOjI6IjEyIjtpOjI7czo0OiJiOjA7Ijt9fX19VVNFUnxPOjg6InN0ZENsYXNzIjo2MTp7czoyOiJpZCI7czoyOiIxMiI7czo0OiJhdXRoIjtzOjU6ImVtYWlsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czoxMjoiYWRtaW5wb3BwZXIxIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6ImFkbWluMSI7czo4OiJsYXN0bmFtZSI7czo2OiJwb3BwZXIiO3M6NToiZW1haWwiO3M6MjI6ImFkbWlucG9wcGVyMUBnbWFpbC5jb20iO3M6OToiZW1haWxzdG9wIjtzOjE6IjAiO3M6MzoiaWNxIjtzOjA6IiI7czo1OiJza3lwZSI7czowOiIiO3M6NToieWFob28iO3M6MDoiIjtzOjM6ImFpbSI7czowOiIiO3M6MzoibXNuIjtzOjA6IiI7czo2OiJwaG9uZTEiO3M6MDoiIjtzOjY6InBob25lMiI7czowOiIiO3M6MTE6Imluc3RpdHV0aW9uIjtzOjA6IiI7czoxMDoiZGVwYXJ0bWVudCI7czowOiIiO3M6NzoiYWRkcmVzcyI7czowOiIiO3M6NDoiY2l0eSI7czoxMjoiQnVlbm9zIEFpcmVzIjtzOjc6ImNvdW50cnkiO3M6MjoiQVIiO3M6NDoibGFuZyI7czo1OiJlc19hciI7czo1OiJ0aGVtZSI7czowOiIiO3M6ODoidGltZXpvbmUiO3M6MjoiOTkiO3M6MTE6ImZpcnN0YWNjZXNzIjtzOjEwOiIxMzE3MjQ1NTc1IjtzOjEwOiJsYXN0YWNjZXNzIjtpOjEzMTczMzUxODA7czo5OiJsYXN0bG9naW4iO3M6MTA6IjEzMTczMzQ4MzQiO3M6MTI6ImN1cnJlbnRsb2dpbiI7aToxMzE3MzM0OTEwO3M6NjoibGFzdGlwIjtzOjk6IjEyNy4wLjAuMSI7czo2OiJzZWNyZXQiO3M6MTU6ImhPb3FGcHloMEh0MTJMUyI7czo3OiJwaWN0dXJlIjtzOjE6IjAiO3M6MzoidXJsIjtzOjA6IiI7czoxNzoiZGVzY3JpcHRpb25mb3JtYXQiO3M6MToiMCI7czoxMDoibWFpbGZvcm1hdCI7czoxOiIxIjtzOjEwOiJtYWlsZGlnZXN0IjtzOjE6IjAiO3M6MTE6Im1haWxkaXNwbGF5IjtzOjE6IjIiO3M6MTA6Imh0bWxlZGl0b3IiO3M6MToiMSI7czo0OiJhamF4IjtzOjE6IjEiO3M6MTM6ImF1dG9zdWJzY3JpYmUiO3M6MToiMSI7czoxMToidHJhY2tmb3J1bXMiO3M6MToiMCI7czoxMToidGltZWNyZWF0ZWQiO3M6MTA6IjEzMTcyNDU1NDUiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxOiIwIjtzOjEyOiJ0cnVzdGJpdG1hc2siO3M6MToiMCI7czo4OiJpbWFnZWFsdCI7TjtzOjEyOiJzY3JlZW5yZWFkZXIiO3M6MToiMCI7czoxNjoibGFzdGNvdXJzZWFjY2VzcyI7YToxOntpOjI7czoxMDoiMTMxNzMzNDY5MSI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6MDp7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6Mzp7czozOiJkbmkiO3M6ODoiMTIzNDU2NzgiO3M6NjoicGFkcm9uIjtzOjg6IjEyMzQ1Njc4IjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjEzOiJBZG1pbmlzdHJhZG9yIjt9czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjI6e2k6ODtzOjE6IjgiO2k6NztzOjE6IjciO319czo0OiJyZGVmIjthOjE4OntzOjQ6Ii8xOjgiO2E6MzY3OntzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czozMToiYmxvY2svcnNzX2NsaWVudDptYW5hZ2VhbnlmZWVkcyI7czoxOiIxIjtzOjMxOiJibG9jay9yc3NfY2xpZW50Om1hbmFnZW93bmZlZWRzIjtzOjE6IjEiO3M6Mjg6ImNvdXJzZXJlcG9ydC9jb21wbGV0aW9uOnZpZXciO3M6MToiMSI7czoyMToiY291cnNlcmVwb3J0L2xvZzp2aWV3IjtzOjE6IjEiO3M6MjU6ImNvdXJzZXJlcG9ydC9sb2c6dmlld2xpdmUiO3M6MToiMSI7czoyNjoiY291cnNlcmVwb3J0L2xvZzp2aWV3dG9kYXkiO3M6MToiMSI7czoyNToiY291cnNlcmVwb3J0L291dGxpbmU6dmlldyI7czoxOiIxIjtzOjMxOiJjb3Vyc2VyZXBvcnQvcGFydGljaXBhdGlvbjp2aWV3IjtzOjE6IjEiO3M6MjY6ImNvdXJzZXJlcG9ydC9wcm9ncmVzczp2aWV3IjtzOjE6IjEiO3M6MjM6ImNvdXJzZXJlcG9ydC9zdGF0czp2aWV3IjtzOjE6IjEiO3M6MjI6ImVucm9sL2F1dGhvcml6ZTpjb25maWciO3M6MToiMSI7czoyMjoiZW5yb2wvYXV0aG9yaXplOm1hbmFnZSI7czoxOiIxIjtzOjMwOiJlbnJvbC9hdXRob3JpemU6bWFuYWdlcGF5bWVudHMiO3M6MToiMSI7czoyMzoiZW5yb2wvYXV0aG9yaXplOnVuZW5yb2wiO3M6MToiMSI7czoyNzoiZW5yb2wvYXV0aG9yaXplOnVuZW5yb2xzZWxmIjtzOjE6IjEiO3M6MjU6ImVucm9sL2F1dGhvcml6ZTp1cGxvYWRjc3YiO3M6MToiMSI7czoyNzoiZW5yb2wvY2F0ZWdvcnk6c3luY2hyb25pc2VkIjtzOjE6IjEiO3M6MTk6ImVucm9sL2NvaG9ydDpjb25maWciO3M6MToiMSI7czoxODoiZW5yb2wvZ3Vlc3Q6Y29uZmlnIjtzOjE6IjEiO3M6MTc6ImVucm9sL2xkYXA6bWFuYWdlIjtzOjE6IjEiO3M6MTk6ImVucm9sL21hbnVhbDpjb25maWciO3M6MToiMSI7czoxODoiZW5yb2wvbWFudWFsOmVucm9sIjtzOjE6IjEiO3M6MTk6ImVucm9sL21hbnVhbDptYW5hZ2UiO3M6MToiMSI7czoyMDoiZW5yb2wvbWFudWFsOnVuZW5yb2wiO3M6MToiMSI7czoyNDoiZW5yb2wvbWFudWFsOnVuZW5yb2xzZWxmIjtzOjE6IjEiO3M6MTc6ImVucm9sL21ldGE6Y29uZmlnIjtzOjE6IjEiO3M6MjU6ImVucm9sL21ldGE6c2VsZWN0YXNsaW5rZWQiO3M6MToiMSI7czoxOToiZW5yb2wvcGF5cGFsOmNvbmZpZyI7czoxOiIxIjtzOjE5OiJlbnJvbC9wYXlwYWw6bWFuYWdlIjtzOjE6IjEiO3M6MjA6ImVucm9sL3BheXBhbDp1bmVucm9sIjtzOjE6IjEiO3M6MjQ6ImVucm9sL3BheXBhbDp1bmVucm9sc2VsZiI7czoxOiIxIjtzOjE3OiJlbnJvbC9zZWxmOmNvbmZpZyI7czoxOiIxIjtzOjE3OiJlbnJvbC9zZWxmOm1hbmFnZSI7czoxOiIxIjtzOjE4OiJlbnJvbC9zZWxmOnVuZW5yb2wiO3M6MToiMSI7czoyMjoiZW5yb2wvc2VsZjp1bmVucm9sc2VsZiI7czoxOiIxIjtzOjIzOiJncmFkZWV4cG9ydC9vZHM6cHVibGlzaCI7czoxOiIxIjtzOjIwOiJncmFkZWV4cG9ydC9vZHM6dmlldyI7czoxOiIxIjtzOjIzOiJncmFkZWV4cG9ydC90eHQ6cHVibGlzaCI7czoxOiIxIjtzOjIwOiJncmFkZWV4cG9ydC90eHQ6dmlldyI7czoxOiIxIjtzOjIzOiJncmFkZWV4cG9ydC94bHM6cHVibGlzaCI7czoxOiIxIjtzOjIwOiJncmFkZWV4cG9ydC94bHM6dmlldyI7czoxOiIxIjtzOjIzOiJncmFkZWV4cG9ydC94bWw6cHVibGlzaCI7czoxOiIxIjtzOjIwOiJncmFkZWV4cG9ydC94bWw6dmlldyI7czoxOiIxIjtzOjIwOiJncmFkZWltcG9ydC9jc3Y6dmlldyI7czoxOiIxIjtzOjIzOiJncmFkZWltcG9ydC94bWw6cHVibGlzaCI7czoxOiIxIjtzOjIwOiJncmFkZWltcG9ydC94bWw6dmlldyI7czoxOiIxIjtzOjIzOiJncmFkZXJlcG9ydC9ncmFkZXI6dmlldyI7czoxOiIxIjtzOjI1OiJncmFkZXJlcG9ydC9vdXRjb21lczp2aWV3IjtzOjE6IjEiO3M6MjU6ImdyYWRlcmVwb3J0L292ZXJ2aWV3OnZpZXciO3M6MToiMSI7czoyMToiZ3JhZGVyZXBvcnQvdXNlcjp2aWV3IjtzOjE6IjEiO3M6MzQ6Im1vZC9hc3NpZ25tZW50OmV4cG9ydG93bnN1Ym1pc3Npb24iO3M6MToiMSI7czoyMDoibW9kL2Fzc2lnbm1lbnQ6Z3JhZGUiO3M6MToiMSI7czoyMToibW9kL2Fzc2lnbm1lbnQ6c3VibWl0IjtzOjE6IjEiO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO3M6MToiMSI7czoxMzoibW9kL2NoYXQ6Y2hhdCI7czoxOiIxIjtzOjE4OiJtb2QvY2hhdDpkZWxldGVsb2ciO3M6MToiMSI7czozNDoibW9kL2NoYXQ6ZXhwb3J0cGFydGljaXBhdGVkc2Vzc2lvbiI7czoxOiIxIjtzOjIyOiJtb2QvY2hhdDpleHBvcnRzZXNzaW9uIjtzOjE6IjEiO3M6MTY6Im1vZC9jaGF0OnJlYWRsb2ciO3M6MToiMSI7czoxNzoibW9kL2Nob2ljZTpjaG9vc2UiO3M6MToiMSI7czoyNjoibW9kL2Nob2ljZTpkZWxldGVyZXNwb25zZXMiO3M6MToiMSI7czoyODoibW9kL2Nob2ljZTpkb3dubG9hZHJlc3BvbnNlcyI7czoxOiIxIjtzOjI0OiJtb2QvY2hvaWNlOnJlYWRyZXNwb25zZXMiO3M6MToiMSI7czoxNjoibW9kL2RhdGE6YXBwcm92ZSI7czoxOiIxIjtzOjE2OiJtb2QvZGF0YTpjb21tZW50IjtzOjE6IjEiO3M6MjU6Im1vZC9kYXRhOmV4cG9ydGFsbGVudHJpZXMiO3M6MToiMSI7czoyMDoibW9kL2RhdGE6ZXhwb3J0ZW50cnkiO3M6MToiMSI7czoyMzoibW9kL2RhdGE6ZXhwb3J0b3duZW50cnkiO3M6MToiMSI7czoyMzoibW9kL2RhdGE6bWFuYWdlY29tbWVudHMiO3M6MToiMSI7czoyMjoibW9kL2RhdGE6bWFuYWdlZW50cmllcyI7czoxOiIxIjtzOjI0OiJtb2QvZGF0YTptYW5hZ2V0ZW1wbGF0ZXMiO3M6MToiMSI7czoyNjoibW9kL2RhdGE6bWFuYWdldXNlcnByZXNldHMiO3M6MToiMSI7czoxMzoibW9kL2RhdGE6cmF0ZSI7czoxOiIxIjtzOjIzOiJtb2QvZGF0YTp2aWV3YWxscmF0aW5ncyI7czoxOiIxIjtzOjI3OiJtb2QvZGF0YTp2aWV3YWxsdXNlcnByZXNldHMiO3M6MToiMSI7czoyMjoibW9kL2RhdGE6dmlld2FueXJhdGluZyI7czoxOiIxIjtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO3M6MToiMSI7czoxOToibW9kL2RhdGE6dmlld3JhdGluZyI7czoxOiIxIjtzOjE5OiJtb2QvZGF0YTp3cml0ZWVudHJ5IjtzOjE6IjEiO3M6MjE6Im1vZC9mZWVkYmFjazpjb21wbGV0ZSI7czoxOiIxIjtzOjM0OiJtb2QvZmVlZGJhY2s6Y3JlYXRlcHJpdmF0ZXRlbXBsYXRlIjtzOjE6IjEiO3M6MzM6Im1vZC9mZWVkYmFjazpjcmVhdGVwdWJsaWN0ZW1wbGF0ZSI7czoxOiIxIjtzOjMwOiJtb2QvZmVlZGJhY2s6ZGVsZXRlc3VibWlzc2lvbnMiO3M6MToiMSI7czoyNzoibW9kL2ZlZWRiYWNrOmRlbGV0ZXRlbXBsYXRlIjtzOjE6IjEiO3M6MjI6Im1vZC9mZWVkYmFjazplZGl0aXRlbXMiO3M6MToiMSI7czoyMjoibW9kL2ZlZWRiYWNrOm1hcGNvdXJzZSI7czoxOiIxIjtzOjI0OiJtb2QvZmVlZGJhY2s6cmVjZWl2ZW1haWwiO3M6MToiMSI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoyODoibW9kL2ZlZWRiYWNrOnZpZXdhbmFseXNlcGFnZSI7czoxOiIxIjtzOjI0OiJtb2QvZmVlZGJhY2s6dmlld3JlcG9ydHMiO3M6MToiMSI7czoyMjoibW9kL2ZvbGRlcjptYW5hZ2VmaWxlcyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoxNzoibW9kL2ZvcnVtOmFkZG5ld3MiO3M6MToiMSI7czoyNjoibW9kL2ZvcnVtOmNyZWF0ZWF0dGFjaG1lbnQiO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZWFueXBvc3QiO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO3M6MToiMSI7czoyMToibW9kL2ZvcnVtOmVkaXRhbnlwb3N0IjtzOjE6IjEiO3M6MjY6Im1vZC9mb3J1bTpleHBvcnRkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpleHBvcnRvd25wb3N0IjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTpleHBvcnRwb3N0IjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjI5OiJtb2QvZm9ydW06bWFuYWdlc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjI1OiJtb2QvZm9ydW06bW92ZWRpc2N1c3Npb25zIjtzOjE6IjEiO3M6MzE6Im1vZC9mb3J1bTpwb3N0d2l0aG91dHRocm90dGxpbmciO3M6MToiMSI7czoxNDoibW9kL2ZvcnVtOnJhdGUiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO3M6MjY6Im1vZC9mb3J1bTpzcGxpdGRpc2N1c3Npb25zIjtzOjE6IjEiO3M6MjU6Im1vZC9mb3J1bTpzdGFydGRpc2N1c3Npb24iO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdhbGxyYXRpbmdzIjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTp2aWV3YW55cmF0aW5nIjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06dmlld2hpZGRlbnRpbWVkcG9zdHMiO3M6MToiMSI7czozMzoibW9kL2ZvcnVtOnZpZXdxYW5kYXdpdGhvdXRwb3N0aW5nIjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTp2aWV3cmF0aW5nIjtzOjE6IjEiO3M6MjU6Im1vZC9mb3J1bTp2aWV3c3Vic2NyaWJlcnMiO3M6MToiMSI7czoyMDoibW9kL2dsb3NzYXJ5OmFwcHJvdmUiO3M6MToiMSI7czoyMDoibW9kL2dsb3NzYXJ5OmNvbW1lbnQiO3M6MToiMSI7czoxOToibW9kL2dsb3NzYXJ5OmV4cG9ydCI7czoxOiIxIjtzOjI0OiJtb2QvZ2xvc3Nhcnk6ZXhwb3J0ZW50cnkiO3M6MToiMSI7czoyNzoibW9kL2dsb3NzYXJ5OmV4cG9ydG93bmVudHJ5IjtzOjE6IjEiO3M6MTk6Im1vZC9nbG9zc2FyeTppbXBvcnQiO3M6MToiMSI7czoyOToibW9kL2dsb3NzYXJ5Om1hbmFnZWNhdGVnb3JpZXMiO3M6MToiMSI7czoyNzoibW9kL2dsb3NzYXJ5Om1hbmFnZWNvbW1lbnRzIjtzOjE6IjEiO3M6MjY6Im1vZC9nbG9zc2FyeTptYW5hZ2VlbnRyaWVzIjtzOjE6IjEiO3M6MTc6Im1vZC9nbG9zc2FyeTpyYXRlIjtzOjE6IjEiO3M6Mjc6Im1vZC9nbG9zc2FyeTp2aWV3YWxscmF0aW5ncyI7czoxOiIxIjtzOjI2OiJtb2QvZ2xvc3Nhcnk6dmlld2FueXJhdGluZyI7czoxOiIxIjtzOjIzOiJtb2QvZ2xvc3Nhcnk6dmlld3JhdGluZyI7czoxOiIxIjtzOjE4OiJtb2QvZ2xvc3Nhcnk6d3JpdGUiO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoxNToibW9kL2xlc3NvbjplZGl0IjtzOjE6IjEiO3M6MTc6Im1vZC9sZXNzb246bWFuYWdlIjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxNjoibW9kL3F1aXo6YXR0ZW1wdCI7czoxOiIxIjtzOjIzOiJtb2QvcXVpejpkZWxldGVhdHRlbXB0cyI7czoxOiIxIjtzOjMxOiJtb2QvcXVpejplbWFpbGNvbmZpcm1zdWJtaXNzaW9uIjtzOjE6IjEiO3M6MzA6Im1vZC9xdWl6OmVtYWlsbm90aWZ5c3VibWlzc2lvbiI7czoxOiIxIjtzOjE0OiJtb2QvcXVpejpncmFkZSI7czoxOiIxIjtzOjI1OiJtb2QvcXVpejppZ25vcmV0aW1lbGltaXRzIjtzOjE6IjEiO3M6MTU6Im1vZC9xdWl6Om1hbmFnZSI7czoxOiIxIjtzOjI0OiJtb2QvcXVpejptYW5hZ2VvdmVycmlkZXMiO3M6MToiMSI7czoxNjoibW9kL3F1aXo6cHJldmlldyI7czoxOiIxIjtzOjE2OiJtb2QvcXVpejpyZWdyYWRlIjtzOjE6IjEiO3M6MjU6Im1vZC9xdWl6OnJldmlld215YXR0ZW1wdHMiO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjIwOiJtb2QvcXVpejp2aWV3cmVwb3J0cyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjI1OiJtb2Qvc2Nvcm06ZGVsZXRlcmVzcG9uc2VzIjtzOjE6IjEiO3M6MTk6Im1vZC9zY29ybTpzYXZldHJhY2siO3M6MToiMSI7czoxODoibW9kL3Njb3JtOnNraXB2aWV3IjtzOjE6IjEiO3M6MjA6Im1vZC9zY29ybTp2aWV3cmVwb3J0IjtzOjE6IjEiO3M6MjA6Im1vZC9zY29ybTp2aWV3c2NvcmVzIjtzOjE6IjEiO3M6MTk6Im1vZC9zdXJ2ZXk6ZG93bmxvYWQiO3M6MToiMSI7czoyMjoibW9kL3N1cnZleTpwYXJ0aWNpcGF0ZSI7czoxOiIxIjtzOjI0OiJtb2Qvc3VydmV5OnJlYWRyZXNwb25zZXMiO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vZC93aWtpOmNyZWF0ZXBhZ2UiO3M6MToiMSI7czoyMDoibW9kL3dpa2k6ZWRpdGNvbW1lbnQiO3M6MToiMSI7czoxNzoibW9kL3dpa2k6ZWRpdHBhZ2UiO3M6MToiMSI7czoyMjoibW9kL3dpa2k6bWFuYWdlY29tbWVudCI7czoxOiIxIjtzOjIwOiJtb2Qvd2lraTptYW5hZ2VmaWxlcyI7czoxOiIxIjtzOjE5OiJtb2Qvd2lraTptYW5hZ2V3aWtpIjtzOjE6IjEiO3M6MjE6Im1vZC93aWtpOm92ZXJyaWRlbG9jayI7czoxOiIxIjtzOjIwOiJtb2Qvd2lraTp2aWV3Y29tbWVudCI7czoxOiIxIjtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7czoxOiIxIjtzOjIxOiJtb2Qvd29ya3Nob3A6YWxsb2NhdGUiO3M6MToiMSI7czoyNzoibW9kL3dvcmtzaG9wOmVkaXRkaW1lbnNpb25zIjtzOjE6IjEiO3M6Mjg6Im1vZC93b3Jrc2hvcDppZ25vcmVkZWFkbGluZXMiO3M6MToiMSI7czoyNzoibW9kL3dvcmtzaG9wOm1hbmFnZWV4YW1wbGVzIjtzOjE6IjEiO3M6Mjc6Im1vZC93b3Jrc2hvcDpvdmVycmlkZWdyYWRlcyI7czoxOiIxIjtzOjIzOiJtb2Qvd29ya3Nob3A6cGVlcmFzc2VzcyI7czoxOiIxIjtzOjMxOiJtb2Qvd29ya3Nob3A6cHVibGlzaHN1Ym1pc3Npb25zIjtzOjE6IjEiO3M6MTk6Im1vZC93b3Jrc2hvcDpzdWJtaXQiO3M6MToiMSI7czoyNDoibW9kL3dvcmtzaG9wOnN3aXRjaHBoYXNlIjtzOjE6IjEiO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtzOjE6IjEiO3M6MzE6Im1vZC93b3Jrc2hvcDp2aWV3YWxsYXNzZXNzbWVudHMiO3M6MToiMSI7czozMToibW9kL3dvcmtzaG9wOnZpZXdhbGxzdWJtaXNzaW9ucyI7czoxOiIxIjtzOjI4OiJtb2Qvd29ya3Nob3A6dmlld2F1dGhvcm5hbWVzIjtzOjE6IjEiO3M6MzI6Im1vZC93b3Jrc2hvcDp2aWV3YXV0aG9ycHVibGlzaGVkIjtzOjE6IjEiO3M6Mzc6Im1vZC93b3Jrc2hvcDp2aWV3cHVibGlzaGVkc3VibWlzc2lvbnMiO3M6MToiMSI7czozMDoibW9kL3dvcmtzaG9wOnZpZXdyZXZpZXdlcm5hbWVzIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9iYWNrdXA6YW5vbnltaXNlIjtzOjE6IjEiO3M6Mjg6Im1vb2RsZS9iYWNrdXA6YmFja3VwYWN0aXZpdHkiO3M6MToiMSI7czoyNjoibW9vZGxlL2JhY2t1cDpiYWNrdXBjb3Vyc2UiO3M6MToiMSI7czoyNzoibW9vZGxlL2JhY2t1cDpiYWNrdXBzZWN0aW9uIjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS9iYWNrdXA6YmFja3VwdGFyZ2V0aHViIjtzOjE6IjEiO3M6MzI6Im1vb2RsZS9iYWNrdXA6YmFja3VwdGFyZ2V0aW1wb3J0IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9iYWNrdXA6Y29uZmlndXJlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9iYWNrdXA6ZG93bmxvYWRmaWxlIjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9iYWNrdXA6dXNlcmluZm8iO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOmVkaXQiO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpjcmVhdGUiO3M6MToiMSI7czoyNToibW9vZGxlL2Jsb2c6bWFuYWdlZW50cmllcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjIyOiJtb29kbGUvYmxvZzp2aWV3ZHJhZnRzIjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2VlbnRyaWVzIjtzOjE6IjEiO3M6MzQ6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2Vncm91cGVudHJpZXMiO3M6MToiMSI7czozMjoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZW93bmVudHJpZXMiO3M6MToiMSI7czoyMjoibW9vZGxlL2NhdGVnb3J5Om1hbmFnZSI7czoxOiIxIjtzOjM2OiJtb29kbGUvY2F0ZWdvcnk6dmlld2hpZGRlbmNhdGVnb3JpZXMiO3M6MToiMSI7czoyMDoibW9vZGxlL2NvaG9ydDphc3NpZ24iO3M6MToiMSI7czoyMDoibW9vZGxlL2NvaG9ydDptYW5hZ2UiO3M6MToiMSI7czoxODoibW9vZGxlL2NvaG9ydDp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb21tZW50OmRlbGV0ZSI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyMDoibW9vZGxlL2NvbW11bml0eTphZGQiO3M6MToiMSI7czoyNToibW9vZGxlL2NvbW11bml0eTpkb3dubG9hZCI7czoxOiIxIjtzOjMyOiJtb29kbGUvY291cnNlOmFjdGl2aXR5dmlzaWJpbGl0eSI7czoxOiIxIjtzOjI3OiJtb29kbGUvY291cnNlOmJ1bGttZXNzYWdpbmciO3M6MToiMSI7czoyODoibW9vZGxlL2NvdXJzZTpjaGFuZ2VjYXRlZ29yeSI7czoxOiIxIjtzOjI4OiJtb29kbGUvY291cnNlOmNoYW5nZWZ1bGxuYW1lIjtzOjE6IjEiO3M6Mjg6Im1vb2RsZS9jb3Vyc2U6Y2hhbmdlaWRudW1iZXIiO3M6MToiMSI7czoyOToibW9vZGxlL2NvdXJzZTpjaGFuZ2VzaG9ydG5hbWUiO3M6MToiMSI7czoyNzoibW9vZGxlL2NvdXJzZTpjaGFuZ2VzdW1tYXJ5IjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9jb3Vyc2U6Y3JlYXRlIjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9jb3Vyc2U6ZGVsZXRlIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS9jb3Vyc2U6ZW5yb2xjb25maWciO3M6MToiMSI7czoyNToibW9vZGxlL2NvdXJzZTplbnJvbHJldmlldyI7czoxOiIxIjtzOjMwOiJtb29kbGUvY291cnNlOm1hbmFnZWFjdGl2aXRpZXMiO3M6MToiMSI7czoyNToibW9vZGxlL2NvdXJzZTptYW5hZ2VmaWxlcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvY291cnNlOm1hbmFnZWdyb3VwcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvY291cnNlOm1hbmFnZXNjYWxlcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvY291cnNlOm1hcmtjb21wbGV0ZSI7czoxOiIxIjtzOjIxOiJtb29kbGUvY291cnNlOnB1Ymxpc2giO3M6MToiMSI7czoyMToibW9vZGxlL2NvdXJzZTpyZXF1ZXN0IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb3Vyc2U6cmVzZXQiO3M6MToiMSI7czozMToibW9vZGxlL2NvdXJzZTpzZWN0aW9udmlzaWJpbGl0eSI7czoxOiIxIjtzOjMxOiJtb29kbGUvY291cnNlOnNldGN1cnJlbnRzZWN0aW9uIjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9jb3Vyc2U6dXBkYXRlIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9jb3Vyc2U6dXNlcmVtYWlsIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9jb3Vyc2U6dmlldyI7czoxOiIxIjtzOjM0OiJtb29kbGUvY291cnNlOnZpZXdoaWRkZW5hY3Rpdml0aWVzIjtzOjE6IjEiO3M6MzE6Im1vb2RsZS9jb3Vyc2U6dmlld2hpZGRlbmNvdXJzZXMiO3M6MToiMSI7czozMjoibW9vZGxlL2NvdXJzZTp2aWV3aGlkZGVuc2VjdGlvbnMiO3M6MToiMSI7czozNDoibW9vZGxlL2NvdXJzZTp2aWV3aGlkZGVudXNlcmZpZWxkcyI7czoxOiIxIjtzOjMwOiJtb29kbGUvY291cnNlOnZpZXdwYXJ0aWNpcGFudHMiO3M6MToiMSI7czoyNDoibW9vZGxlL2NvdXJzZTp2aWV3c2NhbGVzIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9jb3Vyc2U6dmlzaWJpbGl0eSI7czoxOiIxIjtzOjIwOiJtb29kbGUvZmlsdGVyOm1hbmFnZSI7czoxOiIxIjtzOjE3OiJtb29kbGUvZ3JhZGU6ZWRpdCI7czoxOiIxIjtzOjE5OiJtb29kbGUvZ3JhZGU6ZXhwb3J0IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ncmFkZTpoaWRlIjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9ncmFkZTppbXBvcnQiO3M6MToiMSI7czoxNzoibW9vZGxlL2dyYWRlOmxvY2siO3M6MToiMSI7czoxOToibW9vZGxlL2dyYWRlOm1hbmFnZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvZ3JhZGU6bWFuYWdlbGV0dGVycyI7czoxOiIxIjtzOjI3OiJtb29kbGUvZ3JhZGU6bWFuYWdlb3V0Y29tZXMiO3M6MToiMSI7czoxOToibW9vZGxlL2dyYWRlOnVubG9jayI7czoxOiIxIjtzOjE3OiJtb29kbGUvZ3JhZGU6dmlldyI7czoxOiIxIjtzOjIwOiJtb29kbGUvZ3JhZGU6dmlld2FsbCI7czoxOiIxIjtzOjIzOiJtb29kbGUvZ3JhZGU6dmlld2hpZGRlbiI7czoxOiIxIjtzOjI0OiJtb29kbGUvbXk6Y29uZmlnc3lzcGFnZXMiO3M6MToiMSI7czoyMjoibW9vZGxlL215Om1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjE5OiJtb29kbGUvbm90ZXM6bWFuYWdlIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ub3Rlczp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9wb3J0Zm9saW86ZXhwb3J0IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9xdWVzdGlvbjphZGQiO3M6MToiMSI7czoyMjoibW9vZGxlL3F1ZXN0aW9uOmNvbmZpZyI7czoxOiIxIjtzOjIzOiJtb29kbGUvcXVlc3Rpb246ZWRpdGFsbCI7czoxOiIxIjtzOjI0OiJtb29kbGUvcXVlc3Rpb246ZWRpdG1pbmUiO3M6MToiMSI7czoyMDoibW9vZGxlL3F1ZXN0aW9uOmZsYWciO3M6MToiMSI7czozMDoibW9vZGxlL3F1ZXN0aW9uOm1hbmFnZWNhdGVnb3J5IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9xdWVzdGlvbjptb3ZlYWxsIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9xdWVzdGlvbjptb3ZlbWluZSI7czoxOiIxIjtzOjIyOiJtb29kbGUvcXVlc3Rpb246dXNlYWxsIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9xdWVzdGlvbjp1c2VtaW5lIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9xdWVzdGlvbjp2aWV3YWxsIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9xdWVzdGlvbjp2aWV3bWluZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoyNDoibW9vZGxlL3Jlc3RvcmU6Y29uZmlndXJlIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS9yZXN0b3JlOmNyZWF0ZXVzZXIiO3M6MToiMSI7czozMDoibW9vZGxlL3Jlc3RvcmU6cmVzdG9yZWFjdGl2aXR5IjtzOjE6IjEiO3M6Mjg6Im1vb2RsZS9yZXN0b3JlOnJlc3RvcmVjb3Vyc2UiO3M6MToiMSI7czoyOToibW9vZGxlL3Jlc3RvcmU6cmVzdG9yZXNlY3Rpb24iO3M6MToiMSI7czozMToibW9vZGxlL3Jlc3RvcmU6cmVzdG9yZXRhcmdldGh1YiI7czoxOiIxIjtzOjM0OiJtb29kbGUvcmVzdG9yZTpyZXN0b3JldGFyZ2V0aW1wb3J0IjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9yZXN0b3JlOnJvbGxkYXRlcyI7czoxOiIxIjtzOjI1OiJtb29kbGUvcmVzdG9yZTp1cGxvYWRmaWxlIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9yZXN0b3JlOnVzZXJpbmZvIjtzOjE6IjEiO3M6MzY6Im1vb2RsZS9yZXN0b3JlOnZpZXdhdXRvbWF0ZWRmaWxlYXJlYSI7czoxOiIxIjtzOjE4OiJtb29kbGUvcm9sZTphc3NpZ24iO3M6MToiMSI7czoxODoibW9vZGxlL3JvbGU6bWFuYWdlIjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9yb2xlOm92ZXJyaWRlIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yb2xlOnJldmlldyI7czoxOiIxIjtzOjI0OiJtb29kbGUvcm9sZTpzYWZlb3ZlcnJpZGUiO3M6MToiMSI7czoyMzoibW9vZGxlL3JvbGU6c3dpdGNocm9sZXMiO3M6MToiMSI7czoyNzoibW9vZGxlL3NpdGU6YWNjZXNzYWxsZ3JvdXBzIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS9zaXRlOmFwcHJvdmVjb3Vyc2UiO3M6MToiMSI7czoxODoibW9vZGxlL3NpdGU6Y29uZmlnIjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9zaXRlOmRvY2xpbmtzIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9zaXRlOm1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjI5OiJtb29kbGUvc2l0ZTptbmV0bG9naW50b3JlbW90ZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvc2l0ZTpyZWFkYWxsbWVzc2FnZXMiO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoyNDoibW9vZGxlL3NpdGU6dHJ1c3Rjb250ZW50IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9zaXRlOnVwbG9hZHVzZXJzIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS9zaXRlOnZpZXdmdWxsbmFtZXMiO3M6MToiMSI7czoyODoibW9vZGxlL3NpdGU6dmlld3BhcnRpY2lwYW50cyI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTp2aWV3cmVwb3J0cyI7czoxOiIxIjtzOjE3OiJtb29kbGUvdGFnOmNyZWF0ZSI7czoxOiIxIjtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO3M6MToiMSI7czoyMToibW9vZGxlL3RhZzplZGl0YmxvY2tzIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS90YWc6bWFuYWdlIjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS91c2VyOmNyZWF0ZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvdXNlcjpkZWxldGUiO3M6MToiMSI7czozMDoibW9vZGxlL3VzZXI6ZWRpdG1lc3NhZ2Vwcm9maWxlIjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czoxOiIxIjtzOjIzOiJtb29kbGUvdXNlcjplZGl0cHJvZmlsZSI7czoxOiIxIjtzOjE5OiJtb29kbGUvdXNlcjpsb2dpbmFzIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS91c2VyOm1hbmFnZWJsb2NrcyI7czoxOiIxIjtzOjI3OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25ibG9ja3MiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlc3lzcGFnZXMiO3M6MToiMSI7czoyNToibW9vZGxlL3VzZXI6cmVhZHVzZXJibG9ncyI7czoxOiIxIjtzOjI1OiJtb29kbGUvdXNlcjpyZWFkdXNlcnBvc3RzIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS91c2VyOnVwZGF0ZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjp2aWV3YWxsZGV0YWlscyI7czoxOiIxIjtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjp2aWV3aGlkZGVuZGV0YWlscyI7czoxOiIxIjtzOjM2OiJtb29kbGUvdXNlcjp2aWV3dXNlcmFjdGl2aXRpZXNyZXBvcnQiO3M6MToiMSI7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO3M6MToiMSI7czoyOToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRldG9rZW4iO3M6MToiMSI7czoyNToicXVpei9ncmFkaW5nOnZpZXdpZG51bWJlciI7czoxOiIxIjtzOjI5OiJxdWl6L2dyYWRpbmc6dmlld3N0dWRlbnRuYW1lcyI7czoxOiIxIjtzOjIwOiJxdWl6L3N0YXRpc3RpY3M6dmlldyI7czoxOiIxIjtzOjI2OiJyZXBvcnQvY291cnNlb3ZlcnZpZXc6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvcnQvY3VzdG9tbGFuZzplZGl0IjtzOjE6IjEiO3M6MjI6InJlcG9ydC9jdXN0b21sYW5nOnZpZXciO3M6MToiMSI7czoyOToicmVwb3J0L3F1ZXN0aW9uaW5zdGFuY2VzOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3J0L3NlY3VyaXR5OnZpZXciO3M6MToiMSI7czoyMDoicmVwb3J0L3VuaXR0ZXN0OnZpZXciO3M6MToiMSI7czoyNDoicmVwb3NpdG9yeS9hbGZyZXNjbzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvYm94bmV0OnZpZXciO3M6MToiMSI7czoyNzoicmVwb3NpdG9yeS9jb3Vyc2VmaWxlczp2aWV3IjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkvZHJvcGJveDp2aWV3IjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZmlsZXN5c3RlbTp2aWV3IjtzOjE6IjEiO3M6Mjk6InJlcG9zaXRvcnkvZmxpY2tyX3B1YmxpYzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvZmxpY2tyOnZpZXciO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvbWVybG90OnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3JlY2VudDp2aWV3IjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3VwbG9hZDp2aWV3IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS93ZWJkYXY6dmlldyI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtzOjE6IjEiO3M6MTg6IndlYnNlcnZpY2UvYW1mOnVzZSI7czoxOiIxIjtzOjE5OiJ3ZWJzZXJ2aWNlL3Jlc3Q6dXNlIjtzOjE6IjEiO3M6MTk6IndlYnNlcnZpY2Uvc29hcDp1c2UiO3M6MToiMSI7czoyMToid2Vic2VydmljZS94bWxycGM6dXNlIjtzOjE6IjEiO31zOjQ6Ii8xOjciO2E6NTE6e3M6MjM6InJlcG9zaXRvcnkveW91dHViZTp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlbW9kdWxlIjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjMyOiJtb29kbGUvY2FsZW5kYXI6bWFuYWdlb3duZW50cmllcyI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9ib3huZXQ6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkvZHJvcGJveDp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9teTptYW5hZ2VibG9ja3MiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9maWxlc3lzdGVtOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7czoxOiIxIjtzOjE1OiJtb29kbGUvdGFnOmVkaXQiO3M6MToiMSI7czoyOToicmVwb3NpdG9yeS9mbGlja3JfcHVibGljOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9nb29nbGVkb2NzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoyMToicmVwb3NpdG9yeS9sb2NhbDp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcGljYXNhOnZpZXciO3M6MToiMSI7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9yZWNlbnQ6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyNzoibW9vZGxlL3VzZXI6bWFuYWdlb3duYmxvY2tzIjtzOjE6IjEiO3M6MTg6InJlcG9zaXRvcnkvczM6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6bWFuYWdlb3duZmlsZXMiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS91cGxvYWQ6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyMToibW9vZGxlL2NvdXJzZTpyZXF1ZXN0IjtzOjE6IjEiO3M6MTk6InJlcG9zaXRvcnkvdXJsOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoyMDoicmVwb3NpdG9yeS91c2VyOnZpZXciO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOmNyZWF0ZSI7czoxOiIxIjtzOjI1OiJyZXBvc2l0b3J5L3dpa2ltZWRpYTp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoyNjoibW9vZGxlL2Jsb2c6bWFuYWdlZXh0ZXJuYWwiO3M6MToiMSI7fXM6ODoiLzEvMi80OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjg6Ii8xLzIvNDo4IjthOjI6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjtzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjgiO2E6Mjp7czoxNzoibW9vZGxlL2Jsb2NrOmVkaXQiO3M6MjoiLTEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzY6OCI7YToyOntzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6NToiLTEwMDAiO31zOjk6Ii8xLzIvMzU6OCI7YToyOntzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6NToiLTEwMDAiO31zOjk6Ii8xLzIvMzQ6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNDo4IjthOjI6e3M6MTc6Im1vb2RsZS9ibG9jazplZGl0IjtzOjI6Ii0xIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNzo3IjthOjM6e3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MjoiLTEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNzo4IjthOjU6e3M6MjY6Im1vZC9mb3J1bTpleHBvcnRkaXNjdXNzaW9uIjtzOjI6Ii0xIjtzOjIzOiJtb2QvZm9ydW06ZXhwb3J0b3ducG9zdCI7czoyOiItMSI7czoyMDoibW9kL2ZvcnVtOmV4cG9ydHBvc3QiO3M6MjoiLTEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoyOiItMSI7czoyOToibW9kL2ZvcnVtOm1hbmFnZXN1YnNjcmlwdGlvbnMiO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTU6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvNzo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjgiO2E6Mjp7czoxNzoibW9vZGxlL2Jsb2NrOmVkaXQiO3M6MjoiLTEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS84OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6OCI7YToyOntzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO319czo2OiJsb2FkZWQiO2E6NDp7aTowO3M6NDoiLzEvMiI7aToxO3M6NDoiLzEvNyI7aToyO3M6NDoiLzEvOCI7aTozO3M6NDoiLzEvOSI7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTczMzQ5MTA7fXM6Nzoic2Vzc2tleSI7czoxMDoiQWpuMUhpV1l0aiI7czoxMDoicHJlZmVyZW5jZSI7YTo0OntzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czoxOiIwIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6MToiMCI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMxNzMzNTE4MDt9czoxNzoibWVzc2FnZV9sYXN0cG9wdXAiO2k6MDtzOjc6ImRpc3BsYXkiO2E6MTp7aToxO2k6MDt9czoyNToiYWpheF91cGRhdGFibGVfdXNlcl9wcmVmcyI7YTo5OntzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNCI7czozOiJpbnQiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjM6ImludCI7czoxMzoiYmxvY2sxMGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazE1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrNmhpZGRlbiI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3Jfb3B0aW9uc2NvbGxhcHNlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czo0OiJib29sIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czo0OiJib29sIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6NDoiYm9vbCI7fXM6MTM6InVzZXJzZWxlY3RvcnMiO2E6Mjp7czozMjoiNmJmMTZkY2QyMmZjNTNmYWQzYzZlNjMwOGIxY2NlYTciO2E6ODp7czo1OiJjbGFzcyI7czoyMToiZXhpc3Rpbmdfcm9sZV9ob2xkZXJzIjtzOjQ6Im5hbWUiO3M6MTI6InJlbW92ZXNlbGVjdCI7czo3OiJleGNsdWRlIjthOjA6e31zOjExOiJleHRyYWZpZWxkcyI7YToxOntpOjA7czo1OiJlbWFpbCI7fXM6MTE6Im11bHRpc2VsZWN0IjtiOjE7czo0OiJmaWxlIjtzOjE5OiJhZG1pbi9yb2xlcy9saWIucGhwIjtzOjY6InJvbGVpZCI7aTo4O3M6OToiY29udGV4dGlkIjtzOjE6IjEiO31zOjMyOiI1MTBmY2NlYTZjZDQ0OTdkZmFhYmJkOGM4N2FiMDJhMiI7YTo4OntzOjU6ImNsYXNzIjtzOjM2OiJwb3RlbnRpYWxfYXNzaWduZWVzX2NvdXJzZV9hbmRfYWJvdmUiO3M6NDoibmFtZSI7czo5OiJhZGRzZWxlY3QiO3M6NzoiZXhjbHVkZSI7YTowOnt9czoxMToiZXh0cmFmaWVsZHMiO2E6MTp7aTowO3M6NToiZW1haWwiO31zOjExOiJtdWx0aXNlbGVjdCI7YjoxO3M6NDoiZmlsZSI7czoxOToiYWRtaW4vcm9sZXMvbGliLnBocCI7czo2OiJyb2xlaWQiO2k6ODtzOjk6ImNvbnRleHRpZCI7czoxOiIxIjt9fX0=', 1317334910, 1317335181, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -9390,7 +10210,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
   KEY `mdl_user_ema_ix` (`email`),
   KEY `mdl_user_aut_ix` (`auth`),
   KEY `mdl_user_idn_ix` (`idnumber`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `mdl_user`
@@ -9398,15 +10218,19 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `htmleditor`, `ajax`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `screenreader`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', '78b15a258e709d0ac9d6bd1e024fcdc3', '', 'Invitado', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'es_ar', '', '99', 0, 0, 0, 0, '', '', 0, '', 'Este usuario sólo tiene acceso de lectura en ciertos cursos.', 0, 1, 0, 2, 1, 1, 1, 0, 0, 1316566413, 0, NULL, 0),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'f13240f987eb73af968e9e5c5df9b461', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1316813732, 1316810078, 1316813049, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1317334858, 1317334775, 1317334858, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
 (3, 'email', 1, 0, 1, 0, 1, 'damiancalabresi@gmail.com.1316715379', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '8dc07c4331811471f76c7afd1ef2d9a8', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es', '', '99', 1316650555, 0, 0, 0, '', 'kyQ4Tj9nnkgXyOO', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316644852, 1316715379, 0, NULL, 0),
 (4, 'email', 0, 0, 1, 0, 1, 'damiancalabresi2@gmail.com.1316715386', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '1eb69a1a1b94c672d7514a810b76823a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316713930, 0, 0, 0, '', 'rQM8FnJPP6TbON5', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316713930, 1316715386, 0, NULL, 0),
 (5, 'email', 0, 0, 1, 0, 1, 'damiancalabresi3@gmail.com.1316715393', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '4e4561b6b5529ff7b8a1ee20aaf91609', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714434, 0, 0, 0, '', '06qcs0poh4XB5rk', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714434, 1316715393, 0, NULL, 0),
 (6, 'email', 0, 0, 1, 0, 1, 'damiancalabresi4@gmail.com.1316715400', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '063fdc3a99263df10f43cc156664699b', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714534, 0, 0, 0, '', 'QgOopNbJHuiBGb6', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714534, 1316715400, 0, NULL, 0),
 (7, 'email', 0, 0, 1, 0, 1, 'damiancalabresi6@gmail.com.1316715408', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'e18b1aac6719285d7f1f46c825947d3a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714844, 0, 0, 0, '', 'PlkyoZcAoJjsGSM', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714844, 1316715408, 0, NULL, 0),
 (8, 'email', 0, 0, 1, 0, 1, 'damiancalabresi7@gmail.com.1316715373', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '3a28fae53c9aeff9fcb8fc1da5556a05', 0, '', '', '', '', '', '', '', '', '', '', 'Bue', 'AR', 'es_ar', '', '99', 1316714949, 0, 0, 0, '', 'gPHS3wQ3rJSQfRg', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714949, 1316715373, 0, NULL, 0),
-(9, 'email', 1, 0, 0, 0, 1, 'damian7', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'damiancalabresi8@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 0, 0, NULL, 0),
-(10, 'email', 1, 0, 0, 0, 1, 'aprendiz1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Damian', 'Aprendiz', 'damiancalabresi10@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316813116, 0, 0, 0, '', '5LFPbQXnijqNGzZ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316813040, 0, 0, NULL, 0);
+(9, 'email', 1, 0, 1, 0, 1, 'damiancalabresi8@gmail.com.1317244268', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'a9ab9eeefb9bca93de9ca1a00e5ee190', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 1317244268, 0, NULL, 0),
+(10, 'email', 1, 0, 1, 0, 1, 'damiancalabresi10@gmail.com.1317244276', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Damian', 'Aprendiz', 'fcf26a5b2d50663445ff481a1c2ae0fa', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316813116, 0, 0, 0, '', '5LFPbQXnijqNGzZ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316813040, 1317244276, 0, NULL, 0),
+(11, 'email', 1, 0, 0, 0, 1, 'miembropopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'miembro1', 'popper', 'miembropopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245578, 1317334547, 1317333828, 1317334540, '127.0.0.1', 'mSyBn4xM9cT3SkB', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245146, 0, 0, NULL, 0),
+(12, 'email', 1, 0, 0, 0, 1, 'adminpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin1', 'popper', 'adminpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245575, 1317335180, 1317334834, 1317334910, '127.0.0.1', 'hOoqFpyh0Ht12LS', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245545, 0, 0, NULL, 0),
+(13, 'email', 1, 0, 0, 0, 1, 'aprendizpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Aprendiz1', 'Popper', 'aprendizpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326186, 1317334630, 1317332096, 1317334630, '127.0.0.1', 'YHCeWP8scedX9dJ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317326067, 0, 0, NULL, 0),
+(14, 'email', 1, 0, 0, 0, 1, 'mediadorpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'mediador1', 'popper', 'mediadorpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326189, 1317334588, 1317333088, 1317334587, '127.0.0.1', 'Lnh6L6eeMC02M8u', 0, '', '', 0, 1, 0, 2, 1, 1, 1, 0, 1317326147, 1317329502, 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -9436,7 +10260,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
 --
 
 INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timestart`, `timeend`, `modifierid`, `timecreated`, `timemodified`) VALUES
-(1, 0, 1, 9, 1316728800, 0, 2, 1316813637, 1316813637);
+(1, 0, 1, 11, 1317247200, 0, 2, 1317248002, 1317248002);
 
 -- --------------------------------------------------------
 
@@ -9473,19 +10297,25 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
   `dataformat` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_userinfodata_usefie_ix` (`userid`,`fieldid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `mdl_user_info_data`
 --
 
 INSERT INTO `mdl_user_info_data` (`id`, `userid`, `fieldid`, `data`, `dataformat`) VALUES
-(19, 9, 3, '23432423', 0),
-(20, 9, 4, '234234', 0),
-(21, 9, 5, 'Ninguno', 0),
-(22, 10, 3, '23434342', 0),
-(23, 10, 4, '345345', 0),
-(24, 10, 5, 'Aprendiz', 0);
+(25, 11, 3, '12345678', 0),
+(26, 11, 4, '12345678', 0),
+(27, 11, 5, 'Miembro', 0),
+(28, 12, 3, '12345678', 0),
+(29, 12, 4, '12345678', 0),
+(30, 12, 5, 'Administrador', 0),
+(31, 13, 3, '12345678', 0),
+(32, 13, 4, '12345678', 0),
+(33, 13, 5, 'Aprendiz', 0),
+(34, 14, 3, '12345678', 0),
+(35, 14, 4, '12345678', 0),
+(36, 14, 5, 'Mediador', 0);
 
 -- --------------------------------------------------------
 
@@ -9524,7 +10354,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
 INSERT INTO `mdl_user_info_field` (`id`, `shortname`, `name`, `datatype`, `description`, `descriptionformat`, `categoryid`, `sortorder`, `required`, `locked`, `visible`, `forceunique`, `signup`, `defaultdata`, `defaultdataformat`, `param1`, `param2`, `param3`, `param4`, `param5`) VALUES
 (3, 'dni', 'DNI', 'text', '', 1, 2, 1, 1, 0, 1, 0, 1, '', 0, '30', '8', '0', '', ''),
 (4, 'padron', 'Padron-Legajo', 'text', '', 1, 2, 2, 1, 0, 1, 0, 1, '', 0, '30', '10', '0', '', ''),
-(5, 'rolsolicitado', 'Rol solicitado', 'menu', '<p>Este campo lo utilizará el administrador del sitio para asignar los roles al aceptar un usuario</p>', 1, 2, 3, 1, 0, 2, 0, 1, 'Ninguno', 0, 'Ninguno\nAprendiz\nMediador\nAmbos', NULL, NULL, NULL, NULL);
+(5, 'rolsolicitado', 'Rol solicitado', 'menu', '<p>Este campo lo utilizará el administrador del sitio para asignar los roles al aceptar un usuario</p>', 1, 2, 3, 1, 0, 2, 0, 1, 'Miembro', 0, 'Miembro\nAprendiz\nMediador\nAdministrador\nAprendiz y Mediador\nAdministrador y Mediador', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -9541,14 +10371,16 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
   UNIQUE KEY `mdl_userlast_usecou_uix` (`userid`,`courseid`),
   KEY `mdl_userlast_use_ix` (`userid`),
   KEY `mdl_userlast_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `mdl_user_lastaccess`
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
-(1, 2, 2, 1316813732);
+(1, 2, 2, 1317326904),
+(2, 12, 2, 1317334691),
+(3, 11, 2, 1317334547);
 
 -- --------------------------------------------------------
 
@@ -9563,17 +10395,25 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_userpref_usenam_uix` (`userid`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `mdl_user_preferences`
 --
 
 INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
-(1, 2, 'auth_forcepasswordchange', '0'),
 (2, 2, 'email_bounce_count', '1'),
 (3, 2, 'email_send_count', '1'),
-(4, 2, 'definerole_showadvanced', '1');
+(4, 2, 'definerole_showadvanced', ''),
+(5, 2, 'userselector_preserveselected', '0'),
+(6, 2, 'userselector_autoselectunique', '0'),
+(7, 2, 'userselector_searchanywhere', '0'),
+(8, 12, 'userselector_preserveselected', '0'),
+(9, 12, 'userselector_autoselectunique', '0'),
+(10, 12, 'userselector_searchanywhere', '0'),
+(11, 2, 'docked_block_instance_10', '0'),
+(12, 2, 'docked_block_instance_5', '0'),
+(13, 14, 'auth_forcepasswordchange', '0');
 
 -- --------------------------------------------------------
 

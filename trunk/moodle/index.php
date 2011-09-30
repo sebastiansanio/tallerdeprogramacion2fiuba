@@ -170,7 +170,7 @@
                         }
                         echo $OUTPUT->heading($newsforum->name, 2, 'headingblock header');
                         $suburl = new moodle_url('/mod/forum/subscribe.php', array('id' => $newsforum->id, 'sesskey' => sesskey()));
-                        echo html_writer::tag('div', html_writer::link($suburl, $subtext), array('class' => 'subscribelink'));
+                        //echo html_writer::tag('div', html_writer::link($suburl, $subtext), array('class' => 'subscribelink'));
                     } else {
                         echo $OUTPUT->heading($newsforum->name, 2, 'headingblock header');
                     }

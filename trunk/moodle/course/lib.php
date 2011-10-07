@@ -2390,7 +2390,7 @@ function print_category_enrolment_popper($category, $depth=0, $showcourses = fal
 }
 
 function print_category_info_enrolment_popper($category, $depth=0, $showcourses = false) {
-    global $CFG, $DB, $OUTPUT;
+    global $CFG, $DB, $OUTPUT, $USER;
 
     $strsummary = get_string('summary');
 
@@ -2459,8 +2459,16 @@ function print_category_info_enrolment_popper($category, $depth=0, $showcourses 
 					}
 				}
 			}
-				
-			$coursemembers = html_writer::link(new moodle_url('/enrol/manual/manage_mediador.php', array('enrolid'=>$enrolidaux)), "Matricular", $linkcss);
+			
+			$link = "";
+			if (has_capability('moodle/site:approvecourse', get_context_instance(CONTEXT_SYSTEM))) {
+				$link = '/enrol/manual/manage_mediador.php';
+			}
+			else {
+				$link = '/enrol/manual/manage_aprendiz.php';
+			}
+
+			$coursemembers = html_writer::link(new moodle_url($link, array('enrolid'=>$enrolidaux)), "Matricular", $linkcss);
 				
                 $coursecontent = html_writer::tag('div', $courseicon.$courselink." ".$coursemembers, array('class'=>'name'));
 				

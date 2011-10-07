@@ -158,6 +158,71 @@ class enrol_manual_potential_participant_mediador extends user_selector_base {
     }
 }
 
+class enrol_manual_potential_participant_aprendiz extends user_selector_base {
+    protected $enrolid;
+
+    public function __construct($name, $options) {
+        $this->enrolid  = $options['enrolid'];
+        parent::__construct($name, $options);
+    }
+
+    /**
+     * Candidate users
+     * @param <type> $search
+     * @return array
+     */
+    public function find_users($search) {
+        global $DB;
+        //by default wherecondition retrieves all users except the deleted, not confirmed and guest
+        list($wherecondition, $params) = $this->search_sql($search, 'u');
+        $params['enrolid'] = $this->enrolid;
+
+        $fields      = 'SELECT ' . $this->required_fields_sql('u');
+        $countfields = 'SELECT COUNT(1)';
+
+        $sql = " FROM {user} u
+                WHERE $wherecondition AND
+                      u.id NOT IN (
+                          SELECT ue.userid
+                            FROM {user_enrolments} ue
+                            JOIN {enrol} e ON (e.id = ue.enrolid AND e.id = :enrolid)) AND
+					  u.id IN (
+						  SELECT rol.userid
+							FROM {role_assignments} rol
+							WHERE roleid = 5 AND contextid = 1 )";
+        $order = ' ORDER BY u.lastname ASC, u.firstname ASC';
+
+        if (!$this->is_validating()) {
+            $potentialmemberscount = $DB->count_records_sql($countfields . $sql, $params);
+            if ($potentialmemberscount > 100) {
+                return $this->too_many_results($search, $potentialmemberscount);
+            }
+        }
+
+        $availableusers = $DB->get_records_sql($fields . $sql . $order, $params);
+
+        if (empty($availableusers)) {
+            return array();
+        }
+
+
+        if ($search) {
+            $groupname = get_string('enrolcandidatesmatching', 'enrol', $search);
+        } else {
+            $groupname = get_string('enrolcandidates', 'enrol');
+        }
+
+        return array($groupname => $availableusers);
+    }
+
+    protected function get_options() {
+        $options = parent::get_options();
+        $options['enrolid'] = $this->enrolid;
+        $options['file']    = 'enrol/manual/locallib.php';
+        return $options;
+    }
+}
+
 /**
  * Enroled users
  */

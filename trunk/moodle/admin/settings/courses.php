@@ -18,13 +18,13 @@ if ($hassiteconfig
     $courseformats = get_plugin_list('format');
     $formcourseformats = array();
     foreach ($courseformats as $courseformat => $courseformatdir) {
-		if($courseformat == 'weeks'){
+		if($courseformat == 'topics'){
 			$formcourseformats[$courseformat] = get_string('pluginname', "format_$courseformat");
 		}
 	}
-    $temp->add(new admin_setting_configselect('moodlecourse/format', get_string('format'), "Semanas", 'weeks',$formcourseformats));
+    $temp->add(new admin_setting_configselect('moodlecourse/format', get_string('format'), "Temas", 'topics',$formcourseformats));
 
-    $temp->add(new admin_setting_configtext('moodlecourse/maxsections', get_string('maxnumberweeks'), "Cantidad maxima de semanas del curso", 52));
+    $temp->add(new admin_setting_configtext('moodlecourse/maxsections', get_string('maxnumberweeks'), "Cantidad maxima de temas del curso", 25));
 
     $temp->add(new admin_settings_num_course_sections('moodlecourse/numsections', get_string('numberweeks'), get_string('coursehelpnumberweeks'), 16));
 

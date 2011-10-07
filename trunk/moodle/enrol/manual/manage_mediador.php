@@ -52,9 +52,6 @@ foreach($roles as $rolename){
 	if($rolename=="Mediador"){
 		$roleaux = array('3'=>'Mediador') + $roleaux;
 	}
-	if($rolename=="Aprendiz"){
-		$roleaux = array('5'=>'Aprendiz') + $roleaux;
-	}
 }
 
 $roles=$roleaux;
@@ -79,7 +76,7 @@ navigation_node::override_active_url(new moodle_url('/enrol/users.php', array('i
 // Create the user selector objects.
 $options = array('enrolid' => $enrolid);
 
-$potentialuserselector = new enrol_manual_potential_participant('addselect', $options);
+$potentialuserselector = new enrol_manual_potential_participant_mediador('addselect', $options);
 $currentuserselector = new enrol_manual_current_participant('removeselect', $options);
 
 // Build the list of options for the enrolment period dropdown.

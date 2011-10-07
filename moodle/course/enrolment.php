@@ -80,7 +80,7 @@ if (!$adminediting) {
         $PAGE->navbar->add($strcategories);
         $PAGE->set_title("$site->shortname: $strcategories");
         $PAGE->set_heading($COURSE->fullname);
-        $PAGE->set_button(update_category_button());
+        //$PAGE->set_button(update_category_button());
         echo $OUTPUT->header();
         echo $OUTPUT->heading($strcategories);
         echo $OUTPUT->skip_link_target();

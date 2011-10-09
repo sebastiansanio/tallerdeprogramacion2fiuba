@@ -2463,12 +2463,20 @@ function print_category_info_enrolment_popper($category, $depth=0, $showcourses 
 			$link = "";
 			if (has_capability('moodle/site:approvecourse', get_context_instance(CONTEXT_SYSTEM))) {
 				$link = '/enrol/manual/manage_mediador.php';
+				$coursemembers = html_writer::link(new moodle_url($link, array('enrolid'=>$enrolidaux)), "Matricular", $linkcss);
 			}
 			else {
 				$link = '/enrol/manual/manage_aprendiz.php';
+				if($userpermissions = $DB->get_records('role_assignments')) {
+				foreach ($userpermissions as $userdata) {
+				if(($userdata->userid==$USER->id) and ($userdata->contextid==$context->id) and ($userdata->roleid==3) ) {
+					$coursemembers = html_writer::link(new moodle_url($link, array('enrolid'=>$enrolidaux)), "Matricular", $linkcss);
+				}
+			}
+		}
 			}
 
-			$coursemembers = html_writer::link(new moodle_url($link, array('enrolid'=>$enrolidaux)), "Matricular", $linkcss);
+			
 				
                 $coursecontent = html_writer::tag('div', $courseicon.$courselink." ".$coursemembers, array('class'=>'name'));
 				

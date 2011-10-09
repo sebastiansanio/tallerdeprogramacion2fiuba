@@ -17,7 +17,7 @@ $CFG->dboptions = array (
 );
 
 $CFG->wwwroot   = 'http://localhost';
-$CFG->dataroot  = '/home/jr/Escritorio/MoodleTeam/moodledata';
+$CFG->dataroot  = 'C:\\Users\\damian\\moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;

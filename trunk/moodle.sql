@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 09-10-2011 a las 00:20:51
--- Versión del servidor: 5.5.8
--- Versión de PHP: 5.3.5
+-- Host: localhost
+-- Generation Time: Oct 09, 2011 at 12:23 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,13 +17,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `moodle`
+-- Database: `moodle`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_assignment`
+-- Table structure for table `mdl_assignment`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignment` (
@@ -49,15 +50,10 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment` (
   KEY `mdl_assi_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines assignments' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_assignment`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_assignment_submissions`
+-- Table structure for table `mdl_assignment_submissions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
@@ -82,15 +78,10 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
   KEY `mdl_assisubm_ass_ix` (`assignment`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about submitted assignments' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_assignment_submissions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_controllers`
+-- Table structure for table `mdl_backup_controllers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_controllers` (
@@ -116,15 +107,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_controllers` (
   KEY `mdl_backcont_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store the backup_controllers as they are used' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_controllers`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_courses`
+-- Table structure for table `mdl_backup_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_courses` (
@@ -138,15 +124,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_courses` (
   UNIQUE KEY `mdl_backcour_cou_uix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store every course backup status' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_courses`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_files`
+-- Table structure for table `mdl_backup_files`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_files` (
@@ -160,15 +141,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_files` (
   UNIQUE KEY `mdl_backfile_bacfilpat_uix` (`backup_code`,`file_type`,`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store and recode ids to user and course files' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_files`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_files_template`
+-- Table structure for table `mdl_backup_files_template`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_files_template` (
@@ -183,15 +159,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_files_template` (
   KEY `mdl_backfiletemp_bacconcomf_ix` (`backupid`,`contextid`,`component`,`filearea`,`itemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store files along the backup process. Note this table isn' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_files_template`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_ids`
+-- Table structure for table `mdl_backup_ids`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_ids` (
@@ -205,15 +176,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_ids` (
   UNIQUE KEY `mdl_backids_bactabold_uix` (`backup_code`,`table_name`,`old_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store and convert ids in backup/restore' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_ids`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_ids_template`
+-- Table structure for table `mdl_backup_ids_template`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_ids_template` (
@@ -230,15 +196,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_ids_template` (
   KEY `mdl_backidstemp_bacitenew_ix` (`backupid`,`itemname`,`newitemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store all sort of ids along the backup process. Note this' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_ids_template`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_log`
+-- Table structure for table `mdl_backup_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_log` (
@@ -252,15 +213,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_log` (
   KEY `mdl_backlog_cou_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store every course backup log info' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_log`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_backup_logs`
+-- Table structure for table `mdl_backup_logs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_backup_logs` (
@@ -274,15 +230,10 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_logs` (
   KEY `mdl_backlogs_bac_ix` (`backupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store all the logs from backup and restore operations (by' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_backup_logs`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block`
+-- Table structure for table `mdl_block`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block` (
@@ -297,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='contains all installed blocks' AUTO_INCREMENT=40 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_block`
+-- Dumping data for table `mdl_block`
 --
 
 INSERT INTO `mdl_block` (`id`, `name`, `version`, `cron`, `lastcron`, `visible`) VALUES
@@ -344,7 +295,7 @@ INSERT INTO `mdl_block` (`id`, `name`, `version`, `cron`, `lastcron`, `visible`)
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_community`
+-- Table structure for table `mdl_block_community`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_community` (
@@ -357,15 +308,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_community` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Community block' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_block_community`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_instances`
+-- Table structure for table `mdl_block_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
@@ -384,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=33 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_block_instances`
+-- Dumping data for table `mdl_block_instances`
 --
 
 INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showinsubcontexts`, `pagetypepattern`, `subpagepattern`, `defaultregion`, `defaultweight`, `configdata`) VALUES
@@ -414,7 +360,7 @@ INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showin
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_instance_old`
+-- Table structure for table `mdl_block_instance_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_instance_old` (
@@ -433,15 +379,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instance_old` (
   KEY `mdl_blocinstold_blo_ix` (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of 1.9 block instances - to be deleted' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_block_instance_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_pinned_old`
+-- Table structure for table `mdl_block_pinned_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_pinned_old` (
@@ -457,15 +398,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_pinned_old` (
   KEY `mdl_blocpinnold_blo_ix` (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of 1.9 pinned blocks - to be deleted' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_block_pinned_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_positions`
+-- Table structure for table `mdl_block_positions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
@@ -484,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the position of a sticky block_instance on a another ' AUTO_INCREMENT=9 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_block_positions`
+-- Dumping data for table `mdl_block_positions`
 --
 
 INSERT INTO `mdl_block_positions` (`id`, `blockinstanceid`, `contextid`, `pagetype`, `subpage`, `visible`, `region`, `weight`) VALUES
@@ -500,7 +436,7 @@ INSERT INTO `mdl_block_positions` (`id`, `blockinstanceid`, `contextid`, `pagety
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_rss_client`
+-- Table structure for table `mdl_block_rss_client`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_rss_client` (
@@ -514,15 +450,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_rss_client` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Remote news feed information. Contains the news feed id, the' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_block_rss_client`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_block_search_documents`
+-- Table structure for table `mdl_block_search_documents`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_block_search_documents` (
@@ -542,15 +473,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_search_documents` (
   KEY `mdl_blocseardocu_ite_ix` (`itemtype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='table to store search index backups' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_block_search_documents`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_blog_association`
+-- Table structure for table `mdl_blog_association`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
@@ -562,15 +488,10 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
   KEY `mdl_blogasso_blo_ix` (`blogid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_blog_association`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_blog_external`
+-- Table structure for table `mdl_blog_external`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_blog_external` (
@@ -587,15 +508,10 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_external` (
   KEY `mdl_blogexte_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='External blog links used for RSS copying of blog entries to ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_blog_external`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_cache_filters`
+-- Table structure for table `mdl_cache_filters`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_filters` (
@@ -609,15 +525,10 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_filters` (
   KEY `mdl_cachfilt_filmd5_ix` (`filter`,`md5key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For keeping information about cached data' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_cache_filters`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_cache_flags`
+-- Table structure for table `mdl_cache_flags`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
@@ -633,7 +544,7 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=43 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_cache_flags`
+-- Dumping data for table `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
@@ -664,8 +575,8 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (25, 'accesslib/dirtycontexts', '/1/2/4', 1317330134, '1', 1317337334),
 (26, 'accesslib/dirtycontexts', '/1/2/17', 1317332730, '1', 1317339930),
 (27, 'accesslib/dirtycontexts', '/1/23/24/27', 1317390971, '1', 1317398171),
-(28, 'accesslib/dirtycontexts', '/1/22/40', 1317957296, '1', 1317964496),
-(29, 'accesslib/dirtycontexts', '/1/23/46', 1318102474, '1', 1318109674),
+(28, 'accesslib/dirtycontexts', '/1/22/40', 1318149037, '1', 1318156237),
+(29, 'accesslib/dirtycontexts', '/1/23/46', 1318148781, '1', 1318155981),
 (30, 'accesslib/dirtycontexts', '/1/23/46/47', 1317848546, '1', 1317855746),
 (31, 'accesslib/dirtycontexts', '/1/23/46/52', 1317848645, '1', 1317855845),
 (32, 'accesslib/dirtycontexts', '/1/22/53', 1318101911, '1', 1318109111),
@@ -683,7 +594,7 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_cache_text`
+-- Table structure for table `mdl_cache_text`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
@@ -697,14 +608,14 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=256 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_cache_text`
+-- Dumping data for table `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1318112380),
+(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1318152291),
 (2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1317330296),
 (3, '3f753a864e451dd63c50e2914e848ffa', '<p>Para transformar el texto en un enlace, introduzca una URL que contenga $$, donde $$ se sustituye por el texto. Por ejemplo, para transformar una ID de Twitter en un enlace, introduzca http://twitter.com/$$.</p>\n', 1316642136),
-(4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1317955528),
+(4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1318152275),
 (5, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642917),
 (6, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642918),
 (7, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316728745),
@@ -770,8 +681,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (67, 'a8361c23b8a0b7947c0e72d22169344c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul>\r\n<!--?php \r\necho "hola";\r\n?--></div>', 1317327126),
 (68, 'cc112a688eba41486f4e86c935b6bcd5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334824),
 (69, '6adeb3dd2a825f7e2da5e75b91a373c2', '<div class="no-overflow"><p>&lt;ul&gt;<br />&lt;li&gt;&lt;a href="http://localhost/"&gt;Pagina principal&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/"&gt;Conectarse&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/signup.php"&gt;Registrarse&lt;/a&gt;&lt;/li&gt;<br />&lt;/ul&gt;</p></div>', 1317327622),
-(70, '5785be5644a37e1e2a92bbad5ad400c8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318112380),
-(71, 'eb6d13ec293bbe8a1bd37d9fd5b621ed', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318112380),
+(70, '5785be5644a37e1e2a92bbad5ad400c8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318152290),
+(71, 'eb6d13ec293bbe8a1bd37d9fd5b621ed', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318152290),
 (72, 'd3e72cf14d54fc5e32abab06615022de', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934836),
 (73, 'b50ef70b15eabc200fcc0a9390ccc28a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333778),
 (74, 'f1d08970e62175b134a45b63add57a3c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317333778),
@@ -794,8 +705,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (91, 'a4936508bbba7861ed242402b944d7e1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317328995),
 (92, '3b202ad55fe28e3088f89933f2b4268d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317328995),
 (93, 'dde8df9a240bb80cdf2ce3d6e680cadd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334840),
-(94, '902bb1b65c14de5a8e4fa3c119868548', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318112335),
-(95, 'accb44e0b7b275b2c44e114ff7ec97c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318112335),
+(94, '902bb1b65c14de5a8e4fa3c119868548', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318155177),
+(95, 'accb44e0b7b275b2c44e114ff7ec97c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318155177),
 (96, '3e28232ab741397c660d75cb585df966', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934751),
 (97, 'd0c07d03ac2b8277c3b7e613a0353719', 'Mediador', 1317390556),
 (98, 'e7641c731f17c40f2e82ba4dca8864b2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317329483),
@@ -825,7 +736,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (122, '73f95a6e78124d1c288f06133d909888', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318099404),
 (123, 'd4c38b96d242ee0a167340fb6b1420c1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318099405),
 (124, '825bbf4a8897f60e38fb65f498618f66', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317929969),
-(125, '8e1544fde6ea77a3f41d2966fc2d432c', '<p>Hola</p>', 1318112320),
+(125, '8e1544fde6ea77a3f41d2966fc2d432c', '<p>Hola</p>', 1318152291),
 (126, 'af8eff36b9230c7b6fa5fc15dd368b29', '<div class="no-overflow">Cartelera</div>', 1318104102),
 (127, 'cf3bd191758ceb96e7dbd366b36b95f5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333398),
 (128, 'a9b6da6c5e5bb6d899677614f67e3381', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317396521),
@@ -861,8 +772,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (158, 'da28f8f5964288310744ae2158189adc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317396068),
 (159, 'c71a68cf97292d699c78fa31e1f43fdc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317395993),
 (160, 'd7ccedc166476c12a394df9dba72400b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317397578),
-(161, '85c3dd135c317e680d77ca1f618c433c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318102397),
-(162, '40ede81be4df3b6857b7a071e7f3c969', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318102398),
+(161, '85c3dd135c317e680d77ca1f618c433c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318151368),
+(162, '40ede81be4df3b6857b7a071e7f3c969', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318151368),
 (163, '1470b825e57405da25699d908f49a661', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934134),
 (164, '0b31c4151ac7d01fea6e9832fba9c81a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317391270),
 (165, '31b2f7e5d39b3d3a6baecf1f24a53a0f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317397640),
@@ -872,8 +783,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (169, 'f9b7c6d5fc199336759cdf71a2c12261', '<div class="no-overflow">Cartelera</div>', 1317397641),
 (170, 'ba8ac38ce9bd5b152927c261d38b1695', '<h2>Formato LAMS</h2>\n\n<p class="indent">\nEste formato convierte la interfaz LAMS (Learning Activity Management System) en el aspecto central del curso. Los ajustes LAMS deben ser realizados por un administrador para poder utilizar este formato.</p>\n\n<h2>Formato SCORM</h2>\n\n<p class="indent">\nEste formato muestra un paquete SCORM en la primera sección de la portada del curso. (El módulo SCORM/AICC proporciona un método alternativo para mostrar un paquete SCORM en un curso).</p>\n\n<h2>Formato social</h2>\n\n<p class="indent">\nEste formato se orienta en torno al foro central, el Foro Social, que aparece en\nla página principal. Resulta útil en situaciones de formato más libre. Incluso puede no ser un curso: por ejemplo, podría utilizarse como tablón de anuncios de un departamento.</p>\n\n<h2>Formato por temas</h2>\n\n<p class="indent">\nEl curso se organiza en secciones o temas. Cada tema consiste en una serie de actividades.</p>\n\n<h2>Formato semanal</h2>\n\n<p class="indent">\nEl curso se organiza por semanas, con fecha de inicio y fin.\nCada semana contiene sus propias actividades. Algunas de ellas,\ncomo los diarios, pueden durar más de una semana, antes de cerrarse.</p>\n\n<h2>Formato semanal - CSS/Sin tablas</h2>\n\n<p class="indent">\nEl curso se organiza semana por semana, sin usar tablas en el formato.</p>\n', 1317392170),
 (171, '0c74706d17505531ce795bc5d6815a70', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317396506),
-(172, '6e2944297a63c4b165f2dee548b0c232', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318112342),
-(173, '9c9dfbd5f6436daf5ce9b3c0d3cf27ad', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318112343),
+(172, '6e2944297a63c4b165f2dee548b0c232', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318151332),
+(173, '9c9dfbd5f6436daf5ce9b3c0d3cf27ad', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318151332),
 (174, 'ccbc92a239350e71f335c3906d956dfe', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317933527),
 (175, 'cb1a255c2888c26225bfd558402eef23', '<p>Si lo desea, puede adjuntar uno o más archivos a un mensaje en el foro. Si adjunta una imagen, se mostrará al final del mensaje.</p>\n', 1317396350);
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
@@ -886,10 +797,10 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (182, '33fc3379124375d5f5cc5ceb9528e1ba', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934741),
 (183, '6ba105f8934308fc3fcc3a84260cc3e0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934751),
 (184, 'ff1e1b8a2cba8971c10ca7bbc8b7204f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934686),
-(185, '1c9746b46107c90f7ebd9a500a7f4bae', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317955527),
-(186, '1889b755baa6d0770388bb546493b46a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317955527),
+(185, '1c9746b46107c90f7ebd9a500a7f4bae', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318152274),
+(186, '1889b755baa6d0770388bb546493b46a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318152275),
 (187, '142701bb3c76897352720cacf2575fcc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934686),
-(188, '2e04671a4a476c85f446f0c588e51e16', '<p>Hola</p>', 1317955532),
+(188, '2e04671a4a476c85f446f0c588e51e16', '<p>Hola</p>', 1318152275),
 (189, '9e092764bc86235918810a2c36788a9c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317931871),
 (190, 'b351fd7639f38d777f12e7e6be1b0125', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317933527),
 (191, '7ec3772cfdd2d77c7f502c2fb8f1c7ab', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317933091),
@@ -902,16 +813,16 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (198, 'b8cc076a9e909903bacc07095dfdde2a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul>\r\n<script type="text/javascript">// <![CDATA[\r\ndocument.write("<p>" + Date() + "</p>");\r\n// ]]></script></div>', 1317930939),
 (199, '70512e26e319f0b6c569da6e492fcd65', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<![CDATA[\r\n<?php\r\necho "hola mundo";\r\n?>\r\n// ]]></ul></div>', 1317931193),
 (200, '811349cbc99796592c6399beb9214df9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934134),
-(201, '24efdd457b2ec602a526b31dc09d775c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112380),
-(202, '0ee373016fe13c60d22c70e91519da2e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112380),
-(203, 'b348f447ebda2054c35f7d3e357e9084', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112335),
-(204, 'd4620aa317e8246c765656fc1a5e039b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112335),
-(205, 'aeaee86689ade33c454f2bc7b901e8dd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1317955527),
-(206, 'e300fe80d258762653a93cdf307cad8d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1317955527),
-(207, '82be1c4032aedeb0de37f965cd480f1e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318102397),
-(208, '29e614729f44084bc69dca05de480edf', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318102398),
-(209, '3f08bbd027f4d5eaf06bcad803ca7818', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112342),
-(210, '5255d883e112dac5cd3f609be70b55a7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112343),
+(201, '24efdd457b2ec602a526b31dc09d775c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318152290),
+(202, '0ee373016fe13c60d22c70e91519da2e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318152290),
+(203, 'b348f447ebda2054c35f7d3e357e9084', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318155177),
+(204, 'd4620aa317e8246c765656fc1a5e039b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318155177),
+(205, 'aeaee86689ade33c454f2bc7b901e8dd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318152274),
+(206, 'e300fe80d258762653a93cdf307cad8d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318152275),
+(207, '82be1c4032aedeb0de37f965cd480f1e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318151368),
+(208, '29e614729f44084bc69dca05de480edf', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318151368),
+(209, '3f08bbd027f4d5eaf06bcad803ca7818', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318151332),
+(210, '5255d883e112dac5cd3f609be70b55a7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318151332),
 (211, '60e18ca1bd1d4f58a951bf78e0451994', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112360),
 (212, '2d9ff571ca80541d997cd80a223298a1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112360),
 (213, 'f479d2e679e74ec54a50711ea8fd8fb1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318104106),
@@ -920,16 +831,16 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (216, '298d51e575582dcbab493642e69f7997', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318104106),
 (217, '7c87a59d596a18642d299053d22e76ba', '<div class="no-overflow"><p>Foro Posta</p></div>', 1318097543),
 (218, 'fa40be534cd6d2ddf07534f89f74f247', '<p>hghjg</p>', 1318097544),
-(219, '2870216756a26a5ee898c82e03364099', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318112335),
-(220, '2a9be49ba7f9897278f8cc04bb222149', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1317955527),
-(221, '778433aed46c63430d3b9d34b4cf9334', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1317945544),
-(222, '9344b9ea4978fdeeeb94416ee5d8448d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317945544),
-(223, '2a4b674648c918721c98d7c5de856034', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317945544),
-(224, 'feea3b4f84c4e9357cbe24bba6eb9075', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1317945544),
-(225, '97370f305ae0ff9c591f887e759a82d2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1317945544),
-(226, '738d7aafdfd56dddae8732e736b6dd18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318112380),
-(227, '3ad1769c32a85befdd4d0985604b7490', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318112343),
-(228, '87bc2846997da2fdb219d10cee864c58', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318102398),
+(219, '2870216756a26a5ee898c82e03364099', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318155177),
+(220, '2a9be49ba7f9897278f8cc04bb222149', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318152275),
+(221, '778433aed46c63430d3b9d34b4cf9334', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318148588),
+(222, '9344b9ea4978fdeeeb94416ee5d8448d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318148588),
+(223, '2a4b674648c918721c98d7c5de856034', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318148588),
+(224, 'feea3b4f84c4e9357cbe24bba6eb9075', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318148588),
+(225, '97370f305ae0ff9c591f887e759a82d2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318148588),
+(226, '738d7aafdfd56dddae8732e736b6dd18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318152290),
+(227, '3ad1769c32a85befdd4d0985604b7490', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318151332),
+(228, '87bc2846997da2fdb219d10cee864c58', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318151368),
 (229, '6ff444e251415aecceb6732def467354', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112337),
 (230, '8d1620d24d0bc2d52d94d86c2fbf7aeb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318112338),
 (231, 'ed5fcce243674f0687aea39cb8b60f89', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112338),
@@ -961,7 +872,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_capabilities`
+-- Table structure for table `mdl_capabilities`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_capabilities` (
@@ -976,7 +887,7 @@ CREATE TABLE IF NOT EXISTS `mdl_capabilities` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines all capabilities' AUTO_INCREMENT=368 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_capabilities`
+-- Dumping data for table `mdl_capabilities`
 --
 
 INSERT INTO `mdl_capabilities` (`id`, `name`, `captype`, `contextlevel`, `component`, `riskbitmask`) VALUES
@@ -1351,7 +1262,7 @@ INSERT INTO `mdl_capabilities` (`id`, `name`, `captype`, `contextlevel`, `compon
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_chat`
+-- Table structure for table `mdl_chat`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat` (
@@ -1369,15 +1280,10 @@ CREATE TABLE IF NOT EXISTS `mdl_chat` (
   KEY `mdl_chat_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each of these is a chat room' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_chat`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_chat_messages`
+-- Table structure for table `mdl_chat_messages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_messages` (
@@ -1395,15 +1301,10 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages` (
   KEY `mdl_chatmess_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all the actual chat messages' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_chat_messages`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_chat_messages_current`
+-- Table structure for table `mdl_chat_messages_current`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_messages_current` (
@@ -1421,15 +1322,10 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages_current` (
   KEY `mdl_chatmesscurr_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores current session' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_chat_messages_current`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_chat_users`
+-- Table structure for table `mdl_chat_users`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_chat_users` (
@@ -1452,15 +1348,10 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_users` (
   KEY `mdl_chatuser_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of which users are in which chat rooms' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_chat_users`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_choice`
+-- Table structure for table `mdl_choice`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice` (
@@ -1483,15 +1374,10 @@ CREATE TABLE IF NOT EXISTS `mdl_choice` (
   KEY `mdl_choi_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Available choices are stored here' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_choice`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_choice_answers`
+-- Table structure for table `mdl_choice_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice_answers` (
@@ -1506,15 +1392,10 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_answers` (
   KEY `mdl_choiansw_opt_ix` (`optionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='choices performed by users' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_choice_answers`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_choice_options`
+-- Table structure for table `mdl_choice_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_choice_options` (
@@ -1527,15 +1408,10 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_options` (
   KEY `mdl_choiopti_cho_ix` (`choiceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='available options to choice' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_choice_options`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_cohort`
+-- Table structure for table `mdl_cohort`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cohort` (
@@ -1552,15 +1428,10 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort` (
   KEY `mdl_coho_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record represents one cohort (aka site-wide group).' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_cohort`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_cohort_members`
+-- Table structure for table `mdl_cohort_members`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_cohort_members` (
@@ -1574,15 +1445,10 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort_members` (
   KEY `mdl_cohomemb_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a user to a cohort.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_cohort_members`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_comments`
+-- Table structure for table `mdl_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_comments` (
@@ -1597,15 +1463,10 @@ CREATE TABLE IF NOT EXISTS `mdl_comments` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle comments module' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_comments`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_config`
+-- Table structure for table `mdl_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config` (
@@ -1617,7 +1478,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle configuration variables' AUTO_INCREMENT=395 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_config`
+-- Dumping data for table `mdl_config`
 --
 
 INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
@@ -2015,7 +1876,7 @@ INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_config_log`
+-- Table structure for table `mdl_config_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config_log` (
@@ -2032,7 +1893,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=753 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_config_log`
+-- Dumping data for table `mdl_config_log`
 --
 
 INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, `value`, `oldvalue`) VALUES
@@ -2793,7 +2654,7 @@ INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_config_plugins`
+-- Table structure for table `mdl_config_plugins`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_config_plugins` (
@@ -2806,7 +2667,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_plugins` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle modules and plugins configuration variables' AUTO_INCREMENT=597 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_config_plugins`
+-- Dumping data for table `mdl_config_plugins`
 --
 
 INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
@@ -3367,7 +3228,7 @@ INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_context`
+-- Table structure for table `mdl_context`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_context` (
@@ -3383,7 +3244,7 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=60 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_context`
+-- Dumping data for table `mdl_context`
 --
 
 INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) VALUES
@@ -3428,7 +3289,7 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_context_temp`
+-- Table structure for table `mdl_context_temp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_context_temp` (
@@ -3438,15 +3299,10 @@ CREATE TABLE IF NOT EXISTS `mdl_context_temp` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Used by build_context_path() in upgrade and cron to keep con';
 
---
--- Volcar la base de datos para la tabla `mdl_context_temp`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course`
+-- Table structure for table `mdl_course`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course` (
@@ -3490,7 +3346,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Central course table' AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_course`
+-- Dumping data for table `mdl_course`
 --
 
 INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`, `idnumber`, `summary`, `summaryformat`, `format`, `showgrades`, `modinfo`, `newsitems`, `startdate`, `numsections`, `marker`, `maxbytes`, `legacyfiles`, `showreports`, `visible`, `visibleold`, `hiddensections`, `groupmode`, `groupmodeforce`, `defaultgroupingid`, `lang`, `theme`, `timecreated`, `timemodified`, `requested`, `restrictmodules`, `enablecompletion`, `completionstartonenrol`, `completionnotify`) VALUES
@@ -3501,7 +3357,7 @@ INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_allowed_modules`
+-- Table structure for table `mdl_course_allowed_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_allowed_modules` (
@@ -3513,15 +3369,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_allowed_modules` (
   KEY `mdl_courallomodu_mod_ix` (`module`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='allowed modules foreach course' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_allowed_modules`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_categories`
+-- Table structure for table `mdl_course_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
@@ -3543,7 +3394,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course categories' AUTO_INCREMENT=8 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_course_categories`
+-- Dumping data for table `mdl_course_categories`
 --
 
 INSERT INTO `mdl_course_categories` (`id`, `name`, `description`, `descriptionformat`, `parent`, `sortorder`, `coursecount`, `visible`, `visibleold`, `timemodified`, `depth`, `path`, `theme`) VALUES
@@ -3553,7 +3404,7 @@ INSERT INTO `mdl_course_categories` (`id`, `name`, `description`, `descriptionfo
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_completions`
+-- Table structure for table `mdl_course_completions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
@@ -3572,15 +3423,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
   KEY `mdl_courcomp_tim_ix` (`timecompleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion records' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_completions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_completion_aggr_methd`
+-- Table structure for table `mdl_course_completion_aggr_methd`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
@@ -3594,15 +3440,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
   KEY `mdl_courcompaggrmeth_cri_ix` (`criteriatype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion aggregation methods for criteria' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_completion_aggr_methd`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_completion_criteria`
+-- Table structure for table `mdl_course_completion_criteria`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
@@ -3620,15 +3461,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
   KEY `mdl_courcompcrit_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion criteria' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_completion_criteria`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_completion_crit_compl`
+-- Table structure for table `mdl_course_completion_crit_compl`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
@@ -3647,15 +3483,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
   KEY `mdl_courcompcritcomp_tim_ix` (`timecompleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion user records' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_completion_crit_compl`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_completion_notify`
+-- Table structure for table `mdl_course_completion_notify`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_completion_notify` (
@@ -3668,15 +3499,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_notify` (
   KEY `mdl_courcompnoti_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion notification emails' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_completion_notify`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_display`
+-- Table structure for table `mdl_course_display`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_display` (
@@ -3688,15 +3514,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_display` (
   KEY `mdl_courdisp_couuse_ix` (`course`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores info about how to display the course' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_display`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_modules`
+-- Table structure for table `mdl_course_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
@@ -3731,7 +3552,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_course_modules`
+-- Dumping data for table `mdl_course_modules`
 --
 
 INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section`, `idnumber`, `added`, `score`, `indent`, `visible`, `visibleold`, `groupmode`, `groupingid`, `groupmembersonly`, `completion`, `completiongradeitemnumber`, `completionview`, `completionexpected`, `availablefrom`, `availableuntil`, `showavailability`) VALUES
@@ -3743,7 +3564,7 @@ INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_modules_availability`
+-- Table structure for table `mdl_course_modules_availability`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules_availability` (
@@ -3760,15 +3581,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_availability` (
   KEY `mdl_courmoduavai_gra_ix` (`gradeitemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Table stores conditions that affect whether a module/activit' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_modules_availability`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_modules_completion`
+-- Table structure for table `mdl_course_modules_completion`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
@@ -3783,15 +3599,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
   KEY `mdl_courmoducomp_cou_ix` (`coursemoduleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the completion state (completed or not completed, etc' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_modules_completion`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_published`
+-- Table structure for table `mdl_course_published`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_published` (
@@ -3806,15 +3617,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_published` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about how and when an local courses were publish' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_published`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_request`
+-- Table structure for table `mdl_course_request`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_request` (
@@ -3830,15 +3636,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_request` (
   KEY `mdl_courrequ_sho_ix` (`shortname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course requests' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_course_request`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_course_sections`
+-- Table structure for table `mdl_course_sections`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
@@ -3855,7 +3656,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to define the sections for each course' AUTO_INCREMENT=41 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_course_sections`
+-- Dumping data for table `mdl_course_sections`
 --
 
 INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`, `summaryformat`, `sequence`, `visible`) VALUES
@@ -3892,7 +3693,7 @@ INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_data`
+-- Table structure for table `mdl_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data` (
@@ -3933,15 +3734,10 @@ CREATE TABLE IF NOT EXISTS `mdl_data` (
   KEY `mdl_data_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all database activities' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_data`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_data_content`
+-- Table structure for table `mdl_data_content`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_content` (
@@ -3958,15 +3754,10 @@ CREATE TABLE IF NOT EXISTS `mdl_data_content` (
   KEY `mdl_datacont_fie_ix` (`fieldid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the content introduced in each record/fields' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_data_content`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_data_fields`
+-- Table structure for table `mdl_data_fields`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_fields` (
@@ -3990,15 +3781,10 @@ CREATE TABLE IF NOT EXISTS `mdl_data_fields` (
   KEY `mdl_datafiel_dat_ix` (`dataid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='every field available' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_data_fields`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_data_records`
+-- Table structure for table `mdl_data_records`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_data_records` (
@@ -4013,15 +3799,10 @@ CREATE TABLE IF NOT EXISTS `mdl_data_records` (
   KEY `mdl_datareco_dat_ix` (`dataid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='every record introduced' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_data_records`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_enrol`
+-- Table structure for table `mdl_enrol`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol` (
@@ -4059,7 +3840,7 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=9 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_enrol`
+-- Dumping data for table `mdl_enrol`
 --
 
 INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name`, `enrolperiod`, `enrolstartdate`, `enrolenddate`, `expirynotify`, `expirythreshold`, `notifyall`, `password`, `cost`, `currency`, `roleid`, `customint1`, `customint2`, `customint3`, `customint4`, `customchar1`, `customchar2`, `customdec1`, `customdec2`, `customtext1`, `customtext2`, `timecreated`, `timemodified`) VALUES
@@ -4072,7 +3853,7 @@ INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_enrol_authorize`
+-- Table structure for table `mdl_enrol_authorize`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize` (
@@ -4096,15 +3877,10 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize` (
   KEY `mdl_enroauth_tra_ix` (`transid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Holds all known information about authorize.net transactions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_enrol_authorize`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_enrol_authorize_refunds`
+-- Table structure for table `mdl_enrol_authorize_refunds`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize_refunds` (
@@ -4119,15 +3895,10 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize_refunds` (
   KEY `mdl_enroauthrefu_ord_ix` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Authorize.net refunds' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_enrol_authorize_refunds`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_enrol_flatfile`
+-- Table structure for table `mdl_enrol_flatfile`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_flatfile` (
@@ -4145,15 +3916,10 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_flatfile` (
   KEY `mdl_enroflat_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='enrol_flatfile table retrofitted from MySQL' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_enrol_flatfile`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_enrol_paypal`
+-- Table structure for table `mdl_enrol_paypal`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_enrol_paypal` (
@@ -4181,15 +3947,10 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_paypal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Holds all known information about PayPal transactions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_enrol_paypal`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_event`
+-- Table structure for table `mdl_event`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_event` (
@@ -4218,15 +3979,10 @@ CREATE TABLE IF NOT EXISTS `mdl_event` (
   KEY `mdl_even_grocouvisuse_ix` (`groupid`,`courseid`,`visible`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For everything with a time associated to it' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_event`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_events_handlers`
+-- Table structure for table `mdl_events_handlers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_handlers` (
@@ -4243,7 +3999,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_handlers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing which components requests what typ' AUTO_INCREMENT=18 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_events_handlers`
+-- Dumping data for table `mdl_events_handlers`
 --
 
 INSERT INTO `mdl_events_handlers` (`id`, `eventname`, `component`, `handlerfile`, `handlerfunction`, `schedule`, `status`, `internal`) VALUES
@@ -4268,7 +4024,7 @@ INSERT INTO `mdl_events_handlers` (`id`, `eventname`, `component`, `handlerfile`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_events_queue`
+-- Table structure for table `mdl_events_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
@@ -4282,7 +4038,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing queued events. It stores only one ' AUTO_INCREMENT=17 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_events_queue`
+-- Dumping data for table `mdl_events_queue`
 --
 
 INSERT INTO `mdl_events_queue` (`id`, `eventdata`, `stackdump`, `userid`, `timecreated`) VALUES
@@ -4306,7 +4062,7 @@ INSERT INTO `mdl_events_queue` (`id`, `eventdata`, `stackdump`, `userid`, `timec
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_events_queue_handlers`
+-- Table structure for table `mdl_events_queue_handlers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
@@ -4322,7 +4078,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This is the list of queued handlers for processing. The even' AUTO_INCREMENT=17 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_events_queue_handlers`
+-- Dumping data for table `mdl_events_queue_handlers`
 --
 
 INSERT INTO `mdl_events_queue_handlers` (`id`, `queuedeventid`, `handlerid`, `status`, `errormessage`, `timemodified`) VALUES
@@ -4346,7 +4102,7 @@ INSERT INTO `mdl_events_queue_handlers` (`id`, `queuedeventid`, `handlerid`, `st
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_external_functions`
+-- Table structure for table `mdl_external_functions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_functions` (
@@ -4362,7 +4118,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='list of all external functions' AUTO_INCREMENT=26 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_external_functions`
+-- Dumping data for table `mdl_external_functions`
 --
 
 INSERT INTO `mdl_external_functions` (`id`, `name`, `classname`, `methodname`, `classpath`, `component`, `capabilities`) VALUES
@@ -4395,7 +4151,7 @@ INSERT INTO `mdl_external_functions` (`id`, `name`, `classname`, `methodname`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_external_services`
+-- Table structure for table `mdl_external_services`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services` (
@@ -4413,7 +4169,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='built in and custom external services' AUTO_INCREMENT=2 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_external_services`
+-- Dumping data for table `mdl_external_services`
 --
 
 INSERT INTO `mdl_external_services` (`id`, `name`, `enabled`, `requiredcapability`, `restrictedusers`, `component`, `timecreated`, `timemodified`, `shortname`) VALUES
@@ -4422,7 +4178,7 @@ INSERT INTO `mdl_external_services` (`id`, `name`, `enabled`, `requiredcapabilit
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_external_services_functions`
+-- Table structure for table `mdl_external_services_functions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services_functions` (
@@ -4434,7 +4190,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='lists functions available in each service group' AUTO_INCREMENT=9 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_external_services_functions`
+-- Dumping data for table `mdl_external_services_functions`
 --
 
 INSERT INTO `mdl_external_services_functions` (`id`, `externalserviceid`, `functionname`) VALUES
@@ -4450,7 +4206,7 @@ INSERT INTO `mdl_external_services_functions` (`id`, `externalserviceid`, `funct
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_external_services_users`
+-- Table structure for table `mdl_external_services_users`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_services_users` (
@@ -4465,15 +4221,10 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_users` (
   KEY `mdl_exteservuser_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users allowed to use services with restricted users flag' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_external_services_users`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_external_tokens`
+-- Table structure for table `mdl_external_tokens`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_external_tokens` (
@@ -4496,15 +4247,10 @@ CREATE TABLE IF NOT EXISTS `mdl_external_tokens` (
   KEY `mdl_extetoke_cre_ix` (`creatorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Security tokens for accessing of external services' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_external_tokens`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback`
+-- Table structure for table `mdl_feedback`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback` (
@@ -4529,15 +4275,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback` (
   KEY `mdl_feed_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all feedbacks' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_completed`
+-- Table structure for table `mdl_feedback_completed`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_completed` (
@@ -4552,15 +4293,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completed` (
   KEY `mdl_feedcomp_fee_ix` (`feedback`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='filled out feedback' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_completed`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_completedtmp`
+-- Table structure for table `mdl_feedback_completedtmp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_completedtmp` (
@@ -4576,15 +4312,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completedtmp` (
   KEY `mdl_feedcomp_fee2_ix` (`feedback`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='filled out feedback' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_completedtmp`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_item`
+-- Table structure for table `mdl_feedback_item`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_item` (
@@ -4606,15 +4337,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_item` (
   KEY `mdl_feeditem_tem_ix` (`template`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback_items' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_item`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_sitecourse_map`
+-- Table structure for table `mdl_feedback_sitecourse_map`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_sitecourse_map` (
@@ -4626,15 +4352,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_sitecourse_map` (
   KEY `mdl_feedsitemap_fee_ix` (`feedbackid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback sitecourse map' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_sitecourse_map`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_template`
+-- Table structure for table `mdl_feedback_template`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_template` (
@@ -4646,15 +4367,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_template` (
   KEY `mdl_feedtemp_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='templates of feedbackstructures' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_template`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_tracking`
+-- Table structure for table `mdl_feedback_tracking`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_tracking` (
@@ -4669,15 +4385,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_tracking` (
   KEY `mdl_feedtrac_com_ix` (`completed`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback trackingdata' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_tracking`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_value`
+-- Table structure for table `mdl_feedback_value`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_value` (
@@ -4692,15 +4403,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_value` (
   KEY `mdl_feedvalu_ite_ix` (`item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='values of the completeds' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_value`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_feedback_valuetmp`
+-- Table structure for table `mdl_feedback_valuetmp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_feedback_valuetmp` (
@@ -4715,15 +4421,10 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_valuetmp` (
   KEY `mdl_feedvalu_ite2_ix` (`item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='values of the completedstmp' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_feedback_valuetmp`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_files`
+-- Table structure for table `mdl_files`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_files` (
@@ -4754,15 +4455,10 @@ CREATE TABLE IF NOT EXISTS `mdl_files` (
   KEY `mdl_file_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_files`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_filter_active`
+-- Table structure for table `mdl_filter_active`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_filter_active` (
@@ -4777,7 +4473,7 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_active` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores information about which filters are active in which c' AUTO_INCREMENT=13 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_filter_active`
+-- Dumping data for table `mdl_filter_active`
 --
 
 INSERT INTO `mdl_filter_active` (`id`, `filter`, `contextid`, `active`, `sortorder`) VALUES
@@ -4797,7 +4493,7 @@ INSERT INTO `mdl_filter_active` (`id`, `filter`, `contextid`, `active`, `sortord
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_filter_config`
+-- Table structure for table `mdl_filter_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_filter_config` (
@@ -4811,15 +4507,10 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_config` (
   KEY `mdl_filtconf_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores per-context configuration settings for filters which ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_filter_config`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_folder`
+-- Table structure for table `mdl_folder`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_folder` (
@@ -4834,15 +4525,10 @@ CREATE TABLE IF NOT EXISTS `mdl_folder` (
   KEY `mdl_fold_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one folder resource' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_folder`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum`
+-- Table structure for table `mdl_forum`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum` (
@@ -4874,7 +4560,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_forum`
+-- Dumping data for table `mdl_forum`
 --
 
 INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`, `assessed`, `assesstimestart`, `assesstimefinish`, `scale`, `maxbytes`, `maxattachments`, `forcesubscribe`, `trackingtype`, `rsstype`, `rssarticles`, `timemodified`, `warnafter`, `blockafter`, `blockperiod`, `completiondiscussions`, `completionreplies`, `completionposts`) VALUES
@@ -4886,7 +4572,7 @@ INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_discussions`
+-- Table structure for table `mdl_forum_discussions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
@@ -4908,7 +4594,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_forum_discussions`
+-- Dumping data for table `mdl_forum_discussions`
 --
 
 INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost`, `userid`, `groupid`, `assessed`, `timemodified`, `usermodified`, `timestart`, `timeend`) VALUES
@@ -4918,7 +4604,7 @@ INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_posts`
+-- Table structure for table `mdl_forum_posts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
@@ -4945,7 +4631,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_forum_posts`
+-- Dumping data for table `mdl_forum_posts`
 --
 
 INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`, `modified`, `mailed`, `subject`, `message`, `messageformat`, `messagetrust`, `attachment`, `totalscore`, `mailnow`) VALUES
@@ -4955,7 +4641,7 @@ INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_queue`
+-- Table structure for table `mdl_forum_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_queue` (
@@ -4970,15 +4656,10 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_queue` (
   KEY `mdl_foruqueu_pos_ix` (`postid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For keeping track of posts that will be mailed in digest for' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_forum_queue`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_read`
+-- Table structure for table `mdl_forum_read`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_read` (
@@ -4995,15 +4676,10 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_read` (
   KEY `mdl_foruread_usepos_ix` (`userid`,`postid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tracks each users read posts' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_forum_read`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_subscriptions`
+-- Table structure for table `mdl_forum_subscriptions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
@@ -5015,15 +4691,10 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
   KEY `mdl_forusubs_for_ix` (`forum`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of who is subscribed to what forum' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_forum_subscriptions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_forum_track_prefs`
+-- Table structure for table `mdl_forum_track_prefs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_forum_track_prefs` (
@@ -5034,15 +4705,10 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_track_prefs` (
   KEY `mdl_forutracpref_usefor_ix` (`userid`,`forumid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tracks each users untracked forums' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_forum_track_prefs`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary`
+-- Table structure for table `mdl_glossary`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary` (
@@ -5077,15 +4743,10 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary` (
   KEY `mdl_glos_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all glossaries' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_glossary`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary_alias`
+-- Table structure for table `mdl_glossary_alias`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_alias` (
@@ -5096,15 +4757,10 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_alias` (
   KEY `mdl_glosalia_ent_ix` (`entryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='entries alias' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_glossary_alias`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary_categories`
+-- Table structure for table `mdl_glossary_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_categories` (
@@ -5116,15 +4772,10 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_categories` (
   KEY `mdl_gloscate_glo_ix` (`glossaryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all categories for glossary entries' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_glossary_categories`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary_entries`
+-- Table structure for table `mdl_glossary_entries`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_entries` (
@@ -5150,15 +4801,10 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries` (
   KEY `mdl_glosentr_glo_ix` (`glossaryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all glossary entries' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_glossary_entries`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary_entries_categories`
+-- Table structure for table `mdl_glossary_entries_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_entries_categories` (
@@ -5170,15 +4816,10 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries_categories` (
   KEY `mdl_glosentrcate_ent_ix` (`entryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='categories of each glossary entry' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_glossary_entries_categories`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_glossary_formats`
+-- Table structure for table `mdl_glossary_formats`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_glossary_formats` (
@@ -5195,7 +4836,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_formats` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Setting of the display formats' AUTO_INCREMENT=8 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_glossary_formats`
+-- Dumping data for table `mdl_glossary_formats`
 --
 
 INSERT INTO `mdl_glossary_formats` (`id`, `name`, `popupformatname`, `visible`, `showgroup`, `defaultmode`, `defaulthook`, `sortkey`, `sortorder`) VALUES
@@ -5210,7 +4851,7 @@ INSERT INTO `mdl_glossary_formats` (`id`, `name`, `popupformatname`, `visible`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_categories`
+-- Table structure for table `mdl_grade_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
@@ -5235,7 +4876,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=4 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_grade_categories`
+-- Dumping data for table `mdl_grade_categories`
 --
 
 INSERT INTO `mdl_grade_categories` (`id`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`, `timecreated`, `timemodified`, `hidden`) VALUES
@@ -5246,7 +4887,7 @@ INSERT INTO `mdl_grade_categories` (`id`, `courseid`, `parent`, `depth`, `path`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_categories_history`
+-- Table structure for table `mdl_grade_categories_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
@@ -5276,7 +4917,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_categories' AUTO_INCREMENT=13 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_grade_categories_history`
+-- Dumping data for table `mdl_grade_categories_history`
 --
 
 INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`) VALUES
@@ -5296,7 +4937,7 @@ INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_grades`
+-- Table structure for table `mdl_grade_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
@@ -5330,15 +4971,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
   KEY `mdl_gradgrad_use2_ix` (`usermodified`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_grades`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_grades_history`
+-- Table structure for table `mdl_grade_grades_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
@@ -5376,15 +5012,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
   KEY `mdl_gradgradhist_log_ix` (`loggeduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_grades_history`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_import_newitem`
+-- Table structure for table `mdl_grade_import_newitem`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_import_newitem` (
@@ -5396,15 +5027,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_newitem` (
   KEY `mdl_gradimponewi_imp_ix` (`importer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='temporary table for storing new grade_item names from grade ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_import_newitem`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_import_values`
+-- Table structure for table `mdl_grade_import_values`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_import_values` (
@@ -5422,15 +5048,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_values` (
   KEY `mdl_gradimpovalu_imp_ix` (`importer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Temporary table for importing grades' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_import_values`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_items`
+-- Table structure for table `mdl_grade_items`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
@@ -5475,7 +5096,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=4 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_grade_items`
+-- Dumping data for table `mdl_grade_items`
 --
 
 INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `display`, `decimals`, `hidden`, `locked`, `locktime`, `needsupdate`, `timecreated`, `timemodified`) VALUES
@@ -5486,7 +5107,7 @@ INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `item
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_items_history`
+-- Table structure for table `mdl_grade_items_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
@@ -5531,7 +5152,7 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_items' AUTO_INCREMENT=8 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_grade_items_history`
+-- Dumping data for table `mdl_grade_items_history`
 --
 
 INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `hidden`, `locked`, `locktime`, `needsupdate`) VALUES
@@ -5546,7 +5167,7 @@ INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timem
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_letters`
+-- Table structure for table `mdl_grade_letters`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_letters` (
@@ -5558,15 +5179,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_letters` (
   UNIQUE KEY `mdl_gradlett_conlowlet_uix` (`contextid`,`lowerboundary`,`letter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Repository for grade letters, for courses and other moodle e' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_letters`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_outcomes`
+-- Table structure for table `mdl_grade_outcomes`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes` (
@@ -5587,15 +5203,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes` (
   KEY `mdl_gradoutc_use_ix` (`usermodified`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table describes the outcomes used in the system. An out' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_outcomes`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_outcomes_courses`
+-- Table structure for table `mdl_grade_outcomes_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_courses` (
@@ -5608,15 +5219,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_courses` (
   KEY `mdl_gradoutccour_out_ix` (`outcomeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='stores what outcomes are used in what courses.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_outcomes_courses`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_outcomes_history`
+-- Table structure for table `mdl_grade_outcomes_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_history` (
@@ -5639,15 +5245,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_history` (
   KEY `mdl_gradoutchist_log_ix` (`loggeduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_outcomes_history`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_grade_settings`
+-- Table structure for table `mdl_grade_settings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_grade_settings` (
@@ -5660,15 +5261,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_settings` (
   KEY `mdl_gradsett_cou_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='gradebook settings' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_grade_settings`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_groupings`
+-- Table structure for table `mdl_groupings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groupings` (
@@ -5684,15 +5280,10 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings` (
   KEY `mdl_grou_cou2_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A grouping is a collection of groups. WAS: groups_groupings' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_groupings`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_groupings_groups`
+-- Table structure for table `mdl_groupings_groups`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groupings_groups` (
@@ -5705,15 +5296,10 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings_groups` (
   KEY `mdl_grougrou_gro2_ix` (`groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a grouping to a group (note, groups can be in multiple ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_groupings_groups`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_groups`
+-- Table structure for table `mdl_groups`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groups` (
@@ -5731,15 +5317,10 @@ CREATE TABLE IF NOT EXISTS `mdl_groups` (
   KEY `mdl_grou_cou_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record represents a group.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_groups`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_groups_members`
+-- Table structure for table `mdl_groups_members`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
@@ -5752,15 +5333,10 @@ CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
   KEY `mdl_groumemb_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a user to a group.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_groups_members`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_imscp`
+-- Table structure for table `mdl_imscp`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_imscp` (
@@ -5777,15 +5353,10 @@ CREATE TABLE IF NOT EXISTS `mdl_imscp` (
   KEY `mdl_imsc_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one imscp resource' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_imscp`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_label`
+-- Table structure for table `mdl_label`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_label` (
@@ -5799,15 +5370,10 @@ CREATE TABLE IF NOT EXISTS `mdl_label` (
   KEY `mdl_labe_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines labels' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_label`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson`
+-- Table structure for table `mdl_lesson`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson` (
@@ -5855,15 +5421,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson` (
   KEY `mdl_less_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_answers`
+-- Table structure for table `mdl_lesson_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_answers` (
@@ -5885,15 +5446,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_answers` (
   KEY `mdl_lessansw_pag_ix` (`pageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_answers' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_answers`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_attempts`
+-- Table structure for table `mdl_lesson_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_attempts` (
@@ -5913,15 +5469,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_attempts` (
   KEY `mdl_lessatte_ans_ix` (`answerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_attempts' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_attempts`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_branch`
+-- Table structure for table `mdl_lesson_branch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_branch` (
@@ -5938,15 +5489,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_branch` (
   KEY `mdl_lessbran_pag_ix` (`pageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='branches for each lesson/user' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_branch`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_grades`
+-- Table structure for table `mdl_lesson_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_grades` (
@@ -5961,15 +5507,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_grades` (
   KEY `mdl_lessgrad_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_grades' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_grades`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_high_scores`
+-- Table structure for table `mdl_lesson_high_scores`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_high_scores` (
@@ -5983,15 +5524,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_high_scores` (
   KEY `mdl_lesshighscor_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='high scores for each lesson' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_high_scores`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_pages`
+-- Table structure for table `mdl_lesson_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_pages` (
@@ -6012,15 +5548,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_pages` (
   KEY `mdl_lesspage_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_pages' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_pages`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_lesson_timer`
+-- Table structure for table `mdl_lesson_timer`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_lesson_timer` (
@@ -6034,15 +5565,10 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_timer` (
   KEY `mdl_lesstime_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='lesson timer for each lesson' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_lesson_timer`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_license`
+-- Table structure for table `mdl_license`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_license` (
@@ -6056,7 +5582,7 @@ CREATE TABLE IF NOT EXISTS `mdl_license` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='store licenses used by moodle' AUTO_INCREMENT=10 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_license`
+-- Dumping data for table `mdl_license`
 --
 
 INSERT INTO `mdl_license` (`id`, `shortname`, `fullname`, `source`, `enabled`, `version`) VALUES
@@ -6073,7 +5599,7 @@ INSERT INTO `mdl_license` (`id`, `shortname`, `fullname`, `source`, `enabled`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_log`
+-- Table structure for table `mdl_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log` (
@@ -6093,10 +5619,10 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=1193 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=1230 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_log`
+-- Dumping data for table `mdl_log`
 --
 
 INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`, `action`, `url`, `info`) VALUES
@@ -7211,12 +6737,49 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (1188, 1318112327, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
 (1190, 1318112342, 2, '127.0.0.1', 4, 'course', 0, 'view', 'view.php?id=4', '4'),
 (1191, 1318112365, 2, '127.0.0.1', 1, 'course', 0, 'delete', 'view.php?id=2', 'Azcurra (ID 2)'),
-(1192, 1318112379, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2');
+(1192, 1318112379, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(1193, 1318148597, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(1194, 1318148623, 14, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'unenrol', '../enrol/users.php?id=4', '4'),
+(1195, 1318148652, 14, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'enrol', '../enrol/users.php?id=4', '4'),
+(1196, 1318148741, 14, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'view', 'view.php?id=4', '4'),
+(1197, 1318148745, 14, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1198, 1318148777, 14, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'unenrol', '../enrol/users.php?id=4', '4'),
+(1199, 1318148781, 14, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'enrol', '../enrol/users.php?id=4', '4'),
+(1200, 1318149000, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(1201, 1318149015, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(1202, 1318149019, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1203, 1318149032, 12, '0:0:0:0:0:0:0:1', 3, 'course', 0, 'enrol', '../enrol/users.php?id=3', '3'),
+(1204, 1318149037, 12, '0:0:0:0:0:0:0:1', 3, 'course', 0, 'unenrol', '../enrol/users.php?id=3', '3'),
+(1205, 1318149068, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1206, 1318149821, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(1207, 1318149904, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(1208, 1318149905, 14, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1209, 1318150368, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(1210, 1318150380, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(1211, 1318150382, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1212, 1318150492, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(1213, 1318150511, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(1214, 1318150512, 14, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1215, 1318150615, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(1216, 1318150628, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(1217, 1318150629, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1218, 1318151066, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1219, 1318151253, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(1220, 1318151266, 2, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(1221, 1318151267, 2, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1222, 1318151331, 2, '0:0:0:0:0:0:0:1', 4, 'course', 0, 'view', 'view.php?id=4', '4'),
+(1223, 1318151336, 2, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(1224, 1318151355, 13, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(1225, 1318151356, 13, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(1226, 1318151368, 13, '0:0:0:0:0:0:0:1', 3, 'course', 0, 'view', 'view.php?id=3', '3'),
+(1227, 1318152274, 13, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(1228, 1318152289, 13, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(1229, 1318152290, 13, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_log_display`
+-- Table structure for table `mdl_log_display`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log_display` (
@@ -7231,7 +6794,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log_display` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For a particular module/action, specifies a moodle table/fie' AUTO_INCREMENT=141 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_log_display`
+-- Dumping data for table `mdl_log_display`
 --
 
 INSERT INTO `mdl_log_display` (`id`, `module`, `action`, `mtable`, `field`, `component`) VALUES
@@ -7379,7 +6942,7 @@ INSERT INTO `mdl_log_display` (`id`, `module`, `action`, `mtable`, `field`, `com
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_log_queries`
+-- Table structure for table `mdl_log_queries`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_log_queries` (
@@ -7395,15 +6958,10 @@ CREATE TABLE IF NOT EXISTS `mdl_log_queries` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Logged database queries.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_log_queries`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message`
+-- Table structure for table `mdl_message`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message` (
@@ -7424,15 +6982,10 @@ CREATE TABLE IF NOT EXISTS `mdl_message` (
   KEY `mdl_mess_use2_ix` (`useridto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all unread messages' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_message`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message_contacts`
+-- Table structure for table `mdl_message_contacts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_contacts` (
@@ -7444,15 +6997,10 @@ CREATE TABLE IF NOT EXISTS `mdl_message_contacts` (
   UNIQUE KEY `mdl_messcont_usecon_uix` (`userid`,`contactid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Maintains lists of relationships between users' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_message_contacts`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message_processors`
+-- Table structure for table `mdl_message_processors`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_processors` (
@@ -7463,7 +7011,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_processors` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of message output plugins' AUTO_INCREMENT=4 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_message_processors`
+-- Dumping data for table `mdl_message_processors`
 --
 
 INSERT INTO `mdl_message_processors` (`id`, `name`, `enabled`) VALUES
@@ -7474,7 +7022,7 @@ INSERT INTO `mdl_message_processors` (`id`, `name`, `enabled`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message_providers`
+-- Table structure for table `mdl_message_providers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_providers` (
@@ -7487,7 +7035,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_providers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores the message providers (modules and core sy' AUTO_INCREMENT=15 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_message_providers`
+-- Dumping data for table `mdl_message_providers`
 --
 
 INSERT INTO `mdl_message_providers` (`id`, `name`, `component`, `capability`) VALUES
@@ -7509,7 +7057,7 @@ INSERT INTO `mdl_message_providers` (`id`, `name`, `component`, `capability`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message_read`
+-- Table structure for table `mdl_message_read`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_read` (
@@ -7531,15 +7079,10 @@ CREATE TABLE IF NOT EXISTS `mdl_message_read` (
   KEY `mdl_messread_use2_ix` (`useridto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all messages that have been read' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_message_read`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_message_working`
+-- Table structure for table `mdl_message_working`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_message_working` (
@@ -7549,15 +7092,10 @@ CREATE TABLE IF NOT EXISTS `mdl_message_working` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists all the messages and processors that need to be proces' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_message_working`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnetservice_enrol_courses`
+-- Table structure for table `mdl_mnetservice_enrol_courses`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_courses` (
@@ -7579,15 +7117,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_courses` (
   UNIQUE KEY `mdl_mnetenrocour_hosrem_uix` (`hostid`,`remoteid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Caches the information fetched via XML-RPC about courses on ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnetservice_enrol_courses`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnetservice_enrol_enrolments`
+-- Table structure for table `mdl_mnetservice_enrol_enrolments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_enrolments` (
@@ -7603,15 +7136,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_enrolments` (
   KEY `mdl_mnetenroenro_hos_ix` (`hostid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Caches the information about enrolments of our local users i' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnetservice_enrol_enrolments`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_application`
+-- Table structure for table `mdl_mnet_application`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_application` (
@@ -7625,7 +7153,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_application` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about applications on remote hosts' AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_application`
+-- Dumping data for table `mdl_mnet_application`
 --
 
 INSERT INTO `mdl_mnet_application` (`id`, `name`, `display_name`, `xmlrpc_server_url`, `sso_land_url`, `sso_jump_url`) VALUES
@@ -7635,7 +7163,7 @@ INSERT INTO `mdl_mnet_application` (`id`, `name`, `display_name`, `xmlrpc_server
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_host`
+-- Table structure for table `mdl_mnet_host`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_host` (
@@ -7658,7 +7186,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about the local and remote hosts for RPC' AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_host`
+-- Dumping data for table `mdl_mnet_host`
 --
 
 INSERT INTO `mdl_mnet_host` (`id`, `deleted`, `wwwroot`, `ip_address`, `name`, `public_key`, `public_key_expires`, `transport`, `portno`, `last_connect_time`, `last_log_id`, `force_theme`, `theme`, `applicationid`) VALUES
@@ -7668,7 +7196,7 @@ INSERT INTO `mdl_mnet_host` (`id`, `deleted`, `wwwroot`, `ip_address`, `name`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_host2service`
+-- Table structure for table `mdl_mnet_host2service`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_host2service` (
@@ -7681,15 +7209,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host2service` (
   UNIQUE KEY `mdl_mnethost_hosser_uix` (`hostid`,`serviceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about the services for a given host' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnet_host2service`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_log`
+-- Table structure for table `mdl_mnet_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_log` (
@@ -7710,15 +7233,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_log` (
   KEY `mdl_mnetlog_hosusecou_ix` (`hostid`,`userid`,`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Store session data from users migrating to other sites' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnet_log`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_remote_rpc`
+-- Table structure for table `mdl_mnet_remote_rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_rpc` (
@@ -7732,7 +7250,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table describes functions that might be called remotely' AUTO_INCREMENT=17 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_remote_rpc`
+-- Dumping data for table `mdl_mnet_remote_rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`) VALUES
@@ -7756,7 +7274,7 @@ INSERT INTO `mdl_mnet_remote_rpc` (`id`, `functionname`, `xmlrpcpath`, `pluginty
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_remote_service2rpc`
+-- Table structure for table `mdl_mnet_remote_service2rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_service2rpc` (
@@ -7768,7 +7286,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group functions or methods under a service' AUTO_INCREMENT=17 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_remote_service2rpc`
+-- Dumping data for table `mdl_mnet_remote_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -7792,7 +7310,7 @@ INSERT INTO `mdl_mnet_remote_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_rpc`
+-- Table structure for table `mdl_mnet_rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_rpc` (
@@ -7812,7 +7330,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Functions or methods that we may publish or subscribe to' AUTO_INCREMENT=16 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_rpc`
+-- Dumping data for table `mdl_mnet_rpc`
 --
 
 INSERT INTO `mdl_mnet_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`, `help`, `profile`, `filename`, `classname`, `static`) VALUES
@@ -7835,7 +7353,7 @@ INSERT INTO `mdl_mnet_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_service`
+-- Table structure for table `mdl_mnet_service`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_service` (
@@ -7848,7 +7366,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A service is a group of functions' AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_service`
+-- Dumping data for table `mdl_mnet_service`
 --
 
 INSERT INTO `mdl_mnet_service` (`id`, `name`, `description`, `apiversion`, `offer`) VALUES
@@ -7860,7 +7378,7 @@ INSERT INTO `mdl_mnet_service` (`id`, `name`, `description`, `apiversion`, `offe
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_service2rpc`
+-- Table structure for table `mdl_mnet_service2rpc`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_service2rpc` (
@@ -7872,7 +7390,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group functions or methods under a service' AUTO_INCREMENT=16 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_mnet_service2rpc`
+-- Dumping data for table `mdl_mnet_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -7895,7 +7413,7 @@ INSERT INTO `mdl_mnet_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_session`
+-- Table structure for table `mdl_mnet_session`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_session` (
@@ -7912,15 +7430,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_session` (
   UNIQUE KEY `mdl_mnetsess_tok_uix` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Store session data from users migrating to other sites' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnet_session`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_mnet_sso_access_control`
+-- Table structure for table `mdl_mnet_sso_access_control`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_mnet_sso_access_control` (
@@ -7932,15 +7445,10 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_sso_access_control` (
   UNIQUE KEY `mdl_mnetssoaccecont_mneuse_uix` (`mnet_host_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users by host permitted (or not) to login from a remote prov' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_mnet_sso_access_control`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_modules`
+-- Table structure for table `mdl_modules`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_modules` (
@@ -7956,7 +7464,7 @@ CREATE TABLE IF NOT EXISTS `mdl_modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='modules available in the site' AUTO_INCREMENT=20 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_modules`
+-- Dumping data for table `mdl_modules`
 --
 
 INSERT INTO `mdl_modules` (`id`, `name`, `version`, `cron`, `lastcron`, `search`, `visible`) VALUES
@@ -7983,7 +7491,7 @@ INSERT INTO `mdl_modules` (`id`, `name`, `version`, `cron`, `lastcron`, `search`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_my_pages`
+-- Table structure for table `mdl_my_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
@@ -7997,7 +7505,7 @@ CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Extra user pages for the My Moodle system' AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_my_pages`
+-- Dumping data for table `mdl_my_pages`
 --
 
 INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALUES
@@ -8007,7 +7515,7 @@ INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALU
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_page`
+-- Table structure for table `mdl_page`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_page` (
@@ -8028,15 +7536,10 @@ CREATE TABLE IF NOT EXISTS `mdl_page` (
   KEY `mdl_page_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one page and its config data' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_page`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_instance`
+-- Table structure for table `mdl_portfolio_instance`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance` (
@@ -8047,15 +7550,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='base table (not including config data) for instances of port' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_instance`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_instance_config`
+-- Table structure for table `mdl_portfolio_instance_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_config` (
@@ -8068,15 +7566,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_config` (
   KEY `mdl_portinstconf_ins_ix` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='config for portfolio plugin instances' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_instance_config`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_instance_user`
+-- Table structure for table `mdl_portfolio_instance_user`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_user` (
@@ -8090,15 +7583,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_user` (
   KEY `mdl_portinstuser_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data for portfolio instances.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_instance_user`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_log`
+-- Table structure for table `mdl_portfolio_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_log` (
@@ -8117,15 +7605,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_log` (
   KEY `mdl_portlog_por_ix` (`portfolio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='log of portfolio transfers (used to later check for duplicat' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_log`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_mahara_queue`
+-- Table structure for table `mdl_portfolio_mahara_queue`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_mahara_queue` (
@@ -8137,15 +7620,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_mahara_queue` (
   KEY `mdl_portmahaqueu_tra_ix` (`transferid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='maps mahara tokens to transfer ids' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_mahara_queue`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_portfolio_tempdata`
+-- Table structure for table `mdl_portfolio_tempdata`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_portfolio_tempdata` (
@@ -8159,15 +7637,10 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_tempdata` (
   KEY `mdl_porttemp_ins_ix` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='stores temporary data for portfolio exports. the id of this ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_portfolio_tempdata`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_post`
+-- Table structure for table `mdl_post`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_post` (
@@ -8198,15 +7671,10 @@ CREATE TABLE IF NOT EXISTS `mdl_post` (
   KEY `mdl_post_use_ix` (`usermodified`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_post`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_profiling`
+-- Table structure for table `mdl_profiling`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_profiling` (
@@ -8227,15 +7695,10 @@ CREATE TABLE IF NOT EXISTS `mdl_profiling` (
   KEY `mdl_prof_timrun_ix` (`timecreated`,`runreference`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the results of all the profiling runs' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_profiling`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_qtype_essay_options`
+-- Table structure for table `mdl_qtype_essay_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_qtype_essay_options` (
@@ -8250,15 +7713,10 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_essay_options` (
   UNIQUE KEY `mdl_qtypessaopti_que_uix` (`questionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Extra options for essay questions.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_qtype_essay_options`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question`
+-- Table structure for table `mdl_question`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question` (
@@ -8288,15 +7746,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question` (
   KEY `mdl_ques_mod_ix` (`modifiedby`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The questions themselves' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_answers`
+-- Table structure for table `mdl_question_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
@@ -8311,15 +7764,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
   KEY `mdl_quesansw_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_answers`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_attempts`
+-- Table structure for table `mdl_question_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
@@ -8342,15 +7790,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
   KEY `mdl_quesatte_que2_ix` (`questionusageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_attempts`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_attempt_steps`
+-- Table structure for table `mdl_question_attempt_steps`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
@@ -8367,15 +7810,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
   KEY `mdl_quesattestep_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_attempt_steps`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_attempt_step_data`
+-- Table structure for table `mdl_question_attempt_step_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
@@ -8388,15 +7826,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
   KEY `mdl_quesattestepdata_att_ix` (`attemptstepid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_attempt_step_data`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_calculated`
+-- Table structure for table `mdl_question_calculated`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_calculated` (
@@ -8412,15 +7845,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated` (
   KEY `mdl_quescalc_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_calculated`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_calculated_options`
+-- Table structure for table `mdl_question_calculated_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_calculated_options` (
@@ -8441,15 +7869,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated_options` (
   KEY `mdl_quescalcopti_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_calculated_options`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_categories`
+-- Table structure for table `mdl_question_categories`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
@@ -8466,15 +7889,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
   KEY `mdl_quescate_par_ix` (`parent`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Categories are for grouping questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_categories`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_datasets`
+-- Table structure for table `mdl_question_datasets`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_datasets` (
@@ -8487,15 +7905,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_datasets` (
   KEY `mdl_quesdata_dat_ix` (`datasetdefinition`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Many-many relation between questions and dataset definitions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_datasets`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_dataset_definitions`
+-- Table structure for table `mdl_question_dataset_definitions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_dataset_definitions` (
@@ -8509,15 +7922,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_definitions` (
   KEY `mdl_quesdatadefi_cat_ix` (`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Organises and stores properties for dataset items' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_dataset_definitions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_dataset_items`
+-- Table structure for table `mdl_question_dataset_items`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_dataset_items` (
@@ -8529,15 +7937,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_items` (
   KEY `mdl_quesdataitem_def_ix` (`definition`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Individual dataset items' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_dataset_items`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_hints`
+-- Table structure for table `mdl_question_hints`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_hints` (
@@ -8552,15 +7955,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_hints` (
   KEY `mdl_queshint_que_ix` (`questionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the the part of the question definition that gives di' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_hints`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_match`
+-- Table structure for table `mdl_question_match`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_match` (
@@ -8579,15 +7977,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_match` (
   KEY `mdl_quesmatc_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines fixed matching questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_match`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_match_sub`
+-- Table structure for table `mdl_question_match_sub`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_match_sub` (
@@ -8601,15 +7994,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_match_sub` (
   KEY `mdl_quesmatcsub_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines the subquestions that make up a matching question' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_match_sub`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_multianswer`
+-- Table structure for table `mdl_question_multianswer`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_multianswer` (
@@ -8620,15 +8008,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_multianswer` (
   KEY `mdl_quesmult_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for multianswer questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_multianswer`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_multichoice`
+-- Table structure for table `mdl_question_multichoice`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_multichoice` (
@@ -8650,15 +8033,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_multichoice` (
   KEY `mdl_quesmult_que2_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for multiple choice questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_multichoice`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_numerical`
+-- Table structure for table `mdl_question_numerical`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical` (
@@ -8671,15 +8049,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical` (
   KEY `mdl_quesnume_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for numerical questions.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_numerical`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_numerical_options`
+-- Table structure for table `mdl_question_numerical_options`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical_options` (
@@ -8693,15 +8066,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_options` (
   KEY `mdl_quesnumeopti_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type numerical This table is also u' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_numerical_options`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_numerical_units`
+-- Table structure for table `mdl_question_numerical_units`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_numerical_units` (
@@ -8714,15 +8082,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_units` (
   KEY `mdl_quesnumeunit_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Optional unit options for numerical questions. This table is' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_numerical_units`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_randomsamatch`
+-- Table structure for table `mdl_question_randomsamatch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_randomsamatch` (
@@ -8733,15 +8096,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_randomsamatch` (
   KEY `mdl_quesrand_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about a random short-answer matching question' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_randomsamatch`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_sessions`
+-- Table structure for table `mdl_question_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_sessions` (
@@ -8762,15 +8120,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_sessions` (
   KEY `mdl_quessess_new2_ix` (`newgraded`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Gives ids of the newest open and newest graded states' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_sessions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_shortanswer`
+-- Table structure for table `mdl_question_shortanswer`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_shortanswer` (
@@ -8782,15 +8135,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_shortanswer` (
   KEY `mdl_quesshor_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for short answer questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_shortanswer`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_states`
+-- Table structure for table `mdl_question_states`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_states` (
@@ -8809,15 +8157,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_states` (
   KEY `mdl_quesstat_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores user responses to an attempt, and percentage grades' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_states`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_truefalse`
+-- Table structure for table `mdl_question_truefalse`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
@@ -8829,15 +8172,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
   KEY `mdl_questrue_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for True-False questions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_truefalse`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_question_usages`
+-- Table structure for table `mdl_question_usages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
@@ -8849,15 +8187,10 @@ CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
   KEY `mdl_quesusag_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_question_usages`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz`
+-- Table structure for table `mdl_quiz`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz` (
@@ -8901,15 +8234,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz` (
   KEY `mdl_quiz_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Main information about each quiz' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_attempts`
+-- Table structure for table `mdl_quiz_attempts`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
@@ -8931,15 +8259,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
   KEY `mdl_quizatte_qui_ix` (`quiz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores various attempts on a quiz' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_attempts`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_feedback`
+-- Table structure for table `mdl_quiz_feedback`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
@@ -8953,15 +8276,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
   KEY `mdl_quizfeed_qui_ix` (`quizid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_feedback`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_grades`
+-- Table structure for table `mdl_quiz_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
@@ -8975,15 +8293,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
   KEY `mdl_quizgrad_qui_ix` (`quiz`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The overall grade for each user on the quiz, based on their ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_grades`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_overrides`
+-- Table structure for table `mdl_quiz_overrides`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_overrides` (
@@ -9002,15 +8315,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overrides` (
   KEY `mdl_quizover_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The overrides to quiz settings on a per-user and per-group b' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_overrides`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_overview_regrades`
+-- Table structure for table `mdl_quiz_overview_regrades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_overview_regrades` (
@@ -9024,15 +8332,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overview_regrades` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table records which question attempts need regrading an' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_overview_regrades`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_question_instances`
+-- Table structure for table `mdl_quiz_question_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
@@ -9045,15 +8348,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
   KEY `mdl_quizquesinst_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_question_instances`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_question_response_stats`
+-- Table structure for table `mdl_quiz_question_response_stats`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_question_response_stats` (
@@ -9068,15 +8366,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_response_stats` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Quiz question responses.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_question_response_stats`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_question_statistics`
+-- Table structure for table `mdl_quiz_question_statistics`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_question_statistics` (
@@ -9099,15 +8392,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_statistics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Default comment for the table, please edit me' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_question_statistics`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_reports`
+-- Table structure for table `mdl_quiz_reports`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_reports` (
@@ -9122,7 +8410,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_reports` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists all the installed quiz reports and their display order' AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_quiz_reports`
+-- Dumping data for table `mdl_quiz_reports`
 --
 
 INSERT INTO `mdl_quiz_reports` (`id`, `name`, `displayorder`, `lastcron`, `cron`, `capability`) VALUES
@@ -9134,7 +8422,7 @@ INSERT INTO `mdl_quiz_reports` (`id`, `name`, `displayorder`, `lastcron`, `cron`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_quiz_statistics`
+-- Table structure for table `mdl_quiz_statistics`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_quiz_statistics` (
@@ -9157,15 +8445,10 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_statistics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='table to cache results from analysis done in statistics repo' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_quiz_statistics`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_rating`
+-- Table structure for table `mdl_rating`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_rating` (
@@ -9185,15 +8468,10 @@ CREATE TABLE IF NOT EXISTS `mdl_rating` (
   KEY `mdl_rati_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle ratings' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_rating`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_registration_hubs`
+-- Table structure for table `mdl_registration_hubs`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_registration_hubs` (
@@ -9206,15 +8484,10 @@ CREATE TABLE IF NOT EXISTS `mdl_registration_hubs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='hub where the site is registered on with their associated to' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_registration_hubs`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_report_customlang`
+-- Table structure for table `mdl_report_customlang`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_report_customlang` (
@@ -9234,15 +8507,10 @@ CREATE TABLE IF NOT EXISTS `mdl_report_customlang` (
   KEY `mdl_repocust_com_ix` (`componentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains the working checkout of all strings and their custo' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_report_customlang`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_report_customlang_components`
+-- Table structure for table `mdl_report_customlang_components`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_report_customlang_components` (
@@ -9252,15 +8520,10 @@ CREATE TABLE IF NOT EXISTS `mdl_report_customlang_components` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains the list of all installed plugins that provide thei' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_report_customlang_components`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_repository`
+-- Table structure for table `mdl_repository`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository` (
@@ -9272,7 +8535,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_repository`
+-- Dumping data for table `mdl_repository`
 --
 
 INSERT INTO `mdl_repository` (`id`, `type`, `visible`, `sortorder`) VALUES
@@ -9284,7 +8547,7 @@ INSERT INTO `mdl_repository` (`id`, `type`, `visible`, `sortorder`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_repository_instances`
+-- Table structure for table `mdl_repository_instances`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository_instances` (
@@ -9302,7 +8565,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instances` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=5 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_repository_instances`
+-- Dumping data for table `mdl_repository_instances`
 --
 
 INSERT INTO `mdl_repository_instances` (`id`, `name`, `typeid`, `userid`, `contextid`, `username`, `password`, `timecreated`, `timemodified`, `readonly`) VALUES
@@ -9314,7 +8577,7 @@ INSERT INTO `mdl_repository_instances` (`id`, `name`, `typeid`, `userid`, `conte
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_repository_instance_config`
+-- Table structure for table `mdl_repository_instance_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_repository_instance_config` (
@@ -9325,15 +8588,10 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instance_config` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The config for intances' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_repository_instance_config`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_resource`
+-- Table structure for table `mdl_resource`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_resource` (
@@ -9354,15 +8612,10 @@ CREATE TABLE IF NOT EXISTS `mdl_resource` (
   KEY `mdl_reso_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one resource and its config data' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_resource`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_resource_old`
+-- Table structure for table `mdl_resource_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_resource_old` (
@@ -9387,15 +8640,10 @@ CREATE TABLE IF NOT EXISTS `mdl_resource_old` (
   KEY `mdl_resoold_cmi_ix` (`cmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of all old resource instances from 1.9' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_resource_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role`
+-- Table structure for table `mdl_role`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role` (
@@ -9412,7 +8660,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle roles' AUTO_INCREMENT=9 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role`
+-- Dumping data for table `mdl_role`
 --
 
 INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `archetype`) VALUES
@@ -9425,7 +8673,7 @@ INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_allow_assign`
+-- Table structure for table `mdl_role_allow_assign`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
@@ -9439,7 +8687,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can assign what role' AUTO_INCREMENT=7 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_allow_assign`
+-- Dumping data for table `mdl_role_allow_assign`
 --
 
 INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
@@ -9453,7 +8701,7 @@ INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_allow_override`
+-- Table structure for table `mdl_role_allow_override`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_override` (
@@ -9467,7 +8715,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_override` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can override what role' AUTO_INCREMENT=12 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_allow_override`
+-- Dumping data for table `mdl_role_allow_override`
 --
 
 INSERT INTO `mdl_role_allow_override` (`id`, `roleid`, `allowoverride`) VALUES
@@ -9477,7 +8725,7 @@ INSERT INTO `mdl_role_allow_override` (`id`, `roleid`, `allowoverride`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_allow_switch`
+-- Table structure for table `mdl_role_allow_switch`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_allow_switch` (
@@ -9491,7 +8739,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_switch` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores which which other roles a user is allowed ' AUTO_INCREMENT=10 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_allow_switch`
+-- Dumping data for table `mdl_role_allow_switch`
 --
 
 INSERT INTO `mdl_role_allow_switch` (`id`, `roleid`, `allowswitch`) VALUES
@@ -9508,7 +8756,7 @@ INSERT INTO `mdl_role_allow_switch` (`id`, `roleid`, `allowswitch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_assignments`
+-- Table structure for table `mdl_role_assignments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
@@ -9526,10 +8774,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=22 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_assignments`
+-- Dumping data for table `mdl_role_assignments`
 --
 
 INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
@@ -9539,12 +8787,12 @@ INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `time
 (5, 7, 1, 11, 1317326306, 2, '', 0, 0),
 (6, 5, 40, 13, 1317391057, 12, '', 0, 0),
 (14, 3, 46, 14, 1318009918, 12, '', 0, 0),
-(18, 5, 46, 13, 1318102474, 14, '', 0, 0);
+(20, 5, 46, 13, 1318148781, 14, '', 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_capabilities`
+-- Table structure for table `mdl_role_capabilities`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
@@ -9564,7 +8812,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1340 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_capabilities`
+-- Dumping data for table `mdl_role_capabilities`
 --
 
 INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, `permission`, `timemodified`, `modifierid`) VALUES
@@ -10430,7 +9678,7 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_context_levels`
+-- Table structure for table `mdl_role_context_levels`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
@@ -10443,7 +9691,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=82 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_role_context_levels`
+-- Dumping data for table `mdl_role_context_levels`
 --
 
 INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
@@ -10481,7 +9729,7 @@ INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_names`
+-- Table structure for table `mdl_role_names`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_names` (
@@ -10495,15 +9743,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_names` (
   KEY `mdl_rolename_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='role names in native strings' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_role_names`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_role_sortorder`
+-- Table structure for table `mdl_role_sortorder`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_role_sortorder` (
@@ -10519,15 +9762,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_sortorder` (
   KEY `mdl_rolesort_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='sort order of course managers in a course' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_role_sortorder`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scale`
+-- Table structure for table `mdl_scale`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scale` (
@@ -10544,7 +9782,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scale` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines grading scales' AUTO_INCREMENT=2 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_scale`
+-- Dumping data for table `mdl_scale`
 --
 
 INSERT INTO `mdl_scale` (`id`, `courseid`, `userid`, `name`, `scale`, `description`, `descriptionformat`, `timemodified`) VALUES
@@ -10553,7 +9791,7 @@ INSERT INTO `mdl_scale` (`id`, `courseid`, `userid`, `name`, `scale`, `descripti
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scale_history`
+-- Table structure for table `mdl_scale_history`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scale_history` (
@@ -10575,15 +9813,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scale_history` (
   KEY `mdl_scalhist_log_ix` (`loggeduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scale_history`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm`
+-- Table structure for table `mdl_scorm`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm` (
@@ -10625,15 +9858,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm` (
   KEY `mdl_scor_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each table is one SCORM module and its configuration' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_scoes`
+-- Table structure for table `mdl_scorm_scoes`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes` (
@@ -10650,15 +9878,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes` (
   KEY `mdl_scorscoe_sco_ix` (`scorm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each SCO part of the SCORM module' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_scoes`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_scoes_data`
+-- Table structure for table `mdl_scorm_scoes_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_data` (
@@ -10670,15 +9893,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_data` (
   KEY `mdl_scorscoedata_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains variable data get from packages' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_scoes_data`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_scoes_track`
+-- Table structure for table `mdl_scorm_scoes_track`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_track` (
@@ -10698,15 +9916,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_track` (
   KEY `mdl_scorscoetrac_sco2_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to track SCOes' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_scoes_track`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_mapinfo`
+-- Table structure for table `mdl_scorm_seq_mapinfo`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_mapinfo` (
@@ -10724,15 +9937,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_mapinfo` (
   KEY `mdl_scorseqmapi_obj_ix` (`objectiveid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 objective mapinfo description' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_mapinfo`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_objective`
+-- Table structure for table `mdl_scorm_seq_objective`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_objective` (
@@ -10747,15 +9955,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_objective` (
   KEY `mdl_scorseqobje_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 objective description' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_objective`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_rolluprule`
+-- Table structure for table `mdl_scorm_seq_rolluprule`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprule` (
@@ -10771,15 +9974,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprule` (
   KEY `mdl_scorseqroll_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 sequencing rule' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_rolluprule`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_rolluprulecond`
+-- Table structure for table `mdl_scorm_seq_rolluprulecond`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprulecond` (
@@ -10794,15 +9992,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprulecond` (
   KEY `mdl_scorseqroll_rol_ix` (`rollupruleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 sequencing rule' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_rolluprulecond`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_rulecond`
+-- Table structure for table `mdl_scorm_seq_rulecond`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rulecond` (
@@ -10819,15 +10012,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rulecond` (
   KEY `mdl_scorseqrule_rul_ix` (`ruleconditionsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 rule condition' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_rulecond`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_scorm_seq_ruleconds`
+-- Table structure for table `mdl_scorm_seq_ruleconds`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_ruleconds` (
@@ -10841,15 +10029,10 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_ruleconds` (
   KEY `mdl_scorseqrule_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 rule conditions' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_scorm_seq_ruleconds`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_sessions`
+-- Table structure for table `mdl_sessions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_sessions` (
@@ -10868,10 +10051,10 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=350 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=368 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_sessions`
+-- Dumping data for table `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
@@ -10892,11 +10075,13 @@ INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecre
 (345, 0, '5v3cjh4skmm62s8qgqctegjek1', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YTo5OntzOjQ6Ii8xOjYiO2E6MjE6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO31zOjg6Ii8xLzIvNDo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzY6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjM6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO31zOjQ6InRpbWUiO2k6MTMxODEwNDE1Mzt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NTp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTZoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazMyaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6InNlc3NrZXkiO3M6MTA6IlZ2elhNOWFlWEEiO30=', 1318104153, 1318104154, '127.0.0.1', '127.0.0.1'),
 (346, 0, 'u691ruu7vd1apkfj3rr0ics9j2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjozOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6ODoid2FudHN1cmwiO3M6Mzc6Imh0dHA6Ly9sb2NhbGhvc3QvY291cnNlL3ZpZXcucGhwP2lkPTIiO3M6NzoiZnJvbXVybCI7czozMzoiaHR0cDovL2xvY2FsaG9zdC9jb3Vyc2UvaW5kZXgucGhwIjt9VVNFUnxPOjg6InN0ZENsYXNzIjo3OntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjY6ImFjY2VzcyI7YTo0OntzOjI6InJhIjthOjE6e3M6MjoiLzEiO2E6MTp7aTo2O3M6MToiNiI7fX1zOjQ6InJkZWYiO2E6OTp7czo0OiIvMTo2IjthOjIxOntzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7czoxOiIxIjtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO3M6MToiMSI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9xdWl6OnZpZXciO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC93aWtpOnZpZXdwYWdlIjtzOjE6IjEiO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO3M6NToiLTEwMDAiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czo1OiItMTAwMCI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO31zOjk6Ii8xLzIvNTI6NiI7YTo0OntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoyOiItMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjt9czo4OiIvMS8yLzQ6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzU6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMTgxMTIxNTI7fXM6Nzoic2Vzc2tleSI7czoxMDoiY1AyT3ZpZWxSRSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NTp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTZoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazMyaGlkZGVuIjtzOjQ6ImJvb2wiO319', 1318112152, 1318112277, '127.0.0.1', '127.0.0.1'),
 (349, 0, 'o4rlt1o4tpk2shvlkvtgb3u181', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YTo5OntzOjQ6Ii8xOjYiO2E6MjE6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO31zOjg6Ii8xLzIvNDo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzY6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjM6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO31zOjQ6InRpbWUiO2k6MTMxODExMjM4MDt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NTp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTZoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazMyaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6InNlc3NrZXkiO3M6MTA6Ijk2bG9QZzNWV3oiO30=', 1318112379, 1318112380, '127.0.0.1', '127.0.0.1');
+INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
+(367, 0, 'cfrtqccoa0m7b3p03h0c7lvre7', 13, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo1OntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czo4OiJuYXZjYWNoZSI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMDoibmF2aWdhdGlvbiI7YTozOntzOjE3OiJjb3Vyc2Vfc2VjdGlvbnNfMSI7YTozOntpOjA7aToxMzE4MTUyMjkwO2k6MTtzOjI6IjEzIjtpOjI7czoyMjM6ImE6MTp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiY291cnNlIjtzOjE6IjEiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO3M6MzoiMSw1IjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjE7fX0iO31zOjE4OiJjb3Vyc2VfYWN0aXZpdGVzXzEiO2E6Mzp7aTowO2k6MTMxODE1MjI5MDtpOjE7czoyOiIxMyI7aToyO3M6NTY4OiJhOjI6e2k6MTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czo5OiJDYXJ0ZWxlcmEiO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjE6IjEiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTEiO3M6NzoiZGlzcGxheSI7YjoxO31pOjU7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6MjI6IkZvcm8gR2VuZXJhbCBkZSBsYSBSZWQiO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjE6IjUiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDA6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTUiO3M6NzoiZGlzcGxheSI7YjoxO319Ijt9czoxNzoiY29udGV4dGhhc3JlcG9zMzkiO2E6Mzp7aTowO2k6MTMxODE1NDExMztpOjE7czoyOiIxMyI7aToyO3M6NDoiYjowOyI7fX19czoyMToibG9hZF9uYXZpZ2F0aW9uX2FkbWluIjtiOjA7czoxNDoiZnJvbWRpc2N1c3Npb24iO3M6MTY6Imh0dHA6Ly9sb2NhbGhvc3QiO3M6MTI6ImZsYXNodmVyc2lvbiI7czo2OiIxMS4wLjEiO31VU0VSfE86ODoic3RkQ2xhc3MiOjYwOntzOjI6ImlkIjtzOjI6IjEzIjtzOjQ6ImF1dGgiO3M6NToiZW1haWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjE1OiJhcHJlbmRpenBvcHBlcjEiO3M6ODoicGFzc3dvcmQiO3M6MzI6ImU2ZDBhMjk4ZTBlMDQ1NDVjOTBmNGZlMjg3MjA1YmQxIjtzOjg6ImlkbnVtYmVyIjtzOjA6IiI7czo5OiJmaXJzdG5hbWUiO3M6OToiQXByZW5kaXoxIjtzOjg6Imxhc3RuYW1lIjtzOjY6IlBvcHBlciI7czo1OiJlbWFpbCI7czoyNToiYXByZW5kaXpwb3BwZXIxQGdtYWlsLmNvbSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjEyOiJCdWVub3MgQWlyZXMiO3M6NzoiY291bnRyeSI7czoyOiJBUiI7czo0OiJsYW5nIjtzOjU6ImVzX2FyIjtzOjU6InRoZW1lIjtzOjA6IiI7czo4OiJ0aW1lem9uZSI7czoyOiI5OSI7czoxMToiZmlyc3RhY2Nlc3MiO3M6MTA6IjEzMTczMjYxODYiO3M6MTA6Imxhc3RhY2Nlc3MiO2k6MTMxODE1MjI5MDtzOjk6Imxhc3Rsb2dpbiI7czoxMDoiMTMxODE1MTM1NSI7czoxMjoiY3VycmVudGxvZ2luIjtpOjEzMTgxNTIyODk7czo2OiJsYXN0aXAiO3M6MTU6IjA6MDowOjA6MDowOjA6MSI7czo2OiJzZWNyZXQiO3M6MTU6IllIQ2VXUDhzY2VkWDlkSiI7czo3OiJwaWN0dXJlIjtzOjE6IjAiO3M6MzoidXJsIjtzOjA6IiI7czoxNzoiZGVzY3JpcHRpb25mb3JtYXQiO3M6MToiMCI7czoxMDoibWFpbGZvcm1hdCI7czoxOiIxIjtzOjEwOiJtYWlsZGlnZXN0IjtzOjE6IjAiO3M6MTE6Im1haWxkaXNwbGF5IjtzOjE6IjIiO3M6MTA6Imh0bWxlZGl0b3IiO3M6MToiMSI7czo0OiJhamF4IjtzOjE6IjEiO3M6MTM6ImF1dG9zdWJzY3JpYmUiO3M6MToiMSI7czoxMToidHJhY2tmb3J1bXMiO3M6MToiMCI7czoxMToidGltZWNyZWF0ZWQiO3M6MTA6IjEzMTczMjYwNjciO3M6MTI6InRpbWVtb2RpZmllZCI7czoxOiIwIjtzOjEyOiJ0cnVzdGJpdG1hc2siO3M6MToiMCI7czo4OiJpbWFnZWFsdCI7TjtzOjEyOiJzY3JlZW5yZWFkZXIiO3M6MToiMCI7czoxNjoibGFzdGNvdXJzZWFjY2VzcyI7YToxOntpOjM7czoxMDoiMTMxODE1MTM2OCI7fXM6MTk6ImN1cnJlbnRjb3Vyc2VhY2Nlc3MiO2E6MDp7fXM6MTE6Imdyb3VwbWVtYmVyIjthOjA6e31zOjc6InByb2ZpbGUiO2E6Mzp7czozOiJkbmkiO3M6ODoiMTIzNDU2NzgiO3M6NjoicGFkcm9uIjtzOjg6IjEyMzQ1Njc4IjtzOjEzOiJyb2xzb2xpY2l0YWRvIjtzOjg6IkFwcmVuZGl6Ijt9czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YTozOntzOjI6Ii8xIjthOjI6e2k6NTtzOjE6IjUiO2k6NztzOjE6IjciO31zOjg6Ii8xLzIyLzQwIjthOjE6e2k6NTtzOjE6IjUiO31zOjg6Ii8xLzIzLzQ2IjthOjE6e2k6NTtzOjE6IjUiO319czo0OiJyZGVmIjthOjIwOntzOjQ6Ii8xOjUiO2E6NjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjIyOiJlbnJvbC9zZWxmOnVuZW5yb2xzZWxmIjtzOjE6IjEiO3M6MjU6ImdyYWRlcmVwb3J0L292ZXJ2aWV3OnZpZXciO3M6MToiMSI7czoyMToiZ3JhZGVyZXBvcnQvdXNlcjp2aWV3IjtzOjE6IjEiO3M6MzQ6Im1vZC9hc3NpZ25tZW50OmV4cG9ydG93bnN1Ym1pc3Npb24iO3M6MToiMSI7czoyMToibW9kL2Fzc2lnbm1lbnQ6c3VibWl0IjtzOjE6IjEiO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO3M6MToiMSI7czoxMzoibW9kL2NoYXQ6Y2hhdCI7czoxOiIxIjtzOjE2OiJtb2QvY2hhdDpyZWFkbG9nIjtzOjE6IjEiO3M6MTc6Im1vZC9jaG9pY2U6Y2hvb3NlIjtzOjE6IjEiO3M6MTY6Im1vZC9kYXRhOmNvbW1lbnQiO3M6MToiMSI7czoyMzoibW9kL2RhdGE6ZXhwb3J0b3duZW50cnkiO3M6MToiMSI7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtzOjE6IjEiO3M6MTk6Im1vZC9kYXRhOndyaXRlZW50cnkiO3M6MToiMSI7czoyMToibW9kL2ZlZWRiYWNrOmNvbXBsZXRlIjtzOjE6IjEiO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtzOjE6IjEiO3M6Mjg6Im1vZC9mZWVkYmFjazp2aWV3YW5hbHlzZXBhZ2UiO3M6MToiMSI7czoyNjoibW9kL2ZvcnVtOmNyZWF0ZWF0dGFjaG1lbnQiO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmV4cG9ydG93bnBvc3QiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7czoyNToibW9kL2ZvcnVtOnN0YXJ0ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czoyMDoibW9kL2ZvcnVtOnZpZXdyYXRpbmciO3M6MToiMSI7czoyMDoibW9kL2dsb3NzYXJ5OmNvbW1lbnQiO3M6MToiMSI7czoyNzoibW9kL2dsb3NzYXJ5OmV4cG9ydG93bmVudHJ5IjtzOjE6IjEiO3M6MTg6Im1vZC9nbG9zc2FyeTp3cml0ZSI7czoxOiIxIjtzOjE2OiJtb2QvcXVpejphdHRlbXB0IjtzOjE6IjEiO3M6MjU6Im1vZC9xdWl6OnJldmlld215YXR0ZW1wdHMiO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE5OiJtb2Qvc2Nvcm06c2F2ZXRyYWNrIjtzOjE6IjEiO3M6MTg6Im1vZC9zY29ybTpza2lwdmlldyI7czoxOiIxIjtzOjIwOiJtb2Qvc2Nvcm06dmlld3Njb3JlcyI7czoxOiIxIjtzOjIyOiJtb2Qvc3VydmV5OnBhcnRpY2lwYXRlIjtzOjE6IjEiO3M6MTk6Im1vZC93aWtpOmNyZWF0ZXBhZ2UiO3M6MToiMSI7czoyMDoibW9kL3dpa2k6ZWRpdGNvbW1lbnQiO3M6MToiMSI7czoxNzoibW9kL3dpa2k6ZWRpdHBhZ2UiO3M6MToiMSI7czoyMDoibW9kL3dpa2k6dmlld2NvbW1lbnQiO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoyMzoibW9kL3dvcmtzaG9wOnBlZXJhc3Nlc3MiO3M6MToiMSI7czoxOToibW9kL3dvcmtzaG9wOnN1Ym1pdCI7czoxOiIxIjtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7czoxOiIxIjtzOjI4OiJtb2Qvd29ya3Nob3A6dmlld2F1dGhvcm5hbWVzIjtzOjE6IjEiO3M6MzI6Im1vZC93b3Jrc2hvcDp2aWV3YXV0aG9ycHVibGlzaGVkIjtzOjE6IjEiO3M6Mzc6Im1vZC93b3Jrc2hvcDp2aWV3cHVibGlzaGVkc3VibWlzc2lvbnMiO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoyNzoibW9vZGxlL2Jsb2c6YXNzb2NpYXRlY291cnNlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmxvZzptYW5hZ2VleHRlcm5hbCI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDpwb3N0IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czozMDoibW9vZGxlL2NvdXJzZTp2aWV3cGFydGljaXBhbnRzIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9jb3Vyc2U6dmlld3NjYWxlcyI7czoxOiIxIjtzOjE3OiJtb29kbGUvZ3JhZGU6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvcG9ydGZvbGlvOmV4cG9ydCI7czoxOiIxIjtzOjIwOiJtb29kbGUvcXVlc3Rpb246ZmxhZyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FsbCI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbnkiO3M6MToiMSI7czoyNToibW9vZGxlL3VzZXI6cmVhZHVzZXJibG9ncyI7czoxOiIxIjtzOjI1OiJtb29kbGUvdXNlcjpyZWFkdXNlcnBvc3RzIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO31zOjQ6Ii8xOjciO2E6NTE6e3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoxMzoibW9kL3BhZ2U6dmlldyI7czoxOiIxIjtzOjE5OiJyZXBvc2l0b3J5L3VybDp2aWV3IjtzOjE6IjEiO3M6MTU6Im1vb2RsZS90YWc6ZWRpdCI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvc2l0b3J5L3VzZXI6dmlldyI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS93ZWJkYXY6dmlldyI7czoxOiIxIjtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoyNToicmVwb3NpdG9yeS93aWtpbWVkaWE6dmlldyI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVjb3Vyc2UiO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS95b3V0dWJlOnZpZXciO3M6MToiMSI7czoyNzoibW9vZGxlL3VzZXI6bWFuYWdlb3duYmxvY2tzIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZW1vZHVsZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25maWxlcyI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpjcmVhdGUiO3M6MToiMSI7czozNToibW9vZGxlL3dlYnNlcnZpY2U6Y3JlYXRlbW9iaWxldG9rZW4iO3M6MToiMSI7czoyNjoibW9vZGxlL2Jsb2c6bWFuYWdlZXh0ZXJuYWwiO3M6MToiMSI7czoyNDoicmVwb3NpdG9yeS9hbGZyZXNjbzp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L2JveG5ldDp2aWV3IjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoyNzoicmVwb3NpdG9yeS9jb3Vyc2VmaWxlczp2aWV3IjtzOjE6IjEiO3M6MzI6Im1vb2RsZS9jYWxlbmRhcjptYW5hZ2Vvd25lbnRyaWVzIjtzOjE6IjEiO3M6MjM6InJlcG9zaXRvcnkvZHJvcGJveDp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnBvc3QiO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9maWxlc3lzdGVtOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI5OiJyZXBvc2l0b3J5L2ZsaWNrcl9wdWJsaWM6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7czoxOiIxIjtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtzOjE6IjEiO3M6MjY6InJlcG9zaXRvcnkvZ29vZ2xlZG9jczp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9wb3J0Zm9saW86ZXhwb3J0IjtzOjE6IjEiO3M6MjE6InJlcG9zaXRvcnkvbG9jYWw6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnJhdGUiO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9waWNhc2E6dmlldyI7czoxOiIxIjtzOjIxOiJtb29kbGUvcmF0aW5nOnZpZXdhbGwiO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YW55IjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjE4OiJyZXBvc2l0b3J5L3MzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6c2VuZG1lc3NhZ2UiO3M6MToiMSI7fXM6OToiLzEvMi81Mjo1IjthOjM6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjI2OiJtb2QvZm9ydW06Y3JlYXRlYXR0YWNobWVudCI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjt9czo5OiIvMS8yLzUyOjciO2E6NDp7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czoxNzoibW9kL2ZvcnVtOmFkZG5ld3MiO3M6MjoiLTEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7fXM6ODoiLzEvMi80OjUiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjg6Ii8xLzIvNDo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjUiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzc6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNjo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM1OjUiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6NToiLTEwMDAiO31zOjk6Ii8xLzIvMzQ6NSI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNDo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE3OjUiO2E6OTp7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoyOiItMSI7czoyNToibW9kL2ZvcnVtOnN0YXJ0ZGlzY3Vzc2lvbiI7czoyOiItMSI7czoyMDoibW9kL2ZvcnVtOnZpZXdyYXRpbmciO3M6MjoiLTEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoyOiItMSI7czoxODoibW9vZGxlL3JhdGluZzp2aWV3IjtzOjI6Ii0xIjtzOjI2OiJtb2QvZm9ydW06Y3JlYXRlYXR0YWNobWVudCI7czoyOiItMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO3M6MjoiLTEiO3M6MjM6Im1vZC9mb3J1bTpleHBvcnRvd25wb3N0IjtzOjI6Ii0xIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTc6NyI7YTozOntzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czoxODoibW9vZGxlL3JhdGluZzpyYXRlIjtzOjI6Ii0xIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTU6NSI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo3IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjUiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NyI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo1IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS84OjciO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO319czo2OiJsb2FkZWQiO2E6Mzp7aTowO3M6NDoiLzEvMiI7aToxO3M6NDoiLzEvNyI7aToyO3M6NDoiLzEvOCI7fXM6MjoiZHIiO3M6MToiNyI7czo0OiJ0aW1lIjtpOjEzMTgxNTIyODk7fXM6Nzoic2Vzc2tleSI7czoxMDoiYU9ZZEtMb0hLViI7czoxMDoicHJlZmVyZW5jZSI7YToxOntzOjExOiJfbGFzdGxvYWRlZCI7aToxMzE4MTU1MTc3O31zOjE3OiJtZXNzYWdlX2xhc3Rwb3B1cCI7aTowO3M6NzoiZGlzcGxheSI7YToxOntpOjE7aTowO31zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjU6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE4aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjt9fQ==', 1318152289, 1318155177, '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_solicitud`
+-- Table structure for table `mdl_solicitud`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_solicitud` (
@@ -10906,15 +10091,10 @@ CREATE TABLE IF NOT EXISTS `mdl_solicitud` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_solicitud`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_daily`
+-- Table structure for table `mdl_stats_daily`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_daily` (
@@ -10931,15 +10111,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_daily` (
   KEY `mdl_statdail_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to accumulate daily stats' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_daily`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_monthly`
+-- Table structure for table `mdl_stats_monthly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_monthly` (
@@ -10956,15 +10131,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_monthly` (
   KEY `mdl_statmont_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate monthly stats' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_monthly`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_user_daily`
+-- Table structure for table `mdl_stats_user_daily`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_daily` (
@@ -10983,15 +10153,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_daily` (
   KEY `mdl_statuserdail_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate daily stats per course/user' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_user_daily`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_user_monthly`
+-- Table structure for table `mdl_stats_user_monthly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_monthly` (
@@ -11010,15 +10175,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_monthly` (
   KEY `mdl_statusermont_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate monthly stats per course/user' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_user_monthly`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_user_weekly`
+-- Table structure for table `mdl_stats_user_weekly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_user_weekly` (
@@ -11037,15 +10197,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_weekly` (
   KEY `mdl_statuserweek_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate weekly stats per course/user' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_user_weekly`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_stats_weekly`
+-- Table structure for table `mdl_stats_weekly`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_stats_weekly` (
@@ -11062,15 +10217,10 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_weekly` (
   KEY `mdl_statweek_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate weekly stats' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_stats_weekly`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_survey`
+-- Table structure for table `mdl_survey`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey` (
@@ -11089,7 +10239,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one SURVEY module with its configuration' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_survey`
+-- Dumping data for table `mdl_survey`
 --
 
 INSERT INTO `mdl_survey` (`id`, `course`, `template`, `days`, `timecreated`, `timemodified`, `name`, `intro`, `introformat`, `questions`) VALUES
@@ -11102,7 +10252,7 @@ INSERT INTO `mdl_survey` (`id`, `course`, `template`, `days`, `timecreated`, `ti
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_survey_analysis`
+-- Table structure for table `mdl_survey_analysis`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_analysis` (
@@ -11115,15 +10265,10 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_analysis` (
   KEY `mdl_survanal_sur_ix` (`survey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='text about each survey submission' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_survey_analysis`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_survey_answers`
+-- Table structure for table `mdl_survey_answers`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_answers` (
@@ -11140,15 +10285,10 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_answers` (
   KEY `mdl_survansw_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the answers to each questions filled by the users' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_survey_answers`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_survey_questions`
+-- Table structure for table `mdl_survey_questions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_survey_questions` (
@@ -11163,7 +10303,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_questions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the questions conforming one survey' AUTO_INCREMENT=74 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_survey_questions`
+-- Dumping data for table `mdl_survey_questions`
 --
 
 INSERT INTO `mdl_survey_questions` (`id`, `text`, `shorttext`, `multi`, `intro`, `type`, `options`) VALUES
@@ -11244,7 +10384,7 @@ INSERT INTO `mdl_survey_questions` (`id`, `text`, `shorttext`, `multi`, `intro`,
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_tag`
+-- Table structure for table `mdl_tag`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag` (
@@ -11262,15 +10402,10 @@ CREATE TABLE IF NOT EXISTS `mdl_tag` (
   KEY `mdl_tag_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tag table - this generic table will replace the old "tags" t' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_tag`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_tag_correlation`
+-- Table structure for table `mdl_tag_correlation`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag_correlation` (
@@ -11281,15 +10416,10 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_correlation` (
   KEY `mdl_tagcorr_tag_ix` (`tagid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The rationale for the ''tag_correlation'' table is performance' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_tag_correlation`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_tag_instance`
+-- Table structure for table `mdl_tag_instance`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_tag_instance` (
@@ -11305,15 +10435,10 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_instance` (
   KEY `mdl_taginst_tag_ix` (`tagid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tag_instance table holds the information of associations bet' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_tag_instance`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_timezone`
+-- Table structure for table `mdl_timezone`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_timezone` (
@@ -11336,15 +10461,10 @@ CREATE TABLE IF NOT EXISTS `mdl_timezone` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Rules for calculating local wall clock time for users' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_timezone`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_upgrade_log`
+-- Table structure for table `mdl_upgrade_log`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_upgrade_log` (
@@ -11365,7 +10485,7 @@ CREATE TABLE IF NOT EXISTS `mdl_upgrade_log` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Upgrade logging' AUTO_INCREMENT=461 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_upgrade_log`
+-- Dumping data for table `mdl_upgrade_log`
 --
 
 INSERT INTO `mdl_upgrade_log` (`id`, `type`, `plugin`, `version`, `targetversion`, `info`, `details`, `backtrace`, `userid`, `timemodified`) VALUES
@@ -11834,7 +10954,7 @@ INSERT INTO `mdl_upgrade_log` (`id`, `type`, `plugin`, `version`, `targetversion
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_url`
+-- Table structure for table `mdl_url`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_url` (
@@ -11852,15 +10972,10 @@ CREATE TABLE IF NOT EXISTS `mdl_url` (
   KEY `mdl_url_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one url resource' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_url`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user`
+-- Table structure for table `mdl_user`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user` (
@@ -11930,12 +11045,12 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=15 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user`
+-- Dumping data for table `mdl_user`
 --
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `htmleditor`, `ajax`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `screenreader`) VALUES
 (1, 'manual', 1, 0, 0, 0, 1, 'guest', '78b15a258e709d0ac9d6bd1e024fcdc3', '', 'Invitado', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'es_ar', '', '99', 1316566413, 1318098673, 1317390362, 1318098673, '127.0.0.1', '', 0, '', 'Este usuario sólo tiene acceso de lectura en ciertos cursos.', 0, 1, 0, 2, 1, 1, 1, 0, 0, 1316566413, 0, NULL, 0),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1318112326, 1318102494, 1318112326, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1318151331, 1318112326, 1318151266, '0:0:0:0:0:0:0:1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
 (3, 'email', 1, 0, 1, 0, 1, 'damiancalabresi@gmail.com.1316715379', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '8dc07c4331811471f76c7afd1ef2d9a8', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es', '', '99', 1316650555, 0, 0, 0, '', 'kyQ4Tj9nnkgXyOO', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316644852, 1316715379, 0, NULL, 0),
 (4, 'email', 0, 0, 1, 0, 1, 'damiancalabresi2@gmail.com.1316715386', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '1eb69a1a1b94c672d7514a810b76823a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316713930, 0, 0, 0, '', 'rQM8FnJPP6TbON5', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316713930, 1316715386, 0, NULL, 0),
 (5, 'email', 0, 0, 1, 0, 1, 'damiancalabresi3@gmail.com.1316715393', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '4e4561b6b5529ff7b8a1ee20aaf91609', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714434, 0, 0, 0, '', '06qcs0poh4XB5rk', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714434, 1316715393, 0, NULL, 0),
@@ -11945,14 +11060,14 @@ INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `s
 (9, 'email', 1, 0, 1, 0, 1, 'damiancalabresi8@gmail.com.1317244268', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'a9ab9eeefb9bca93de9ca1a00e5ee190', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 1317244268, 0, NULL, 0),
 (10, 'email', 1, 0, 1, 0, 1, 'damiancalabresi10@gmail.com.1317244276', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Damian', 'Aprendiz', 'fcf26a5b2d50663445ff481a1c2ae0fa', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316813116, 0, 0, 0, '', '5LFPbQXnijqNGzZ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316813040, 1317244276, 0, NULL, 0),
 (11, 'email', 1, 0, 0, 0, 1, 'miembropopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'miembro1', 'popper', 'miembropopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245578, 1317845988, 1317845844, 1317845984, '0:0:0:0:0:0:0:1', 'mSyBn4xM9cT3SkB', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245146, 0, 0, NULL, 0),
-(12, 'email', 1, 0, 0, 0, 1, 'adminpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin1', 'popper', 'adminpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245575, 1318097461, 1318095981, 1318097460, '127.0.0.1', 'hOoqFpyh0Ht12LS', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245545, 0, 0, NULL, 0),
-(13, 'email', 1, 0, 0, 0, 1, 'aprendizpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Aprendiz1', 'Popper', 'aprendizpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326186, 1318098816, 1318097280, 1318098815, '127.0.0.1', 'YHCeWP8scedX9dJ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317326067, 0, 0, NULL, 0),
-(14, 'email', 1, 0, 0, 0, 1, 'mediadorpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'mediador1', 'popper', 'mediadorpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326189, 1318104120, 1318102428, 1318104119, '127.0.0.1', 'Lnh6L6eeMC02M8u', 0, '', '', 0, 1, 0, 2, 1, 1, 1, 0, 1317326147, 1317329502, 0, '', 0);
+(12, 'email', 1, 0, 0, 0, 1, 'adminpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin1', 'popper', 'adminpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245575, 1318151065, 1318150380, 1318150628, '0:0:0:0:0:0:0:1', 'hOoqFpyh0Ht12LS', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245545, 0, 0, NULL, 0),
+(13, 'email', 1, 0, 0, 0, 1, 'aprendizpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Aprendiz1', 'Popper', 'aprendizpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326186, 1318152290, 1318151355, 1318152289, '0:0:0:0:0:0:0:1', 'YHCeWP8scedX9dJ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317326067, 0, 0, NULL, 0),
+(14, 'email', 1, 0, 0, 0, 1, 'mediadorpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'mediador1', 'popper', 'mediadorpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326189, 1318150512, 1318149904, 1318150511, '0:0:0:0:0:0:0:1', 'Lnh6L6eeMC02M8u', 0, '', '', 0, 1, 0, 2, 1, 1, 1, 0, 1317326147, 1317329502, 0, '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_enrolments`
+-- Table structure for table `mdl_user_enrolments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
@@ -11970,21 +11085,21 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=18 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_enrolments`
+-- Dumping data for table `mdl_user_enrolments`
 --
 
 INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timestart`, `timeend`, `modifierid`, `timecreated`, `timemodified`) VALUES
 (2, 0, 4, 13, 1317333600, 0, 12, 1317391056, 1317391056),
 (10, 0, 7, 14, 1317938400, 0, 12, 1318009918, 1318009918),
-(14, 0, 7, 13, 1318024800, 0, 14, 1318102474, 1318102474);
+(16, 0, 7, 13, 1318111200, 0, 14, 1318148781, 1318148781);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_info_category`
+-- Table structure for table `mdl_user_info_category`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_category` (
@@ -11995,7 +11110,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Customisable fields categories' AUTO_INCREMENT=3 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_info_category`
+-- Dumping data for table `mdl_user_info_category`
 --
 
 INSERT INTO `mdl_user_info_category` (`id`, `name`, `sortorder`) VALUES
@@ -12005,7 +11120,7 @@ INSERT INTO `mdl_user_info_category` (`id`, `name`, `sortorder`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_info_data`
+-- Table structure for table `mdl_user_info_data`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
@@ -12019,7 +11134,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=37 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_info_data`
+-- Dumping data for table `mdl_user_info_data`
 --
 
 INSERT INTO `mdl_user_info_data` (`id`, `userid`, `fieldid`, `data`, `dataformat`) VALUES
@@ -12039,7 +11154,7 @@ INSERT INTO `mdl_user_info_data` (`id`, `userid`, `fieldid`, `data`, `dataformat
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_info_field`
+-- Table structure for table `mdl_user_info_field`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
@@ -12067,7 +11182,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Customisable user profile fields' AUTO_INCREMENT=6 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_info_field`
+-- Dumping data for table `mdl_user_info_field`
 --
 
 INSERT INTO `mdl_user_info_field` (`id`, `shortname`, `name`, `datatype`, `description`, `descriptionformat`, `categoryid`, `sortorder`, `required`, `locked`, `visible`, `forceunique`, `signup`, `defaultdata`, `defaultdataformat`, `param1`, `param2`, `param3`, `param4`, `param5`) VALUES
@@ -12078,7 +11193,7 @@ INSERT INTO `mdl_user_info_field` (`id`, `shortname`, `name`, `datatype`, `descr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_lastaccess`
+-- Table structure for table `mdl_user_lastaccess`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
@@ -12093,21 +11208,21 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=16 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_lastaccess`
+-- Dumping data for table `mdl_user_lastaccess`
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
-(4, 12, 3, 1318097159),
+(4, 12, 3, 1318149807),
 (5, 2, 3, 1318102397),
-(6, 13, 3, 1318097281),
-(7, 12, 4, 1318009910),
-(12, 2, 4, 1318112342),
-(15, 14, 4, 1318102454);
+(6, 13, 3, 1318151368),
+(7, 12, 4, 1318150643),
+(12, 2, 4, 1318151331),
+(15, 14, 4, 1318150343);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_preferences`
+-- Table structure for table `mdl_user_preferences`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
@@ -12120,7 +11235,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=18 ;
 
 --
--- Volcar la base de datos para la tabla `mdl_user_preferences`
+-- Dumping data for table `mdl_user_preferences`
 --
 
 INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
@@ -12144,7 +11259,7 @@ INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_user_private_key`
+-- Table structure for table `mdl_user_private_key`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_user_private_key` (
@@ -12161,15 +11276,10 @@ CREATE TABLE IF NOT EXISTS `mdl_user_private_key` (
   KEY `mdl_userprivkey_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='access keys used in cookieless scripts - rss, etc.' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_user_private_key`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_webdav_locks`
+-- Table structure for table `mdl_webdav_locks`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_webdav_locks` (
@@ -12189,15 +11299,10 @@ CREATE TABLE IF NOT EXISTS `mdl_webdav_locks` (
   KEY `mdl_webdlock_exp_ix` (`expiry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Resource locks for WebDAV users' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_webdav_locks`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki`
+-- Table structure for table `mdl_wiki`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki` (
@@ -12218,15 +11323,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki` (
   KEY `mdl_wiki_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores Wiki activity configuration' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_links`
+-- Table structure for table `mdl_wiki_links`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_links` (
@@ -12240,15 +11340,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_links` (
   KEY `mdl_wikilink_sub_ix` (`subwikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Page wiki links' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_links`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_locks`
+-- Table structure for table `mdl_wiki_locks`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_locks` (
@@ -12260,15 +11355,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_locks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Manages page locks' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_locks`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_pages`
+-- Table structure for table `mdl_wiki_pages`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_pages` (
@@ -12287,15 +11377,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_pages` (
   KEY `mdl_wikipage_sub_ix` (`subwikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki pages' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_pages`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_subwikis`
+-- Table structure for table `mdl_wiki_subwikis`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_subwikis` (
@@ -12308,15 +11393,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_subwikis` (
   KEY `mdl_wikisubw_wik_ix` (`wikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores subwiki instances' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_subwikis`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_synonyms`
+-- Table structure for table `mdl_wiki_synonyms`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_synonyms` (
@@ -12328,15 +11408,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_synonyms` (
   UNIQUE KEY `mdl_wikisyno_pagpag_uix` (`pageid`,`pagesynonym`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki pages synonyms' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_synonyms`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_wiki_versions`
+-- Table structure for table `mdl_wiki_versions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_wiki_versions` (
@@ -12351,15 +11426,10 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_versions` (
   KEY `mdl_wikivers_pag_ix` (`pageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki page history' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_wiki_versions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop`
+-- Table structure for table `mdl_workshop`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop` (
@@ -12394,15 +11464,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop` (
   KEY `mdl_work_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about the module instances and ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopeval_best_settings`
+-- Table structure for table `mdl_workshopeval_best_settings`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopeval_best_settings` (
@@ -12413,15 +11478,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopeval_best_settings` (
   UNIQUE KEY `mdl_workbestsett_wor_uix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Settings for the grading evaluation subplugin Comparison wit' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopeval_best_settings`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_accumulative`
+-- Table structure for table `mdl_workshopform_accumulative`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_accumulative` (
@@ -12436,15 +11496,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_accumulative` (
   KEY `mdl_workaccu_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Accumulative gradin' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_accumulative`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_comments`
+-- Table structure for table `mdl_workshopform_comments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_comments` (
@@ -12457,15 +11512,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_comments` (
   KEY `mdl_workcomm_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Comments strategy f' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_comments`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_numerrors`
+-- Table structure for table `mdl_workshopform_numerrors`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors` (
@@ -12482,15 +11532,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors` (
   KEY `mdl_worknume_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Number of errors gr' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_numerrors`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_numerrors_map`
+-- Table structure for table `mdl_workshopform_numerrors_map`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors_map` (
@@ -12503,15 +11548,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors_map` (
   KEY `mdl_worknumemap_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This maps the number of errors to a percentual grade for sub' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_numerrors_map`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_rubric`
+-- Table structure for table `mdl_workshopform_rubric`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric` (
@@ -12524,15 +11564,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric` (
   KEY `mdl_workrubr_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Rubric grading stra' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_rubric`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_rubric_config`
+-- Table structure for table `mdl_workshopform_rubric_config`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_config` (
@@ -12543,15 +11578,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_config` (
   UNIQUE KEY `mdl_workrubrconf_wor_uix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Configuration table for the Rubric grading strategy' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_rubric_config`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshopform_rubric_levels`
+-- Table structure for table `mdl_workshopform_rubric_levels`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_levels` (
@@ -12564,15 +11594,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_levels` (
   KEY `mdl_workrubrleve_dim_ix` (`dimensionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The definition of rubric rating scales' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshopform_rubric_levels`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_aggregations`
+-- Table structure for table `mdl_workshop_aggregations`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_aggregations` (
@@ -12587,15 +11612,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_aggregations` (
   KEY `mdl_workaggr_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Aggregated grades for assessment are stored here. The aggreg' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_aggregations`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_assessments`
+-- Table structure for table `mdl_workshop_assessments`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments` (
@@ -12619,15 +11639,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments` (
   KEY `mdl_workasse_rev_ix` (`reviewerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about the made assessment and automatically calculated ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_assessments`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_assessments_old`
+-- Table structure for table `mdl_workshop_assessments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments_old` (
@@ -12655,15 +11670,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments_old` (
   KEY `mdl_workasseold_sub_ix` (`submissionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_assessments table to be dropped later in Moo' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_assessments_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_comments_old`
+-- Table structure for table `mdl_workshop_comments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_comments_old` (
@@ -12683,15 +11693,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_comments_old` (
   KEY `mdl_workcommold_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_comments table to be dropped later in Moodle' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_comments_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_elements_old`
+-- Table structure for table `mdl_workshop_elements_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_elements_old` (
@@ -12710,15 +11715,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_elements_old` (
   KEY `mdl_workelemold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_elements table to be dropped later in Moodle' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_elements_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_grades`
+-- Table structure for table `mdl_workshop_grades`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_grades` (
@@ -12734,15 +11734,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades` (
   KEY `mdl_workgrad_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='How the reviewers filled-up the grading forms, given grades ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_grades`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_grades_old`
+-- Table structure for table `mdl_workshop_grades_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_grades_old` (
@@ -12759,15 +11754,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades_old` (
   KEY `mdl_workgradold_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_grades table to be dropped later in Moodle 2' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_grades_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_old`
+-- Table structure for table `mdl_workshop_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_old` (
@@ -12809,15 +11799,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_old` (
   KEY `mdl_workold_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop table to be dropped later in Moodle 2.x' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_rubrics_old`
+-- Table structure for table `mdl_workshop_rubrics_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_rubrics_old` (
@@ -12832,15 +11817,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_rubrics_old` (
   KEY `mdl_workrubrold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_rubrics table to be dropped later in Moodle ' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_rubrics_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_stockcomments_old`
+-- Table structure for table `mdl_workshop_stockcomments_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_stockcomments_old` (
@@ -12854,15 +11834,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_stockcomments_old` (
   KEY `mdl_workstocold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_stockcomments table to be dropped later in M' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_stockcomments_old`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_submissions`
+-- Table structure for table `mdl_workshop_submissions`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions` (
@@ -12891,15 +11866,10 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions` (
   KEY `mdl_worksubm_aut_ix` (`authorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about the submission and the aggregation of the grade f' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_submissions`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mdl_workshop_submissions_old`
+-- Table structure for table `mdl_workshop_submissions_old`
 --
 
 CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions_old` (
@@ -12922,7 +11892,6 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions_old` (
   KEY `mdl_worksubmold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_submissions table to be dropped later in Moo' AUTO_INCREMENT=1 ;
 
---
--- Volcar la base de datos para la tabla `mdl_workshop_submissions_old`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

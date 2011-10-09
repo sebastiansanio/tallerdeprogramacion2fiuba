@@ -1778,10 +1778,18 @@ function print_section($course, $section, $mods, $modnamesused, $absolute=false,
 function print_section_add_menus($course, $section, $modnames, $vertical=false, $return=false) {
     global $CFG, $OUTPUT;
 
-    // check to see if user can add menus
+   	//echo $modname." ";
+
+	if ($modname == "url" or $modname == "data" or $modname == "chat" or $modname == "label" or $modname == "glossary" or $modname == "lesson"
+		 or $modname == "page" or $modname == "imscp" or $modname == "scorm" or $modname == "workshop"  or $modname == "assignment" or $modname == "wiki"){
+		continue;
+	}
+		
+	// check to see if user can add menus
     if (!has_capability('moodle/course:manageactivities', get_context_instance(CONTEXT_COURSE, $course->id))) {
         return false;
     }
+	
 
     $urlbase = "/course/mod.php?id=$course->id&section=$section&sesskey=".sesskey().'&add=';
 
@@ -1789,6 +1797,14 @@ function print_section_add_menus($course, $section, $modnames, $vertical=false, 
     $activities = array();
 
     foreach($modnames as $modname=>$modnamestr) {
+	
+		//echo $modname." ";
+	
+		if ($modname == "url" or $modname == "data" or $modname == "chat" or $modname == "label" or $modname == "glossary" or $modname == "lesson"
+			 or $modname == "page" or $modname == "imscp" or $modname == "scorm" or $modname == "workshop"  or $modname == "assignment" or $modname == "wiki"){
+			continue;
+		}
+	
         if (!course_allowed_module($course, $modname)) {
             continue;
         }

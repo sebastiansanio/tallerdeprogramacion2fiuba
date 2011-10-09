@@ -67,7 +67,7 @@ if (!$enrol_manual = enrol_get_plugin('manual')) {
 
 $instancename = $enrol_manual->get_instance_name($instance);
 
-$PAGE->set_url('/enrol/manual/manage.php', array('enrolid'=>$instance->id));
+$PAGE->set_url('/enrol/manual/manage_mediador.php', array('enrolid'=>$instance->id));
 $PAGE->set_pagelayout('admin');
 $PAGE->set_title($enrol_manual->get_instance_name($instance));
 $PAGE->set_heading($course->fullname);

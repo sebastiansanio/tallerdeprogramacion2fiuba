@@ -80,12 +80,12 @@ if (!$adminediting) {
         $PAGE->navbar->add($strcategories);
         $PAGE->set_title("$site->shortname: $strcategories");
         $PAGE->set_heading($COURSE->fullname);
-        //$PAGE->set_button(update_category_button());
+        $PAGE->set_button(update_category_button());
         echo $OUTPUT->header();
         echo $OUTPUT->heading($strcategories);
         echo $OUTPUT->skip_link_target();
         echo $OUTPUT->box_start('categorybox');
-        print_whole_category_list_solicitar();
+        print_whole_category_list_enrolment();
         echo $OUTPUT->box_end();
         print_course_search();
     } else {

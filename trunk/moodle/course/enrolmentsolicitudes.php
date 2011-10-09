@@ -29,7 +29,6 @@ require_once("lib.php");
 
 $categoryedit = optional_param('categoryedit', -1,PARAM_BOOL);
 $delete   = optional_param('delete',0,PARAM_INT);
-$courseid = required_param('id', PARAM_INT);
 $hide     = optional_param('hide',0,PARAM_INT);
 $show     = optional_param('show',0,PARAM_INT);
 $move     = optional_param('move',0,PARAM_INT);
@@ -69,29 +68,37 @@ $strfulllistofcourses = get_string('fulllistofcourses');
 
 
 /// Unless it's an editing admin, just print the regular listing of courses/categories
+if (!$adminediting) {
+
 /// Print form for creating new categories
     $countcategories = $DB->count_records('course_categories');
 
+    if ($countcategories > 1 || ($countcategories == 1 && $DB->count_records('course') > 200)) {
         $strcourses = get_string('courses');
         $strcategories = 'Materias';
 
-        //$PAGE->navbar->add($strcategories);
-        //$PAGE->set_title("$site->shortname: $strcategories");
+        $PAGE->navbar->add($strcategories);
+        $PAGE->set_title("$site->shortname: $strcategories");
         $PAGE->set_heading($COURSE->fullname);
         //$PAGE->set_button(update_category_button());
         echo $OUTPUT->header();
         echo $OUTPUT->heading($strcategories);
         echo $OUTPUT->skip_link_target();
         echo $OUTPUT->box_start('categorybox');
-        //print_whole_category_list_solicitar();
-		if(usuario_solicitomatriculacion($courseid)){
-			echo "Ya tiene una solicitud de matriculacion pendiente.";
-		} else {
-			usuario_guardarsolicitud($courseid);
-			echo "Se solicitado la matriculacion. Espere a ser matriculado por el mediador del curso.";
-		}
+		print_whole_category_list_aceptar_solicitud();
         echo $OUTPUT->box_end();
-        //print_course_search();
+        print_course_search();
+    } else {
+        $PAGE->navbar->add($strfulllistofcourses);
+        $PAGE->set_title("$site->shortname: $strfulllistofcourses");
+        $PAGE->set_heading($COURSE->fullname);
+        $PAGE->set_button(update_category_button());
+        echo $OUTPUT->header();
+        echo $OUTPUT->skip_link_target();
+        echo $OUTPUT->box_start('courseboxes');
+        print_courses(0);
+        echo $OUTPUT->box_end();
+    }
 
     echo $OUTPUT->container_start('buttons');
     if (has_capability('moodle/course:create', $systemcontext)) {
@@ -104,8 +111,174 @@ $strfulllistofcourses = get_string('fulllistofcourses');
     echo $OUTPUT->container_end();
     echo $OUTPUT->footer();
     exit;
+}
+/// Everything else is editing on mode.
+require_once($CFG->libdir.'/adminlib.php');
+admin_externalpage_setup('coursemgmt');
 
-//echo '</div>';
+/// Delete a category.
+if (!empty($delete) and confirm_sesskey()) {
+    if (!$deletecat = $DB->get_record('course_categories', array('id'=>$delete))) {
+        print_error('invalidcategoryid');
+    }
+    $context = get_context_instance(CONTEXT_COURSECAT, $delete);
+    require_capability('moodle/category:manage', $context);
+    require_capability('moodle/category:manage', get_category_or_system_context($deletecat->parent));
+
+    $heading = 'Borrar materias';
+    require_once('delete_category_form.php');
+    $mform = new delete_category_form(null, $deletecat);
+    $mform->set_data(array('delete'=>$delete));
+
+    if ($mform->is_cancelled()) {
+        redirect('index.php');
+
+    } else if (!$data= $mform->get_data()) {
+        require_once($CFG->libdir . '/questionlib.php');
+        echo $OUTPUT->header();
+        echo $OUTPUT->heading($heading);
+        $mform->display();
+        echo $OUTPUT->footer();
+        exit();
+    }
+
+    echo $OUTPUT->header();
+    echo $OUTPUT->heading($heading);
+
+    if ($data->fulldelete) {
+        $deletedcourses = category_delete_full($deletecat, true);
+
+        foreach($deletedcourses as $course) {
+            echo $OUTPUT->notification(get_string('coursedeleted', '', $course->shortname), 'notifysuccess');
+        }
+        echo $OUTPUT->notification(get_string('coursecategorydeleted', '', format_string($deletecat->name)), 'notifysuccess');
+
+    } else {
+        category_delete_move($deletecat, $data->newparent, true);
+    }
+
+    // If we deleted $CFG->defaultrequestcategory, make it point somewhere else.
+    if ($delete == $CFG->defaultrequestcategory) {
+        set_config('defaultrequestcategory', $DB->get_field('course_categories', 'MIN(id)', array('parent'=>0)));
+    }
+
+    echo $OUTPUT->continue_button('index.php');
+
+    echo $OUTPUT->footer();
+    die;
+}
+
+/// Create a default category if necessary
+if (!$categories = get_categories()) {    /// No category yet!
+    // Try and make one
+    $tempcat = new stdClass();
+    $tempcat->name = get_string('miscellaneous');
+    $tempcat->id = $DB->insert_record('course_categories', $tempcat);
+    $tempcat->context = get_context_instance(CONTEXT_COURSECAT, $tempcat->id);
+    mark_context_dirty('/'.SYSCONTEXTID);
+    fix_course_sortorder(); // Required to build course_categories.depth and .path.
+}
+
+/// Move a category to a new parent if required
+if (!empty($move) and ($moveto >= 0) and confirm_sesskey()) {
+    if ($cattomove = $DB->get_record('course_categories', array('id'=>$move))) {
+        require_capability('moodle/category:manage', get_category_or_system_context($cattomove->parent));
+        if ($cattomove->parent != $moveto) {
+            $newparent = $DB->get_record('course_categories', array('id'=>$moveto));
+            require_capability('moodle/category:manage', get_category_or_system_context($moveto));
+            move_category($cattomove, $newparent);
+        }
+    }
+}
+
+/// Hide or show a category
+if ($hide and confirm_sesskey()) {
+    if ($tempcat = $DB->get_record('course_categories', array('id'=>$hide))) {
+        require_capability('moodle/category:manage', get_category_or_system_context($tempcat->parent));
+        if ($tempcat->visible == 1) {
+            course_category_hide($tempcat);
+        }
+    }
+} else if ($show and confirm_sesskey()) {
+    if ($tempcat = $DB->get_record('course_categories', array('id'=>$show))) {
+        require_capability('moodle/category:manage', get_category_or_system_context($tempcat->parent));
+        if ($tempcat->visible == 0) {
+            course_category_show($tempcat);
+        }
+    }
+}
+
+/// Move a category up or down
+if ((!empty($moveup) or !empty($movedown)) and confirm_sesskey()) {
+    fix_course_sortorder();
+    $swapcategory = NULL;
+
+    if (!empty($moveup)) {
+        require_capability('moodle/category:manage', get_context_instance(CONTEXT_COURSECAT, $moveup));
+        if ($movecategory = $DB->get_record('course_categories', array('id'=>$moveup))) {
+            if ($swapcategory = $DB->get_records_select('course_categories', "sortorder<? AND parent=?", array($movecategory->sortorder, $movecategory->parent), 'sortorder DESC', '*', 0, 1)) {
+                $swapcategory = reset($swapcategory);
+            }
+        }
+    } else {
+        require_capability('moodle/category:manage', get_context_instance(CONTEXT_COURSECAT, $movedown));
+        if ($movecategory = $DB->get_record('course_categories', array('id'=>$movedown))) {
+            if ($swapcategory = $DB->get_records_select('course_categories', "sortorder>? AND parent=?", array($movecategory->sortorder, $movecategory->parent), 'sortorder ASC', '*', 0, 1)) {
+                $swapcategory = reset($swapcategory);
+            }
+        }
+    }
+    if ($swapcategory and $movecategory) {
+        $DB->set_field('course_categories', 'sortorder', $swapcategory->sortorder, array('id'=>$movecategory->id));
+        $DB->set_field('course_categories', 'sortorder', $movecategory->sortorder, array('id'=>$swapcategory->id));
+    }
+
+    // finally reorder courses
+    fix_course_sortorder();
+}
+
+/// Print headings
+echo $OUTPUT->header();
+echo $OUTPUT->heading($strcategories);
+
+/// Print out the categories with all the knobs
+$strcategories = 'Materias';
+$strcourses = get_string('courses');
+$strmovecategoryto = 'Mover materia a';
+$stredit = get_string('edit');
+
+$displaylist = array();
+$parentlist = array();
+
+$displaylist[0] = get_string('top');
+make_categories_list($displaylist, $parentlist);
+
+echo '<table class="generalbox editcourse boxaligncenter"><tr class="header">';
+echo '<th class="header" scope="col">'.$strcategories.'</th>';
+echo '<th class="header" scope="col">'.$strcourses.'</th>';
+echo '<th class="header" scope="col">'.$stredit.'</th>';
+//echo '<th class="header" scope="col">'.$strmovecategoryto.'</th>';
+echo '</tr>';
+
+print_category_edit(NULL, $displaylist, $parentlist);
+echo '</table>';
+
+echo '<div class="buttons">';
+if (has_capability('moodle/course:create', $systemcontext)) {
+    // print create course link to first category
+    $options = array('category' => $CFG->defaultrequestcategory);
+    $options['returnto'] = 'topcat';
+/*    echo $OUTPUT->single_button(new moodle_url('edit.php', $options), get_string('addnewcourse'), 'get');*/
+}
+
+// Print button for creating new categories
+if (has_capability('moodle/category:manage', $systemcontext)) {
+    $options = array('parent'=>0);
+    echo $OUTPUT->single_button(new moodle_url('editcategory.php', $options), 'Agregar nueva materia', 'get');
+}
+
+print_course_request_buttons($systemcontext);
+echo '</div>';
 
 echo $OUTPUT->footer();
 
@@ -220,28 +393,4 @@ function print_category_edit($category, $displaylist, $parentslist, $depth=-1, $
             print_category_edit($cat, $displaylist, $parentslist, $depth+1, $up, $down);
         }
     }
-}
-
-function usuario_solicitomatriculacion($courseid){
-	global $USER, $DB;
-	$sql = "
-	SELECT *
-	FROM {solicitud} u
-	WHERE
-		u.courseid=".$courseid."
-		AND u.userid=".$USER->id;
-	$availableusers = $DB->get_records_sql($sql);
-	foreach($availableusers as $usercourse){
-		return true;
-	};
-	return false;
-}
-
-function usuario_guardarsolicitud($courseid){
-	global $USER, $DB;
-	$sql = "INSERT INTO mdl_solicitud (userid, courseid)
-VALUES (".$USER->id.",".$courseid.")";
-	$con = mysql_connect("localhost","root","");
-	mysql_select_db("moodle", $con);
-	mysql_query($sql);
 }

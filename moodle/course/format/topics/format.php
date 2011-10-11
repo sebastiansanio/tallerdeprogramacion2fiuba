@@ -116,7 +116,7 @@ if ($thissection->summary or $thissection->sequence or $PAGE->user_is_editing())
 
     print_section($course, $thissection, $mods, $modnamesused);
 
-    if ($PAGE->user_is_editing()) {
+    if ( ! $PAGE->user_is_editing()) {
         print_section_add_menus($course, $section, $modnames);
     }
 
@@ -195,7 +195,8 @@ while ($section <= $course->numsections) {
                 echo '<a href="view.php?id='.$course->id.'&amp;marker='.$section.'&amp;sesskey='.sesskey().'#section-'.$section.'" title="'.$strmarkthistopic.'">'.'<img src="'.$OUTPUT->pix_url('i/marker') . '" alt="'.$strmarkthistopic.'" /></a><br />';
             }
 
-            /*if ($thissection->visible) {        // Show the hide/show eye
+            /*
+			if ($thissection->visible) {        // Show the hide/show eye
                 echo '<a href="view.php?id='.$course->id.'&amp;hide='.$section.'&amp;sesskey='.sesskey().'#section-'.$section.'" title="'.$strtopichide.'">'.
                      '<img src="'.$OUTPUT->pix_url('i/hide') . '" class="icon hide" alt="'.$strtopichide.'" /></a><br />';
             } else {

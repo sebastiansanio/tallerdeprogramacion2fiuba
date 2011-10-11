@@ -2915,7 +2915,7 @@ function forum_get_course_forum($courseid, $type) {
     $forum->type = "$type";
     switch ($forum->type) {
         case "news":
-            $forum->name  = get_string("namenews", "forum");
+            $forum->name  = "Noticias";
             $forum->intro = get_string("intronews", "forum");
             $forum->forcesubscribe = FORUM_FORCESUBSCRIBE;
             $forum->assessed = 0;
@@ -2966,6 +2966,46 @@ function forum_get_course_forum($courseid, $type) {
 
     include_once("$CFG->dirroot/course/lib.php");
     rebuild_course_cache($courseid);
+	
+	//Crear otro foro para el curso
+	
+	$forum->course = $courseid;
+    $forum->type = "blog";
+    $forum->name  = "Foro del Curso";
+    $forum->intro = "Foro";
+    $forum->forcesubscribe = FORUM_FORCESUBSCRIBE;
+    $forum->assessed = 0;
+    if ($courseid == SITEID) {
+        $forum->name  = get_string("sitenews");
+        $forum->forcesubscribe = 0;
+    }
+
+    $forum->timemodified = time();
+    $forum->id = $DB->insert_record("forum", $forum);
+
+    if (! $module = $DB->get_record("modules", array("name" => "forum"))) {
+        echo $OUTPUT->notification("Could not find forum module!!");
+        return false;
+    }
+    $mod = new stdClass();
+    $mod->course = $courseid;
+    $mod->module = $module->id;
+    $mod->instance = $forum->id;
+    $mod->section = 0;
+    if (! $mod->coursemodule = add_course_module($mod) ) {   // assumes course/lib.php is loaded
+        echo $OUTPUT->notification("Could not add a new course module to the course '" . $courseid . "'");
+        return false;
+    }
+    if (! $sectionid = add_mod_to_section($mod) ) {   // assumes course/lib.php is loaded
+        echo $OUTPUT->notification("Could not add the new course module to that section");
+        return false;
+    }
+    $DB->set_field("course_modules", "section", $sectionid, array("id" => $mod->coursemodule));
+
+    include_once("$CFG->dirroot/course/lib.php");
+    rebuild_course_cache($courseid);
+	
+	
 
     return $DB->get_record("forum", array("id" => "$forum->id"));
 }

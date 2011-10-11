@@ -3755,20 +3755,28 @@ function make_editing_buttons($mod, $absolute=false, $moveselect=true, $indent=-
     } else {
         $assign = '';
     }
-
-    return '<span class="commands">'."\n".$leftright.$move.
-           '<a class="editing_update" title="'.$str->update.'" href="'.$path.'/mod.php?update='.$mod->id.
+/*
+    return '<span class="commands">'."\n".//$leftright.$move.
+           /*'<a class="editing_update" title="'.$str->update.'" href="'.$path.'/mod.php?update='.$mod->id.
            '&amp;sesskey='.$sesskey.$section.'"><img'.
            ' src="'.$OUTPUT->pix_url('t/edit') . '" class="iconsmall" '.
            ' alt="'.$str->update.'" /></a>'."\n".
-           '<a class="editing_duplicate" title="'.$str->duplicate.'" href="'.$path.'/mod.php?duplicate='.$mod->id.
+           /*'<a class="editing_duplicate" title="'.$str->duplicate.'" href="'.$path.'/mod.php?duplicate='.$mod->id.
            '&amp;sesskey='.$sesskey.$section.'"><img'.
            ' src="'.$OUTPUT->pix_url('t/copy') . '" class="iconsmall" '.
            ' alt="'.$str->duplicate.'" /></a>'."\n".
-           '<a class="editing_delete" title="'.$str->delete.'" href="'.$path.'/mod.php?delete='.$mod->id.
+           
+		   '<a class="editing_delete" title="'.$str->delete.'" href="'.$path.'/mod.php?delete='.$mod->id.
            '&amp;sesskey='.$sesskey.$section.'"><img'.
            ' src="'.$OUTPUT->pix_url('t/delete') . '" class="iconsmall" '.
-           ' alt="'.$str->delete.'" /></a>'."\n".$hideshow.$groupmode."\n".$assign.'</span>';
+           ' alt="'.$str->delete.'" /></a>'."\n"/*.$hideshow.$groupmode."\n".$assign.'</span>';
+*/		   
+	//Modificacion para ver solo  los botones que correspondan	   
+	return '<span class="commands">'."\n".
+		   '<a class="editing_delete" title="'.$str->delete.'" href="'.$path.'/mod.php?delete='.$mod->id.
+           '&amp;sesskey='.$sesskey.$section.'"><img'.
+           ' src="'.$OUTPUT->pix_url('t/delete') . '" class="iconsmall" '.
+           ' alt="'.$str->delete.'" /></a>'."\n".$hideshow.'</span>';
 }
 
 /**

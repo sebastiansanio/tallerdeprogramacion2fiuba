@@ -5394,7 +5394,8 @@ function forum_print_latest_discussions($course, $forum, $maxdiscussions=-1, $di
                     $link = true;
                 } else {
                     $modcontext = get_context_instance(CONTEXT_MODULE, $cm->id);
-                    $link = forum_user_can_post($forum, $discussion, $USER, $cm, $course, $modcontext);
+                    //$link = forum_user_can_post($forum, $discussion, $USER, $cm, $course, $modcontext);
+					$link = true;
                 }
 
                 $discussion->forum = $forum->id;
@@ -5456,7 +5457,13 @@ function forum_print_discussion($course, $cm, $forum, $discussion, $post, $mode,
     } else {
         $reply = $canreply;
     }
+	
+	//alteracion para que invitados puedan responder foros no de tipo news
 
+	if($forum->type != "news"){
+		$reply = true;
+	}
+	
     // $cm holds general cache for forum functions
     $cm->cache = new stdClass;
     $cm->cache->groups      = groups_get_all_groups($course->id, 0, $cm->groupingid);

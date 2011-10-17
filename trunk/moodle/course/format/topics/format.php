@@ -107,7 +107,7 @@ if ($thissection->summary or $thissection->sequence or $PAGE->user_is_editing())
     $summaryformatoptions->overflowdiv = true;
     echo format_text($summarytext, $thissection->summaryformat, $summaryformatoptions);
 
-    if ($PAGE->user_is_editing() && has_capability('moodle/course:update', $coursecontext)) {
+    if (!$PAGE->user_is_editing() && has_capability('moodle/course:update', $coursecontext)) {
         echo '<a title="'.$streditsummary.'" '.
              ' href="editsection.php?id='.$thissection->id.'"><img src="'.$OUTPUT->pix_url('t/edit') . '" '.
              ' class="icon edit" alt="'.$streditsummary.'" /></a>';

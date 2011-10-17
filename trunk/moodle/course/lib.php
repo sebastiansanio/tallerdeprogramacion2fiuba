@@ -1647,7 +1647,7 @@ function print_section($course, $section, $mods, $modnamesused, $absolute=false,
                 echo $contentpart;
             }
 
-            if ($isediting) {
+            if (!$isediting) {
                 if ($groupbuttons and plugin_supports('mod', $mod->modname, FEATURE_GROUPS, 0)) {
                     if (! $mod->groupmodelink = $groupbuttonslink) {
                         $mod->groupmode = $course->groupmode;
@@ -1792,8 +1792,8 @@ function print_section_add_menus($course, $section, $modnames, $vertical=false, 
 	
 		//echo $modname." ";
 	
-		if ($modname == "url" or $modname == "data" or $modname == "chat" or $modname == "label" or $modname == "glossary" or $modname == "lesson"
-			 or $modname == "page" or $modname == "imscp" or $modname == "scorm" or $modname == "workshop"  or $modname == "assignment" or $modname == "wiki"){
+		if ($modname == "data" or $modname == "chat" or $modname == "label" or $modname == "lesson" or $modname == "page" 
+				or $modname == "imscp" or $modname == "scorm" or $modname == "workshop"  or $modname == "assignment" or $modname == "wiki"){
 			continue;
 		}
 	
@@ -3771,7 +3771,10 @@ function make_editing_buttons($mod, $absolute=false, $moveselect=true, $indent=-
            ' src="'.$OUTPUT->pix_url('t/delete') . '" class="iconsmall" '.
            ' alt="'.$str->delete.'" /></a>'."\n"/*.$hideshow.$groupmode."\n".$assign.'</span>';
 */		   
-	//Modificacion para ver solo  los botones que correspondan	   
+	//Modificacion para ver solo  los botones que correspondan	
+	if ($mod->name == "Noticias"){
+		return '';
+	}
 	return '<span class="commands">'."\n".
 		   '<a class="editing_delete" title="'.$str->delete.'" href="'.$path.'/mod.php?delete='.$mod->id.
            '&amp;sesskey='.$sesskey.$section.'"><img'.

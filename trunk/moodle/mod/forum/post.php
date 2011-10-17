@@ -119,7 +119,12 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
                 }
             }
         }
-        print_error('nopostforum', 'forum');
+		else {
+			//Por ahora muestro error luego hay que hacer que el guest pueda responder agregando su nombre.
+			
+			print_error('nopostforum', 'forum');
+		
+		}
     }
 
     if (!$cm->visible and !has_capability('moodle/course:viewhiddenactivities', $coursecontext)) {

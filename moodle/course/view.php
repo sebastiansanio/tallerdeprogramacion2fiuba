@@ -187,8 +187,8 @@
     // what to do, even though the link also appears in the course admin block.  It also
     // means you can back out of a situation where you removed the admin block. :)
     if ($PAGE->user_allowed_editing()) {
-        $buttons = $OUTPUT->edit_button(new moodle_url('/course/view.php', array('id' => $course->id)));
-        $PAGE->set_button($buttons);
+        //$buttons = $OUTPUT->edit_button(new moodle_url('/course/view.php', array('id' => $course->id)));
+        //$PAGE->set_button($buttons);
     }
 
     $PAGE->set_title(get_string('course') . ': ' . $course->fullname);

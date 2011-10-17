@@ -273,7 +273,7 @@ class enrol_manual_potential_participant_aprendiz_solicito extends user_selector
         $availableusers = $DB->get_records_sql($fields . $sql . $order, $params);
 
 		foreach ($availableusers as $auser){
-			echo "hola";
+			//echo "hola";
 		}
 		
         if (empty($availableusers)) {

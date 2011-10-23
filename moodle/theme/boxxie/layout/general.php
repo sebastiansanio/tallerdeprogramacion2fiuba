@@ -59,7 +59,7 @@ echo $OUTPUT->doctype() ?>
 
       <?php if ($hasnavbar) { ?>
         <div class="navbar clearfix">
-          <div class="breadcrumb"><?php echo $OUTPUT->navbar(); ?></div>
+          <div class="breadcrumb"><?php //echo $OUTPUT->navbar(); ?></div>
           <div class="navbutton"> <?php echo $PAGE->button; ?></div>
         </div>
       <?php } ?>

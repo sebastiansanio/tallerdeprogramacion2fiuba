@@ -47,7 +47,7 @@
   'noexistingparticipants' => 'No existen participantes',
   'noguestaccess' => 'Los invitados no pueden acceder a este curso, por favor intente identificarse.',
   'none' => 'Ninguno',
-  'notenrollable' => 'No se puede matricular en este curso.',
+  'notenrollable' => 'Para matricularse en este curso, utilice la opción apropiada del menú.',
   'notenrolledusers' => 'Otros usuarios',
   'otheruserdesc' => 'Los siguientes usuarios no están matriculados en este curso pero tienen roles (heredados o asignados en el curso).',
   'participationactive' => 'Activo',

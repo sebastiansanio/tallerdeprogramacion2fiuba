@@ -390,7 +390,7 @@ abstract class moodleform_mod extends moodleform {
         //doing this here means splitting up the grade related settings on the lesson settings page
         //$this->standard_grading_coursemodule_elements();
 
-        $mform->addElement('header', 'modstandardelshdr', get_string('modstandardels', 'form'));
+        //$mform->addElement('header', 'modstandardelshdr', get_string('modstandardels', 'form'));
         if ($this->_features->groups) {
             $options = array(NOGROUPS       => get_string('groupsnone'),
                              SEPARATEGROUPS => get_string('groupsseparate'),

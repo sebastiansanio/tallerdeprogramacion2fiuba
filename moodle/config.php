@@ -17,7 +17,7 @@ $CFG->dboptions = array (
 );
 
 $CFG->wwwroot   = 'http://localhost';
-$CFG->dataroot  = 'C:\\xampp\\htdocs\\moodledata';
+$CFG->dataroot  = '/home/damian/web/moodledata';
 $CFG->admin     = 'admin';
 
 $CFG->directorypermissions = 0777;

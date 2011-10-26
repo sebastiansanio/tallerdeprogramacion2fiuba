@@ -1777,7 +1777,7 @@ function print_section($course, $section, $mods, $modnamesused, $absolute=false,
  */
 function print_section_add_menus($course, $section, $modnames, $vertical=false, $return=false) {
     global $CFG, $OUTPUT;
-		
+
 	// check to see if user can add menus
     if (!has_capability('moodle/course:manageactivities', get_context_instance(CONTEXT_COURSE, $course->id))) {
         return false;
@@ -1863,13 +1863,13 @@ function print_section_add_menus($course, $section, $modnames, $vertical=false, 
 
     if (!empty($resources)) {
         $select = new url_select($resources, '', array(''=>$straddresource), "ressection$section");
-        $select->set_help_icon('resources');
+        //$select->set_help_icon('resources');
         $output .= $OUTPUT->render($select);
     }
 
     if (!empty($activities)) {
         $select = new url_select($activities, '', array(''=>$straddactivity), "section$section");
-        $select->set_help_icon('activities');
+        //$select->set_help_icon('activities');
         $output .= $OUTPUT->render($select);
     }
 
@@ -3658,6 +3658,7 @@ function make_editing_buttons($mod, $absolute=false, $moveselect=true, $indent=-
     } else {
         $path = '.';
     }
+
     if (has_capability('moodle/course:activityvisibility', $modcontext)) {
         if ($mod->visible) {
             $hideshow = '<a class="editing_hide" title="'.$str->hide.'" href="'.$path.'/mod.php?hide='.$mod->id.

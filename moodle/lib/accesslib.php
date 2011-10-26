@@ -2794,7 +2794,7 @@ function isloggedin() {
  */
 function isguestuser($user = null) {
     global $USER, $DB, $CFG;
-
+    return false;
     // make sure we have the user id cached in config table, because we are going to use it a lot
     if (empty($CFG->siteguest)) {
         if (!$guestid = $DB->get_field('user', 'id', array('username'=>'guest', 'mnethostid'=>$CFG->mnet_localhost_id))) {

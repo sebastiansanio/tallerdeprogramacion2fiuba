@@ -294,6 +294,8 @@
                 $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=8\">$userrolsolicitado</a>";
             } else if ($userrolsolicitado == 'Mediador') {
                 $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=3\">$userrolsolicitado</a>";
+            } else if ($userrolsolicitado == 'Miembro') {
+                $userrolsolicitado="<a href=\"roles/assign.php?contextid=1&roleid=7\">$userrolsolicitado</a>";
             }
 
 

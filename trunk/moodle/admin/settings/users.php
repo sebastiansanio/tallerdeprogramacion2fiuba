@@ -68,6 +68,8 @@ if ($hassiteconfig
                     case 'guest':
                         $defaultguestid = isset($defaultguestid) ? $defaultguestid : $role->id;
                         $guestroles[$role->id] = $rolename;
+                        $defaultuserid = isset($defaultuserid) ? $defaultuserid : $role->id;
+                        $userroles[$role->id] = $rolename;
                         break;
                     case 'user':
                         $defaultuserid = isset($defaultuserid) ? $defaultuserid : $role->id;

@@ -2792,6 +2792,39 @@ function isloggedin() {
  * @param int|object $user mixed user object or id, $USER if not specified
  * @return bool true if user is the real guest user, false if not logged in or other user
  */
+function isguestusercorrect($user = null) {
+    global $USER, $DB, $CFG;
+    // make sure we have the user id cached in config table, because we are going to use it a lot
+    if (empty($CFG->siteguest)) {
+        if (!$guestid = $DB->get_field('user', 'id', array('username'=>'guest', 'mnethostid'=>$CFG->mnet_localhost_id))) {
+            // guest does not exist yet, weird
+            return false;
+        }
+        set_config('siteguest', $guestid);
+    }
+    if ($user === null) {
+        $user = $USER;
+    }
+
+    if ($user === null) {
+        // happens when setting the $USER
+        return false;
+
+    } else if (is_numeric($user)) {
+        return ($CFG->siteguest == $user);
+
+    } else if (is_object($user)) {
+        if (empty($user->id)) {
+            return false; // not logged in means is not be guest
+        } else {
+            return ($CFG->siteguest == $user->id);
+        }
+
+    } else {
+        throw new coding_exception('Invalid user parameter supplied for isguestuser() function!');
+    }
+}
+
 function isguestuser($user = null) {
     global $USER, $DB, $CFG;
     return false;

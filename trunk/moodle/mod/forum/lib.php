@@ -7554,11 +7554,11 @@ function forum_get_layout_modes() {
  * @return array
  */
 function forum_get_forum_types() {
-    return array ('general'  => get_string('generalforum', 'forum'),
-                  'eachuser' => get_string('eachuserforum', 'forum'),
-                  'single'   => get_string('singleforum', 'forum'),
-                  'qanda'    => get_string('qandaforum', 'forum'),
-                  'blog'     => get_string('blogforum', 'forum'));
+    return array (//'general'  => "Cartelera",
+                  //'eachuser' => get_string('eachuserforum', 'forum'),
+                  //'single'   => get_string('singleforum', 'forum'),
+                  //'qanda'    => get_string('qandaforum', 'forum'),
+                  'blog'     => "Foro");
 }
 
 /**

@@ -2149,8 +2149,14 @@ class global_navigation extends navigation_node {
                 }
             }
         }
+		
 
-        $coursenode = $parent->add($shortname, $url, self::TYPE_COURSE, $shortname, $course->id);
+        
+		$coursenode = $parent->add($shortname, $url, self::TYPE_COURSE, $shortname, $course->id);
+		
+		//$url2 = new moodle_url('/group/index.php', array('id'=>$course->id));
+		//$coursenode = $parent->add($shortname, $url2, self::TYPE_COURSE, $shortname, $course->id);
+		
         $coursenode->nodetype = self::NODETYPE_BRANCH;
         $coursenode->hidden = (!$course->visible);
         $coursenode->title($course->fullname);
@@ -2196,6 +2202,10 @@ class global_navigation extends navigation_node {
             return true;
         }
 
+		//Grupos
+		if (has_capability('moodle/site:viewreports', $this->page->context)) {
+			$grupos = $coursenode->add(get_string('groups'), new moodle_url('/group/index.php?id='.$course->id), self::TYPE_CONTAINER, get_string('groups'), 'groups');
+		}
         //Participants
         if (has_capability('moodle/course:viewparticipants', $this->page->context)) {
             $participants = $coursenode->add(get_string('participants'), new moodle_url('/user/index.php?id='.$course->id), self::TYPE_CONTAINER, get_string('participants'), 'participants');
@@ -2260,9 +2270,9 @@ class global_navigation extends navigation_node {
         $coursenode->add('frontpageloaded', null, self::TYPE_CUSTOM, null, 'frontpageloaded')->display = false;
 
         //Participants
-        if (has_capability('moodle/course:viewparticipants',  get_system_context())) {
+        /*if (has_capability('moodle/course:viewparticipants',  get_system_context())) {
             $coursenode->add(get_string('participants'), new moodle_url('/user/index.php?id='.$course->id), self::TYPE_CUSTOM, get_string('participants'), 'participants');
-        }
+        }*/
 
         $filterselect = 0;
 
@@ -2285,8 +2295,8 @@ class global_navigation extends navigation_node {
         }
 
         // Calendar
-        $calendarurl = new moodle_url('/calendar/view.php', array('view' => 'month'));
-        $coursenode->add(get_string('calendar', 'calendar'), $calendarurl, self::TYPE_CUSTOM, null, 'calendar');
+        //$calendarurl = new moodle_url('/calendar/view.php', array('view' => 'month'));
+        //$coursenode->add(get_string('calendar', 'calendar'), $calendarurl, self::TYPE_CUSTOM, null, 'calendar');
 
         // View course reports
         if (has_capability('moodle/site:viewreports', $this->page->context)) { // basic capability for listing of reports

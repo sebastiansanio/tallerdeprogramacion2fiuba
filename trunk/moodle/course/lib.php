@@ -3780,7 +3780,7 @@ function make_editing_buttons($mod, $absolute=false, $moveselect=true, $indent=-
 		   '<a class="editing_delete" title="'.$str->delete.'" href="'.$path.'/mod.php?delete='.$mod->id.
            '&amp;sesskey='.$sesskey.$section.'"><img'.
            ' src="'.$OUTPUT->pix_url('t/delete') . '" class="iconsmall" '.
-           ' alt="'.$str->delete.'" /></a>'."\n".$hideshow.'</span>';
+           ' alt="'.$str->delete.'" /></a>'."\n".$hideshow.$groupmode."\n".'</span>';
 }
 
 /**

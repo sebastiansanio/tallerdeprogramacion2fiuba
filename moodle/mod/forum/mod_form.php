@@ -50,7 +50,7 @@ class mod_forum_mod_form extends moodleform_mod {
 
         asort($forum_types);
         $mform->addElement('select', 'type', get_string('forumtype', 'forum'), $forum_types);
-        $mform->addHelpButton('type', 'forumtype', 'forum');
+        //$mform->addHelpButton('type', 'forumtype', 'forum');
         $mform->setDefault('type', 'general');
 
         $this->add_intro_editor(true, get_string('forumintro', 'forum'));

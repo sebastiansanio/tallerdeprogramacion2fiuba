@@ -182,7 +182,7 @@ class course_edit_form extends moodleform {
         }
 
 //--------------------------------------------------------------------------------
-        //enrol_course_edit_form($mform, $course, $context);
+        enrol_course_edit_form($mform, $course, $context);
 
 //--------------------------------------------------------------------------------
         $mform->addElement('header','', get_string('groups', 'group'));

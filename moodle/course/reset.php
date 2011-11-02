@@ -69,7 +69,27 @@ if ($mform->is_cancelled()) {
         echo $OUTPUT->header();
         echo $OUTPUT->heading($strresetcourse);
 
+         $fechaVieja = date('Y-m-d',$course->startdate);
+         $query = "SELECT num_cuat, ano FROM cuatrimestres WHERE fecha_inicio=\"".$fechaVieja."\"";
+	       $con = mysql_connect("localhost","root","");
+	       mysql_select_db("moodle", $con);
+	       $resultado = mysql_query($query);
+	       $fila = mysql_fetch_array($resultado);
+	       if( $fila['num_cuat']==1 ){
+              $numCuat = 2;
+              $ano = $fila['ano'];
+         }
+         else{
+              $numCuat = 1;
+              $ano = $fila['ano']+1;
+         }
+         $fechaNuevaQuery = "SELECT fecha_inicio FROM cuatrimestres WHERE ano=".$ano." AND num_cuat=".$numCuat;
+         $resultado= mysql_query($fechaNuevaQuery);
+         $fila = mysql_fetch_array($resultado);
+         mysql_close($con);
+         
         $data->reset_start_date_old = $course->startdate;
+        $data->reset_start_date = strtotime( $fila['fecha_inicio'] );
         $status = reset_course_userdata($data);
 
         $data = array();;
@@ -98,7 +118,7 @@ if ($mform->is_cancelled()) {
 echo $OUTPUT->header();
 echo $OUTPUT->heading($strresetcourse);
 
-echo $OUTPUT->box(get_string('resetinfo'));
+//echo $OUTPUT->box(get_string('resetinfo'));
 
 $mform->display();
 echo $OUTPUT->footer();

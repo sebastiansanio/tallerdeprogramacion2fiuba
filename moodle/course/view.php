@@ -221,6 +221,8 @@
             break;
         }
     }
+    
+    
 
     if (! $sections = get_all_sections($course->id)) {   // No sections found
         // Double-check to be extra sure
@@ -235,10 +237,25 @@
             print_error('cannotcreateorfindstructs', 'error');
         }
     }
-
-    // Include the actual course format.
+    
+        // Include the actual course format.
     require($CFG->dirroot .'/course/format/'. $course->format .'/format.php');
     // Content wrapper end.
+    
+   $userpermissions = $DB->get_records('role_assignments');
+	  foreach ($userpermissions as $userdata) {
+				if(($userdata->userid==$USER->id) and ($userdata->contextid==$context->id) and ($userdata->roleid==3)){
+            $fechaVieja = date('Y-m-d',$course->startdate);
+            $query = "SELECT num_cuat, ano FROM cuatrimestres WHERE fecha_inicio=\"".$fechaVieja."\"";
+            $con = mysql_connect("localhost","root","");
+             mysql_select_db("moodle", $con);
+             $resultado = mysql_query($query);
+             $fila = mysql_fetch_array($resultado);
+             mysql_close($con);
+             if ($fila['num_cuat']==1){$terminacion = "ro.";} else {$terminacion = "do.";}            
+             echo "<a style='color:red;font-size:20px;' href='http://localhost/course/reset.php?id=".$course->id."'>Consolidar Cuatrimestre (".$fila['num_cuat'].$terminacion." de ".$fila['ano'].")</a>";
+         }
+    }
 
     echo html_writer::end_tag('div');
 

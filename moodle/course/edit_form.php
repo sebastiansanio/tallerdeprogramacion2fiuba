@@ -123,12 +123,13 @@ class course_edit_form extends moodleform {
         for ($i = 0; $i <= $courseconfig->maxsections; $i++) {
             $sectionmenu[$i] = "$i";
         }
-        $mform->addElement('select', 'numsections', get_string('numberweeks'), $sectionmenu);
+        $mform->addElement('hidden', 'numsections', null);
         $mform->setDefault('numsections', $courseconfig->numsections);
 
-        $mform->addElement('date_selector', 'startdate', get_string('startdate'));
-        $mform->addHelpButton('startdate', 'startdate');
-        $mform->setDefault('startdate', time() + 3600 * 24);
+        $mform->addElement('hidden', 'startdate', null);
+        //$mform->addHelpButton('startdate', 'startdate');
+        
+        $mform->setDefault('startdate', strtotime("2011-08-15"));
 
         $choices = array();
         $choices['0'] = get_string('hiddensectionscollapsed');

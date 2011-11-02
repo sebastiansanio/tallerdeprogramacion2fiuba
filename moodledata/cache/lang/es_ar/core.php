@@ -1366,7 +1366,7 @@ Moodle.</p>
   'requirespayment' => 'Para acceder a este curso es preciso pagar',
   'reset' => 'Reiniciar',
   'resetcomponent' => 'Componente',
-  'resetcourse' => 'Reiniciar curso',
+  'resetcourse' => 'Consolidar Cuatrimestre',
   'resetinfo' => 'Esta página le permite vaciar un curso de datos de usuario, en tanto que se conservan las actividades y otros ajustes. Por favor, tome nota de que al seleccionar los ítems de más abajo y enviar esta página, eliminará definitivamente de este curso los datos de los usuarios seleccionados.',
   'resetnotimplemented' => 'Reinicialización no implementada',
   'resetstartdate' => 'Reajustar fecha inicial',

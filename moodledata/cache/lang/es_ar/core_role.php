@@ -135,7 +135,7 @@ Vea también
   'course:markcomplete' => 'Marcar los usuarios como completos al completar un curso',
   'course:publish' => 'Publicar un curso en el hub',
   'course:request' => 'Solicitar nuevos cursos',
-  'course:reset' => 'Reiniciar curso',
+  'course:reset' => 'Conslidar Cuatrimestre',
   'course:sectionvisibility' => 'Controlar visibilidad de sección',
   'course:setcurrentsection' => 'Ajustar sección actual',
   'course:update' => 'Actualizar ajustes de curso',

@@ -30,29 +30,6 @@ if (!($settingspage->check_access())) {
 
 /// WRITING SUBMITTED DATA (IF ANY) -------------------------------------------------------------------------------
 
-$statusmsg = '';
-$errormsg  = '';
-$focus = '';
-
-if ($data = data_submitted() and confirm_sesskey()) {
-    if (admin_write_settings($data)) {
-        $statusmsg = get_string('changessaved');
-    }
-
-    if (empty($adminroot->errors)) {
-        switch ($return) {
-            case 'site': redirect("$CFG->wwwroot/");
-            case 'admin': redirect("$CFG->wwwroot/$CFG->admin/");
-        }
-    } else {
-        $errormsg = get_string('errorwithsettings', 'admin');
-        $firsterror = reset($adminroot->errors);
-        $focus = $firsterror->id;
-    }
-    $adminroot = admin_get_root(true); //reload tree
-    $settingspage = $adminroot->locate($section, true);
-}
-
 if ($PAGE->user_allowed_editing() && $adminediting != -1) {
     $USER->editing = $adminediting;
 }
@@ -64,7 +41,7 @@ if (empty($SITE->fullname)) {
 
     echo $OUTPUT->header();
     echo $OUTPUT->box(get_string('configintrosite', 'admin'));
-
+    
     if ($errormsg !== '') {
         echo $OUTPUT->notification($errormsg);
 
@@ -73,20 +50,7 @@ if (empty($SITE->fullname)) {
     }
 
     // ---------------------------------------------------------------------------------------------------------------
-
-    echo '<form action="settings.php" method="post" id="adminsettings">';
-    echo '<div class="settingsform clearfix">';
-    echo html_writer::input_hidden_params($PAGE->url);
-    echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
-    echo '<input type="hidden" name="return" value="'.$return.'" />';
-
-    echo $settingspage->output_html();
-    
-    echo '<div class="form-buttons"><input class="form-submit" type="submit" value="'.get_string('savechanges','admin').'" /></div>';
-
-    echo '</div>';
-    echo '</form>';
-
+   
 } else {
     if ($PAGE->user_allowed_editing()) {
         $url = clone($PAGE->url);
@@ -104,7 +68,7 @@ if (empty($SITE->fullname)) {
 
     $PAGE->set_title("$SITE->shortname: " . implode(": ",$visiblepathtosection));
     $PAGE->set_heading($SITE->fullname);
-    $PAGE->set_button($buttons);
+    //$PAGE->set_button($buttons);
     echo $OUTPUT->header();
 
     if ($errormsg !== '') {
@@ -116,22 +80,34 @@ if (empty($SITE->fullname)) {
 
     // ---------------------------------------------------------------------------------------------------------------
 
-    echo '<form action="settings.php" method="post" id="adminsettings">';
-    echo '<div class="settingsform clearfix">';
-    echo html_writer::input_hidden_params($PAGE->url);
-    echo '<input type="hidden" name="sesskey" value="'.sesskey().'" />';
-    echo '<input type="hidden" name="return" value="'.$return.'" />';
-    echo $OUTPUT->heading($settingspage->visiblename);
-
-    echo $settingspage->output_html();
-
-    if ($settingspage->show_save()) {
-        echo '<div class="form-buttons"><input class="form-submit" type="submit" value="'.get_string('savechanges','admin').'" /></div>';
-    }
-
-    echo '</div>';
-    echo '</form>';
 }
+
+$con = mysql_connect("localhost","root","");
+mysql_select_db("moodle", $con);
+$query = "SELECT duracion FROM ciclo_conservacion";
+$resultado = mysql_query($query);
+$fila = mysql_fetch_array($resultado);
+$duracionCiclo = $fila['duracion'];
+$msgActualizacion = "";
+
+if ( ($_POST['duracion'] != $duracionCiclo) && ($_POST['duracion']) ){
+      //Compruebo si es un valor numérico
+      if (!is_numeric($_POST['duracion'])) {
+        $msgActualizacion = "<p style='color:red'><b>La duraci&#243n no ha sido actualizada, ingrese un valor valido</b></p>";
+      }
+      else {
+        $query = 'UPDATE ciclo_conservacion SET duracion='.$_POST['duracion'];
+        mysql_query($query);
+        $duracionCiclo = $_POST['duracion'];
+        $msgActualizacion = "<p style='color:green'><b>La duraci&#243n ha sido actualizada satisfactoriamente</b></p>";
+      }
+}
+
+echo '<p><form action="cicloConservacion.php?section=coursesettings" method="post">
+<b>Duraci&#243n del ciclo de conservaci&#243n de calificaciones (en cuatrimestres):</b> <input type="text" name="duracion" value="'.$duracionCiclo.'" size="2" />
+<input type="submit" value="Actualizar" />
+</form></p>';
+echo $msgActualizacion;
 
 echo $OUTPUT->footer();
 

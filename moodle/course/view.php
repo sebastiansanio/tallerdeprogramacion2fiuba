@@ -253,7 +253,9 @@
              $fila = mysql_fetch_array($resultado);
              mysql_close($con);
              if ($fila['num_cuat']==1){$terminacion = "ro.";} else {$terminacion = "do.";}            
-             echo "<a style='color:red;font-size:20px;' href='http://localhost/course/reset.php?id=".$course->id."'>Consolidar Cuatrimestre (".$fila['num_cuat'].$terminacion." de ".$fila['ano'].")</a>";
+             echo "<a style='color:blue;font-size:20px;' href='/grade/report/grader/index.php?id=".$course->id."'>Calificador</a><br/>";
+             echo "<a style='color:blue;font-size:20px;' href='/grade/report/grader/calificacionesAnteriores.php?id=".$course->id."'>Calificaciones Anteriores</a><br/>";
+             echo "<a style='color:red;font-size:20px;' href='/course/reset.php?id=".$course->id."'>Consolidar Cuatrimestre (".$fila['num_cuat'].$terminacion." de ".$fila['ano'].")</a>";
          }
     }
 

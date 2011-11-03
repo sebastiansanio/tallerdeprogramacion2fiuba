@@ -26,9 +26,9 @@
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @package course
  */
-
 require('../config.php');
 require_once('reset_form.php');
+
 
 $id = required_param('id', PARAM_INT);
 
@@ -49,7 +49,10 @@ $PAGE->navbar->add($strresetcourse);
 $PAGE->set_title($course->fullname.': '.$strresetcourse);
 $PAGE->set_heading($course->fullname.': '.$strresetcourse);
 
+
+
 $mform = new course_reset_form();
+$mform->load_defaults();
 
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot.'/course/view.php?id='.$id);
@@ -75,6 +78,8 @@ if ($mform->is_cancelled()) {
 	       mysql_select_db("moodle", $con);
 	       $resultado = mysql_query($query);
 	       $fila = mysql_fetch_array($resultado);
+	       $numCuatViejo = $fila['num_cuat'];
+	       $anoViejo = $fila['ano'];
 	       if( $fila['num_cuat']==1 ){
               $numCuat = 2;
               $ano = $fila['ano'];
@@ -86,10 +91,32 @@ if ($mform->is_cancelled()) {
          $fechaNuevaQuery = "SELECT fecha_inicio FROM cuatrimestres WHERE ano=".$ano." AND num_cuat=".$numCuat;
          $resultado= mysql_query($fechaNuevaQuery);
          $fila = mysql_fetch_array($resultado);
-         mysql_close($con);
+         
          
         $data->reset_start_date_old = $course->startdate;
         $data->reset_start_date = strtotime( $fila['fecha_inicio'] );
+        
+        //GUARDAR CALIFICACIONES
+        
+        $califQuery = "SELECT firstname, lastname, finalgrade
+                  FROM mdl_grade_grades g, mdl_grade_categories gcat, mdl_user u
+                  WHERE g.itemid=gcat.id AND u.id=g.userid AND gcat.courseid=".$id;
+                  
+         $resultado= mysql_query($califQuery);
+         while($row = mysql_fetch_array($resultado))
+         {
+            $addQuery = "INSERT INTO calificaciones
+                         VALUES(".$id.",".$anoViejo.",".$numCuatViejo.",\"".$row['firstname']." ".$row['lastname']."\",".round($row['finalgrade']).")";
+            mysql_query($addQuery);
+         }
+                   
+        //FIN GUARDAR CALIFICACIONES
+        
+        mysql_close($con);
+        
+        $data2 = (Array) $data;
+        $data2['unenrol_users']=array('0'=>5);
+        $data = (Object) $data2;
         $status = reset_course_userdata($data);
 
         $data = array();;

@@ -15,12 +15,12 @@ class course_reset_form extends moodleform {
 
         //$mform->addElement('date_selector', 'reset_start_date', get_string('startdate'), array('optional'=>true));
         //$mform->addHelpButton('reset_start_date', 'startdate');
-        //$mform->addElement('checkbox', 'reset_events', get_string('deleteevents', 'calendar'));
-        //$mform->addElement('checkbox', 'reset_logs', get_string('deletelogs'));
-        //$mform->addElement('checkbox', 'reset_notes', get_string('deletenotes', 'notes'));
-        //$mform->addElement('checkbox', 'reset_comments', get_string('deleteallcomments', 'moodle'));
-        //$mform->addElement('checkbox', 'reset_course_completion', get_string('deletecoursecompletiondata', 'completion'));
-        //$mform->addElement('checkbox', 'delete_blog_associations', get_string('deleteblogassociations', 'blog'));
+        $mform->addElement('hidden', 'reset_events', get_string('deleteevents', 'calendar'));
+        $mform->addElement('hidden', 'reset_logs', get_string('deletelogs'));
+        $mform->addElement('hidden', 'reset_notes', get_string('deletenotes', 'notes'));
+        $mform->addElement('hidden', 'reset_comments', get_string('deleteallcomments', 'moodle'));
+        $mform->addElement('hidden', 'reset_course_completion', get_string('deletecoursecompletiondata', 'completion'));
+        $mform->addElement('hidden', 'delete_blog_associations', get_string('deleteblogassociations', 'blog'));
         //$mform->addHelpButton('delete_blog_associations', 'deleteblogassociations', 'blog');
 
 
@@ -28,56 +28,56 @@ class course_reset_form extends moodleform {
 
         //$roles = get_assignable_roles(get_context_instance(CONTEXT_COURSE, $COURSE->id));
         //$mform->addElement('select', 'unenrol_users', get_string('unenrolroleusers', 'enrol'), $roles, array('multiple' => 'multiple'));
-        //$mform->addElement('checkbox', 'reset_roles_overrides', get_string('deletecourseoverrides', 'role'));
+        $mform->addElement('hidden', 'reset_roles_overrides', get_string('deletecourseoverrides', 'role'));
         //$mform->setAdvanced('reset_roles_overrides');
-        //$mform->addElement('checkbox', 'reset_roles_local', get_string('deletelocalroles', 'role'));
+        $mform->addElement('hidden', 'reset_roles_local', get_string('deletelocalroles', 'role'));
 
 
         //$mform->addElement('header', 'gradebookheader', get_string('gradebook', 'grades'));
 
-        //$mform->addElement('checkbox', 'reset_gradebook_items', get_string('removeallcourseitems', 'grades'));
-        //$mform->addElement('checkbox', 'reset_gradebook_grades', get_string('removeallcoursegrades', 'grades'));
+        $mform->addElement('hidden', 'reset_gradebook_items', get_string('removeallcourseitems', 'grades'));
+        $mform->addElement('hidden', 'reset_gradebook_grades', get_string('removeallcoursegrades', 'grades'));
         //$mform->disabledIf('reset_gradebook_grades', 'reset_gradebook_items', 'checked');
 
 
         //$mform->addElement('header', 'groupheader', get_string('groups'));
 
-        //$mform->addElement('checkbox', 'reset_groups_remove', get_string('deleteallgroups', 'group'));
+        $mform->addElement('hidden', 'reset_groups_remove', get_string('deleteallgroups', 'group'));
         //$mform->setAdvanced('reset_groups_remove');
-        //$mform->addElement('checkbox', 'reset_groups_members', get_string('removegroupsmembers', 'group'));
+        $mform->addElement('hidden', 'reset_groups_members', get_string('removegroupsmembers', 'group'));
         //$mform->setAdvanced('reset_groups_members');
         //$mform->disabledIf('reset_groups_members', 'reset_groups_remove', 'checked');
 
-        //$mform->addElement('checkbox', 'reset_groupings_remove', get_string('deleteallgroupings', 'group'));
+        $mform->addElement('hidden', 'reset_groupings_remove', get_string('deleteallgroupings', 'group'));
         //$mform->setAdvanced('reset_groupings_remove');
-        //$mform->addElement('checkbox', 'reset_groupings_members', get_string('removegroupingsmembers', 'group'));
+        $mform->addElement('hidden', 'reset_groupings_members', get_string('removegroupingsmembers', 'group'));
         //$mform->setAdvanced('reset_groupings_members');
         //$mform->disabledIf('reset_groupings_members', 'reset_groupings_remove', 'checked');
 
         //$unsupported_mods = array();
-        //if ($allmods = $DB->get_records('modules') ) {
-            //foreach ($allmods as $mod) {
-                //$modname = $mod->name;
-                //if (!$DB->count_records($modname, array('course'=>$COURSE->id))) {
-                    //continue; // skip mods with no instances
-                //}
-                //$modfile = $CFG->dirroot."/mod/$modname/lib.php";
-                //$mod_reset_course_form_definition = $modname.'_reset_course_form_definition';
+      //  if ($allmods = $DB->get_records('modules') ) {
+         //   foreach ($allmods as $mod) {
+             //   $modname = $mod->name;
+             //   if (!$DB->count_records($modname, array('course'=>$COURSE->id))) {
+                //    continue; // skip mods with no instances
+              //  }
+              //  $modfile = $CFG->dirroot."/mod/$modname/lib.php";
+               // $mod_reset_course_form_definition = $modname.'_reset_course_form_definition';
                 //$mod_reset__userdata = $modname.'_reset_userdata';
                 //if (file_exists($modfile)) {
-                    //include_once($modfile);
+                 //   include_once($modfile);
                     //if (function_exists($mod_reset_course_form_definition)) {
-                        //$mod_reset_course_form_definition($mform);
-                    //} else if (!function_exists($mod_reset__userdata)) {
-                        //$unsupported_mods[] = $mod;
-                    //}
-                //} else {
+                   //     $mod_reset_course_form_definition($mform);
+                   // } else if (!function_exists($mod_reset__userdata)) {
+                     //   $unsupported_mods[] = $mod;
+                   // }
+               // } else {
                     //debugging('Missing lib.php in '.$modname.' module');
                 //}
             //}
         //}
         // mention unsupported mods
-        //if (!empty($unsupported_mods)) {
+       // if (!empty($unsupported_mods)) {
             //$mform->addElement('header', 'unsupportedheader', get_string('resetnotimplemented'));
             //foreach($unsupported_mods as $mod) {
                 //$mform->addElement('static', 'unsup'.$mod->name, get_string('modulenameplural', $mod->name));
@@ -102,7 +102,8 @@ class course_reset_form extends moodleform {
 
         $mform =& $this->_form;
 
-        $defaults = array ('reset_events'=>1, 'reset_logs'=>1, 'reset_roles_local'=>1, 'reset_gradebook_grades'=>1, 'reset_notes'=>1);
+        $defaults = array ('reset_events'=>1, 'reset_logs'=>1, 'reset_notes'=>1, 'reset_comments'=>1, 'reset_course_completion'=>1, 'reset_roles_local'=>1,
+                            'reset_gradebook_grades'=>1, 'reset_groups_remove'=>1, 'reset_groups_members'=>1, 'reset_groupings_remove'=>1, 'reset_groupings_members'=>1);
 
         if ($allmods = $DB->get_records('modules') ) {
             foreach ($allmods as $mod) {
@@ -123,5 +124,6 @@ class course_reset_form extends moodleform {
         foreach ($defaults as $element=>$default) {
             $mform->setDefault($element, $default);
         }
+        //$mform->setDefault('unenrol_users',array('0'=>5));
     }
 }

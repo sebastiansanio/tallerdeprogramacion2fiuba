@@ -183,7 +183,7 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
     $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
     $modcontext    = get_context_instance(CONTEXT_MODULE, $cm->id);
 
-    if (! forum_user_can_post($forum, $discussion, $USER, $cm, $course, $modcontext)) {
+/*    if (! forum_user_can_post($forum, $discussion, $USER, $cm, $course, $modcontext)) {
         if (!isguestuser()) {
             if (!is_enrolled($coursecontext)) {  // User is a guest here!
 				//Aca se da cuenta de que es un guest y no puede postear sin estar matriculado
@@ -193,7 +193,7 @@ if (!empty($forum)) {      // User is starting a new discussion in a forum
             }
         }
         print_error('nopostforum', 'forum');
-    }
+    }*/
 
     // Make sure user can post here
     if (isset($cm->groupmode) && empty($course->groupmodeforce)) {

@@ -1061,9 +1061,14 @@ class global_navigation extends navigation_node {
         }
 
         $mycourses = enrol_get_my_courses(NULL, 'visible DESC,sortorder ASC', $limit);
-        $showallcourses = (count($mycourses) == 0 || !empty($CFG->navshowallcourses));
-        $showcategories = ($showallcourses && !empty($CFG->navshowcategories));
-        $issite = ($this->page->course->id != SITEID);
+        
+		//$showallcourses = (count($mycourses) == 0 || !empty($CFG->navshowallcourses));
+        //$showcategories = ($showallcourses && !empty($CFG->navshowcategories));
+        
+		$showallcourses = false;
+		$showcategories = false;
+		
+		$issite = ($this->page->course->id != SITEID);
         $ismycourse = (array_key_exists($this->page->course->id, $mycourses));
 
         // Check if any courses were returned.
@@ -1313,6 +1318,7 @@ class global_navigation extends navigation_node {
                 $this->children->add($child);
             }
         }
+		
         return true;
     }
     /**
@@ -1397,7 +1403,7 @@ class global_navigation extends navigation_node {
      */
     protected function load_all_categories($categoryid = null, $showbasecategories = false) {
         global $DB;
-
+/*
         // Check if this category has already been loaded
         if ($categoryid !== null && array_key_exists($categoryid, $this->addedcategories) && $this->addedcategories[$categoryid]->children->count() > 0) {
             return $this->addedcategories[$categoryid];
@@ -1486,6 +1492,7 @@ class global_navigation extends navigation_node {
         if (count($coursestoload) > 0) {
             $this->load_all_courses($coursestoload);
         }
+		*/
     }
 
     /**
@@ -2203,9 +2210,15 @@ class global_navigation extends navigation_node {
         }
 
 		//Grupos
-		if (has_capability('moodle/site:viewreports', $this->page->context)) {
+		if (has_capability('moodle/course:managegroups', $this->page->context)) {
 			$grupos = $coursenode->add(get_string('groups'), new moodle_url('/group/index.php?id='.$course->id), self::TYPE_CONTAINER, get_string('groups'), 'groups');
 		}
+		
+		//Notas
+		if (has_capability('moodle/grade:view', $this->page->context)) {
+			$notas = $coursenode->add(get_string('grades'), new moodle_url('/grade/report/index.php?id='.$course->id), self::TYPE_CONTAINER, get_string('grades'), 'grades');
+		}
+		
         //Participants
         if (has_capability('moodle/course:viewparticipants', $this->page->context)) {
             $participants = $coursenode->add(get_string('participants'), new moodle_url('/user/index.php?id='.$course->id), self::TYPE_CONTAINER, get_string('participants'), 'participants');
@@ -2299,7 +2312,7 @@ class global_navigation extends navigation_node {
         //$coursenode->add(get_string('calendar', 'calendar'), $calendarurl, self::TYPE_CUSTOM, null, 'calendar');
 
         // View course reports
-        if (has_capability('moodle/site:viewreports', $this->page->context)) { // basic capability for listing of reports
+        /*if (has_capability('moodle/site:viewreports', $this->page->context)) { // basic capability for listing of reports
             $reportnav = $coursenode->add(get_string('reports'), new moodle_url('/course/report.php', array('id'=>$course->id)), self::TYPE_CONTAINER, null, null, new pix_icon('i/stats', ''));
             $coursereports = get_plugin_list('coursereport');
             foreach ($coursereports as $report=>$dir) {
@@ -2312,7 +2325,7 @@ class global_navigation extends navigation_node {
                     }
                 }
             }
-        }
+        }*/
         return true;
     }
 

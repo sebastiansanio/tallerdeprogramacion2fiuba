@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 04-11-2011 a las 05:37:49
--- Versión del servidor: 5.5.16
--- Versión de PHP: 5.3.8
+-- Tiempo de generación: 07-11-2011 a las 19:19:57
+-- Versión del servidor: 5.5.8
+-- Versión de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -35,13 +34,15 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `calificaciones`
+-- Volcar la base de datos para la tabla `calificaciones`
 --
 
 INSERT INTO `calificaciones` (`courseid`, `ano`, `num_cuat`, `nombre`, `calificacion`) VALUES
 (16, 2010, 1, 'juan perez', 8),
 (16, 2010, 1, 'carlos sanchez', 7),
-(16, 2010, 2, 'pedro lopez', 6);
+(16, 2010, 2, 'pedro lopez', 6),
+(16, 2012, 2, 'Pepe Garcia', 7),
+(16, 2012, 2, 'Aprendiz1 Popper', 10);
 
 -- --------------------------------------------------------
 
@@ -54,11 +55,11 @@ CREATE TABLE IF NOT EXISTS `ciclo_conservacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `ciclo_conservacion`
+-- Volcar la base de datos para la tabla `ciclo_conservacion`
 --
 
 INSERT INTO `ciclo_conservacion` (`duracion`) VALUES
-(3);
+(6);
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `cuatrimestres` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `cuatrimestres`
+-- Volcar la base de datos para la tabla `cuatrimestres`
 --
 
 INSERT INTO `cuatrimestres` (`ano`, `num_cuat`, `fecha_inicio`) VALUES
@@ -119,7 +120,14 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment` (
   `timemodified` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_assi_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines assignments' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines assignments' AUTO_INCREMENT=6 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_assignment`
+--
+
+INSERT INTO `mdl_assignment` (`id`, `course`, `name`, `intro`, `introformat`, `assignmenttype`, `resubmit`, `preventlate`, `emailteachers`, `var1`, `var2`, `var3`, `var4`, `var5`, `maxbytes`, `timedue`, `timeavailable`, `grade`, `timemodified`) VALUES
+(5, 18, 'Responder1', '<p>¿De que color el caballo blanco de San Martin?</p>', 1, 'online', 0, 0, 0, 0, 0, 0, 0, 0, 100000, 1321290300, 1320685500, 100, 1320685650);
 
 -- --------------------------------------------------------
 
@@ -147,7 +155,16 @@ CREATE TABLE IF NOT EXISTS `mdl_assignment_submissions` (
   KEY `mdl_assisubm_mai_ix` (`mailed`),
   KEY `mdl_assisubm_tim_ix` (`timemarked`),
   KEY `mdl_assisubm_ass_ix` (`assignment`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about submitted assignments' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about submitted assignments' AUTO_INCREMENT=7 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_assignment_submissions`
+--
+
+INSERT INTO `mdl_assignment_submissions` (`id`, `assignment`, `userid`, `timecreated`, `timemodified`, `numfiles`, `data1`, `data2`, `grade`, `submissioncomment`, `format`, `teacher`, `timemarked`, `mailed`) VALUES
+(4, 5, 13, 1320685685, 1320685685, 0, '<p>Blanco</p>', '1', 100, '', 0, 14, 1320685889, 1),
+(5, 5, 15, 1320685710, 1320685710, 0, '<p>Gris</p>', '1', 50, '', 0, 14, 1320685917, 1),
+(6, 5, 14, 1320685898, 1320685898, 0, '', '', -1, '', 0, 14, 1320685898, 1);
 
 -- --------------------------------------------------------
 
@@ -179,7 +196,7 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_controllers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store the backup_controllers as they are used' AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `mdl_backup_controllers`
+-- Volcar la base de datos para la tabla `mdl_backup_controllers`
 --
 
 INSERT INTO `mdl_backup_controllers` (`id`, `backupid`, `operation`, `type`, `itemid`, `format`, `interactive`, `purpose`, `userid`, `status`, `execution`, `executiontime`, `checksum`, `timecreated`, `timemodified`, `controller`) VALUES
@@ -202,6 +219,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_courses` (
   UNIQUE KEY `mdl_backcour_cou_uix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store every course backup status' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_backup_courses`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -218,6 +240,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_files` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_backfile_bacfilpat_uix` (`backup_code`,`file_type`,`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store and recode ids to user and course files' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_backup_files`
+--
+
 
 -- --------------------------------------------------------
 
@@ -237,6 +264,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_files_template` (
   KEY `mdl_backfiletemp_bacconcomf_ix` (`backupid`,`contextid`,`component`,`filearea`,`itemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store files along the backup process. Note this table isn' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_backup_files_template`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -253,6 +285,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_ids` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_backids_bactabold_uix` (`backup_code`,`table_name`,`old_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store and convert ids in backup/restore' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_backup_ids`
+--
+
 
 -- --------------------------------------------------------
 
@@ -274,6 +311,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_ids_template` (
   KEY `mdl_backidstemp_bacitenew_ix` (`backupid`,`itemname`,`newitemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store all sort of ids along the backup process. Note this' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_backup_ids_template`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -291,6 +333,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_log` (
   KEY `mdl_backlog_cou_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store every course backup log info' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_backup_log`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -307,6 +354,11 @@ CREATE TABLE IF NOT EXISTS `mdl_backup_logs` (
   UNIQUE KEY `mdl_backlogs_bacid_uix` (`backupid`,`id`),
   KEY `mdl_backlogs_bac_ix` (`backupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To store all the logs from backup and restore operations (by' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_backup_logs`
+--
+
 
 -- --------------------------------------------------------
 
@@ -326,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='contains all installed blocks' AUTO_INCREMENT=40 ;
 
 --
--- Volcado de datos para la tabla `mdl_block`
+-- Volcar la base de datos para la tabla `mdl_block`
 --
 
 INSERT INTO `mdl_block` (`id`, `name`, `version`, `cron`, `lastcron`, `visible`) VALUES
@@ -386,6 +438,11 @@ CREATE TABLE IF NOT EXISTS `mdl_block_community` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Community block' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_block_community`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -405,10 +462,10 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_blocinst_parshopagsub_ix` (`parentcontextid`,`showinsubcontexts`,`pagetypepattern`,`subpagepattern`),
   KEY `mdl_blocinst_par_ix` (`parentcontextid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores block instances. The type of block this is' AUTO_INCREMENT=90 ;
 
 --
--- Volcado de datos para la tabla `mdl_block_instances`
+-- Volcar la base de datos para la tabla `mdl_block_instances`
 --
 
 INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showinsubcontexts`, `pagetypepattern`, `subpagepattern`, `defaultregion`, `defaultweight`, `configdata`) VALUES
@@ -425,7 +482,7 @@ INSERT INTO `mdl_block_instances` (`id`, `blockname`, `parentcontextid`, `showin
 (16, 'html', 1, 1, '*', NULL, 'side-pre', 0, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo5OiJWaXNpdGFudGUiO3M6NjoiZm9ybWF0IjtzOjE6IjEiO3M6NDoidGV4dCI7czo1MDQ6Ijx1bD4NCjxsaT48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0LyI+UGFnaW5hIHByaW5jaXBhbDwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvbG9naW4vIj5Db25lY3RhcnNlPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9sb2dpbi9zaWdudXAucGhwIj5SZWdpc3RyYXJzZTwvYT48L2xpPg0KPC91bD4NCjxkaXYgY2xhc3M9InN1YmNvbnRlbnQgZ3Vlc3RzdWIiPjxmb3JtIGFjdGlvbj0iL2xvZ2luL2luZGV4LnBocCIgbWV0aG9kPSJwb3N0IiBpZD0iZ3Vlc3Rsb2dpbiI+DQo8ZGl2IGNsYXNzPSJndWVzdGZvcm0iPjxpbnB1dCB0eXBlPSJoaWRkZW4iIG5hbWU9InVzZXJuYW1lIiB2YWx1ZT0iZ3Vlc3QiIC8+IDxpbnB1dCB0eXBlPSJoaWRkZW4iIG5hbWU9InBhc3N3b3JkIiB2YWx1ZT0iZ3Vlc3QiIC8+IDxpbnB1dCB0eXBlPSJzdWJtaXQiIHZhbHVlPSJJbmdyZXNhciBjb21vIGludml0YWRvIiAvPjwvZGl2Pg0KPC9mb3JtPjwvZGl2PiI7fQ=='),
 (17, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo3OiJNaWVtYnJvIjtzOjY6ImZvcm1hdCI7czoxOiIxIjtzOjQ6InRleHQiO3M6NzA6Ijx1bD4NCjxsaT48YSBocmVmPSJodHRwOi8vbG9jYWxob3N0LyI+UGFnaW5hIHByaW5jaXBhbDwvYT48L2xpPg0KPC91bD4iO30='),
 (18, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo4OiJBcHJlbmRpeiI7czo2OiJmb3JtYXQiO3M6MToiMSI7czo0OiJ0ZXh0IjtzOjE1MzoiPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvIj5QYWdpbmEgcHJpbmNpcGFsPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9jb3Vyc2Uvc29saWNpdHVkLnBocCI+UmVnaXN0cmFyc2UgZW4gY3Vyc288L2E+PC9saT4NCjwvdWw+Ijt9'),
-(19, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo4OiJNZWRpYWRvciI7czo2OiJmb3JtYXQiO3M6MToiMSI7czo0OiJ0ZXh0IjtzOjI4MToiPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvIj5QYWdpbmEgcHJpbmNpcGFsPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iIyI+TWlzIGN1cnNvczwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvY291cnNlL2Vucm9sbWVudC5waHAiPkFncmVnYXIgYXByZW5kaWNlczwvYT48L2xpPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvY291cnNlL2Vucm9sbWVudHNvbGljaXR1ZGVzLnBocCI+QWNlcHRhciBzb2xpY2l0dWRlczwvYT48L2xpPg0KPC91bD4iO30='),
+(19, 'html', 1, 1, '*', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6Mzp7czo1OiJ0aXRsZSI7czo4OiJNZWRpYWRvciI7czo2OiJmb3JtYXQiO3M6MToiMSI7czo0OiJ0ZXh0IjtzOjI0NDoiPHVsPg0KPGxpPjxhIGhyZWY9Imh0dHA6Ly9sb2NhbGhvc3QvIj5QYWdpbmEgcHJpbmNpcGFsPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9jb3Vyc2UvZW5yb2xtZW50LnBocCI+QWdyZWdhciBhcHJlbmRpY2VzPC9hPjwvbGk+DQo8bGk+PGEgaHJlZj0iaHR0cDovL2xvY2FsaG9zdC9jb3Vyc2UvZW5yb2xtZW50c29saWNpdHVkZXMucGhwIj5BY2VwdGFyIHNvbGljaXR1ZGVzPC9hPjwvbGk+DQo8L3VsPiI7fQ=='),
 (32, 'activity_modules', 2, 0, 'site-index', NULL, 'side-post', 1, 'Tzo4OiJzdGRDbGFzcyI6MDp7fQ=='),
 (77, 'search_forums', 153, 0, 'course-view-*', NULL, 'side-post', 0, ''),
 (78, 'news_items', 153, 0, 'course-view-*', NULL, 'side-post', 1, ''),
@@ -462,6 +519,11 @@ CREATE TABLE IF NOT EXISTS `mdl_block_instance_old` (
   KEY `mdl_blocinstold_blo_ix` (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of 1.9 block instances - to be deleted' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_block_instance_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -480,6 +542,11 @@ CREATE TABLE IF NOT EXISTS `mdl_block_pinned_old` (
   KEY `mdl_blocpinnold_pag_ix` (`pagetype`),
   KEY `mdl_blocpinnold_blo_ix` (`blockid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of 1.9 pinned blocks - to be deleted' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_block_pinned_old`
+--
+
 
 -- --------------------------------------------------------
 
@@ -503,7 +570,7 @@ CREATE TABLE IF NOT EXISTS `mdl_block_positions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the position of a sticky block_instance on a another ' AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `mdl_block_positions`
+-- Volcar la base de datos para la tabla `mdl_block_positions`
 --
 
 INSERT INTO `mdl_block_positions` (`id`, `blockinstanceid`, `contextid`, `pagetype`, `subpage`, `visible`, `region`, `weight`) VALUES
@@ -533,6 +600,11 @@ CREATE TABLE IF NOT EXISTS `mdl_block_rss_client` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Remote news feed information. Contains the news feed id, the' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_block_rss_client`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -556,6 +628,11 @@ CREATE TABLE IF NOT EXISTS `mdl_block_search_documents` (
   KEY `mdl_blocseardocu_ite_ix` (`itemtype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='table to store search index backups' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_block_search_documents`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -570,6 +647,11 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_association` (
   KEY `mdl_blogasso_con_ix` (`contextid`),
   KEY `mdl_blogasso_blo_ix` (`blogid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Associations of blog entries with courses and module instanc' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_blog_association`
+--
+
 
 -- --------------------------------------------------------
 
@@ -591,6 +673,11 @@ CREATE TABLE IF NOT EXISTS `mdl_blog_external` (
   KEY `mdl_blogexte_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='External blog links used for RSS copying of blog entries to ' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_blog_external`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -608,6 +695,11 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_filters` (
   KEY `mdl_cachfilt_filmd5_ix` (`filter`,`md5key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For keeping information about cached data' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_cache_filters`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -624,15 +716,15 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_flags` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachflag_fla_ix` (`flagtype`),
   KEY `mdl_cachflag_nam_ix` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=146 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Cache of time-sensitive flags' AUTO_INCREMENT=154 ;
 
 --
--- Volcado de datos para la tabla `mdl_cache_flags`
+-- Volcar la base de datos para la tabla `mdl_cache_flags`
 --
 
 INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`, `expiry`) VALUES
-(1, 'userpreferenceschanged', '2', 1319658746, '1', 1319665946),
-(2, 'accesslib/dirtycontexts', '/1', 1320172440, '1', 1320179640),
+(1, 'userpreferenceschanged', '2', 1320682247, '1', 1320689447),
+(2, 'accesslib/dirtycontexts', '/1', 1320434319, '1', 1320441519),
 (3, 'accesslib/dirtycontexts', '/1/2/16', 1316650870, '1', 1316658070),
 (4, 'accesslib/dirtycontexts', '/1/14', 1316715379, '1', 1316722579),
 (5, 'accesslib/dirtycontexts', '/1/3', 1316724834, '1', 1316732034),
@@ -652,8 +744,8 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (19, 'accesslib/dirtycontexts', '/1/2/36', 1317329846, '1', 1317337046),
 (20, 'accesslib/dirtycontexts', '/1/2/34', 1320357463, '1', 1320364663),
 (21, 'accesslib/dirtycontexts', '/1/2/37', 1317329034, '1', 1317336234),
-(22, 'userpreferenceschanged', '14', 1320292537, '1', 1320299737),
-(23, 'accesslib/dirtycontexts', '/1/7', 1319817116, '1', 1319824316),
+(22, 'userpreferenceschanged', '14', 1320689204, '1', 1320696404),
+(23, 'accesslib/dirtycontexts', '/1/7', 1320689726, '1', 1320696926),
 (24, 'accesslib/dirtycontexts', '/1/8', 1317330050, '1', 1317337250),
 (25, 'accesslib/dirtycontexts', '/1/2/4', 1317330134, '1', 1317337334),
 (26, 'accesslib/dirtycontexts', '/1/2/17', 1319818735, '1', 1319825935),
@@ -773,9 +865,17 @@ INSERT INTO `mdl_cache_flags` (`id`, `flagtype`, `name`, `timemodified`, `value`
 (140, 'accesslib/dirtycontexts', '/1/23/132/136', 1320296250, '1', 1320303450),
 (141, 'accesslib/dirtycontexts', '/1/23/132/151', 1320296250, '1', 1320303450),
 (142, 'accesslib/dirtycontexts', '/1/23/132/152', 1320296250, '1', 1320303450),
-(143, 'accesslib/dirtycontexts', '/1/23/153', 1320296472, '1', 1320303672),
+(143, 'accesslib/dirtycontexts', '/1/23/153', 1320443316, '1', 1320450516),
 (144, 'accesslib/dirtycontexts', '/1/23/158', 1320296362, '1', 1320303562),
-(145, 'accesslib/dirtycontexts', '/1/110/163', 1320296485, '1', 1320303685);
+(145, 'accesslib/dirtycontexts', '/1/110/163', 1320434512, '1', 1320441712),
+(146, 'userpreferenceschanged', '13', 1320434431, '1', 1320441631),
+(147, 'accesslib/dirtycontexts', '/1/110/163/175', 1320681696, '1', 1320688896),
+(148, 'accesslib/dirtycontexts', '/1/110/163/177', 1320683036, '1', 1320690236),
+(149, 'accesslib/dirtycontexts', '/1/110/163/181', 1320685377, '1', 1320692577),
+(150, 'accesslib/dirtycontexts', '/1/110/163/178', 1320685410, '1', 1320692610),
+(151, 'accesslib/dirtycontexts', '/1/110/163/176', 1320685418, '1', 1320692618),
+(152, 'accesslib/dirtycontexts', '/1/2/183', 1320686325, '1', 1320693525),
+(153, 'accesslib/dirtycontexts', '/1/2/33', 1320689159, '1', 1320696359);
 
 -- --------------------------------------------------------
 
@@ -791,25 +891,25 @@ CREATE TABLE IF NOT EXISTS `mdl_cache_text` (
   PRIMARY KEY (`id`),
   KEY `mdl_cachtext_md5_ix` (`md5key`),
   KEY `mdl_cachtext_tim_ix` (`timemodified`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=634 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For storing temporary copies of processed texts' AUTO_INCREMENT=757 ;
 
 --
--- Volcado de datos para la tabla `mdl_cache_text`
+-- Volcar la base de datos para la tabla `mdl_cache_text`
 --
 
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1320357471),
+(1, '118e7866a9d4840f56149b3a4c204485', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1320689918),
 (2, '15be33c9cba759fdb969189290c904a0', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1317330296),
 (3, '3f753a864e451dd63c50e2914e848ffa', '<p>Para transformar el texto en un enlace, introduzca una URL que contenga $$, donde $$ se sustituye por el texto. Por ejemplo, para transformar una ID de Twitter en un enlace, introduzca http://twitter.com/$$.</p>\n', 1316642136),
-(4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1320357658),
+(4, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1320443365),
 (5, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642917),
 (6, 'b0294bf82e6fed3c48aee6eda658d687', '<div class="no-overflow"><div class="text_to_html"><p>Red social de la Facultad de Ingeniería<br /><br /></p></div></div>', 1316642918),
 (7, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316728745),
 (8, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316642921),
 (9, 'f28aa128d54cc14e9293397d5fa0e0ce', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 1316642930),
-(10, '7df7723cf476d69bc13eed1ea208b702', '12345678', 1319837653),
+(10, '7df7723cf476d69bc13eed1ea208b702', '12345678', 1320689569),
 (11, '3cacbd06d2cea41568697793c94a8361', '1234567890', 1316648440),
-(12, '2aff888c5cc7ceed5dc32f6967ff349b', 'Aprendiz', 1319837653),
+(12, '2aff888c5cc7ceed5dc32f6967ff349b', 'Aprendiz', 1320682523),
 (13, '4112d23e812cc2a4810ca926101d527f', 'Ninguno', 1316648049),
 (14, '85e62ac1e3b1c50e55dcd86a33077a48', 'Los gestores pueden acceder a los cursos y modificarlos, por lo general no participan en los cursos.', 1316650407),
 (15, '4c6057364a06af0ffaae37777cb4a742', 'Los creadores de cursos pueden crear nuevos cursos.', 1316650407),
@@ -844,10 +944,10 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (44, '1cb32bc21655a4db4d3a4fbb97a5ea77', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317247980),
 (45, 'eef0c21466656d7766dd28f53532b100', '<p>El resumen del curso se muestra en la lista de cursos. Una búsqueda de cursos busca el texto del resumen del curso además de los nombres de curso.</p>\n', 1316810776),
 (46, '1ab20d6dfe938bb5b31e7c2b7a2647ed', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1317248098),
-(47, '20f7045625c732dacecc561e779e2a54', '<p>Todos los usuarios identificados.</p>', 1320172442),
-(48, '2f8b7530669537817ae18e6d154e46ef', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 1320172442),
-(49, 'e63ec5279c3fa2c91bffa8483df0b5dc', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 1320172442),
-(50, '24b187e2a604187bea9b705924302adb', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 1320172442),
+(47, '20f7045625c732dacecc561e779e2a54', '<p>Todos los usuarios identificados.</p>', 1320686737),
+(48, '2f8b7530669537817ae18e6d154e46ef', '<p>Los invitados tienen privilegios mínimos y normalmente no están autorizados para escribir.</p>', 1320686737),
+(49, 'e63ec5279c3fa2c91bffa8483df0b5dc', '<p>Los estudiantes tienen por lo general menos privilegios dentro de un curso.</p>', 1320686737),
+(50, '24b187e2a604187bea9b705924302adb', '<p>Los profesores pueden realizar cualquier acción dentro de un curso, incluyendo cambiar actividades y calificar a los estudiantes.</p>', 1320686737),
 (51, '94b1894cfac1a77a856b6fc9ccb3b0f2', '23434342', 1316813121),
 (52, 'c20116423ad3f827fe97167b30c8aa33', '345345', 1316813121),
 (53, '9ecd690dfe37057f51c226f62ba6040e', '<div class="no-overflow"><p><a href="http://localhost/admin/user.php">Usuarios</a></p>\r\n<p><a href="http://localhost/course/index.php?categoryedit=on">Cursos</a></p></div>', 1316813144),
@@ -868,7 +968,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (68, 'cc112a688eba41486f4e86c935b6bcd5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334824),
 (69, '6adeb3dd2a825f7e2da5e75b91a373c2', '<div class="no-overflow"><p>&lt;ul&gt;<br />&lt;li&gt;&lt;a href="http://localhost/"&gt;Pagina principal&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/"&gt;Conectarse&lt;/a&gt;&lt;/li&gt;<br />&lt;li&gt;&lt;a href="http://localhost/login/signup.php"&gt;Registrarse&lt;/a&gt;&lt;/li&gt;<br />&lt;/ul&gt;</p></div>', 1317327622),
 (70, '5785be5644a37e1e2a92bbad5ad400c8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319661474),
-(71, 'eb6d13ec293bbe8a1bd37d9fd5b621ed', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357470),
+(71, 'eb6d13ec293bbe8a1bd37d9fd5b621ed', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689918),
 (72, 'd3e72cf14d54fc5e32abab06615022de', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934836),
 (73, 'b50ef70b15eabc200fcc0a9390ccc28a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333778),
 (74, 'f1d08970e62175b134a45b63add57a3c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317333778),
@@ -892,16 +992,16 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (92, '3b202ad55fe28e3088f89933f2b4268d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317328995),
 (93, 'dde8df9a240bb80cdf2ce3d6e680cadd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334840),
 (94, '902bb1b65c14de5a8e4fa3c119868548', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319661120),
-(95, 'accb44e0b7b275b2c44e114ff7ec97c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357142),
+(95, 'accb44e0b7b275b2c44e114ff7ec97c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689879),
 (96, '3e28232ab741397c660d75cb585df966', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934751),
-(97, 'd0c07d03ac2b8277c3b7e613a0353719', 'Mediador', 1319823431),
+(97, 'd0c07d03ac2b8277c3b7e613a0353719', 'Mediador', 1320689569),
 (98, 'e7641c731f17c40f2e82ba4dca8864b2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317329483),
 (99, '2139dbc3bbaf2810d066414dc7a49a16', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317329483),
-(100, '275626ba65608869220ece90f5fb5a52', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1319823458),
+(100, '275626ba65608869220ece90f5fb5a52', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689571),
 (101, '53daf2cb5cb49e5a00471f3dbbbdc36f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317329483),
 (102, '4ab8707618279a8c5d8868525d4aea18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317329864),
 (103, '6e91a78975d7dd4556d9bb58384bd900', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317329864),
-(104, '415040be377970c64e57d543dc2be33f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1319817080),
+(104, '415040be377970c64e57d543dc2be33f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689703),
 (105, '32d80999868c82ee00eef0f23cca167f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317329864),
 (106, '660ab809fdbfeb1935c15939573bc9d2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330008),
 (107, '301353ca6b97914181368846b4181b54', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330008),
@@ -916,14 +1016,14 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (116, 'a67eccd10b31be3b451f057603e16b1b', '<div class="text_to_html"><div class="clearfix"><div class="theme_screenshot"><h2>Boxxie</h2><img src="boxxie/pix/screenshot.jpg" alt="screenshot.jpg" /><h3>Theme Discussion Forum:</h3><p><a href="http://moodle.org/mod/forum/view.php?id=46">http://moodle.org/mod/forum/view.php?id=46</a></p><h3>Theme Credits</h3><p><a href="http://docs.moodle.org/en/Theme_credits">http://docs.moodle.org/en/Theme_credits</a></p><h3>Theme Documentation:</h3><p><a href="http://docs.moodle.org/en/Themes">http://docs.moodle.org/en/Themes</a></p><h3>Report a bug:</h3><p><a href="http://tracker.moodle.org">http://tracker.moodle.org</a></p></div><div class="theme_description"><h2>About</h2><p>Boxxie is a fluid-width, three-column theme for Moodle 2.0.</p><h2>Tweaks</h2><p>This theme is built upon both Base and Canvas, two parent themes included in the Moodle core. If you want to modify this theme, we recommend that you first duplicate it then rename it before making your changes. This will prevent your customized theme from being overwritten by future Moodle upgrades, and you''ll still have the original files if you make a mess. More information on modifying themes can be found in the <a href="http://docs.moodle.org/en/Theme">MoodleDocs</a>.</p><h2>Credits</h2><p>This theme was coded and is maintained by Patrick Malley. He can be contacted by email at contact@newschoollearning.com. </p><h3>License</h3><p>This, and all other themes included in the Moodle core, are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License</a>.</p></div></div></div>', 1317330514),
 (117, '4072232ae161c4a7df3e8eb36be8b305', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317330635),
 (118, '7f31490f75b039ab6da2a1bda263e237', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317330635),
-(119, '2402956ff6ed40c13a8d8dc1d5c76b94', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317330635),
+(119, '2402956ff6ed40c13a8d8dc1d5c76b94', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689119),
 (120, '7896621777293376979252a30c62122f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317330635),
 (121, '950a1079fc15a6e04a067e767261d79b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334694),
 (122, '73f95a6e78124d1c288f06133d909888', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319661187),
-(123, 'd4c38b96d242ee0a167340fb6b1420c1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320356479),
+(123, 'd4c38b96d242ee0a167340fb6b1420c1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320688060),
 (124, '825bbf4a8897f60e38fb65f498618f66', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317929969),
-(125, '8e1544fde6ea77a3f41d2966fc2d432c', '<p>Hola</p>', 1320357471),
-(126, 'af8eff36b9230c7b6fa5fc15dd368b29', '<div class="no-overflow">Cartelera</div>', 1320357511),
+(125, '8e1544fde6ea77a3f41d2966fc2d432c', '<p>Hola</p>', 1320689918),
+(126, 'af8eff36b9230c7b6fa5fc15dd368b29', '<div class="no-overflow">Cartelera</div>', 1320688060),
 (127, 'cf3bd191758ceb96e7dbd366b36b95f5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317333398),
 (128, 'a9b6da6c5e5bb6d899677614f67e3381', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1317396521),
 (129, '6133a4ff96f14360be28c246ce9bcc0c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1317396521),
@@ -934,7 +1034,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (134, '6d710633304ffb47dca9e9d06b6142a9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317933091),
 (135, 'a6a16af75ba435e2092732fd89334633', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334518),
 (136, '4337335dea34aa355d23718dd0999cd6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319391391),
-(137, 'a62e163da1b0b48a5a04bca0be387acd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357592),
+(137, 'a62e163da1b0b48a5a04bca0be387acd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320687827),
 (138, 'a64f5f5461c4f9af5929ec1d4f4d986a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317931871),
 (139, '661a403c78552a1b0e7ec3dba052ffb2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="#">Configuracion</a></li>\r\n<li><a href="http://localhost/course/index.php?categoryedit=on">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317334633),
 (140, '37264307d7f333f897d72d5ef57ed479', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319655578),
@@ -983,10 +1083,10 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (182, '33fc3379124375d5f5cc5ceb9528e1ba', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934741),
 (183, '6ba105f8934308fc3fcc3a84260cc3e0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934751),
 (184, 'ff1e1b8a2cba8971c10ca7bbc8b7204f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317934686),
-(185, '1c9746b46107c90f7ebd9a500a7f4bae', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357658),
+(185, '1c9746b46107c90f7ebd9a500a7f4bae', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320443365),
 (186, '1889b755baa6d0770388bb546493b46a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319661233),
 (187, '142701bb3c76897352720cacf2575fcc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n</ul></div>', 1317934686),
-(188, '2e04671a4a476c85f446f0c588e51e16', '<p>Hola</p>', 1320357658),
+(188, '2e04671a4a476c85f446f0c588e51e16', '<p>Hola</p>', 1320443365),
 (189, '9e092764bc86235918810a2c36788a9c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317931871),
 (190, 'b351fd7639f38d777f12e7e6be1b0125', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317933527),
 (191, '7ec3772cfdd2d77c7f502c2fb8f1c7ab', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n</ul></div>', 1317933091),
@@ -1013,26 +1113,26 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (212, '2d9ff571ca80541d997cd80a223298a1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112360),
 (213, 'f479d2e679e74ec54a50711ea8fd8fb1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320172462),
 (214, '84312e11f1f9f081380529137cf3648e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319661204),
-(215, 'aa4872bfdd1635280d50e1b91a008bb8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357515),
+(215, 'aa4872bfdd1635280d50e1b91a008bb8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320688062),
 (216, '298d51e575582dcbab493642e69f7997', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318104106),
 (217, '7c87a59d596a18642d299053d22e76ba', '<div class="no-overflow"><p>Foro Posta</p></div>', 1318097543),
 (218, 'fa40be534cd6d2ddf07534f89f74f247', '<p>hghjg</p>', 1318097544),
-(219, '2870216756a26a5ee898c82e03364099', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357142),
-(220, '2a9be49ba7f9897278f8cc04bb222149', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357658),
+(219, '2870216756a26a5ee898c82e03364099', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689879),
+(220, '2a9be49ba7f9897278f8cc04bb222149', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320443365),
 (221, '778433aed46c63430d3b9d34b4cf9334', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1319748213),
 (222, '9344b9ea4978fdeeeb94416ee5d8448d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319658589),
 (223, '2a4b674648c918721c98d7c5de856034', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357313),
 (224, 'feea3b4f84c4e9357cbe24bba6eb9075', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357313),
 (225, '97370f305ae0ff9c591f887e759a82d2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318148588),
-(226, '738d7aafdfd56dddae8732e736b6dd18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357470),
+(226, '738d7aafdfd56dddae8732e736b6dd18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689918),
 (227, '3ad1769c32a85befdd4d0985604b7490', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318193300),
 (228, '87bc2846997da2fdb219d10cee864c58', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318301347),
 (229, '6ff444e251415aecceb6732def467354', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318112337),
 (230, '8d1620d24d0bc2d52d94d86c2fbf7aeb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318112338),
 (231, 'ed5fcce243674f0687aea39cb8b60f89', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318112338),
-(232, '93d9c259f982ce19e42bb4704a7c74dd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357592),
+(232, '93d9c259f982ce19e42bb4704a7c74dd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320687827),
 (233, '69e6573fca8e3ce37f8727231f5297f7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320172457),
-(234, '74d15bc489870346a5081b097f66377e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320356479),
+(234, '74d15bc489870346a5081b097f66377e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320688060),
 (235, 'f160b3c1581dc73a879006a4b34779f1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318099405),
 (236, '9c429b059a2ae071fd862e4e3e47c2bd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320171842),
 (237, '802b2bf79ba6d819a0c6c25c16f78419', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320171842),
@@ -1044,19 +1144,19 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (243, '7935cb1005dd4828e76c27ca8c4f9c75', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318101680),
 (244, 'ba47f4eeaa3995a23b5bf754cd080113', '<p>Los tipos de recurso posibilitan que prácticamente cualquier contenido web se pueda insertar en el curso.</p>\n', 1319656336),
 (245, '37b7d7f6055547585ac2a511a1600761', '<p>Las actividades (tales como foros, cuestionarios y wikis) posibilitan agregar contenidos interactivos al curso</p>\n', 1319656474),
-(246, 'cc1c6789d5256757aea34dbf71999920', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357515),
-(247, '7df0b9813928ed27ce8d06ff32ebe8db', '<div class="no-overflow"><p>Foro General</p></div>', 1320357511),
+(246, 'cc1c6789d5256757aea34dbf71999920', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320688062),
+(247, '7df0b9813928ed27ce8d06ff32ebe8db', '<div class="no-overflow"><p>Foro General</p></div>', 1320688062),
 (248, '0c5a81acfe984291e306420766ea952b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318097803),
 (249, 'e42e8c56e8c37160d78d2412cf21a429', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318097803),
 (250, '051c09a90d0190a5a3bc3d62a4cadc39', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318097804),
 (251, 'd82a470e98bb90757436fd6a494e496e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318097804),
 (252, 'a9b7fa1ce12a0ad2e166d1750dc60dc4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n</ul></div>', 1318097804),
 (253, '48b81cf2e792ddf079070be11a7ecd7a', '<p>Bienvenidos al Foro General de la Red Social FIUBA PopperTM</p>', 1318099257),
-(254, 'dbda7b96f057963f9d57503e123a4c8b', '<p>Foro General</p>', 1320357515),
+(254, 'dbda7b96f057963f9d57503e123a4c8b', '<p>Foro General</p>', 1320688062),
 (255, '9479d55180faff36c4275a09392e08ed', '<p>Cuando alguien se subscribe a un foro recibirá por correo electrónico una copia de cada mensaje enviado a ese foro.</p>\n\n<p>Hay 4 modos de suscripción:</p>\n\n<ul><li>Opcional - Los participantes pueden elegir si desean ser suscritos.</li>\n<li>Forzosa - Todos están suscritos y no puede darse de baja.</li>\n<li>Automática - Todos están suscritos inicialmente pero cada usuario puede desactivar la suscripción en cualquier momento.</li>\n<li>Desactivada - No se permiten suscripciones.</li>\n</ul>', 1318099578),
-(256, '94fbc6e4aac598ab968b832aef2b4b8b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357471),
-(257, '0192c8b3650262abefd6ad42820138d5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357142),
-(258, 'a5e6fae5a592b9473a1ca9b146b86a2e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357658),
+(256, '94fbc6e4aac598ab968b832aef2b4b8b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689799),
+(257, '0192c8b3650262abefd6ad42820138d5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689598),
+(258, 'a5e6fae5a592b9473a1ca9b146b86a2e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320443365),
 (259, '50c9c2a0b5319b8c1e3eb0d66c41bb56', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1318193300),
 (260, '608b4d6d42a0e544893ded7bffac3d5a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1318301347),
 (261, '8c2150d26f9e480fa7cec1f78640324b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320171842),
@@ -1065,8 +1165,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (264, 'e5d8dbee0a9a7dab71331f04be509ba9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1318614273),
 (265, '0b65541b54baf751566ca62ef472b38a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318614273),
 (266, '817fcb23b36b9c3619ebb202b247ba98', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1318614273),
-(267, '76ff59c37d9065a78c3397bbeec3a1b9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357515),
-(268, '5a7cb2c5fd770458f6ba0310d79fbe0d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320356480),
+(267, '76ff59c37d9065a78c3397bbeec3a1b9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320688062),
+(268, '5a7cb2c5fd770458f6ba0310d79fbe0d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320688060),
 (269, '24b7326b116296cb7ff0e248d8c61e7e', '<p>asd</p>', 1318617957),
 (270, '6aa10b5e98a0b3bb813f6e1add4e4d0d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1318613493),
 (271, 'ba44858a22753f6e24c3e2fd9cfa4064', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1318613493),
@@ -1074,7 +1174,7 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (273, '474062a67a8e30cdaf778e3023e23fdb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1318613494),
 (274, '54b811eb7ae5c27381c24a642a312ea2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1318613494),
 (275, '72aaf283fbc77bb6bf27c7c05292d4ad', '<div class="no-overflow"><p>asd</p></div>', 1318613494),
-(276, '7edcb4d4554a1ad7b65d61b6809ac990', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357592),
+(276, '7edcb4d4554a1ad7b65d61b6809ac990', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320687827),
 (277, '07c4a3459b2b1600c8a62ee32c47440d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320212365),
 (278, 'b1bea506bf3be9607f6db56b1b155b09', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul></div>', 1319659673),
 (279, '8cb886769a654e9ced990148cb023350', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320212365),
@@ -1196,8 +1296,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (394, '5a38da81b88e60f39b9986df59c3f119', '<div class="no-overflow"><div class="text_to_html">Este usuario sólo tiene acceso de lectura en ciertos cursos.</div></div>', 1319816707),
 (395, '3e9d08f8ee2d79182a06e3c8496e5d0e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1319817080),
 (396, '8ffda908857ac7cf2f49b043ce8df52c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1319817080),
-(397, '90f39a5c401b3d167af0646645a85caf', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1319817080),
-(398, 'ecf48cf9db7c611e6583e866a77989bc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1319817080),
+(397, '90f39a5c401b3d167af0646645a85caf', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689703),
+(398, 'ecf48cf9db7c611e6583e866a77989bc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689703),
 (399, 'e714e9778a4abf8b14cf30243dcef2fa', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320212365),
 (400, '630f7e7042836adc89a9020f556752dd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1319817247),
 (401, 'd70d57240cb401ce78726e3de99626c6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1319823445),
@@ -1255,8 +1355,8 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (453, 'dd73a8115a5aa2a8e2d65378e1bbb7a2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1319823458),
 (454, '7c19bb2b12a340fde06197664607ba91', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1319823458);
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(455, '7d741283ea7bb9bcda7ffea42ccf108d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1319823458),
-(456, 'eb327f55401790f428dc0fe92257c45e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1319823458),
+(455, '7d741283ea7bb9bcda7ffea42ccf108d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689571),
+(456, 'eb327f55401790f428dc0fe92257c45e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689571),
 (457, '6d7c9d88b1c1bf24785b2412ac813230', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1319823683),
 (458, '4e9c999990619e33fb481174fc1bce24', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1319823683),
 (459, '2049f143b4444a182a0d3d0291734bb1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1319823683),
@@ -1303,9 +1403,9 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (500, '17f49669bba6c4ea002fa647eadb54cc', '<div class="no-overflow"><p>wg45hw</p></div>', 1320173027),
 (501, 'aea67072be1e09acb2c073ac32957537', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320247829),
 (502, 'd0be1debf732bedfc4ea506209082ad2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320296372),
-(503, '5f79ab00feea1daf90f9f1936b71fbf4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357574),
-(504, 'a041e0d3dc278a50312257e3a47582da', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357574),
-(505, '2bb62582b40af9137200861a358a114c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357574),
+(503, '5f79ab00feea1daf90f9f1936b71fbf4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320687731),
+(504, 'a041e0d3dc278a50312257e3a47582da', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320687731),
+(505, '2bb62582b40af9137200861a358a114c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320687731),
 (506, 'ab32593825d7383f899a1bcfa763ba53', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n</ul></div>', 1320213978),
 (507, '2d75d8ec285c98ed52ab57cdfc655ac6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320213978),
 (508, 'c43e4a60518db6e59a4bcfb0a04d5167', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320213979),
@@ -1368,52 +1468,52 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (565, 'd31669b5cf3728a53694aa7d832d8fe1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320296174),
 (566, 'a4615a41d3b3fcb20453b126e0307853', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320255007),
 (567, 'c3ca1f34671f05483baf2cdacd26e802', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320254957),
-(568, '688d906f55f1ef3dc1477722c19a9910', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357470),
-(569, 'e79432c7e38bef94a8e15d10e061dc9c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357141),
-(570, '3c35360d3c8d3d83fb85b6f4465b3bf0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357592),
+(568, '688d906f55f1ef3dc1477722c19a9910', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689918),
+(569, 'e79432c7e38bef94a8e15d10e061dc9c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689878),
+(570, '3c35360d3c8d3d83fb85b6f4465b3bf0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320687827),
 (571, '7f6412cc787ca3adf3f1703c03429677', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320295554),
 (572, '0bc4abeb69b6f8d041b801260cfac09b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320296174),
-(573, '93b480ee3f457983b0766f0f3995e984', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357574),
+(573, '93b480ee3f457983b0766f0f3995e984', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320687731),
 (574, 'a7ab8ecadb0d31e4771f1dbec56a03a7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320295541),
 (575, '8b454eee49a71ea01d5659e53c90db67', '<p>Este ajuste determina el comienzo de la primera semana para un curso en formato semanal. También determina la fecha más temprana para la que existirá registro de las actividades del curso.</p>\n', 1320292292),
 (576, '697a9d02950d7563167af4ca1d968baf', '<div class="no-overflow"><div class="text_to_html">Categoría por defecto para preguntas compartidas en el contexto Wachenchauzer.</div></div>', 1320296174),
-(577, '87ff12cb26b5023274bd38511123409f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357595),
+(577, '87ff12cb26b5023274bd38511123409f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689887),
 (578, '6b457e87d4e23dc3c60f1e00d606668c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320296502),
-(579, '09e0490a93c4882d937e58adf918540c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357595),
-(580, 'd1d46191dd3e7872506cb1507c84386e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357595),
-(581, '0d634e848c4f5c8d5ab7a68af4afdbe9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357595);
+(579, '09e0490a93c4882d937e58adf918540c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689887),
+(580, 'd1d46191dd3e7872506cb1507c84386e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689887),
+(581, '0d634e848c4f5c8d5ab7a68af4afdbe9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689754);
 INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
-(582, '2dad41152f79f6c43534d370ed78bc43', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320356298),
+(582, '2dad41152f79f6c43534d370ed78bc43', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689610),
 (583, 'd44035fa7c3884132bdadec4af61b560', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320356298),
-(584, '5377c34a88bc5abb74276e50300ead7e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320356299),
-(585, '9e9ea7b4ee9b7f8a8c448ce6ccb8f13a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320356299),
-(586, '1b9e15ee4ae4c900ec2f73e10b5e4dd3', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320356299),
-(587, '71a7499f9d116f3caa03eed0180621e9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357615),
+(584, '5377c34a88bc5abb74276e50300ead7e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689610),
+(585, '9e9ea7b4ee9b7f8a8c448ce6ccb8f13a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689611),
+(586, '1b9e15ee4ae4c900ec2f73e10b5e4dd3', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689611),
+(587, '71a7499f9d116f3caa03eed0180621e9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689903),
 (588, 'be263f5510f8c63f859594f014531362', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357144),
-(589, 'a227cac09a28dec97e3b9740decb1218', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357616),
-(590, '5dc7ca02f999f668eb73a2b0539f5e08', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357616),
-(591, '3705eb34588ba133f115543ecb45b4ba', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357616),
-(592, '6b22b49c984e242ce7513d054b758b32', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357658),
-(593, '917619c31b4ac0d9485deef2d8211dfc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320356316),
+(589, 'a227cac09a28dec97e3b9740decb1218', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689904),
+(590, '5dc7ca02f999f668eb73a2b0539f5e08', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689904),
+(591, '3705eb34588ba133f115543ecb45b4ba', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689748),
+(592, '6b22b49c984e242ce7513d054b758b32', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320443365),
+(593, '917619c31b4ac0d9485deef2d8211dfc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320688739),
 (594, '02eb7683ac5b925e129277be0e220ccc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320356316),
-(595, '92742a6a8ab5e5c40207cfa6e1417f9d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320356316),
-(596, 'c02324fb0e23f32aa7e75735453e9e44', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320356316),
-(597, '1deeb698e47bbee7411c771675f2a25a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320356316),
-(598, '9506f75ff5677911d38ac9ac87f4656b', '<div class="no-overflow">Foro</div>', 1320356316),
-(599, '9dc22e1f9d3f9c4d3a89c4e507bb734d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357618),
+(595, '92742a6a8ab5e5c40207cfa6e1417f9d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320688740),
+(596, 'c02324fb0e23f32aa7e75735453e9e44', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320688740),
+(597, '1deeb698e47bbee7411c771675f2a25a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320688740),
+(598, '9506f75ff5677911d38ac9ac87f4656b', '<div class="no-overflow">Foro</div>', 1320688740),
+(599, '9dc22e1f9d3f9c4d3a89c4e507bb734d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689905),
 (600, 'cc2c4347b8927d86f0ba7535baa55ee8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357147),
-(601, 'ec57d6c0c2a42cb2fb0cb4a1f4846a6b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357618),
-(602, 'e34b752e7dd10e82b91700a0f5ffb9ab', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357618),
-(603, '9a122c9b902cce234876ea23ee091238', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357618),
-(604, '9f61b421c89763dee779cfd65c8d92ff', '<div class="no-overflow">Foro</div>', 1320357618),
-(605, 'f569184dcda4a4f9b43dfdb714b47df7', '<p>Un test</p>', 1320357619),
-(606, 'dc4d2c0e8e61cb36301fdd1af02936b4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320356479),
+(601, 'ec57d6c0c2a42cb2fb0cb4a1f4846a6b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689905),
+(602, 'e34b752e7dd10e82b91700a0f5ffb9ab', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689906),
+(603, '9a122c9b902cce234876ea23ee091238', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320440753),
+(604, '9f61b421c89763dee779cfd65c8d92ff', '<div class="no-overflow">Foro</div>', 1320689906),
+(605, 'f569184dcda4a4f9b43dfdb714b47df7', '<p>Un test</p>', 1320689906),
+(606, 'dc4d2c0e8e61cb36301fdd1af02936b4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320688059),
 (607, '81e329d612b7888b8c06f182a7d6e107', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357313),
-(608, '1d5064d74631777f34c352eaf6bcea2b', '<p>Hola!</p>', 1320357621),
-(609, 'bc2e903ac17876c95c6fdcdcda6d492a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357470),
-(610, '118217b6378222051b0e1fe46369435f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357658),
+(608, '1d5064d74631777f34c352eaf6bcea2b', '<p>Hola!</p>', 1320689909),
+(609, 'bc2e903ac17876c95c6fdcdcda6d492a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689918),
+(610, '118217b6378222051b0e1fe46369435f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320443365),
 (611, '09a9a018b63fc2a5dc25e149d77fdff7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357313),
-(612, '921f40a9b72e4af5fae3d21553096f86', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357615),
+(612, '921f40a9b72e4af5fae3d21553096f86', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689904),
 (613, 'f40dde0619167021a7126a4681e7d2a4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357338),
 (614, '0ec41b2b9d6051aa16bcf70ab8e2b6f7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357338),
 (615, 'e8c352529b3616c29b442aa50d9fee97', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357338),
@@ -1421,20 +1521,144 @@ INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) V
 (617, '3469f29f26d7f3a94bf9ce9d34e0ad60', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357338),
 (618, '7e9b5baa142e7c08d5cb245fdf0818a9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357404),
 (619, 'f8d0c8167fcb96b3025f12c8dc9ac734', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357405),
-(620, '4560af2fee2d9dd860979b1fd780e1b2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357515),
-(621, '6bcb2656c7016b09ecf377474be95cf5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357515),
+(620, '4560af2fee2d9dd860979b1fd780e1b2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320688062),
+(621, '6bcb2656c7016b09ecf377474be95cf5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320688062),
 (622, '80537a0d7a068481458cd66d1411d33f', '<p>holaaaaa</p>', 1320357540),
-(623, '638e2e1cd502913dd4931ba458cf4266', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357574),
-(624, '6eb1c0002ff5e58d1c929b7c438e16ea', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357592),
-(625, 'cd6da70c6c8a581c3b7f0087030e0fd6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357595),
-(626, '88499da2e50a29b8d893a399bd96c0ad', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320357606),
-(627, 'fc822fb3827fb3e7056bc342d9af4924', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357606),
-(628, 'e6cebd62441c4746c3b090fb7cca0c68', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320357607),
-(629, '1724829c7cff348cb0c9931e90107873', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320357607),
-(630, 'af0d744bbc7a4fd5459c9f02eccea186', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320357607),
-(631, '6fda84b13087a2b4614fc2672f7924e5', '<div class="no-overflow">Foro</div>', 1320357607),
-(632, 'd4c5149777cc4b05414d75a33cca41fd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320357618),
-(633, 'c7cb2920ea7d543856ab27e0e9b1afde', '<p>hola</p>', 1320357642);
+(623, '638e2e1cd502913dd4931ba458cf4266', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320687731),
+(624, '6eb1c0002ff5e58d1c929b7c438e16ea', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320687827),
+(625, 'cd6da70c6c8a581c3b7f0087030e0fd6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689887),
+(626, '88499da2e50a29b8d893a399bd96c0ad', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689892),
+(627, 'fc822fb3827fb3e7056bc342d9af4924', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689892),
+(628, 'e6cebd62441c4746c3b090fb7cca0c68', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320689892),
+(629, '1724829c7cff348cb0c9931e90107873', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689892),
+(630, 'af0d744bbc7a4fd5459c9f02eccea186', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320433623),
+(631, '6fda84b13087a2b4614fc2672f7924e5', '<div class="no-overflow">Foro</div>', 1320689892),
+(632, 'd4c5149777cc4b05414d75a33cca41fd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689905),
+(633, 'c7cb2920ea7d543856ab27e0e9b1afde', '<p>hola</p>', 1320689909),
+(634, '67eea621eaac955e1babe5802c8e4491', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689878),
+(635, 'd8c04c3013926fd7663efcf535a21b18', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689610),
+(636, '3d933679a66fadc636bf7a03f1fdd886', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320433776),
+(637, 'b3211a234d48af7f4dc7c6e676f1ffa1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320433776),
+(638, '44b54d2d3f44b6c31c35fa62767af116', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320433777),
+(639, '1a6169e10bd1d58535343b3ed3c201f6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320433777),
+(640, 'c707c916ca536c91b76aecdf063abbfb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320433777),
+(641, 'f3f75003a54b52eb525307447e3a0c6f', '<div class="no-overflow"><p>Pagina de google</p></div>', 1320433777),
+(642, 'd5261713a7a0b29df2e703daf80e2bb7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320440772),
+(643, '4a946f43bcc3a0561ca22c608ed402ad', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320440772),
+(644, '9991094ed28b953495408271fa507f23', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320440772),
+(645, 'f5ff01266df3303b30fc1099ec2f8d9f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320440772),
+(646, '6b6bc36ceb2d753a2578cc989b21ecfc', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320440772),
+(647, '79d5e249418ba8b9c7c293e3220c9baa', '<div class="no-overflow">Cartelera</div>', 1320440772),
+(648, 'c819a7b65b00750411b14d5a4f50cff4', '<div class="no-overflow"><p>haganlon</p></div>', 1320681671),
+(649, '8ae0b23300944a3cd07f79651d5617b1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320681671),
+(650, '67938ecc60e35d38ce8078ba457cefe8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320681671),
+(651, '161240ef12c9d4ad0bb59799dadc8679', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320681671),
+(652, 'c9fdad3cdcdc781a8e7f9782f0e3db3c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320681671),
+(653, '26d53310f78aeb432bd6fbf528e534b9', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320681671),
+(654, '40fd84bb8e299085991aacbe7922e13a', '<div class="no-overflow"><p>¿De que color era el caballo blanco de San Martin?</p></div>', 1320682054),
+(655, '97446ee7dbd6d6703cfe088f44bf9d74', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320682115),
+(656, '17f8f4cca9e51cd14f7cbf4058671d3c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320682115),
+(657, 'f8c1c658a48c5dca0b859a469639984a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320682115),
+(658, 'd2f00a825af2bb319f6373f231c8df9f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320682115),
+(659, 'bf348e0fc047f526b5ff4eaf88c5ba35', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320682115),
+(660, '648486247975eb1c5d63b0012ff0e694', '<p>Gris</p>', 1320682098),
+(661, '6473d0d66aac806973ac2768280668a7', '<div class="text_to_html"><p>Sos medio ...</p></div>', 1320682098),
+(662, 'a22f1f477ad0c28ff1447cf5469bab60', '<p>Blanco</p>', 1320682134),
+(663, '8eba4d05e1c82574d3b57afd7b809be4', '<div class="text_to_html"><p>Sos medio ...</p></div>', 1320682274),
+(664, 'e5ca506082ffe7df40b4c6dd7479fc9f', '<div class="text_to_html">Categoría por defecto para preguntas compartidas en el contexto Wachenchauzer.</div>', 1320685258),
+(665, '49a8aa7bf83e5e2180aa32f4df5eba9a', '35269845', 1320682523),
+(666, '841423fa7fc2a5c39d1b3c2ef7929e0e', '91526', 1320682523),
+(667, '199406d6c64b835ad2be2cfe94e18096', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320688932),
+(668, '154522a9b0b408a34ef8f62e645cae6f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320688932),
+(669, '2bb76edf88c722ff4c46d8df895afc55', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320688932),
+(670, '2c864b78be95af4e46fe4d237db8a162', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320688932),
+(671, 'd541721bebdae99ea7589210fb87b66a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320688932),
+(672, 'd0d349dec8deb0d1005ae0401a37df46', '<p>Este valor determina máximo número de respuestas que usará el profesor. El\nvalor por defecto es 4. Si una lección solo utilizará preguntas de VERDADERO o\nFALSO podemos asignarle el valor de 2.</p>\n\n<p>Este valor también se usa para asignar el máximo número de capítulos que se\nusarán en la lección.</p>\n\n<p>Puede editar, de forma segura, este valor en las lecciones ya creadas. De hecho,\nserá necesario si desea añadir un pregunta con muchas opciones o ampliar el\nnúmero de capítulos. Después de que haya añadido las preguntas o capítulos\ntambién puede reducir el valor a uno más "estándar".</p>\n', 1320682691),
+(673, '371e7e53dc99aec582e1770747e346b0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320682827),
+(674, 'e22ecd8cbed7cde3323686e294fa4b63', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320682827),
+(675, '55da41a0fcb23ef0ee20af82c8c6f657', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320682828),
+(676, '31db59b4980bb955c01cf56c25f578a4', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320682828),
+(677, 'e25a3cc9d8111ea5fb3c3715c49663f8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320682828),
+(678, '37855d1ee6717870eb354b26533dd767', '<p>da</p>', 1320682865),
+(679, 'a1eec557215bc23c656fd7844b0ac684', 'dale', 1320682865),
+(680, 'bb207cd08d85c45b65ed0bb70ac55908', '<p>Una lección se compone de un conjunto de páginas y, ocasionalmente, de páginas de contenido. Una página contiene información y normalmente termina con una pregunta. Con cada respuesta a la pregunta está asociado un salto. Este puede ser relativo (e.g., a la página actual o a la siguiente) o absoluto (e.g., a cualquiera de las páginas de la lección). Una página de contenido es aquella que contiene un conjunto de enlaces a otras páginas de la lección, e.g., una Tabla de Contenidos.</p>\n', 1320682884),
+(681, '8fcab52fa34b3896bf41b7f8571725c3', '<div class="no-overflow"><p>Busquen como son los algoritmos de ordenamientos</p></div>', 1320683135),
+(682, '81dd66957c786e8c79e59e7efdc4a99f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320683145),
+(683, 'a36c41d074b78af09b2ad08682294fa3', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320683145),
+(684, 'e9ea233f50fac598dc0c73f16d7ccada', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320683145),
+(685, '6c3b906c81c7a12cb4e6a306c5390fb8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320683145),
+(686, '7375c50e7cdb6f7613d44ebb0f57b25d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320683145),
+(687, '562d6eaa26e4639d5857c977e1a866b4', '<p>Students can only start their attempt(s) after the open time and they must complete their attempts before the close time.</p>\n', 1320683569),
+(688, '2759e74188102e7a6eea22fb91f1f321', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320684363),
+(689, '76abc3e7bf49eb1d0fe3174b03b3b1c0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320684363),
+(690, '7c216f391b0229faf3a1aa6973ee8839', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320684363),
+(691, 'c277f942759f73215f4c026838e827b7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320684363),
+(692, '9cf20a974d2d159c0669f4670bc576b6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320684363),
+(693, 'f364ced68847adefb6001e059c790abc', '<p>Cuando se crea un cuestionario, los conceptos básicos son:</p>\n\n<ul><li>El cuestionario, que contiene preguntas en una o más páginas</li>\n<li>El banco de preguntas, que almacena copias de todas las preguntas organizadas en categorías</li>\n<li>Preguntas aleatorias: Cada vez que se intenta resolver el cuestionario aparecen preguntas diferentes (los estudiantes tienen preguntas diferentes)</li>\n</ul>', 1320685275),
+(694, 'fded2ff9a7f0c24b52fe0f2fad101d6c', '<p>La retroalimentación general se muestra al estudiante después de haber respondido a la pregunta. A diferencia de la retroalimentación, que depende del tipo de pregunta y de la respuesta dada por el estudiante, aquí se muestra siempre el mismo texto en todos los casos.</p>\n\n<p>Se puede utilizar la retroalimentación general para proporcionar a los estudiantes información complementaria sobre el tema sobre el que trata la pregunta, o  información que puedan utilizar en el caso de no hubieran entendido bien la pregunta.</p>\n', 1320683875),
+(695, '1ba4e827a13280a5b9dadefd15ce2c04', '<p>El lenguaje Python es un lenguaje compilado.</p>', 1320685258),
+(696, '04a747d942bec5c80bb67dc94d61005c', '<p>Cuando se responden preguntas configuradas con "Intentos múltiples" o en "Modo adpatativo", de manera que el alumno puede realizar varios intentos para responder a la pregunta de forma correcta, esta opción define el valor de la penalización que se aplica por cada intento incorrecto. </p>\n\n<p>&lt;</p>\n\n<p>p&gt;La penalización es proporcional a la calificación total de la pregunta, así, si la pregunta vale tres puntos, y la penaliación es de 0.3333333 (33,33%), el estudiante obtiene los 3 puntos si responde correctamente al primer intento, 2 si lo hacen en un segundo intento, y 1 si lo hace en el tercero.</p>\n', 1320684119),
+(697, 'e7a5c50b9ec768f032583e1fce49ed60', '<div class="text_to_html">Categoría por defecto para preguntas compartidas en el contexto Primer examen.</div>', 1320684291),
+(698, '3be29565989a68e546f3468d4eff0e02', '<p>Seleccione la complejidad computacional del algoritmo de ordenamiento de insercion</p>', 1320684291),
+(699, '2de9267a717fc9d2a33115ee162c4b65', '<p>El lenguaje Python es un lenguaje compilado.</p>', 1320684366),
+(700, 'da1d01ec22c37fe12eac1c826053f033', '<p>Seleccione la complejidad computacional del algoritmo de ordenamiento de insercion</p>', 1320684366),
+(701, '5add10473923b1c782315de14344a969', '<p>n . log n</p>', 1320684366),
+(702, 'd6db1b346625ba6b4b401aa31ae844fb', '<p>n <sup>2</sup></p>', 1320684366),
+(703, '8c1968b46bd38894cd36a126491096e8', '<p>n</p>', 1320684366),
+(704, '020d263086de745d3cd87fbde7ad2615', '<p>El lenguaje Python es un lenguaje compilado.</p>', 1320684367),
+(705, 'dd466f09f3579683e762e34eace1fbb0', '<p>n . log n</p>', 1320684368),
+(706, '5d816f0541ad2f9d07a564de579fc71c', '<p>n <sup>2</sup></p>', 1320684368),
+(707, '8672515b26d7cdd21145659ef78f299a', '<p>n</p>', 1320684368),
+(708, '27b9b461840c5bc87cd4ca062d4724ca', '<p>Seleccione la complejidad computacional del algoritmo de ordenamiento de insercion</p>', 1320684368),
+(709, '6300e60a49af2562ec27294bcf58073f', '<p>Piensen en como lo usan</p>', 1320684392),
+(710, 'bc2d7b2b764e74ef52bdfc78b30d3dc6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320685213),
+(711, '8c235b5031a1b975267ac901ddd2ea91', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320685213),
+(712, 'b2ae777a6ac5ccf72b66664f3f86faa1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320685214),
+(713, '3c3a3a49a66e41c3f8aa836848cee3fd', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320685214);
+INSERT INTO `mdl_cache_text` (`id`, `md5key`, `formattedtext`, `timemodified`) VALUES
+(714, '80deda89a6765bfbb357612cedc017b0', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320685214),
+(715, 'fef811c5fe935ea5296d7e8cd1243e31', '<p>Diga cuales son los algoritmos de ordenamiento con peor complejidad computacional de los vistos en clase. (ordenelos alfabeticamente)</p>', 1320685258),
+(716, '31a3f072c8a64e853a753e920333cd78', '<div class="no-overflow"><p>aerve</p></div>', 1320685328),
+(717, '78b57f24fd2d7caa14f78daac062b1c6', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320685330),
+(718, '90a9b44dc8be63152c31c8379a04ec82', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320685330),
+(719, '48aeb76131e8fa54a4e4d015a6bbbe79', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320685331),
+(720, '2b87fd1733079bfb70b846778269181d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320685331),
+(721, '0184d9fcc78703b8896edff07cfc4b39', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320685331),
+(722, '8e0da1bd518a281c3e3e4a8f0934e102', '<div class="no-overflow"><p>¿De que color el caballo blanco de San Martin?</p></div>', 1320685858),
+(723, '6da9a746f0d5a73ff4d1a50a74fce9f5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320685927),
+(724, 'e6c6e087fa7d9d1a1e0dbbcb4044b89f', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320685927),
+(725, '48cbbd5527b1af244143403e0f4f402a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320685927),
+(726, '089ec3989254434ec48d774528074b7d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320685928),
+(727, 'bce75c1fe522aa63455a1214f6604385', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320685928),
+(728, '7e52813aa15d905ec81f81fd9a214b14', '<p>Blanco</p>', 1320685928),
+(729, '51968275d00ccc0216a6166e3f559d28', '<p>Gris</p>', 1320685928),
+(730, '15235cc4bf35bff7412f4ee69b21d1f3', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320687263),
+(731, '5562fa0be865bb0a7ff2213ca831ed0b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320687263),
+(732, '798ba093c1f6bfe6024092a3a7bf67ce', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320687263),
+(733, '487533d093ded3cc0cf25373bdbc568e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320687263),
+(734, '8bd6396360bd037e00486a604db99d8a', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320687263),
+(735, 'cded7b64e1368247097595fc6564e417', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689571),
+(736, '754d4a498742fd38af32713e2472f6e8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689571),
+(737, '0838c7982d6f3a7041277dea36fcb3d1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320688060),
+(738, '28c70b27ddf8fea9cdd6848e968690e1', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320688740),
+(739, 'c337470486090a57e983797224b7b13d', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320688742),
+(740, '476ae7982d57d02e5688f4f024a2525b', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320688743),
+(741, '297ff12340edee4d7ca04c20b9f47d4e', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n</ul></div>', 1320688743),
+(742, '39e66108e0e86b5d1eba986ce1da8d85', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320688743),
+(743, '175b0b38c59b20f99c47e51ceaa41f7c', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320688743),
+(744, '310df790251240d6af25626f9a3ba1af', '<div class="no-overflow">Cartelera</div>', 1320688743),
+(745, '80c5a05879bdb86a79915d148bcba404', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689119),
+(746, 'db18385cbcdd15956846f01b83e80c61', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689119),
+(747, '9f4881d94b337eb45e3208d6873635e7', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/solicitud.php">Registrarse en curso</a></li>\r\n</ul></div>', 1320689119),
+(748, 'cc5614ce5d0c64eb6761b0d41fa63e39', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="#">Mis cursos</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689119),
+(749, 'e7bfc15d3d72158134dcba7f043588c5', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/mod/forum/view.php?id=1">Cartelera</a></li>\r\n<li><a href="http://localhost/admin/settings.php?section=coursesettings">Configuracion</a></li>\r\n<li><a href="http://localhost/course/">Materias</a></li>\r\n<li><a href="http://localhost/admin/user.php">Miembros</a></li>\r\n<li><a href="http://localhost/admin/roles/assign.php?contextid=1">Asignar roles</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Asignar mediadores</a></li>\r\n<li><a href="http://localhost/admin/cicloConservacion.php?section=coursesettings">Ciclo de conservacion de calificaciones</a></li>\r\n</ul></div>', 1320689702),
+(750, 'afb2e7d3f38cbeaabcdade152b04b1fb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/login/">Conectarse</a></li>\r\n<li><a href="http://localhost/login/signup.php">Registrarse</a></li>\r\n</ul>\r\n<div class="subcontent guestsub"><form action="/login/index.php" method="post" id="guestlogin">\r\n<div class="guestform"><input type="hidden" name="username" value="guest" /> <input type="hidden" name="password" value="guest" /> <input type="submit" value="Ingresar como invitado" /></div>\r\n</form></div></div>', 1320689702),
+(751, 'af7ad14a47441c61603c9bd2cac5d3ab', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689918),
+(752, '160245e534e11f53449663af6a925873', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689879),
+(753, '8e2bcdc29ba4523bfc4a031dca7d7db2', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689887),
+(754, '847c94e86213c805cbe574fe3b07a2df', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689892),
+(755, '43e5f525826b541e83221046073093c8', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689904),
+(756, '21c224af98dc4b9a06353e1f30ed71cb', '<div class="no-overflow"><ul>\r\n<li><a href="http://localhost/">Pagina principal</a></li>\r\n<li><a href="http://localhost/course/enrolment.php">Agregar aprendices</a></li>\r\n<li><a href="http://localhost/course/enrolmentsolicitudes.php">Aceptar solicitudes</a></li>\r\n</ul></div>', 1320689906);
 
 -- --------------------------------------------------------
 
@@ -1454,7 +1678,7 @@ CREATE TABLE IF NOT EXISTS `mdl_capabilities` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines all capabilities' AUTO_INCREMENT=368 ;
 
 --
--- Volcado de datos para la tabla `mdl_capabilities`
+-- Volcar la base de datos para la tabla `mdl_capabilities`
 --
 
 INSERT INTO `mdl_capabilities` (`id`, `name`, `captype`, `contextlevel`, `component`, `riskbitmask`) VALUES
@@ -1847,6 +2071,11 @@ CREATE TABLE IF NOT EXISTS `mdl_chat` (
   KEY `mdl_chat_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each of these is a chat room' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_chat`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1868,6 +2097,11 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages` (
   KEY `mdl_chatmess_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all the actual chat messages' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_chat_messages`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1888,6 +2122,11 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_messages_current` (
   KEY `mdl_chatmesscurr_timcha_ix` (`timestamp`,`chatid`),
   KEY `mdl_chatmesscurr_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores current session' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_chat_messages_current`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1915,6 +2154,11 @@ CREATE TABLE IF NOT EXISTS `mdl_chat_users` (
   KEY `mdl_chatuser_cha_ix` (`chatid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of which users are in which chat rooms' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_chat_users`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1941,6 +2185,11 @@ CREATE TABLE IF NOT EXISTS `mdl_choice` (
   KEY `mdl_choi_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Available choices are stored here' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_choice`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1959,6 +2208,11 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_answers` (
   KEY `mdl_choiansw_opt_ix` (`optionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='choices performed by users' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_choice_answers`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -1974,6 +2228,11 @@ CREATE TABLE IF NOT EXISTS `mdl_choice_options` (
   PRIMARY KEY (`id`),
   KEY `mdl_choiopti_cho_ix` (`choiceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='available options to choice' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_choice_options`
+--
+
 
 -- --------------------------------------------------------
 
@@ -1995,6 +2254,11 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort` (
   KEY `mdl_coho_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record represents one cohort (aka site-wide group).' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_cohort`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -2011,6 +2275,11 @@ CREATE TABLE IF NOT EXISTS `mdl_cohort_members` (
   KEY `mdl_cohomemb_coh_ix` (`cohortid`),
   KEY `mdl_cohomemb_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a user to a cohort.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_cohort_members`
+--
+
 
 -- --------------------------------------------------------
 
@@ -2030,6 +2299,11 @@ CREATE TABLE IF NOT EXISTS `mdl_comments` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle comments module' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_comments`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -2045,7 +2319,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle configuration variables' AUTO_INCREMENT=395 ;
 
 --
--- Volcado de datos para la tabla `mdl_config`
+-- Volcar la base de datos para la tabla `mdl_config`
 --
 
 INSERT INTO `mdl_config` (`id`, `name`, `value`) VALUES
@@ -2460,7 +2734,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_log` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Changes done in server configuration through admin UI' AUTO_INCREMENT=758 ;
 
 --
--- Volcado de datos para la tabla `mdl_config_log`
+-- Volcar la base de datos para la tabla `mdl_config_log`
 --
 
 INSERT INTO `mdl_config_log` (`id`, `userid`, `timemodified`, `plugin`, `name`, `value`, `oldvalue`) VALUES
@@ -3239,7 +3513,7 @@ CREATE TABLE IF NOT EXISTS `mdl_config_plugins` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Moodle modules and plugins configuration variables' AUTO_INCREMENT=597 ;
 
 --
--- Volcado de datos para la tabla `mdl_config_plugins`
+-- Volcar la base de datos para la tabla `mdl_config_plugins`
 --
 
 INSERT INTO `mdl_config_plugins` (`id`, `plugin`, `name`, `value`) VALUES
@@ -3813,10 +4087,10 @@ CREATE TABLE IF NOT EXISTS `mdl_context` (
   UNIQUE KEY `mdl_cont_conins_uix` (`contextlevel`,`instanceid`),
   KEY `mdl_cont_ins_ix` (`instanceid`),
   KEY `mdl_cont_pat_ix` (`path`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=174 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='one of these must be set' AUTO_INCREMENT=184 ;
 
 --
--- Volcado de datos para la tabla `mdl_context`
+-- Volcar la base de datos para la tabla `mdl_context`
 --
 
 INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) VALUES
@@ -3870,7 +4144,11 @@ INSERT INTO `mdl_context` (`id`, `contextlevel`, `instanceid`, `path`, `depth`) 
 (170, 70, 41, '/1/23/153/170', 4),
 (171, 70, 42, '/1/23/153/171', 4),
 (172, 70, 43, '/1/23/158/172', 4),
-(173, 70, 44, '/1/23/158/173', 4);
+(173, 70, 44, '/1/23/158/173', 4),
+(174, 70, 45, '/1/110/163/174', 4),
+(179, 70, 50, '/1/110/163/179', 4),
+(180, 70, 51, '/1/110/163/180', 4),
+(182, 70, 53, '/1/110/163/182', 4);
 
 -- --------------------------------------------------------
 
@@ -3884,6 +4162,11 @@ CREATE TABLE IF NOT EXISTS `mdl_context_temp` (
   `depth` tinyint(2) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Used by build_context_path() in upgrade and cron to keep con';
+
+--
+-- Volcar la base de datos para la tabla `mdl_context_temp`
+--
+
 
 -- --------------------------------------------------------
 
@@ -3932,14 +4215,14 @@ CREATE TABLE IF NOT EXISTS `mdl_course` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Central course table' AUTO_INCREMENT=19 ;
 
 --
--- Volcado de datos para la tabla `mdl_course`
+-- Volcar la base de datos para la tabla `mdl_course`
 --
 
 INSERT INTO `mdl_course` (`id`, `category`, `sortorder`, `fullname`, `shortname`, `idnumber`, `summary`, `summaryformat`, `format`, `showgrades`, `modinfo`, `newsitems`, `startdate`, `numsections`, `marker`, `maxbytes`, `legacyfiles`, `showreports`, `visible`, `visibleold`, `hiddensections`, `groupmode`, `groupmodeforce`, `defaultgroupingid`, `lang`, `theme`, `timecreated`, `timemodified`, `requested`, `restrictmodules`, `enablecompletion`, `completionstartonenrol`, `completionnotify`) VALUES
 (1, 0, 1, 'Red Social FIUBA', 'Red Social FIUBA', '', '<p>Red social de la Facultad de Ingeniería<br /><br /></p>', 0, 'site', 1, 'a:2:{i:1;O:8:"stdClass":10:{s:2:"id";s:1:"1";s:2:"cm";s:1:"1";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:1:"1";s:6:"module";s:1:"7";s:5:"added";s:10:"1316715825";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:9:"Cartelera";}i:5;O:8:"stdClass":10:{s:2:"id";s:1:"5";s:2:"cm";s:1:"5";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:1:"1";s:6:"module";s:1:"7";s:5:"added";s:10:"1317936873";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:22:"Foro General de la Red";}}', 3, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, '', '', 1316566411, 1316715819, 0, 0, 0, 0, 0),
-(16, 7, 20002, 'Azcurra', 'Azcurra', '', '', 1, 'topics', 1, 'a:2:{i:41;O:8:"stdClass":10:{s:2:"id";s:2:"35";s:2:"cm";s:2:"41";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"228";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296502";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:8:"Noticias";}i:42;O:8:"stdClass":10:{s:2:"id";s:2:"36";s:2:"cm";s:2:"42";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"228";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296503";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Foro del Curso";}}', 1, 1313359200, 16, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, '', '', 1320296337, 1320296337, 0, 0, 0, 0, 0),
+(16, 7, 20002, 'Azcurra', 'Azcurra', '', '', 1, 'topics', 1, 'a:2:{i:41;O:8:"stdClass":10:{s:2:"id";s:2:"35";s:2:"cm";s:2:"41";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"228";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296502";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:8:"Noticias";}i:42;O:8:"stdClass":10:{s:2:"id";s:2:"36";s:2:"cm";s:2:"42";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"228";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296503";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Foro del Curso";}}', 1, 1362870000, 16, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, '', '', 1320296337, 1320296337, 0, 0, 0, 0, 0),
 (17, 7, 20001, 'Veiga', 'Veiga', '', '', 1, 'topics', 1, 'a:2:{i:43;O:8:"stdClass":10:{s:2:"id";s:2:"37";s:2:"cm";s:2:"43";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"229";s:6:"module";s:1:"7";s:5:"added";s:10:"1320356299";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:8:"Noticias";}i:44;O:8:"stdClass":10:{s:2:"id";s:2:"38";s:2:"cm";s:2:"44";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"229";s:6:"module";s:1:"7";s:5:"added";s:10:"1320356299";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Foro del Curso";}}', 1, 1313359200, 16, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, '', '', 1320296361, 1320296361, 0, 0, 0, 0, 0),
-(18, 8, 10001, 'Wachenchauzer', 'Wachenchauzer', '', '', 1, 'topics', 1, 'a:2:{i:39;O:8:"stdClass":10:{s:2:"id";s:2:"33";s:2:"cm";s:2:"39";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"230";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296428";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:8:"Noticias";}i:40;O:8:"stdClass":10:{s:2:"id";s:2:"34";s:2:"cm";s:2:"40";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"230";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296428";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Foro del Curso";}}', 1, 1313359200, 16, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, '', '', 1320296384, 1320296384, 0, 0, 0, 0, 0);
+(18, 8, 10001, 'Wachenchauzer', 'Wachenchauzer', '', '', 1, 'topics', 1, 'a:6:{i:39;O:8:"stdClass":10:{s:2:"id";s:2:"33";s:2:"cm";s:2:"39";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"230";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296428";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:8:"Noticias";}i:40;O:8:"stdClass":10:{s:2:"id";s:2:"34";s:2:"cm";s:2:"40";s:3:"mod";s:5:"forum";s:7:"section";s:1:"0";s:9:"sectionid";s:3:"230";s:6:"module";s:1:"7";s:5:"added";s:10:"1320296428";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Foro del Curso";}i:45;O:8:"stdClass":11:{s:2:"id";s:1:"1";s:2:"cm";s:2:"45";s:3:"mod";s:3:"url";s:7:"section";s:1:"1";s:9:"sectionid";s:3:"231";s:6:"module";s:2:"17";s:5:"added";s:10:"1320433745";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"icon";s:5:"f/web";s:4:"name";s:6:"Google";}i:53;O:8:"stdClass":11:{s:2:"id";s:1:"5";s:2:"cm";s:2:"53";s:3:"mod";s:10:"assignment";s:7:"section";s:1:"1";s:9:"sectionid";s:3:"231";s:6:"module";s:1:"1";s:5:"added";s:10:"1320685650";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:9:"groupmode";s:1:"1";s:4:"name";s:10:"Responder1";}i:50;O:8:"stdClass":11:{s:2:"id";s:1:"1";s:2:"cm";s:2:"50";s:3:"mod";s:4:"quiz";s:7:"section";s:1:"2";s:9:"sectionid";s:3:"232";s:6:"module";s:2:"13";s:5:"added";s:10:"1320683639";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:9:"groupmode";s:1:"2";s:4:"name";s:13:"Primer examen";}i:51;O:8:"stdClass":10:{s:2:"id";s:1:"2";s:2:"cm";s:2:"51";s:3:"mod";s:4:"quiz";s:7:"section";s:1:"3";s:9:"sectionid";s:3:"233";s:6:"module";s:2:"13";s:5:"added";s:10:"1320684664";s:7:"visible";s:1:"1";s:10:"visibleold";s:1:"1";s:4:"name";s:14:"Segundo examen";}}', 1, 1313359200, 16, 0, 0, 0, 0, 1, 1, 0, 2, 0, 0, '', '', 1320296384, 1320296384, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3955,6 +4238,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_allowed_modules` (
   KEY `mdl_courallomodu_cou_ix` (`course`),
   KEY `mdl_courallomodu_mod_ix` (`module`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='allowed modules foreach course' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_allowed_modules`
+--
+
 
 -- --------------------------------------------------------
 
@@ -3981,7 +4269,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_categories` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course categories' AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `mdl_course_categories`
+-- Volcar la base de datos para la tabla `mdl_course_categories`
 --
 
 INSERT INTO `mdl_course_categories` (`id`, `name`, `description`, `descriptionformat`, `parent`, `sortorder`, `coursecount`, `visible`, `visibleold`, `timemodified`, `depth`, `path`, `theme`) VALUES
@@ -4010,6 +4298,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completions` (
   KEY `mdl_courcomp_tim_ix` (`timecompleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion records' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_course_completions`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4026,6 +4319,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_aggr_methd` (
   KEY `mdl_courcompaggrmeth_cou_ix` (`course`),
   KEY `mdl_courcompaggrmeth_cri_ix` (`criteriatype`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion aggregation methods for criteria' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_completion_aggr_methd`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4047,6 +4345,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_criteria` (
   PRIMARY KEY (`id`),
   KEY `mdl_courcompcrit_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion criteria' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_completion_criteria`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4070,6 +4373,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_crit_compl` (
   KEY `mdl_courcompcritcomp_tim_ix` (`timecompleted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion user records' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_course_completion_crit_compl`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4086,6 +4394,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_completion_notify` (
   KEY `mdl_courcompnoti_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Course completion notification emails' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_course_completion_notify`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4100,6 +4413,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_display` (
   PRIMARY KEY (`id`),
   KEY `mdl_courdisp_couuse_ix` (`course`,`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores info about how to display the course' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_display`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4136,10 +4454,10 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules` (
   KEY `mdl_courmodu_ins_ix` (`instance`),
   KEY `mdl_courmodu_idncou_ix` (`idnumber`,`course`),
   KEY `mdl_courmodu_gro_ix` (`groupingid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=45 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course_modules table retrofitted from MySQL' AUTO_INCREMENT=54 ;
 
 --
--- Volcado de datos para la tabla `mdl_course_modules`
+-- Volcar la base de datos para la tabla `mdl_course_modules`
 --
 
 INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section`, `idnumber`, `added`, `score`, `indent`, `visible`, `visibleold`, `groupmode`, `groupingid`, `groupmembersonly`, `completion`, `completiongradeitemnumber`, `completionview`, `completionexpected`, `availablefrom`, `availableuntil`, `showavailability`) VALUES
@@ -4150,7 +4468,11 @@ INSERT INTO `mdl_course_modules` (`id`, `course`, `module`, `instance`, `section
 (41, 16, 7, 35, 228, NULL, 1320296502, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
 (42, 16, 7, 36, 228, NULL, 1320296503, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
 (43, 17, 7, 37, 229, NULL, 1320356299, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
-(44, 17, 7, 38, 229, NULL, 1320356299, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0);
+(44, 17, 7, 38, 229, NULL, 1320356299, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
+(45, 18, 17, 1, 231, '', 1320433745, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
+(50, 18, 13, 1, 232, '', 1320683639, 0, 0, 1, 1, 2, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
+(51, 18, 13, 2, 233, '', 1320684664, 0, 0, 1, 1, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0),
+(53, 18, 1, 5, 231, '', 1320685650, 0, 0, 1, 1, 1, 0, 0, 0, NULL, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -4172,6 +4494,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_availability` (
   KEY `mdl_courmoduavai_gra_ix` (`gradeitemid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Table stores conditions that affect whether a module/activit' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_course_modules_availability`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4189,6 +4516,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_modules_completion` (
   UNIQUE KEY `mdl_courmoducomp_usecou_uix` (`userid`,`coursemoduleid`),
   KEY `mdl_courmoducomp_cou_ix` (`coursemoduleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the completion state (completed or not completed, etc' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_modules_completion`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4208,6 +4540,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_published` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about how and when an local courses were publish' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_course_published`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4226,6 +4563,11 @@ CREATE TABLE IF NOT EXISTS `mdl_course_request` (
   PRIMARY KEY (`id`),
   KEY `mdl_courrequ_sho_ix` (`shortname`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='course requests' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_course_request`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4247,7 +4589,7 @@ CREATE TABLE IF NOT EXISTS `mdl_course_sections` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to define the sections for each course' AUTO_INCREMENT=279 ;
 
 --
--- Volcado de datos para la tabla `mdl_course_sections`
+-- Volcar la base de datos para la tabla `mdl_course_sections`
 --
 
 INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`, `summaryformat`, `sequence`, `visible`) VALUES
@@ -4255,9 +4597,9 @@ INSERT INTO `mdl_course_sections` (`id`, `course`, `section`, `name`, `summary`,
 (228, 16, 0, NULL, NULL, 1, '41,42', 1),
 (229, 17, 0, NULL, NULL, 1, '43,44', 1),
 (230, 18, 0, NULL, NULL, 1, '39,40', 1),
-(231, 18, 1, NULL, '', 1, NULL, 1),
-(232, 18, 2, NULL, '', 1, NULL, 1),
-(233, 18, 3, NULL, '', 1, NULL, 1),
+(231, 18, 1, NULL, '', 1, '45,53', 1),
+(232, 18, 2, NULL, '', 1, '50', 1),
+(233, 18, 3, NULL, '', 1, '51', 1),
 (234, 18, 4, NULL, '', 1, NULL, 1),
 (235, 18, 5, NULL, '', 1, NULL, 1),
 (236, 18, 6, NULL, '', 1, NULL, 1),
@@ -4348,6 +4690,11 @@ CREATE TABLE IF NOT EXISTS `mdl_data` (
   KEY `mdl_data_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all database activities' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_data`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4367,6 +4714,11 @@ CREATE TABLE IF NOT EXISTS `mdl_data_content` (
   KEY `mdl_datacont_rec_ix` (`recordid`),
   KEY `mdl_datacont_fie_ix` (`fieldid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the content introduced in each record/fields' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_data_content`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4395,6 +4747,11 @@ CREATE TABLE IF NOT EXISTS `mdl_data_fields` (
   KEY `mdl_datafiel_dat_ix` (`dataid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='every field available' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_data_fields`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4412,6 +4769,11 @@ CREATE TABLE IF NOT EXISTS `mdl_data_records` (
   PRIMARY KEY (`id`),
   KEY `mdl_datareco_dat_ix` (`dataid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='every record introduced' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_data_records`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4454,7 +4816,7 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Instances of enrolment plugins used in courses, fields marke' AUTO_INCREMENT=37 ;
 
 --
--- Volcado de datos para la tabla `mdl_enrol`
+-- Volcar la base de datos para la tabla `mdl_enrol`
 --
 
 INSERT INTO `mdl_enrol` (`id`, `enrol`, `status`, `courseid`, `sortorder`, `name`, `enrolperiod`, `enrolstartdate`, `enrolenddate`, `expirynotify`, `expirythreshold`, `notifyall`, `password`, `cost`, `currency`, `roleid`, `customint1`, `customint2`, `customint3`, `customint4`, `customchar1`, `customchar2`, `customdec1`, `customdec2`, `customtext1`, `customtext2`, `timecreated`, `timemodified`) VALUES
@@ -4492,6 +4854,11 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize` (
   KEY `mdl_enroauth_tra_ix` (`transid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Holds all known information about authorize.net transactions' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_enrol_authorize`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4509,6 +4876,11 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_authorize_refunds` (
   KEY `mdl_enroauthrefu_tra_ix` (`transid`),
   KEY `mdl_enroauthrefu_ord_ix` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Authorize.net refunds' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_enrol_authorize_refunds`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4530,6 +4902,11 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_flatfile` (
   KEY `mdl_enroflat_use_ix` (`userid`),
   KEY `mdl_enroflat_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='enrol_flatfile table retrofitted from MySQL' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_enrol_flatfile`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4562,6 +4939,11 @@ CREATE TABLE IF NOT EXISTS `mdl_enrol_paypal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Holds all known information about PayPal transactions' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_enrol_paypal`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4592,7 +4974,16 @@ CREATE TABLE IF NOT EXISTS `mdl_event` (
   KEY `mdl_even_tim_ix` (`timestart`),
   KEY `mdl_even_tim2_ix` (`timeduration`),
   KEY `mdl_even_grocouvisuse_ix` (`groupid`,`courseid`,`visible`,`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For everything with a time associated to it' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For everything with a time associated to it' AUTO_INCREMENT=8 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_event`
+--
+
+INSERT INTO `mdl_event` (`id`, `name`, `description`, `format`, `courseid`, `groupid`, `userid`, `repeatid`, `modulename`, `instance`, `eventtype`, `timestart`, `timeduration`, `visible`, `uuid`, `sequence`, `timemodified`) VALUES
+(4, 'Segundo examen (Cuestionario abierto)', '', 1, 18, 0, 14, 0, 'quiz', 2, 'open', 1321462140, 0, 1, '', 1, 1320684664),
+(5, 'Segundo examen (Cuestionario cerrado)', '', 1, 18, 0, 14, 0, 'quiz', 2, 'close', 1324226940, 0, 1, '', 1, 1320684664),
+(7, 'Responder1', '<div class="no-overflow"><p>¿De que color el caballo blanco de San Martin?</p></div>', 1, 18, 0, 14, 0, 'assignment', 5, 'due', 1321290300, 0, 1, '', 1, 1320685650);
 
 -- --------------------------------------------------------
 
@@ -4614,7 +5005,7 @@ CREATE TABLE IF NOT EXISTS `mdl_events_handlers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing which components requests what typ' AUTO_INCREMENT=18 ;
 
 --
--- Volcado de datos para la tabla `mdl_events_handlers`
+-- Volcar la base de datos para la tabla `mdl_events_handlers`
 --
 
 INSERT INTO `mdl_events_handlers` (`id`, `eventname`, `component`, `handlerfile`, `handlerfunction`, `schedule`, `status`, `internal`) VALUES
@@ -4650,10 +5041,10 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue` (
   `timecreated` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   KEY `mdl_evenqueu_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing queued events. It stores only one ' AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table is for storing queued events. It stores only one ' AUTO_INCREMENT=20 ;
 
 --
--- Volcado de datos para la tabla `mdl_events_queue`
+-- Volcar la base de datos para la tabla `mdl_events_queue`
 --
 
 INSERT INTO `mdl_events_queue` (`id`, `eventdata`, `stackdump`, `userid`, `timecreated`) VALUES
@@ -4674,7 +5065,8 @@ INSERT INTO `mdl_events_queue` (`id`, `eventdata`, `stackdump`, `userid`, `timec
 (15, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTAiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6OToiYXByZW5kaXoxIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo4OiJBcHJlbmRpeiI7czo1OiJlbWFpbCI7czoyNzoiZGFtaWFuY2FsYWJyZXNpMTBAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjgxMzExNiI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiNUxGUGJRWG5panFOR3paIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjgxMzA0MCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1317244276),
 (16, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTAiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6OToiYXByZW5kaXoxIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjY6IkRhbWlhbiI7czo4OiJsYXN0bmFtZSI7czo4OiJBcHJlbmRpeiI7czo1OiJlbWFpbCI7czoyNzoiZGFtaWFuY2FsYWJyZXNpMTBAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNjgxMzExNiI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToiNUxGUGJRWG5panFOR3paIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxNjgxMzA0MCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 2, 1317244276),
 (17, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTgiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6MTQ6Im1pZW1icm9wb3BwZXIyIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjU6ImFzZGFzIjtzOjg6Imxhc3RuYW1lIjtzOjY6InpkY3NkZiI7czo1OiJlbWFpbCI7czoxMjoiYXNkQGFzZHMuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6MjoiZXMiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxOTc0ODgzNSI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToic284cGpSamF5ZUxWdTEwIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxOTc0ODI2OCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 12, 1319823657),
-(18, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTgiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6MTQ6Im1pZW1icm9wb3BwZXIyIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjU6ImFzZGFzIjtzOjg6Imxhc3RuYW1lIjtzOjY6InpkY3NkZiI7czo1OiJlbWFpbCI7czoxMjoiYXNkQGFzZHMuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6MjoiZXMiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxOTc0ODgzNSI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToic284cGpSamF5ZUxWdTEwIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxOTc0ODI2OCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 12, 1319823657);
+(18, 'Tzo4OiJzdGRDbGFzcyI6NTE6e3M6MjoiaWQiO3M6MjoiMTgiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6MTQ6Im1pZW1icm9wb3BwZXIyIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjU6ImFzZGFzIjtzOjg6Imxhc3RuYW1lIjtzOjY6InpkY3NkZiI7czo1OiJlbWFpbCI7czoxMjoiYXNkQGFzZHMuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6MjoiZXMiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxOTc0ODgzNSI7czoxMDoibGFzdGFjY2VzcyI7czoxOiIwIjtzOjk6Imxhc3Rsb2dpbiI7czoxOiIwIjtzOjEyOiJjdXJyZW50bG9naW4iO3M6MToiMCI7czo2OiJsYXN0aXAiO3M6MDoiIjtzOjY6InNlY3JldCI7czoxNToic284cGpSamF5ZUxWdTEwIjtzOjc6InBpY3R1cmUiO3M6MToiMCI7czozOiJ1cmwiO3M6MDoiIjtzOjExOiJkZXNjcmlwdGlvbiI7TjtzOjE3OiJkZXNjcmlwdGlvbmZvcm1hdCI7czoxOiIwIjtzOjEwOiJtYWlsZm9ybWF0IjtzOjE6IjEiO3M6MTA6Im1haWxkaWdlc3QiO3M6MToiMCI7czoxMToibWFpbGRpc3BsYXkiO3M6MToiMiI7czoxMDoiaHRtbGVkaXRvciI7czoxOiIxIjtzOjQ6ImFqYXgiO3M6MToiMSI7czoxMzoiYXV0b3N1YnNjcmliZSI7czoxOiIxIjtzOjExOiJ0cmFja2ZvcnVtcyI7czoxOiIwIjtzOjExOiJ0aW1lY3JlYXRlZCI7czoxMDoiMTMxOTc0ODI2OCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjE6IjAiO3M6MTI6InRydXN0Yml0bWFzayI7czoxOiIwIjtzOjg6ImltYWdlYWx0IjtOO3M6MTI6InNjcmVlbnJlYWRlciI7czoxOiIwIjt9', '', 12, 1319823657),
+(19, 'Tzo4OiJzdGRDbGFzcyI6ODp7czo5OiJjb21wb25lbnQiO3M6ODoibW9kX3F1aXoiO3M6OToiYXR0ZW1wdGlkIjtzOjE6IjEiO3M6MTA6InRpbWVmaW5pc2giO2k6MTMyMDY4NDM5MTtzOjY6InVzZXJpZCI7czoyOiIxMyI7czoxMToic3VibWl0dGVyaWQiO3M6MjoiMTMiO3M6NjoicXVpemlkIjtzOjE6IjEiO3M6NDoiY21pZCI7czoyOiI1MCI7czo4OiJjb3Vyc2VpZCI7czoyOiIxOCI7fQ==', '', 13, 1320684391);
 
 -- --------------------------------------------------------
 
@@ -4692,10 +5084,10 @@ CREATE TABLE IF NOT EXISTS `mdl_events_queue_handlers` (
   PRIMARY KEY (`id`),
   KEY `mdl_evenqueuhand_que_ix` (`queuedeventid`),
   KEY `mdl_evenqueuhand_han_ix` (`handlerid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This is the list of queued handlers for processing. The even' AUTO_INCREMENT=19 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This is the list of queued handlers for processing. The even' AUTO_INCREMENT=20 ;
 
 --
--- Volcado de datos para la tabla `mdl_events_queue_handlers`
+-- Volcar la base de datos para la tabla `mdl_events_queue_handlers`
 --
 
 INSERT INTO `mdl_events_queue_handlers` (`id`, `queuedeventid`, `handlerid`, `status`, `errormessage`, `timemodified`) VALUES
@@ -4716,7 +5108,8 @@ INSERT INTO `mdl_events_queue_handlers` (`id`, `queuedeventid`, `handlerid`, `st
 (15, 15, 16, 0, '', 1317244276),
 (16, 16, 17, 0, '', 1317244276),
 (17, 17, 16, 0, '', 1319823657),
-(18, 18, 17, 0, '', 1319823657);
+(18, 18, 17, 0, '', 1319823657),
+(19, 19, 5, 0, '', 1320684391);
 
 -- --------------------------------------------------------
 
@@ -4737,7 +5130,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='list of all external functions' AUTO_INCREMENT=26 ;
 
 --
--- Volcado de datos para la tabla `mdl_external_functions`
+-- Volcar la base de datos para la tabla `mdl_external_functions`
 --
 
 INSERT INTO `mdl_external_functions` (`id`, `name`, `classname`, `methodname`, `classpath`, `component`, `capabilities`) VALUES
@@ -4788,7 +5181,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='built in and custom external services' AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `mdl_external_services`
+-- Volcar la base de datos para la tabla `mdl_external_services`
 --
 
 INSERT INTO `mdl_external_services` (`id`, `name`, `enabled`, `requiredcapability`, `restrictedusers`, `component`, `timecreated`, `timemodified`, `shortname`) VALUES
@@ -4809,7 +5202,7 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_functions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='lists functions available in each service group' AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `mdl_external_services_functions`
+-- Volcar la base de datos para la tabla `mdl_external_services_functions`
 --
 
 INSERT INTO `mdl_external_services_functions` (`id`, `externalserviceid`, `functionname`) VALUES
@@ -4840,6 +5233,11 @@ CREATE TABLE IF NOT EXISTS `mdl_external_services_users` (
   KEY `mdl_exteservuser_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='users allowed to use services with restricted users flag' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_external_services_users`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4865,6 +5263,11 @@ CREATE TABLE IF NOT EXISTS `mdl_external_tokens` (
   KEY `mdl_extetoke_con_ix` (`contextid`),
   KEY `mdl_extetoke_cre_ix` (`creatorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Security tokens for accessing of external services' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_external_tokens`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4894,6 +5297,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback` (
   KEY `mdl_feed_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all feedbacks' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_feedback`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4911,6 +5319,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completed` (
   KEY `mdl_feedcomp_use_ix` (`userid`),
   KEY `mdl_feedcomp_fee_ix` (`feedback`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='filled out feedback' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_completed`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4930,6 +5343,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_completedtmp` (
   KEY `mdl_feedcomp_use2_ix` (`userid`),
   KEY `mdl_feedcomp_fee2_ix` (`feedback`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='filled out feedback' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_completedtmp`
+--
+
 
 -- --------------------------------------------------------
 
@@ -4956,6 +5374,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_item` (
   KEY `mdl_feeditem_tem_ix` (`template`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback_items' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_item`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4971,6 +5394,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_sitecourse_map` (
   KEY `mdl_feedsitemap_fee_ix` (`feedbackid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback sitecourse map' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_sitecourse_map`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -4985,6 +5413,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_template` (
   PRIMARY KEY (`id`),
   KEY `mdl_feedtemp_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='templates of feedbackstructures' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_template`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5004,6 +5437,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_tracking` (
   KEY `mdl_feedtrac_com_ix` (`completed`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='feedback trackingdata' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_tracking`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5022,6 +5460,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_value` (
   KEY `mdl_feedvalu_ite_ix` (`item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='values of the completeds' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_value`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5039,6 +5482,11 @@ CREATE TABLE IF NOT EXISTS `mdl_feedback_valuetmp` (
   KEY `mdl_feedvalu_cou2_ix` (`course_id`),
   KEY `mdl_feedvalu_ite2_ix` (`item`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='values of the completedstmp' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_feedback_valuetmp`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5072,10 +5520,10 @@ CREATE TABLE IF NOT EXISTS `mdl_files` (
   KEY `mdl_file_con_ix` (`contenthash`),
   KEY `mdl_file_con2_ix` (`contextid`),
   KEY `mdl_file_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=26 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='description of files, content is stored in sha1 file pool' AUTO_INCREMENT=28 ;
 
 --
--- Volcado de datos para la tabla `mdl_files`
+-- Volcar la base de datos para la tabla `mdl_files`
 --
 
 INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `component`, `filearea`, `itemid`, `filepath`, `filename`, `userid`, `filesize`, `mimetype`, `status`, `source`, `author`, `license`, `timecreated`, `timemodified`, `sortorder`) VALUES
@@ -5095,7 +5543,9 @@ INSERT INTO `mdl_files` (`id`, `contenthash`, `pathnamehash`, `contextid`, `comp
 (20, 'e2421697f7a0ba542ddd5c86773452512e8e3198', 'bba71dac9c1446526395494f01ac15eb04cf8991', 32, 'user', 'draft', 669011343, '/', 'archivoprueba.pdf', 12, 15678, 'application/pdf', 0, NULL, 'admin1 popper', 'allrightsreserved', 1319656216, 1319656216, 0),
 (21, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'e98446f222c028c88434c8da51640fc84262f9b8', 32, 'user', 'draft', 669011343, '/', '.', 12, 0, NULL, 0, NULL, NULL, NULL, 1319656216, 1319656216, 0),
 (24, '305d52acd649d183c8cd55510ef52eef82b0f75c', 'f766a90830b52281ff0397fc15897b8363cdd702', 13, 'user', 'draft', 853088379, '/', '100_0005.JPG', 2, 1144475, 'image/jpeg', 0, NULL, 'admin Usuario', 'allrightsreserved', 1320173001, 1320173001, 0),
-(25, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8d16f30ec7502c9e649299e265501b70e06d1295', 13, 'user', 'draft', 853088379, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1320173001, 1320173001, 0);
+(25, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '8d16f30ec7502c9e649299e265501b70e06d1295', 13, 'user', 'draft', 853088379, '/', '.', 2, 0, NULL, 0, NULL, NULL, NULL, 1320173001, 1320173001, 0),
+(26, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', 'b8e911d13280baf8f75acd133f0fee974d49a318', 39, 'user', 'draft', 276214600, '/asd/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1320681658, 1320681658, 0),
+(27, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '202d8492908dae50f12910274f9e7844617176f6', 39, 'user', 'draft', 276214600, '/', '.', NULL, 0, NULL, 0, NULL, NULL, NULL, 1320681658, 1320681658, 0);
 
 -- --------------------------------------------------------
 
@@ -5115,7 +5565,7 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_active` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores information about which filters are active in which c' AUTO_INCREMENT=13 ;
 
 --
--- Volcado de datos para la tabla `mdl_filter_active`
+-- Volcar la base de datos para la tabla `mdl_filter_active`
 --
 
 INSERT INTO `mdl_filter_active` (`id`, `filter`, `contextid`, `active`, `sortorder`) VALUES
@@ -5149,6 +5599,11 @@ CREATE TABLE IF NOT EXISTS `mdl_filter_config` (
   KEY `mdl_filtconf_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores per-context configuration settings for filters which ' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_filter_config`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5166,6 +5621,11 @@ CREATE TABLE IF NOT EXISTS `mdl_folder` (
   PRIMARY KEY (`id`),
   KEY `mdl_fold_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one folder resource' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_folder`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5202,7 +5662,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums contain and structure discussion' AUTO_INCREMENT=39 ;
 
 --
--- Volcado de datos para la tabla `mdl_forum`
+-- Volcar la base de datos para la tabla `mdl_forum`
 --
 
 INSERT INTO `mdl_forum` (`id`, `course`, `type`, `name`, `intro`, `introformat`, `assessed`, `assesstimestart`, `assesstimefinish`, `scale`, `maxbytes`, `maxattachments`, `forcesubscribe`, `trackingtype`, `rsstype`, `rssarticles`, `timemodified`, `warnafter`, `blockafter`, `blockperiod`, `completiondiscussions`, `completionreplies`, `completionposts`) VALUES
@@ -5240,7 +5700,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_discussions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Forums are composed of discussions' AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `mdl_forum_discussions`
+-- Volcar la base de datos para la tabla `mdl_forum_discussions`
 --
 
 INSERT INTO `mdl_forum_discussions` (`id`, `course`, `forum`, `name`, `firstpost`, `userid`, `groupid`, `assessed`, `timemodified`, `usermodified`, `timestart`, `timeend`) VALUES
@@ -5278,7 +5738,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_posts` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='All posts are stored in this table' AUTO_INCREMENT=24 ;
 
 --
--- Volcado de datos para la tabla `mdl_forum_posts`
+-- Volcar la base de datos para la tabla `mdl_forum_posts`
 --
 
 INSERT INTO `mdl_forum_posts` (`id`, `discussion`, `parent`, `userid`, `created`, `modified`, `mailed`, `subject`, `message`, `messageformat`, `messagetrust`, `attachment`, `totalscore`, `mailnow`) VALUES
@@ -5312,6 +5772,11 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_queue` (
   KEY `mdl_foruqueu_pos_ix` (`postid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For keeping track of posts that will be mailed in digest for' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_forum_queue`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5332,6 +5797,11 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_read` (
   KEY `mdl_foruread_usepos_ix` (`userid`,`postid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tracks each users read posts' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_forum_read`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5348,7 +5818,7 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_subscriptions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Keeps track of who is subscribed to what forum' AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mdl_forum_subscriptions`
+-- Volcar la base de datos para la tabla `mdl_forum_subscriptions`
 --
 
 INSERT INTO `mdl_forum_subscriptions` (`id`, `userid`, `forum`) VALUES
@@ -5367,6 +5837,11 @@ CREATE TABLE IF NOT EXISTS `mdl_forum_track_prefs` (
   PRIMARY KEY (`id`),
   KEY `mdl_forutracpref_usefor_ix` (`userid`,`forumid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tracks each users untracked forums' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_forum_track_prefs`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5406,6 +5881,11 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary` (
   KEY `mdl_glos_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all glossaries' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_glossary`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5419,6 +5899,11 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_alias` (
   PRIMARY KEY (`id`),
   KEY `mdl_glosalia_ent_ix` (`entryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='entries alias' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_glossary_alias`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5434,6 +5919,11 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_gloscate_glo_ix` (`glossaryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all categories for glossary entries' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_glossary_categories`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5464,6 +5954,11 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries` (
   KEY `mdl_glosentr_glo_ix` (`glossaryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='all glossary entries' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_glossary_entries`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -5478,6 +5973,11 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_entries_categories` (
   KEY `mdl_glosentrcate_cat_ix` (`categoryid`),
   KEY `mdl_glosentrcate_ent_ix` (`entryid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='categories of each glossary entry' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_glossary_entries_categories`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5499,7 +5999,7 @@ CREATE TABLE IF NOT EXISTS `mdl_glossary_formats` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Setting of the display formats' AUTO_INCREMENT=8 ;
 
 --
--- Volcado de datos para la tabla `mdl_glossary_formats`
+-- Volcar la base de datos para la tabla `mdl_glossary_formats`
 --
 
 INSERT INTO `mdl_glossary_formats` (`id`, `name`, `popupformatname`, `visible`, `showgroup`, `defaultmode`, `defaulthook`, `sortkey`, `sortorder`) VALUES
@@ -5536,14 +6036,16 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_gradcate_cou_ix` (`courseid`),
   KEY `mdl_gradcate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about categories, used for grou' AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `mdl_grade_categories`
+-- Volcar la base de datos para la tabla `mdl_grade_categories`
 --
 
 INSERT INTO `mdl_grade_categories` (`id`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`, `timecreated`, `timemodified`, `hidden`) VALUES
-(1, 1, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 1317331334, 1317331335, 0);
+(1, 1, NULL, 1, '/1/', '?', 11, 0, 0, 1, 0, 0, 1317331334, 1317331335, 0),
+(2, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0, 1320433746, 1320685651, 0),
+(6, 16, NULL, 1, '/6/', '?', 11, 0, 0, 1, 0, 0, 1320443317, 1320443318, 0);
 
 -- --------------------------------------------------------
 
@@ -5575,10 +6077,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_categories_history` (
   KEY `mdl_gradcatehist_cou_ix` (`courseid`),
   KEY `mdl_gradcatehist_par_ix` (`parent`),
   KEY `mdl_gradcatehist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_categories' AUTO_INCREMENT=75 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_categories' AUTO_INCREMENT=96 ;
 
 --
--- Volcado de datos para la tabla `mdl_grade_categories_history`
+-- Volcar la base de datos para la tabla `mdl_grade_categories_history`
 --
 
 INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `parent`, `depth`, `path`, `fullname`, `aggregation`, `keephigh`, `droplow`, `aggregateonlygraded`, `aggregateoutcomes`, `aggregatesubcats`) VALUES
@@ -5655,7 +6157,28 @@ INSERT INTO `mdl_grade_categories_history` (`id`, `action`, `oldid`, `source`, `
 (71, 2, 13, 'system', 1320295569, 14, 15, NULL, 1, '/13/', '?', 11, 0, 0, 1, 0, 0),
 (72, 3, 13, 'coursedelete', 1320296219, 2, 15, NULL, 1, '/13/', '?', 11, 0, 0, 1, 0, 0),
 (73, 3, 8, 'coursedelete', 1320296240, 2, 14, NULL, 1, '/8/', '?', 11, 0, 0, 1, 0, 0),
-(74, 3, 12, 'coursedelete', 1320296249, 2, 13, NULL, 1, '/12/', '?', 11, 0, 0, 1, 0, 0);
+(74, 3, 12, 'coursedelete', 1320296249, 2, 13, NULL, 1, '/12/', '?', 11, 0, 0, 1, 0, 0),
+(75, 1, 2, 'system', 1320433746, 14, 18, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(76, 2, 2, 'system', 1320433746, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(77, 1, 3, 'system', 1320440916, 14, 16, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(78, 2, 3, 'system', 1320440916, 14, 16, NULL, 1, '/3/', '?', 11, 0, 0, 1, 0, 0),
+(79, 3, 3, 'coursedelete', 1320440944, 14, 16, NULL, 1, '/3/', '?', 11, 0, 0, 1, 0, 0),
+(80, 1, 4, 'system', 1320440944, 14, 16, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(81, 2, 4, 'system', 1320440945, 14, 16, NULL, 1, '/4/', '?', 11, 0, 0, 1, 0, 0),
+(82, 3, 4, 'coursedelete', 1320441124, 14, 16, NULL, 1, '/4/', '?', 11, 0, 0, 1, 0, 0),
+(83, 1, 5, 'system', 1320441124, 14, 16, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(84, 2, 5, 'system', 1320441124, 14, 16, NULL, 1, '/5/', '?', 11, 0, 0, 1, 0, 0),
+(85, 3, 5, 'coursedelete', 1320443317, 14, 16, NULL, 1, '/5/', '?', 11, 0, 0, 1, 0, 0),
+(86, 1, 6, 'system', 1320443317, 14, 16, NULL, 0, NULL, '?', 11, 0, 0, 1, 0, 0),
+(87, 2, 6, 'system', 1320443318, 14, 16, NULL, 1, '/6/', '?', 11, 0, 0, 1, 0, 0),
+(88, 2, 2, NULL, 1320681592, 2, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(89, 2, 2, NULL, 1320681734, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(90, 2, 2, NULL, 1320682735, 2, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(91, 2, 2, NULL, 1320683136, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(92, 2, 2, NULL, 1320683640, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(93, 2, 2, NULL, 1320684665, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(94, 2, 2, NULL, 1320685329, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0),
+(95, 2, 2, NULL, 1320685651, 14, 18, NULL, 1, '/2/', '?', 11, 0, 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -5692,7 +6215,20 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades` (
   KEY `mdl_gradgrad_use_ix` (`userid`),
   KEY `mdl_gradgrad_raw_ix` (`rawscaleid`),
   KEY `mdl_gradgrad_use2_ix` (`usermodified`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='grade_grades  This table keeps individual grades for each us' AUTO_INCREMENT=10 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_grades`
+--
+
+INSERT INTO `mdl_grade_grades` (`id`, `itemid`, `userid`, `rawgrade`, `rawgrademax`, `rawgrademin`, `rawscaleid`, `usermodified`, `finalgrade`, `hidden`, `locked`, `locktime`, `exported`, `overridden`, `excluded`, `feedback`, `feedbackformat`, `information`, `informationformat`, `timecreated`, `timemodified`) VALUES
+(1, 2, 15, NULL, 100.00000, 0.00000, NULL, 14, 5.00000, 0, 0, 0, 0, 1320440867, 0, NULL, 0, NULL, 0, NULL, 1320440867),
+(2, 2, 13, NULL, 100.00000, 0.00000, NULL, 14, 10.00000, 0, 0, 0, 0, 1320440867, 0, NULL, 0, NULL, 0, NULL, 1320440867),
+(5, 11, 13, 10.00000, 10.00000, 0.00000, NULL, 13, 10.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1320684391, 1320684391),
+(6, 14, 13, 100.00000, 100.00000, 0.00000, NULL, 14, 100.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1320685685, 1320685889),
+(7, 14, 15, 50.00000, 100.00000, 0.00000, NULL, 14, 50.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1320685710, 1320685917),
+(8, 14, 14, NULL, 100.00000, 0.00000, NULL, 14, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, 1320685898, NULL),
+(9, 2, 14, NULL, 100.00000, 0.00000, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -5733,10 +6269,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_grades_history` (
   KEY `mdl_gradgradhist_raw_ix` (`rawscaleid`),
   KEY `mdl_gradgradhist_use2_ix` (`usermodified`),
   KEY `mdl_gradgradhist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=34 ;
 
 --
--- Volcado de datos para la tabla `mdl_grade_grades_history`
+-- Volcar la base de datos para la tabla `mdl_grade_grades_history`
 --
 
 INSERT INTO `mdl_grade_grades_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `itemid`, `userid`, `rawgrade`, `rawgrademax`, `rawgrademin`, `rawscaleid`, `usermodified`, `finalgrade`, `hidden`, `locked`, `locktime`, `exported`, `overridden`, `excluded`, `feedback`, `feedbackformat`, `information`, `informationformat`) VALUES
@@ -5752,7 +6288,27 @@ INSERT INTO `mdl_grade_grades_history` (`id`, `action`, `oldid`, `source`, `time
 (10, 3, 1, 'userdelete', 1320293673, 14, 2, 13, NULL, 100.00000, 0.00000, NULL, 14, 10.00000, 0, 0, 0, 0, 1320247881, 0, NULL, 0, NULL, 0),
 (11, 3, 2, 'userdelete', 1320295568, 14, 3, 13, NULL, 100.00000, 0.00000, NULL, 14, 7.00000, 0, 0, 0, 0, 1320289078, 0, NULL, 0, NULL, 0),
 (12, 3, 4, 'userdelete', 1320295568, 14, 3, 15, NULL, 100.00000, 0.00000, NULL, 14, 9.00000, 0, 0, 0, 0, 1320289838, 0, NULL, 0, NULL, 0),
-(13, 3, 3, 'userdelete', 1320295568, 14, 3, 17, NULL, 100.00000, 0.00000, NULL, 14, 6.00000, 0, 0, 0, 0, 1320289837, 0, NULL, 0, NULL, 0);
+(13, 3, 3, 'userdelete', 1320295568, 14, 3, 17, NULL, 100.00000, 0.00000, NULL, 14, 6.00000, 0, 0, 0, 0, 1320289837, 0, NULL, 0, NULL, 0),
+(14, 1, 1, 'gradebook', 1320440867, 14, 2, 15, NULL, 100.00000, 0.00000, NULL, 14, 5.00000, 0, 0, 0, 0, 1320440867, 0, NULL, 0, NULL, 0),
+(15, 1, 2, 'gradebook', 1320440867, 14, 2, 13, NULL, 100.00000, 0.00000, NULL, 14, 10.00000, 0, 0, 0, 0, 1320440867, 0, NULL, 0, NULL, 0),
+(16, 1, 3, 'gradebook', 1320443293, 14, 5, 15, NULL, 100.00000, 0.00000, NULL, 14, 7.00000, 0, 0, 0, 0, 1320443293, 0, NULL, 0, NULL, 0),
+(17, 1, 4, 'gradebook', 1320443294, 14, 5, 13, NULL, 100.00000, 0.00000, NULL, 14, 10.00000, 0, 0, 0, 0, 1320443294, 0, NULL, 0, NULL, 0),
+(18, 3, 4, 'userdelete', 1320443316, 14, 5, 13, NULL, 100.00000, 0.00000, NULL, 14, 10.00000, 0, 0, 0, 0, 1320443294, 0, NULL, 0, NULL, 0),
+(19, 3, 3, 'userdelete', 1320443317, 14, 5, 15, NULL, 100.00000, 0.00000, NULL, 14, 7.00000, 0, 0, 0, 0, 1320443293, 0, NULL, 0, NULL, 0),
+(20, 1, 3, 'mod/assignment', 1320681792, 13, 8, 13, NULL, 100.00000, 0.00000, NULL, 13, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(21, 2, 3, 'mod/assignment', 1320681902, 14, 8, 13, 40.00000, 100.00000, 0.00000, NULL, 14, 40.00000, 0, 0, 0, 0, 0, 0, '<p>Sos medio ...</p>', 0, NULL, 0),
+(22, 1, 4, 'mod/assignment', 1320682068, 15, 8, 15, NULL, 100.00000, 0.00000, NULL, 15, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(23, 2, 3, 'mod/assignment', 1320682108, 14, 8, 13, 40.00000, 100.00000, 0.00000, NULL, 14, 40.00000, 0, 0, 0, 0, 0, 0, '<p>Sos medio ...</p>', 0, NULL, 0),
+(24, 2, 4, 'mod/assignment', 1320682133, 14, 8, 15, 100.00000, 100.00000, 0.00000, NULL, 14, 100.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(25, 1, 5, 'mod/quiz', 1320684391, 13, 11, 13, 10.00000, 10.00000, 0.00000, NULL, 13, 10.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(26, 3, 3, 'mod/assignment', 1320685418, 14, 8, 13, 40.00000, 100.00000, 0.00000, NULL, 14, 40.00000, 0, 0, 0, 0, 0, 0, '<p>Sos medio ...</p>', 0, NULL, 0),
+(27, 3, 4, 'mod/assignment', 1320685418, 14, 8, 15, 100.00000, 100.00000, 0.00000, NULL, 14, 100.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(28, 1, 6, 'mod/assignment', 1320685685, 13, 14, 13, NULL, 100.00000, 0.00000, NULL, 13, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(29, 1, 7, 'mod/assignment', 1320685710, 15, 14, 15, NULL, 100.00000, 0.00000, NULL, 15, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(30, 2, 6, 'mod/assignment', 1320685889, 14, 14, 13, 100.00000, 100.00000, 0.00000, NULL, 14, 100.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(31, 1, 8, 'mod/assignment', 1320685898, 14, 14, 14, NULL, 100.00000, 0.00000, NULL, 14, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(32, 1, 9, 'system', 1320685898, 14, 2, 14, NULL, 100.00000, 0.00000, NULL, NULL, NULL, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0),
+(33, 2, 7, 'mod/assignment', 1320685917, 14, 14, 15, 50.00000, 100.00000, 0.00000, NULL, 14, 50.00000, 0, 0, 0, 0, 0, 0, NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -5768,6 +6324,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_newitem` (
   PRIMARY KEY (`id`),
   KEY `mdl_gradimponewi_imp_ix` (`importer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='temporary table for storing new grade_item names from grade ' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_import_newitem`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5789,6 +6350,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_import_values` (
   KEY `mdl_gradimpovalu_new_ix` (`newgradeitem`),
   KEY `mdl_gradimpovalu_imp_ix` (`importer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Temporary table for importing grades' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_import_values`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5835,14 +6401,19 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items` (
   KEY `mdl_graditem_cat_ix` (`categoryid`),
   KEY `mdl_graditem_sca_ix` (`scaleid`),
   KEY `mdl_graditem_out_ix` (`outcomeid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about gradeable items (ie colum' AUTO_INCREMENT=15 ;
 
 --
--- Volcado de datos para la tabla `mdl_grade_items`
+-- Volcar la base de datos para la tabla `mdl_grade_items`
 --
 
 INSERT INTO `mdl_grade_items` (`id`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `display`, `decimals`, `hidden`, `locked`, `locktime`, `needsupdate`, `timecreated`, `timemodified`) VALUES
-(1, 1, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, NULL, 0, 0, 0, 0, 1317331334, 1317331334);
+(1, 1, NULL, NULL, 'course', NULL, 1, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, NULL, 0, 0, 0, 0, 1317331334, 1317331334),
+(2, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, NULL, 0, 0, 0, 0, 1320433746, 1320685651),
+(6, 16, NULL, NULL, 'course', NULL, 6, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, NULL, 0, 0, 0, 0, 1320443317, 1320443317),
+(11, 18, 2, 'Primer examen', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 4, 0, NULL, 0, 0, 0, 0, 1320683639, 1320683640),
+(12, 18, 2, 'Segundo examen', 'mod', 'quiz', 2, 0, NULL, '', NULL, 0, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 5, 0, NULL, 0, 0, 0, 0, 1320684664, 1320684746),
+(14, 18, 2, 'Responder1', 'mod', 'assignment', 5, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, NULL, 0, 0, 0, 0, 1320685650, 1320685651);
 
 -- --------------------------------------------------------
 
@@ -5889,10 +6460,10 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_items_history` (
   KEY `mdl_graditemhist_sca_ix` (`scaleid`),
   KEY `mdl_graditemhist_out_ix` (`outcomeid`),
   KEY `mdl_graditemhist_log_ix` (`loggeduser`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_items' AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History of grade_items' AUTO_INCREMENT=88 ;
 
 --
--- Volcado de datos para la tabla `mdl_grade_items_history`
+-- Volcar la base de datos para la tabla `mdl_grade_items_history`
 --
 
 INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timemodified`, `loggeduser`, `courseid`, `categoryid`, `itemname`, `itemtype`, `itemmodule`, `iteminstance`, `itemnumber`, `iteminfo`, `idnumber`, `calculation`, `gradetype`, `grademax`, `grademin`, `scaleid`, `outcomeid`, `gradepass`, `multfactor`, `plusfactor`, `aggregationcoef`, `sortorder`, `hidden`, `locked`, `locktime`, `needsupdate`) VALUES
@@ -5944,7 +6515,45 @@ INSERT INTO `mdl_grade_items_history` (`id`, `action`, `oldid`, `source`, `timem
 (46, 1, 13, 'system', 1320295569, 14, 15, NULL, NULL, 'course', NULL, 13, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
 (47, 3, 13, 'coursedelete', 1320296219, 2, 15, NULL, NULL, 'course', NULL, 13, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
 (48, 3, 8, 'coursedelete', 1320296240, 2, 14, NULL, NULL, 'course', NULL, 8, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
-(49, 3, 12, 'coursedelete', 1320296249, 2, 13, NULL, NULL, 'course', NULL, 12, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0);
+(49, 3, 12, 'coursedelete', 1320296249, 2, 13, NULL, NULL, 'course', NULL, 12, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
+(50, 1, 2, 'system', 1320433746, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(51, 1, 3, 'system', 1320440916, 14, 16, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(52, 3, 3, 'coursedelete', 1320440944, 14, 16, NULL, NULL, 'course', NULL, 3, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
+(53, 1, 4, 'system', 1320440945, 14, 16, NULL, NULL, 'course', NULL, 4, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(54, 3, 4, 'coursedelete', 1320441124, 14, 16, NULL, NULL, 'course', NULL, 4, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
+(55, 1, 5, 'system', 1320441124, 14, 16, NULL, NULL, 'course', NULL, 5, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(56, 3, 5, 'coursedelete', 1320443317, 14, 16, NULL, NULL, 'course', NULL, 5, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 0),
+(57, 1, 6, 'system', 1320443318, 14, 16, NULL, NULL, 'course', NULL, 6, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(58, 1, 7, NULL, 1320681592, 2, 18, 2, 'POLO', 'mod', 'assignment', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(59, 2, 7, NULL, 1320681592, 2, 18, 2, 'POLO', 'mod', 'assignment', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(60, 2, 2, NULL, 1320681592, 2, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(61, 3, 7, 'mod/assignment', 1320681695, 14, 18, 2, 'POLO', 'mod', 'assignment', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(62, 1, 8, NULL, 1320681734, 14, 18, 2, 'Respondan', 'mod', 'assignment', 2, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(63, 2, 8, NULL, 1320681734, 14, 18, 2, 'Respondan', 'mod', 'assignment', 2, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(64, 2, 2, NULL, 1320681734, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(65, 1, 9, NULL, 1320682735, 2, 18, 2, 'Ordenar un vector', 'mod', 'lesson', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(66, 2, 9, NULL, 1320682735, 2, 18, 2, 'Ordenar un vector', 'mod', 'lesson', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(67, 2, 2, NULL, 1320682735, 2, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(68, 3, 9, 'mod/lesson', 1320683036, 14, 18, 2, 'Ordenar un vector', 'mod', 'lesson', 1, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(69, 1, 10, NULL, 1320683136, 14, 18, 2, 'Investigar1', 'mod', 'assignment', 3, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(70, 2, 10, NULL, 1320683136, 14, 18, 2, 'Investigar1', 'mod', 'assignment', 3, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(71, 2, 2, NULL, 1320683136, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(72, 1, 11, NULL, 1320683639, 14, 18, 2, 'Primer examen', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 4, 0, 0, 0, 1),
+(73, 2, 11, NULL, 1320683640, 14, 18, 2, 'Primer examen', 'mod', 'quiz', 1, 0, NULL, '', NULL, 1, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 4, 0, 0, 0, 1),
+(74, 2, 2, NULL, 1320683640, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(75, 1, 12, NULL, 1320684664, 14, 18, 2, 'Segundo examen', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 5, 0, 0, 0, 1),
+(76, 2, 12, NULL, 1320684665, 14, 18, 2, 'Segundo examen', 'mod', 'quiz', 2, 0, NULL, '', NULL, 1, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 5, 0, 0, 0, 1),
+(77, 2, 2, NULL, 1320684665, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(78, 2, 12, NULL, 1320684746, 14, 18, 2, 'Segundo examen', 'mod', 'quiz', 2, 0, NULL, '', NULL, 0, 10.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 5, 0, 0, 0, 1),
+(79, 1, 13, NULL, 1320685329, 14, 18, 2, 'agdrfav', 'mod', 'assignment', 4, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, 0, 0, 1),
+(80, 2, 13, NULL, 1320685329, 14, 18, 2, 'agdrfav', 'mod', 'assignment', 4, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, 0, 0, 1),
+(81, 2, 2, NULL, 1320685329, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1),
+(82, 3, 13, 'mod/assignment', 1320685377, 14, 18, 2, 'agdrfav', 'mod', 'assignment', 4, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, 0, 0, 1),
+(83, 3, 10, 'mod/assignment', 1320685409, 14, 18, 2, 'Investigar1', 'mod', 'assignment', 3, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 3, 0, 0, 0, 1),
+(84, 3, 8, 'mod/assignment', 1320685418, 14, 18, 2, 'Respondan', 'mod', 'assignment', 2, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 2, 0, 0, 0, 1),
+(85, 1, 14, NULL, 1320685651, 14, 18, 2, 'Responder1', 'mod', 'assignment', 5, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, 0, 0, 1),
+(86, 2, 14, NULL, 1320685651, 14, 18, 2, 'Responder1', 'mod', 'assignment', 5, 0, NULL, '', NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 6, 0, 0, 0, 1),
+(87, 2, 2, NULL, 1320685651, 14, 18, NULL, NULL, 'course', NULL, 2, NULL, NULL, NULL, NULL, 1, 100.00000, 0.00000, NULL, NULL, 0.00000, 1.00000, 0.00000, 0.00000, 1, 0, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -5960,6 +6569,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_letters` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_gradlett_conlowlet_uix` (`contextid`,`lowerboundary`,`letter`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Repository for grade letters, for courses and other moodle e' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_letters`
+--
+
 
 -- --------------------------------------------------------
 
@@ -5985,6 +6599,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes` (
   KEY `mdl_gradoutc_use_ix` (`usermodified`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table describes the outcomes used in the system. An out' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_grade_outcomes`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6000,6 +6619,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_courses` (
   KEY `mdl_gradoutccour_cou_ix` (`courseid`),
   KEY `mdl_gradoutccour_out_ix` (`outcomeid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='stores what outcomes are used in what courses.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_outcomes_courses`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6027,6 +6651,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_outcomes_history` (
   KEY `mdl_gradoutchist_log_ix` (`loggeduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_grade_outcomes_history`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6042,6 +6671,11 @@ CREATE TABLE IF NOT EXISTS `mdl_grade_settings` (
   UNIQUE KEY `mdl_gradsett_counam_uix` (`courseid`,`name`),
   KEY `mdl_gradsett_cou_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='gradebook settings' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_grade_settings`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6062,6 +6696,11 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings` (
   KEY `mdl_grou_cou2_ix` (`courseid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A grouping is a collection of groups. WAS: groups_groupings' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_groupings`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6077,6 +6716,11 @@ CREATE TABLE IF NOT EXISTS `mdl_groupings_groups` (
   KEY `mdl_grougrou_gro_ix` (`groupingid`),
   KEY `mdl_grougrou_gro2_ix` (`groupid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a grouping to a group (note, groups can be in multiple ' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_groupings_groups`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6097,7 +6741,15 @@ CREATE TABLE IF NOT EXISTS `mdl_groups` (
   `timemodified` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_grou_cou_ix` (`courseid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record represents a group.' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record represents a group.' AUTO_INCREMENT=4 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_groups`
+--
+
+INSERT INTO `mdl_groups` (`id`, `courseid`, `name`, `description`, `descriptionformat`, `enrolmentkey`, `picture`, `hidepicture`, `timecreated`, `timemodified`) VALUES
+(1, 18, 'Grupo1', '', 1, '', 0, 0, 1320433808, 1320434548),
+(2, 18, 'Grupo2', '', 1, '', 0, 0, 1320434415, 1320682622);
 
 -- --------------------------------------------------------
 
@@ -6113,7 +6765,17 @@ CREATE TABLE IF NOT EXISTS `mdl_groups_members` (
   PRIMARY KEY (`id`),
   KEY `mdl_groumemb_gro_ix` (`groupid`),
   KEY `mdl_groumemb_use_ix` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a user to a group.' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Link a user to a group.' AUTO_INCREMENT=5 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_groups_members`
+--
+
+INSERT INTO `mdl_groups_members` (`id`, `groupid`, `userid`, `timeadded`) VALUES
+(1, 1, 13, 1320433820),
+(2, 2, 14, 1320434431),
+(3, 1, 15, 1320434548),
+(4, 2, 13, 1320682622);
 
 -- --------------------------------------------------------
 
@@ -6135,6 +6797,11 @@ CREATE TABLE IF NOT EXISTS `mdl_imscp` (
   KEY `mdl_imsc_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one imscp resource' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_imscp`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6151,6 +6818,11 @@ CREATE TABLE IF NOT EXISTS `mdl_label` (
   PRIMARY KEY (`id`),
   KEY `mdl_labe_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines labels' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_label`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6201,7 +6873,12 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson` (
   `timemodified` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_less_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_lesson`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6226,7 +6903,12 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_answers` (
   PRIMARY KEY (`id`),
   KEY `mdl_lessansw_les_ix` (`lessonid`),
   KEY `mdl_lessansw_pag_ix` (`pageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_answers' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_answers' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_answers`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6251,6 +6933,11 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_attempts` (
   KEY `mdl_lessatte_ans_ix` (`answerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_attempts' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_attempts`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6269,7 +6956,12 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_branch` (
   KEY `mdl_lessbran_use_ix` (`userid`),
   KEY `mdl_lessbran_les_ix` (`lessonid`),
   KEY `mdl_lessbran_pag_ix` (`pageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='branches for each lesson/user' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='branches for each lesson/user' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_branch`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6289,6 +6981,11 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_grades` (
   KEY `mdl_lessgrad_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_grades' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_grades`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6305,6 +7002,11 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_high_scores` (
   KEY `mdl_lesshighscor_use_ix` (`userid`),
   KEY `mdl_lesshighscor_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='high scores for each lesson' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_high_scores`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6328,7 +7030,12 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_pages` (
   `contentsformat` tinyint(2) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_lesspage_les_ix` (`lessonid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_pages' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines lesson_pages' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_pages`
+--
+
 
 -- --------------------------------------------------------
 
@@ -6347,6 +7054,11 @@ CREATE TABLE IF NOT EXISTS `mdl_lesson_timer` (
   KEY `mdl_lesstime_les_ix` (`lessonid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='lesson timer for each lesson' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_lesson_timer`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -6364,7 +7076,7 @@ CREATE TABLE IF NOT EXISTS `mdl_license` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='store licenses used by moodle' AUTO_INCREMENT=10 ;
 
 --
--- Volcado de datos para la tabla `mdl_license`
+-- Volcar la base de datos para la tabla `mdl_license`
 --
 
 INSERT INTO `mdl_license` (`id`, `shortname`, `fullname`, `source`, `enabled`, `version`) VALUES
@@ -6401,10 +7113,10 @@ CREATE TABLE IF NOT EXISTS `mdl_log` (
   KEY `mdl_log_act_ix` (`action`),
   KEY `mdl_log_usecou_ix` (`userid`,`course`),
   KEY `mdl_log_cmi_ix` (`cmid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=2924 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Every action is logged as far as possible' AUTO_INCREMENT=3353 ;
 
 --
--- Volcado de datos para la tabla `mdl_log`
+-- Volcar la base de datos para la tabla `mdl_log`
 --
 
 INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`, `action`, `url`, `info`) VALUES
@@ -8467,18 +9179,13 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (2829, 1320296401, 2, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
 (2830, 1320296408, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
 (2831, 1320296409, 12, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
-(2832, 1320296421, 12, '0:0:0:0:0:0:0:1', 16, 'course', 0, 'enrol', '../enrol/users.php?id=16', '16'),
 (2833, 1320296427, 12, '0:0:0:0:0:0:0:1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
 (2834, 1320296440, 12, '0:0:0:0:0:0:0:1', 18, 'course', 0, 'enrol', '../enrol/users.php?id=18', '18'),
 (2835, 1320296443, 12, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
 (2836, 1320296449, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
 (2837, 1320296450, 14, '0:0:0:0:0:0:0:1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
-(2838, 1320296463, 14, '0:0:0:0:0:0:0:1', 16, 'course', 0, 'enrol', '../enrol/users.php?id=16', '16'),
-(2839, 1320296465, 14, '0:0:0:0:0:0:0:1', 16, 'course', 0, 'enrol', '../enrol/users.php?id=16', '16'),
-(2840, 1320296472, 14, '0:0:0:0:0:0:0:1', 16, 'course', 0, 'enrol', '../enrol/users.php?id=16', '16'),
 (2841, 1320296485, 14, '0:0:0:0:0:0:0:1', 18, 'course', 0, 'enrol', '../enrol/users.php?id=18', '18'),
 (2842, 1320296490, 14, '0:0:0:0:0:0:0:1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
-(2843, 1320296502, 14, '0:0:0:0:0:0:0:1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
 (2844, 1320296541, 14, '0:0:0:0:0:0:0:1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
 (2845, 1320356283, 1, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '1'),
 (2846, 1320356284, 1, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
@@ -8550,15 +9257,429 @@ INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`,
 (2912, 1320357518, 11, '127.0.0.1', 1, 'forum', 5, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=5', '5'),
 (2913, 1320357537, 11, '127.0.0.1', 1, 'forum', 5, 'add post', 'discuss.php?d=5&parent=22', '22'),
 (2914, 1320357540, 11, '127.0.0.1', 1, 'forum', 5, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=5', '5'),
-(2915, 1320357595, 11, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
-(2916, 1320357607, 11, '127.0.0.1', 16, 'forum', 42, 'view forum', 'view.php?id=42', '36'),
 (2917, 1320357615, 11, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
 (2918, 1320357618, 11, '127.0.0.1', 18, 'forum', 40, 'view forum', 'view.php?id=40', '34'),
 (2919, 1320357621, 11, '127.0.0.1', 18, 'forum', 40, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=6', '6'),
 (2920, 1320357639, 11, '127.0.0.1', 18, 'forum', 40, 'add post', 'discuss.php?d=6&parent=23', '23'),
 (2921, 1320357641, 11, '127.0.0.1', 18, 'forum', 40, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=6', '6'),
 (2922, 1320357642, 11, '127.0.0.1', 18, 'forum', 40, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=6', '6'),
-(2923, 1320357657, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11');
+(2923, 1320357657, 11, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=11&course=1', '11'),
+(2924, 1320433607, 1, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '1'),
+(2925, 1320433608, 1, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2926, 1320433615, 1, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2929, 1320433630, 1, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=1&course=1', '1'),
+(2930, 1320433643, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(2931, 1320433644, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2932, 1320433652, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2934, 1320433671, 13, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(2935, 1320433676, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(2936, 1320433688, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'meadiadorpopper1'),
+(2937, 1320433697, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2938, 1320433698, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2939, 1320433703, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2940, 1320433746, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/url/view.php?id=45', 'url 1'),
+(2941, 1320433746, 14, '127.0.0.1', 18, 'url', 45, 'add', 'view.php?id=45', '1'),
+(2942, 1320433747, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2943, 1320433776, 14, '127.0.0.1', 18, 'url', 45, 'view', 'view.php?id=45', '1'),
+(2944, 1320433825, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2945, 1320434079, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(2946, 1320434087, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(2947, 1320434088, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2948, 1320434319, 2, '127.0.0.1', 1, 'role', 0, 'edit', 'admin/roles/define.php?action=view&roleid=5', 'Aprendiz'),
+(2949, 1320434339, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(2950, 1320434348, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(2951, 1320434349, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2952, 1320434467, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(2953, 1320434476, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2954, 1320434477, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2955, 1320434512, 14, '127.0.0.1', 18, 'course', 0, 'enrol', '../enrol/users.php?id=18', '18'),
+(2956, 1320434569, 14, '127.0.0.1', 1, 'course', 0, 'user report', 'user.php?id=1&user=14&mode=todaylogs', '14'),
+(2957, 1320434671, 14, '127.0.0.1', 1, 'course', 0, 'user report', 'user.php?id=1&user=14&mode=todaylogs', '14'),
+(2958, 1320434985, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(2959, 1320434990, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2960, 1320434990, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2961, 1320434996, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(2962, 1320435003, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(2963, 1320435004, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2964, 1320435010, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2965, 1320435037, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(2966, 1320440616, 1, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '1'),
+(2967, 1320440617, 1, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2968, 1320440750, 1, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2969, 1320440753, 1, '127.0.0.1', 18, 'forum', 40, 'view forum', 'view.php?id=40', '34'),
+(2970, 1320440756, 1, '127.0.0.1', 18, 'forum', 40, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=6', '6'),
+(2971, 1320440772, 1, '127.0.0.1', 18, 'forum', 39, 'view forum', 'view.php?id=39', '33'),
+(2972, 1320440778, 1, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=1&course=1', '1'),
+(2973, 1320440829, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2974, 1320440830, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2975, 1320440832, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=14&course=1', '14'),
+(2976, 1320440833, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2977, 1320440843, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2978, 1320440906, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2981, 1320441026, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(2982, 1320441038, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'adminpopper'),
+(2983, 1320441043, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(2984, 1320441044, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2985, 1320441072, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(2986, 1320441091, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2987, 1320441092, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2990, 1320441143, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(2991, 1320441174, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(2992, 1320441175, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(2993, 1320441181, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2994, 1320441207, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(2995, 1320441293, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(2996, 1320441822, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'mediadorpopper1'),
+(2997, 1320441827, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(2998, 1320441828, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3001, 1320442277, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3002, 1320442294, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'adminpopper1'),
+(3003, 1320442299, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(3004, 1320442301, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3005, 1320443127, 12, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3006, 1320443129, 12, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3007, 1320443146, 12, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=12&course=1', '12'),
+(3008, 1320443159, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3009, 1320443161, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3011, 1320443218, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3016, 1320443322, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3017, 1320443364, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3018, 1320443377, 12, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '12'),
+(3019, 1320443378, 12, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3020, 1320443400, 12, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3021, 1320681490, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3022, 1320681492, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3023, 1320681520, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3024, 1320681592, 2, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=1', 'POLO'),
+(3025, 1320681593, 2, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/assignment/view.php?id=46', 'assignment 1'),
+(3026, 1320681593, 2, '127.0.0.1', 18, 'assignment', 46, 'add', 'view.php?id=46', '1'),
+(3027, 1320681593, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3028, 1320681598, 2, '127.0.0.1', 18, 'assignment', 46, 'view', 'view.php?id=46', '1'),
+(3029, 1320681611, 2, '127.0.0.1', 18, 'assignment', 46, 'view', 'view.php?id=46', '1'),
+(3030, 1320681620, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3031, 1320681630, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(3032, 1320681631, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3033, 1320681635, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18');
+INSERT INTO `mdl_log` (`id`, `time`, `userid`, `ip`, `course`, `module`, `cmid`, `action`, `url`, `info`) VALUES
+(3034, 1320681637, 13, '127.0.0.1', 18, 'assignment', 46, 'view', 'view.php?id=46', '1'),
+(3035, 1320681671, 13, '127.0.0.1', 18, 'assignment', 46, 'view', 'view.php?id=46', '1'),
+(3036, 1320681673, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(3037, 1320681682, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3038, 1320681683, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3039, 1320681687, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3040, 1320681696, 14, '127.0.0.1', 18, 'course', 46, 'delete mod', 'view.php?id=18', 'assignment 1'),
+(3041, 1320681696, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3042, 1320681733, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=2', 'Respondan'),
+(3043, 1320681734, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/assignment/view.php?id=47', 'assignment 2'),
+(3044, 1320681734, 14, '127.0.0.1', 18, 'assignment', 47, 'add', 'view.php?id=47', '2'),
+(3045, 1320681735, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3046, 1320681741, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3047, 1320681745, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3048, 1320681748, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3049, 1320681772, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(3050, 1320681773, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3051, 1320681776, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3052, 1320681778, 13, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3053, 1320681780, 13, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3054, 1320681793, 13, '127.0.0.1', 18, 'assignment', 47, 'upload', 'view.php?a=2', '2'),
+(3055, 1320681793, 13, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3056, 1320681804, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(3057, 1320681812, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3058, 1320681813, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3059, 1320681817, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3060, 1320681820, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3061, 1320681825, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3062, 1320681828, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3063, 1320681831, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3064, 1320681839, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3065, 1320681841, 14, '127.0.0.1', 18, 'assignment', 47, 'view submission', 'submissions.php?id=47', '2'),
+(3066, 1320681902, 14, '127.0.0.1', 18, 'assignment', 47, 'update grades', 'submissions.php?id=47&user=13', '13'),
+(3067, 1320681902, 14, '127.0.0.1', 18, 'assignment', 47, 'view submission', 'submissions.php?id=47', '2'),
+(3068, 1320681916, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3069, 1320682036, 15, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '15'),
+(3070, 1320682037, 15, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3071, 1320682041, 15, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3072, 1320682054, 15, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3073, 1320682059, 15, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3074, 1320682068, 15, '127.0.0.1', 18, 'assignment', 47, 'upload', 'view.php?a=2', '2'),
+(3075, 1320682069, 15, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3076, 1320682073, 15, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=15&course=1', '15'),
+(3077, 1320682082, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3078, 1320682083, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3079, 1320682087, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3080, 1320682091, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3081, 1320682095, 14, '127.0.0.1', 18, 'assignment', 47, 'view', 'view.php?id=47', '2'),
+(3082, 1320682097, 14, '127.0.0.1', 18, 'assignment', 47, 'view submission', 'submissions.php?id=47', '2'),
+(3083, 1320682108, 14, '127.0.0.1', 18, 'assignment', 47, 'update grades', 'submissions.php?id=47&user=13', '13'),
+(3084, 1320682108, 14, '127.0.0.1', 18, 'assignment', 47, 'view submission', 'submissions.php?id=47', '2'),
+(3085, 1320682133, 14, '127.0.0.1', 18, 'assignment', 47, 'update grades', 'submissions.php?id=47&user=15', '15'),
+(3086, 1320682133, 14, '127.0.0.1', 18, 'assignment', 47, 'view submission', 'submissions.php?id=47', '2'),
+(3087, 1320682150, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3088, 1320682199, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3089, 1320682200, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3090, 1320682211, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3091, 1320682512, 2, '127.0.0.1', 18, 'user', 0, 'view all', 'index.php?id=18', ''),
+(3092, 1320682518, 2, '127.0.0.1', 18, 'user', 0, 'view', 'view.php?id=15&course=18', '15'),
+(3093, 1320682567, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3094, 1320682655, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3095, 1320682735, 2, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/lesson/view.php?id=48', 'lesson 1'),
+(3096, 1320682735, 2, '127.0.0.1', 18, 'lesson', 48, 'add', 'view.php?id=48', '1'),
+(3097, 1320682736, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3098, 1320682767, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3099, 1320682778, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3100, 1320682788, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3101, 1320682789, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3102, 1320682794, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3103, 1320682865, 14, '127.0.0.1', 18, 'lesson', 48, 'view', 'view.php?id=48', '1'),
+(3104, 1320682869, 14, '127.0.0.1', 18, 'lesson', 48, 'view', 'view.php?id=48', '1'),
+(3105, 1320682877, 14, '127.0.0.1', 18, 'lesson', 48, 'view grade', 'essay.php?id=48', 'Calificar ensayos'),
+(3106, 1320683030, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3107, 1320683036, 14, '127.0.0.1', 18, 'course', 48, 'delete mod', 'view.php?id=18', 'lesson 1'),
+(3108, 1320683037, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3109, 1320683070, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3110, 1320683135, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=3', 'Investigar1'),
+(3111, 1320683136, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/assignment/view.php?id=49', 'assignment 3'),
+(3112, 1320683136, 14, '127.0.0.1', 18, 'assignment', 49, 'add', 'view.php?id=49', '3'),
+(3113, 1320683137, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3114, 1320683145, 14, '127.0.0.1', 18, 'assignment', 49, 'view', 'view.php?id=49', '3'),
+(3115, 1320683152, 14, '127.0.0.1', 18, 'assignment', 49, 'view submission', 'submissions.php?id=49', '3'),
+(3116, 1320683164, 14, '127.0.0.1', 18, 'assignment', 49, 'view submission', 'submissions.php?id=49', '3'),
+(3117, 1320683490, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3118, 1320683640, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/quiz/view.php?id=50', 'quiz 1'),
+(3119, 1320683640, 14, '127.0.0.1', 18, 'quiz', 50, 'add', 'view.php?id=50', '1'),
+(3120, 1320683641, 14, '127.0.0.1', 18, 'quiz', 50, 'view', 'view.php?id=50', '1'),
+(3121, 1320683690, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3122, 1320683907, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3123, 1320683908, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3124, 1320684154, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3125, 1320684290, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3126, 1320684291, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3127, 1320684301, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3128, 1320684302, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3129, 1320684314, 14, '127.0.0.1', 18, 'quiz', 50, 'editquestions', 'view.php?id=50', '1'),
+(3130, 1320684321, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3131, 1320684356, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(3132, 1320684357, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3133, 1320684360, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3134, 1320684363, 13, '127.0.0.1', 18, 'quiz', 50, 'view', 'view.php?id=50', '1'),
+(3135, 1320684367, 13, '127.0.0.1', 18, 'quiz', 50, 'attempt', 'review.php?attempt=1', '1'),
+(3136, 1320684367, 13, '127.0.0.1', 18, 'quiz', 50, 'continue attempt', 'review.php?attempt=1', '1'),
+(3137, 1320684384, 13, '127.0.0.1', 18, 'quiz', 50, 'view summary', 'summary.php?attempt=1', '1'),
+(3138, 1320684391, 13, '127.0.0.1', 18, 'quiz', 50, 'close attempt', 'review.php?attempt=1', '1'),
+(3139, 1320684392, 13, '127.0.0.1', 18, 'quiz', 50, 'review', 'review.php?attempt=1', '1'),
+(3140, 1320684405, 13, '127.0.0.1', 18, 'quiz', 50, 'view', 'view.php?id=50', '1'),
+(3141, 1320684414, 13, '127.0.0.1', 18, 'quiz', 50, 'view', 'view.php?id=50', '1'),
+(3142, 1320684530, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(3143, 1320684541, 0, '127.0.0.1', 1, 'login', 0, 'error', 'index.php', 'mediadorpopper1'),
+(3144, 1320684544, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3145, 1320684545, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3146, 1320684549, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3147, 1320684664, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=4', 'Segundo examen (Cuestionario abierto)'),
+(3148, 1320684664, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=5', 'Segundo examen (Cuestionario cerrado)'),
+(3149, 1320684665, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/quiz/view.php?id=51', 'quiz 2'),
+(3150, 1320684665, 14, '127.0.0.1', 18, 'quiz', 51, 'add', 'view.php?id=51', '2'),
+(3151, 1320684666, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3152, 1320684676, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3153, 1320684683, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3154, 1320684691, 14, '127.0.0.1', 18, 'quiz', 51, 'view', 'view.php?id=51', '2'),
+(3155, 1320684703, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3156, 1320684730, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3157, 1320684740, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3158, 1320684741, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3159, 1320684746, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3160, 1320684747, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3161, 1320684749, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3162, 1320685257, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3163, 1320685257, 14, '127.0.0.1', 18, 'quiz', 51, 'editquestions', 'view.php?id=51', '2'),
+(3164, 1320685297, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3165, 1320685329, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=6', 'agdrfav'),
+(3166, 1320685329, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/assignment/view.php?id=52', 'assignment 4'),
+(3167, 1320685329, 14, '127.0.0.1', 18, 'assignment', 52, 'add', 'view.php?id=52', '4'),
+(3168, 1320685330, 14, '127.0.0.1', 18, 'assignment', 52, 'view', 'view.php?id=52', '4'),
+(3169, 1320685340, 14, '127.0.0.1', 18, 'assignment', 52, 'view submission', 'submissions.php?id=52', '4'),
+(3170, 1320685346, 14, '127.0.0.1', 18, 'assignment', 52, 'view', 'view.php?id=52', '4'),
+(3171, 1320685359, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3172, 1320685377, 14, '127.0.0.1', 18, 'course', 52, 'delete mod', 'view.php?id=18', 'assignment 4'),
+(3173, 1320685378, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3174, 1320685410, 14, '127.0.0.1', 18, 'course', 49, 'delete mod', 'view.php?id=18', 'assignment 3'),
+(3175, 1320685410, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3176, 1320685418, 14, '127.0.0.1', 18, 'course', 47, 'delete mod', 'view.php?id=18', 'assignment 2'),
+(3177, 1320685419, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3178, 1320685439, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3179, 1320685594, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3180, 1320685650, 14, '127.0.0.1', 18, 'calendar', 0, 'add', 'event.php?action=edit&id=7', 'Responder1'),
+(3181, 1320685651, 14, '127.0.0.1', 18, 'course', 0, 'add mod', '../mod/assignment/view.php?id=53', 'assignment 5'),
+(3182, 1320685651, 14, '127.0.0.1', 18, 'assignment', 53, 'add', 'view.php?id=53', '5'),
+(3183, 1320685652, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3184, 1320685659, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3185, 1320685669, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(3186, 1320685670, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3187, 1320685674, 13, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3188, 1320685676, 13, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3189, 1320685679, 13, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3190, 1320685685, 13, '127.0.0.1', 18, 'assignment', 53, 'upload', 'view.php?a=5', '5'),
+(3191, 1320685686, 13, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3192, 1320685688, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(3193, 1320685696, 15, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '15'),
+(3194, 1320685697, 15, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3195, 1320685700, 15, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3196, 1320685703, 15, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3197, 1320685705, 15, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3198, 1320685710, 15, '127.0.0.1', 18, 'assignment', 53, 'upload', 'view.php?a=5', '5'),
+(3199, 1320685711, 15, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3200, 1320685839, 15, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=15&course=1', '15'),
+(3201, 1320685848, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3202, 1320685849, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3203, 1320685852, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3204, 1320685857, 14, '127.0.0.1', 18, 'assignment', 53, 'view', 'view.php?id=53', '5'),
+(3205, 1320685860, 14, '127.0.0.1', 18, 'assignment', 53, 'view submission', 'submissions.php?id=53', '5'),
+(3206, 1320685889, 14, '127.0.0.1', 18, 'assignment', 53, 'update grades', 'submissions.php?id=53&user=13', '13'),
+(3207, 1320685898, 14, '127.0.0.1', 18, 'assignment', 53, 'update grades', 'submissions.php?id=53&user=14', '14'),
+(3208, 1320685898, 14, '127.0.0.1', 18, 'assignment', 53, 'view submission', 'submissions.php?id=53', '5'),
+(3209, 1320685917, 14, '127.0.0.1', 18, 'assignment', 53, 'update grades', 'submissions.php?id=53&user=15', '15'),
+(3210, 1320685917, 14, '127.0.0.1', 18, 'assignment', 53, 'view submission', 'submissions.php?id=53', '5'),
+(3211, 1320685927, 14, '127.0.0.1', 18, 'assignment', 53, 'view submission', 'submissions.php?id=53', '5'),
+(3212, 1320685935, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3213, 1320685985, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3214, 1320686020, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3215, 1320686027, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3216, 1320686028, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3217, 1320686029, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3218, 1320686267, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3219, 1320686272, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3220, 1320686272, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3221, 1320686273, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3222, 1320686285, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3223, 1320686286, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3224, 1320686322, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3225, 1320686325, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3226, 1320686326, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3227, 1320686336, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3228, 1320686346, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3229, 1320686347, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3230, 1320686682, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3231, 1320686690, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3232, 1320686691, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3233, 1320686956, 2, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3234, 1320686982, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3235, 1320686993, 13, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '13'),
+(3236, 1320686994, 13, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3237, 1320687024, 13, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=13&course=1', '13'),
+(3238, 1320687030, 15, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '15'),
+(3239, 1320687031, 15, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3240, 1320687053, 15, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=15&course=1', '15'),
+(3241, 1320687191, 15, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '15'),
+(3242, 1320687192, 15, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3243, 1320687215, 15, '127.0.0.1', 1, 'message', 0, 'add contact', 'index.php?user1=13&user2=15', '13'),
+(3244, 1320687294, 15, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=15&course=1', '15'),
+(3245, 1320687301, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3246, 1320687302, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3247, 1320687329, 2, '127.0.0.1', 1, 'message', 0, 'add contact', 'index.php?user1=14&user2=2', '14'),
+(3248, 1320687373, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3249, 1320687381, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3250, 1320687382, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3251, 1320687400, 14, '127.0.0.1', 1, 'message', 0, 'add contact', 'index.php?user1=13&user2=14', '13'),
+(3252, 1320687427, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3253, 1320687448, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3254, 1320687454, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3255, 1320687477, 14, '127.0.0.1', 1, 'course', 0, 'user report', 'user.php?id=1&user=14&mode=alllogs', '14'),
+(3256, 1320687578, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3257, 1320687678, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3258, 1320687686, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3259, 1320687698, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3260, 1320687721, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3261, 1320687739, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3262, 1320687773, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3263, 1320687779, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3264, 1320687783, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3265, 1320687788, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3266, 1320687830, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3267, 1320687834, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3268, 1320687971, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3269, 1320688039, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3270, 1320688050, 14, '127.0.0.1', 1, 'forum', 0, 'user report', 'user.php?course=1&id=14&mode=posts', '14'),
+(3271, 1320688052, 14, '127.0.0.1', 1, 'forum', 0, 'user report', 'user.php?course=1&id=14&mode=discussions', '14'),
+(3272, 1320688056, 14, '127.0.0.1', 1, 'course', 0, 'user report', 'user.php?id=1&user=14&mode=outline', '14'),
+(3273, 1320688060, 14, '127.0.0.1', 1, 'forum', 1, 'view forum', 'view.php?id=1', '1'),
+(3274, 1320688062, 14, '127.0.0.1', 1, 'forum', 5, 'view forum', 'view.php?id=5', '5'),
+(3275, 1320688112, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3276, 1320688113, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3277, 1320688114, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3278, 1320688146, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3279, 1320688170, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3280, 1320688283, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3281, 1320688290, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3282, 1320688294, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3283, 1320688642, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3284, 1320688643, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3285, 1320688654, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3286, 1320688685, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3287, 1320688703, 14, '127.0.0.1', 17, 'user', 0, 'view all', 'index.php?id=17', ''),
+(3288, 1320688715, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3289, 1320688740, 14, '127.0.0.1', 17, 'forum', 44, 'view forum', 'view.php?id=44', '38'),
+(3290, 1320688743, 14, '127.0.0.1', 17, 'forum', 43, 'view forum', 'view.php?id=43', '37'),
+(3291, 1320688891, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3292, 1320688898, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3293, 1320688899, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3294, 1320688937, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3295, 1320688942, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3296, 1320688943, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3297, 1320688943, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3298, 1320688957, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3299, 1320689027, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3300, 1320689041, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3301, 1320689042, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3302, 1320689064, 14, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3303, 1320689071, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3304, 1320689080, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3305, 1320689081, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3306, 1320689087, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3307, 1320689088, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3308, 1320689088, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3309, 1320689095, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3310, 1320689166, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3311, 1320689175, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3312, 1320689175, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3313, 1320689522, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3314, 1320689525, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3315, 1320689535, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3316, 1320689543, 14, '127.0.0.1', 18, 'user', 0, 'view all', 'index.php?id=18', ''),
+(3317, 1320689548, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3318, 1320689554, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3319, 1320689575, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3320, 1320689578, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3321, 1320689584, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3322, 1320689585, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3323, 1320689593, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3324, 1320689610, 2, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3325, 1320689655, 2, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3326, 1320689656, 2, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3327, 1320689662, 2, '127.0.0.1', 17, 'course', 0, 'view', 'view.php?id=17', '17'),
+(3328, 1320689733, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3329, 1320689741, 14, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '14'),
+(3330, 1320689742, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3331, 1320689747, 14, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3332, 1320689753, 14, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3333, 1320689782, 14, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3334, 1320689790, 14, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=14&course=1', '14'),
+(3335, 1320689798, 2, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '2'),
+(3336, 1320689799, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3337, 1320689803, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3338, 1320689804, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3339, 1320689805, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3340, 1320689817, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3341, 1320689830, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3342, 1320689831, 2, '127.0.0.1', 1, 'course', 0, 'view', 'view.php?id=1', '1'),
+(3343, 1320689840, 2, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=2&course=1', '2'),
+(3344, 1320689886, 1, '127.0.0.1', 1, 'user', 0, 'login', 'view.php?id=0&course=1', '1'),
+(3345, 1320689887, 1, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3346, 1320689892, 1, '127.0.0.1', 16, 'forum', 42, 'view forum', 'view.php?id=42', '36'),
+(3347, 1320689898, 1, '127.0.0.1', 16, 'course', 0, 'view', 'view.php?id=16', '16'),
+(3348, 1320689900, 1, '127.0.0.1', 16, 'forum', 42, 'view forum', 'view.php?id=42', '36'),
+(3349, 1320689903, 1, '127.0.0.1', 18, 'course', 0, 'view', 'view.php?id=18', '18'),
+(3350, 1320689906, 1, '127.0.0.1', 18, 'forum', 40, 'view forum', 'view.php?id=40', '34'),
+(3351, 1320689908, 1, '127.0.0.1', 18, 'forum', 40, 'view discussion', 'http://localhost/mod/forum/discuss.php?d=6', '6'),
+(3352, 1320689917, 1, '127.0.0.1', 1, 'user', 0, 'logout', 'view.php?id=1&course=1', '1');
 
 -- --------------------------------------------------------
 
@@ -8578,7 +9699,7 @@ CREATE TABLE IF NOT EXISTS `mdl_log_display` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='For a particular module/action, specifies a moodle table/fie' AUTO_INCREMENT=141 ;
 
 --
--- Volcado de datos para la tabla `mdl_log_display`
+-- Volcar la base de datos para la tabla `mdl_log_display`
 --
 
 INSERT INTO `mdl_log_display` (`id`, `module`, `action`, `mtable`, `field`, `component`) VALUES
@@ -8742,6 +9863,11 @@ CREATE TABLE IF NOT EXISTS `mdl_log_queries` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Logged database queries.' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_log_queries`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -8766,6 +9892,11 @@ CREATE TABLE IF NOT EXISTS `mdl_message` (
   KEY `mdl_mess_use2_ix` (`useridto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all unread messages' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_message`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -8779,7 +9910,16 @@ CREATE TABLE IF NOT EXISTS `mdl_message_contacts` (
   `blocked` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_messcont_usecon_uix` (`userid`,`contactid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Maintains lists of relationships between users' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Maintains lists of relationships between users' AUTO_INCREMENT=4 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_message_contacts`
+--
+
+INSERT INTO `mdl_message_contacts` (`id`, `userid`, `contactid`, `blocked`) VALUES
+(1, 15, 13, 0),
+(2, 2, 14, 0),
+(3, 14, 13, 0);
 
 -- --------------------------------------------------------
 
@@ -8795,7 +9935,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_processors` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of message output plugins' AUTO_INCREMENT=4 ;
 
 --
--- Volcado de datos para la tabla `mdl_message_processors`
+-- Volcar la base de datos para la tabla `mdl_message_processors`
 --
 
 INSERT INTO `mdl_message_processors` (`id`, `name`, `enabled`) VALUES
@@ -8819,7 +9959,7 @@ CREATE TABLE IF NOT EXISTS `mdl_message_providers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores the message providers (modules and core sy' AUTO_INCREMENT=15 ;
 
 --
--- Volcado de datos para la tabla `mdl_message_providers`
+-- Volcar la base de datos para la tabla `mdl_message_providers`
 --
 
 INSERT INTO `mdl_message_providers` (`id`, `name`, `component`, `capability`) VALUES
@@ -8863,6 +10003,11 @@ CREATE TABLE IF NOT EXISTS `mdl_message_read` (
   KEY `mdl_messread_use2_ix` (`useridto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores all messages that have been read' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_message_read`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -8875,6 +10020,11 @@ CREATE TABLE IF NOT EXISTS `mdl_message_working` (
   `processorid` bigint(10) unsigned NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists all the messages and processors that need to be proces' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_message_working`
+--
+
 
 -- --------------------------------------------------------
 
@@ -8901,6 +10051,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_courses` (
   UNIQUE KEY `mdl_mnetenrocour_hosrem_uix` (`hostid`,`remoteid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Caches the information fetched via XML-RPC about courses on ' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_mnetservice_enrol_courses`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -8920,6 +10075,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnetservice_enrol_enrolments` (
   KEY `mdl_mnetenroenro_hos_ix` (`hostid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Caches the information about enrolments of our local users i' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_mnetservice_enrol_enrolments`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -8937,7 +10097,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_application` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about applications on remote hosts' AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_application`
+-- Volcar la base de datos para la tabla `mdl_mnet_application`
 --
 
 INSERT INTO `mdl_mnet_application` (`id`, `name`, `display_name`, `xmlrpc_server_url`, `sso_land_url`, `sso_jump_url`) VALUES
@@ -8970,7 +10130,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about the local and remote hosts for RPC' AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_host`
+-- Volcar la base de datos para la tabla `mdl_mnet_host`
 --
 
 INSERT INTO `mdl_mnet_host` (`id`, `deleted`, `wwwroot`, `ip_address`, `name`, `public_key`, `public_key_expires`, `transport`, `portno`, `last_connect_time`, `last_log_id`, `force_theme`, `theme`, `applicationid`) VALUES
@@ -8992,6 +10152,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_host2service` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_mnethost_hosser_uix` (`hostid`,`serviceid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Information about the services for a given host' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_mnet_host2service`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9017,6 +10182,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_log` (
   KEY `mdl_mnetlog_hosusecou_ix` (`hostid`,`userid`,`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Store session data from users migrating to other sites' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_mnet_log`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9034,7 +10204,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table describes functions that might be called remotely' AUTO_INCREMENT=17 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_remote_rpc`
+-- Volcar la base de datos para la tabla `mdl_mnet_remote_rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`) VALUES
@@ -9070,7 +10240,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_remote_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group functions or methods under a service' AUTO_INCREMENT=17 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_remote_service2rpc`
+-- Volcar la base de datos para la tabla `mdl_mnet_remote_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_remote_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -9114,7 +10284,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Functions or methods that we may publish or subscribe to' AUTO_INCREMENT=16 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_rpc`
+-- Volcar la base de datos para la tabla `mdl_mnet_rpc`
 --
 
 INSERT INTO `mdl_mnet_rpc` (`id`, `functionname`, `xmlrpcpath`, `plugintype`, `pluginname`, `enabled`, `help`, `profile`, `filename`, `classname`, `static`) VALUES
@@ -9150,7 +10320,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='A service is a group of functions' AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_service`
+-- Volcar la base de datos para la tabla `mdl_mnet_service`
 --
 
 INSERT INTO `mdl_mnet_service` (`id`, `name`, `description`, `apiversion`, `offer`) VALUES
@@ -9174,7 +10344,7 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_service2rpc` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Group functions or methods under a service' AUTO_INCREMENT=16 ;
 
 --
--- Volcado de datos para la tabla `mdl_mnet_service2rpc`
+-- Volcar la base de datos para la tabla `mdl_mnet_service2rpc`
 --
 
 INSERT INTO `mdl_mnet_service2rpc` (`id`, `serviceid`, `rpcid`) VALUES
@@ -9214,6 +10384,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_session` (
   UNIQUE KEY `mdl_mnetsess_tok_uix` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Store session data from users migrating to other sites' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_mnet_session`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9228,6 +10403,11 @@ CREATE TABLE IF NOT EXISTS `mdl_mnet_sso_access_control` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_mnetssoaccecont_mneuse_uix` (`mnet_host_id`,`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users by host permitted (or not) to login from a remote prov' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_mnet_sso_access_control`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9248,7 +10428,7 @@ CREATE TABLE IF NOT EXISTS `mdl_modules` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='modules available in the site' AUTO_INCREMENT=20 ;
 
 --
--- Volcado de datos para la tabla `mdl_modules`
+-- Volcar la base de datos para la tabla `mdl_modules`
 --
 
 INSERT INTO `mdl_modules` (`id`, `name`, `version`, `cron`, `lastcron`, `search`, `visible`) VALUES
@@ -9289,7 +10469,7 @@ CREATE TABLE IF NOT EXISTS `mdl_my_pages` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Extra user pages for the My Moodle system' AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mdl_my_pages`
+-- Volcar la base de datos para la tabla `mdl_my_pages`
 --
 
 INSERT INTO `mdl_my_pages` (`id`, `userid`, `name`, `private`, `sortorder`) VALUES
@@ -9320,6 +10500,11 @@ CREATE TABLE IF NOT EXISTS `mdl_page` (
   KEY `mdl_page_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one page and its config data' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_page`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9333,6 +10518,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance` (
   `visible` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='base table (not including config data) for instances of port' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_instance`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9350,6 +10540,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_config` (
   KEY `mdl_portinstconf_ins_ix` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='config for portfolio plugin instances' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_instance_config`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9366,6 +10561,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_instance_user` (
   KEY `mdl_portinstuser_ins_ix` (`instance`),
   KEY `mdl_portinstuser_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='user data for portfolio instances.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_instance_user`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9389,6 +10589,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_log` (
   KEY `mdl_portlog_por_ix` (`portfolio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='log of portfolio transfers (used to later check for duplicat' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_log`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9403,6 +10608,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_mahara_queue` (
   KEY `mdl_portmahaqueu_tok_ix` (`token`),
   KEY `mdl_portmahaqueu_tra_ix` (`transferid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='maps mahara tokens to transfer ids' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_mahara_queue`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9420,6 +10630,11 @@ CREATE TABLE IF NOT EXISTS `mdl_portfolio_tempdata` (
   KEY `mdl_porttemp_use_ix` (`userid`),
   KEY `mdl_porttemp_ins_ix` (`instance`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='stores temporary data for portfolio exports. the id of this ' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_portfolio_tempdata`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9455,6 +10670,11 @@ CREATE TABLE IF NOT EXISTS `mdl_post` (
   KEY `mdl_post_use_ix` (`usermodified`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Generic post table to hold data blog entries etc in differen' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_post`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9479,6 +10699,11 @@ CREATE TABLE IF NOT EXISTS `mdl_profiling` (
   KEY `mdl_prof_timrun_ix` (`timecreated`,`runreference`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the results of all the profiling runs' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_profiling`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9496,6 +10721,11 @@ CREATE TABLE IF NOT EXISTS `mdl_qtype_essay_options` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_qtypessaopti_que_uix` (`questionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Extra options for essay questions.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_qtype_essay_options`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9528,7 +10758,16 @@ CREATE TABLE IF NOT EXISTS `mdl_question` (
   KEY `mdl_ques_par_ix` (`parent`),
   KEY `mdl_ques_cre_ix` (`createdby`),
   KEY `mdl_ques_mod_ix` (`modifiedby`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The questions themselves' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The questions themselves' AUTO_INCREMENT=4 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question`
+--
+
+INSERT INTO `mdl_question` (`id`, `category`, `parent`, `name`, `questiontext`, `questiontextformat`, `generalfeedback`, `generalfeedbackformat`, `defaultmark`, `penalty`, `qtype`, `length`, `stamp`, `version`, `hidden`, `timecreated`, `timemodified`, `createdby`, `modifiedby`) VALUES
+(1, 4, 0, 'Tipo lenguaje', '<p>El lenguaje Python es un lenguaje compilado.</p>', 1, '<p>Piensen en como lo usan</p>', 1, 1.0000000, 1.0000000, 'truefalse', 1, 'localhost+111107163826+qCMKBI', 'localhost+111107163827+9EKOZ7', 0, 1320683906, 1320683906, 14, 14),
+(2, 5, 0, 'Orden algoritmo1', '<p>Seleccione la complejidad computacional del algoritmo de ordenamiento de insercion</p>', 1, '', 1, 1.0000000, 0.3333333, 'multichoice', 1, 'localhost+111107164449+pTtNmR', 'localhost+111107164449+97nRUi', 0, 1320684289, 1320684289, 14, 14),
+(3, 4, 0, 'Pregunta 1', '<p>Diga cuales son los algoritmos de ordenamiento con peor complejidad computacional de los vistos en clase. (ordenelos alfabeticamente)</p>', 1, '', 1, 1.0000000, 0.3333333, 'shortanswer', 1, 'localhost+111107170055+lHYpqR', 'localhost+111107170056+tTPZES', 0, 1320685255, 1320685256, 14, 14);
 
 -- --------------------------------------------------------
 
@@ -9546,7 +10785,24 @@ CREATE TABLE IF NOT EXISTS `mdl_question_answers` (
   `feedbackformat` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesansw_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Answers, with a fractional grade (0-1) and feedback' AUTO_INCREMENT=12 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_answers`
+--
+
+INSERT INTO `mdl_question_answers` (`id`, `question`, `answer`, `answerformat`, `fraction`, `feedback`, `feedbackformat`) VALUES
+(1, 1, 'Verdadero', 0, 0.0000000, '', 1),
+(2, 1, 'Falso', 0, 1.0000000, '', 1),
+(3, 2, '<p>n</p>', 1, 0.0000000, '', 1),
+(4, 2, '<p>n . log n</p>', 1, 0.0000000, '', 1),
+(5, 2, '<p>n <sup>2</sup></p>', 1, 1.0000000, '', 1),
+(6, 3, 'Burbuj**, Insercion y Seleccion', 0, 1.0000000, '', 1),
+(7, 3, 'Burbuj** e Insercion', 0, 0.6666667, '', 1),
+(8, 3, 'Insercion y Seleccion', 0, 0.6666667, '', 1),
+(9, 3, 'Burbuj**', 0, 0.3333333, '', 1),
+(10, 3, 'Insercion', 0, 0.3333333, '', 1),
+(11, 3, 'Seleccion', 0, 0.3333333, '', 1);
 
 -- --------------------------------------------------------
 
@@ -9572,7 +10828,15 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempts` (
   UNIQUE KEY `mdl_quesatte_queslo_uix` (`questionusageid`,`slot`),
   KEY `mdl_quesatte_que_ix` (`questionid`),
   KEY `mdl_quesatte_que2_ix` (`questionusageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each row here corresponds to an attempt at one question, as ' AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_attempts`
+--
+
+INSERT INTO `mdl_question_attempts` (`id`, `questionusageid`, `slot`, `behaviour`, `questionid`, `variant`, `maxmark`, `minfraction`, `flagged`, `questionsummary`, `rightanswer`, `responsesummary`, `timemodified`) VALUES
+(1, 1, 1, 'deferredfeedback', 1, 1, 1.0000000, 0.0000000, 0, '\n\nEl lenguaje Python es un lenguaje compilado.', 'Falso', 'Falso', 1320684391),
+(2, 1, 2, 'deferredfeedback', 2, 1, 1.0000000, 0.0000000, 0, '\n\nSeleccione la complejidad computacional del algoritmo de ordenamiento de insercion: \n\nn . log n; \n\nn 2; \n\nn', '\n\nn 2', '\n\nn 2', 1320684391);
 
 -- --------------------------------------------------------
 
@@ -9592,7 +10856,19 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_steps` (
   UNIQUE KEY `mdl_quesattestep_queseq_uix` (`questionattemptid`,`sequencenumber`),
   KEY `mdl_quesattestep_que_ix` (`questionattemptid`),
   KEY `mdl_quesattestep_use_ix` (`userid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores one step in in a question attempt. As well as the dat' AUTO_INCREMENT=7 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_attempt_steps`
+--
+
+INSERT INTO `mdl_question_attempt_steps` (`id`, `questionattemptid`, `sequencenumber`, `state`, `fraction`, `timecreated`, `userid`) VALUES
+(1, 1, 0, 'todo', NULL, 1320684366, 13),
+(2, 2, 0, 'todo', NULL, 1320684366, 13),
+(3, 1, 1, 'complete', NULL, 1320684383, 13),
+(4, 2, 1, 'complete', NULL, 1320684383, 13),
+(5, 1, 2, 'gradedright', 1.0000000, 1320684391, 13),
+(6, 2, 2, 'gradedright', 1.0000000, 1320684391, 13);
 
 -- --------------------------------------------------------
 
@@ -9608,7 +10884,18 @@ CREATE TABLE IF NOT EXISTS `mdl_question_attempt_step_data` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_quesattestepdata_attna_uix` (`attemptstepid`,`name`),
   KEY `mdl_quesattestepdata_att_ix` (`attemptstepid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each question_attempt_step has an associative array of the d' AUTO_INCREMENT=6 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_attempt_step_data`
+--
+
+INSERT INTO `mdl_question_attempt_step_data` (`id`, `attemptstepid`, `name`, `value`) VALUES
+(1, 2, '_order', '4,5,3'),
+(2, 3, 'answer', '0'),
+(3, 4, 'answer', '1'),
+(4, 5, '-finish', '1'),
+(5, 6, '-finish', '1');
 
 -- --------------------------------------------------------
 
@@ -9628,6 +10915,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated` (
   KEY `mdl_quescalc_ans_ix` (`answer`),
   KEY `mdl_quescalc_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_calculated`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9653,6 +10945,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_calculated_options` (
   KEY `mdl_quescalcopti_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type calculated' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_calculated_options`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9671,15 +10968,18 @@ CREATE TABLE IF NOT EXISTS `mdl_question_categories` (
   PRIMARY KEY (`id`),
   KEY `mdl_quescate_con_ix` (`contextid`),
   KEY `mdl_quescate_par_ix` (`parent`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Categories are for grouping questions' AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Categories are for grouping questions' AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `mdl_question_categories`
+-- Volcar la base de datos para la tabla `mdl_question_categories`
 --
 
 INSERT INTO `mdl_question_categories` (`id`, `name`, `contextid`, `info`, `infoformat`, `stamp`, `parent`, `sortorder`) VALUES
 (2, 'Por defecto en Programación', 110, 'Categoría por defecto para preguntas compartidas en el contexto Programación.', 0, 'localhost+111103045613+j4fDoQ', 0, 999),
-(3, 'Por defecto en Sistema', 1, 'Categoría por defecto para preguntas compartidas en el contexto Sistema.', 0, 'localhost+111103045614+v1ujZP', 0, 999);
+(3, 'Por defecto en Sistema', 1, 'Categoría por defecto para preguntas compartidas en el contexto Sistema.', 0, 'localhost+111103045614+v1ujZP', 0, 999),
+(4, 'Por defecto en Wachenchauzer', 163, 'Categoría por defecto para preguntas compartidas en el contexto Wachenchauzer.', 0, 'localhost+111107161241+nAFJhP', 0, 999),
+(5, 'Por defecto en Primer examen', 179, 'Categoría por defecto para preguntas compartidas en el contexto Primer examen.', 0, 'localhost+111107163450+ALux8I', 0, 999),
+(6, 'Por defecto en Segundo examen', 180, 'Categoría por defecto para preguntas compartidas en el contexto Segundo examen.', 0, 'localhost+111107165143+RsK2P9', 0, 999);
 
 -- --------------------------------------------------------
 
@@ -9696,6 +10996,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_datasets` (
   KEY `mdl_quesdata_que_ix` (`question`),
   KEY `mdl_quesdata_dat_ix` (`datasetdefinition`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Many-many relation between questions and dataset definitions' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_datasets`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9714,6 +11019,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_definitions` (
   KEY `mdl_quesdatadefi_cat_ix` (`category`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Organises and stores properties for dataset items' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_dataset_definitions`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9728,6 +11038,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_dataset_items` (
   PRIMARY KEY (`id`),
   KEY `mdl_quesdataitem_def_ix` (`definition`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Individual dataset items' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_dataset_items`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9746,6 +11061,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_hints` (
   PRIMARY KEY (`id`),
   KEY `mdl_queshint_que_ix` (`questionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the the part of the question definition that gives di' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_hints`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9769,6 +11089,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_match` (
   KEY `mdl_quesmatc_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines fixed matching questions' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_match`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9786,6 +11111,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_match_sub` (
   KEY `mdl_quesmatcsub_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines the subquestions that make up a matching question' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_match_sub`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9799,6 +11129,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_multianswer` (
   PRIMARY KEY (`id`),
   KEY `mdl_quesmult_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for multianswer questions' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_multianswer`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9823,7 +11158,14 @@ CREATE TABLE IF NOT EXISTS `mdl_question_multichoice` (
   `shownumcorrect` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesmult_que2_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for multiple choice questions' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for multiple choice questions' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_multichoice`
+--
+
+INSERT INTO `mdl_question_multichoice` (`id`, `question`, `layout`, `answers`, `single`, `shuffleanswers`, `correctfeedback`, `correctfeedbackformat`, `partiallycorrectfeedback`, `partiallycorrectfeedbackformat`, `incorrectfeedback`, `incorrectfeedbackformat`, `answernumbering`, `shownumcorrect`) VALUES
+(1, 2, 0, '3,4,5', 1, 1, '', 1, '', 1, '', 1, 'abc', 0);
 
 -- --------------------------------------------------------
 
@@ -9840,6 +11182,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical` (
   KEY `mdl_quesnume_ans_ix` (`answer`),
   KEY `mdl_quesnume_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for numerical questions.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_numerical`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9858,6 +11205,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_options` (
   KEY `mdl_quesnumeopti_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for questions of type numerical This table is also u' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_numerical_options`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9874,6 +11226,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_numerical_units` (
   KEY `mdl_quesnumeunit_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Optional unit options for numerical questions. This table is' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_numerical_units`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9887,6 +11244,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_randomsamatch` (
   PRIMARY KEY (`id`),
   KEY `mdl_quesrand_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about a random short-answer matching question' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_randomsamatch`
+--
+
 
 -- --------------------------------------------------------
 
@@ -9912,6 +11274,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_sessions` (
   KEY `mdl_quessess_new2_ix` (`newgraded`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Gives ids of the newest open and newest graded states' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_sessions`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9925,7 +11292,14 @@ CREATE TABLE IF NOT EXISTS `mdl_question_shortanswer` (
   `usecase` tinyint(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quesshor_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for short answer questions' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for short answer questions' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_shortanswer`
+--
+
+INSERT INTO `mdl_question_shortanswer` (`id`, `question`, `answers`, `usecase`) VALUES
+(1, 3, '6,7,8,9,10,11', 0);
 
 -- --------------------------------------------------------
 
@@ -9949,6 +11323,11 @@ CREATE TABLE IF NOT EXISTS `mdl_question_states` (
   KEY `mdl_quesstat_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores user responses to an attempt, and percentage grades' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_question_states`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -9962,7 +11341,14 @@ CREATE TABLE IF NOT EXISTS `mdl_question_truefalse` (
   `falseanswer` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_questrue_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for True-False questions' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Options for True-False questions' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_truefalse`
+--
+
+INSERT INTO `mdl_question_truefalse` (`id`, `question`, `trueanswer`, `falseanswer`) VALUES
+(1, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -9977,7 +11363,14 @@ CREATE TABLE IF NOT EXISTS `mdl_question_usages` (
   `preferredbehaviour` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   KEY `mdl_quesusag_con_ix` (`contextid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table''s main purpose it to assign a unique id to each a' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_question_usages`
+--
+
+INSERT INTO `mdl_question_usages` (`id`, `contextid`, `component`, `preferredbehaviour`) VALUES
+(1, 179, 'mod_quiz', 'deferredfeedback');
 
 -- --------------------------------------------------------
 
@@ -10024,7 +11417,15 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz` (
   `showblocks` smallint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_quiz_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Main information about each quiz' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Main information about each quiz' AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz`
+--
+
+INSERT INTO `mdl_quiz` (`id`, `course`, `name`, `intro`, `introformat`, `timeopen`, `timeclose`, `preferredbehaviour`, `attempts`, `attemptonlast`, `grademethod`, `decimalpoints`, `questiondecimalpoints`, `reviewattempt`, `reviewcorrectness`, `reviewmarks`, `reviewspecificfeedback`, `reviewgeneralfeedback`, `reviewrightanswer`, `reviewoverallfeedback`, `questionsperpage`, `shufflequestions`, `shuffleanswers`, `questions`, `sumgrades`, `grade`, `timecreated`, `timemodified`, `timelimit`, `password`, `subnet`, `popup`, `delay1`, `delay2`, `showuserpicture`, `showblocks`) VALUES
+(1, 18, 'Primer examen', '', 1, 0, 0, 'deferredfeedback', 0, 0, 1, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 0, 1, '1,2,0', 2.00000, 10.00000, 0, 1320683639, 0, '', '', 0, 0, 0, 0, 0),
+(2, 18, 'Segundo examen', '', 1, 1321462140, 1324226940, 'deferredfeedback', 2, 0, 1, 2, -1, 69904, 4368, 4368, 4368, 4368, 4368, 4368, 1, 0, 1, '3,0', 1.00000, 0.00000, 0, 1320684664, 0, '', '', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10049,7 +11450,14 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_attempts` (
   UNIQUE KEY `mdl_quizatte_uni_uix` (`uniqueid`),
   KEY `mdl_quizatte_use_ix` (`userid`),
   KEY `mdl_quizatte_qui_ix` (`quiz`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores various attempts on a quiz' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores various attempts on a quiz' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_attempts`
+--
+
+INSERT INTO `mdl_quiz_attempts` (`id`, `uniqueid`, `quiz`, `userid`, `attempt`, `sumgrades`, `timestart`, `timefinish`, `timemodified`, `layout`, `preview`, `needsupgradetonewqe`) VALUES
+(1, 1, 1, 13, 1, 2.00000, 1320684366, 1320684391, 1320684391, '1,2,0', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10066,7 +11474,15 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_feedback` (
   `maxgrade` decimal(10,5) NOT NULL DEFAULT '0.00000',
   PRIMARY KEY (`id`),
   KEY `mdl_quizfeed_qui_ix` (`quizid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Feedback given to students based on which grade band their o' AUTO_INCREMENT=3 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_feedback`
+--
+
+INSERT INTO `mdl_quiz_feedback` (`id`, `quizid`, `feedbacktext`, `feedbacktextformat`, `mingrade`, `maxgrade`) VALUES
+(1, 1, '', 1, 0.00000, 11.00000),
+(2, 2, '', 1, 0.00000, 0.00000);
 
 -- --------------------------------------------------------
 
@@ -10083,7 +11499,14 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_grades` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizgrad_use_ix` (`userid`),
   KEY `mdl_quizgrad_qui_ix` (`quiz`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The overall grade for each user on the quiz, based on their ' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The overall grade for each user on the quiz, based on their ' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_grades`
+--
+
+INSERT INTO `mdl_quiz_grades` (`id`, `quiz`, `userid`, `grade`, `timemodified`) VALUES
+(1, 1, 13, 10.00000, 1320684391);
 
 -- --------------------------------------------------------
 
@@ -10107,6 +11530,11 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overrides` (
   KEY `mdl_quizover_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The overrides to quiz settings on a per-user and per-group b' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_overrides`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10124,6 +11552,11 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_overview_regrades` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table records which question attempts need regrading an' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_overview_regrades`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10138,7 +11571,16 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_instances` (
   PRIMARY KEY (`id`),
   KEY `mdl_quizquesinst_qui_ix` (`quiz`),
   KEY `mdl_quizquesinst_que_ix` (`question`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores the maximum possible grade (weight) for each question' AUTO_INCREMENT=5 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_question_instances`
+--
+
+INSERT INTO `mdl_quiz_question_instances` (`id`, `quiz`, `question`, `grade`) VALUES
+(1, 1, 1, 1.0000000),
+(2, 1, 2, 1.0000000),
+(4, 2, 3, 1.0000000);
 
 -- --------------------------------------------------------
 
@@ -10157,6 +11599,11 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_response_stats` (
   `credit` decimal(15,5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Quiz question responses.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_question_response_stats`
+--
+
 
 -- --------------------------------------------------------
 
@@ -10184,6 +11631,11 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_question_statistics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Default comment for the table, please edit me' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_question_statistics`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10202,7 +11654,7 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_reports` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists all the installed quiz reports and their display order' AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `mdl_quiz_reports`
+-- Volcar la base de datos para la tabla `mdl_quiz_reports`
 --
 
 INSERT INTO `mdl_quiz_reports` (`id`, `name`, `displayorder`, `lastcron`, `cron`, `capability`) VALUES
@@ -10237,6 +11689,11 @@ CREATE TABLE IF NOT EXISTS `mdl_quiz_statistics` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='table to cache results from analysis done in statistics repo' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_quiz_statistics`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10260,6 +11717,11 @@ CREATE TABLE IF NOT EXISTS `mdl_rating` (
   KEY `mdl_rati_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle ratings' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_rating`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10275,6 +11737,11 @@ CREATE TABLE IF NOT EXISTS `mdl_registration_hubs` (
   `secret` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='hub where the site is registered on with their associated to' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_registration_hubs`
+--
+
 
 -- --------------------------------------------------------
 
@@ -10299,6 +11766,11 @@ CREATE TABLE IF NOT EXISTS `mdl_report_customlang` (
   KEY `mdl_repocust_com_ix` (`componentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains the working checkout of all strings and their custo' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_report_customlang`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10311,6 +11783,11 @@ CREATE TABLE IF NOT EXISTS `mdl_report_customlang_components` (
   `version` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains the list of all installed plugins that provide thei' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_report_customlang_components`
+--
+
 
 -- --------------------------------------------------------
 
@@ -10327,7 +11804,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `mdl_repository`
+-- Volcar la base de datos para la tabla `mdl_repository`
 --
 
 INSERT INTO `mdl_repository` (`id`, `type`, `visible`, `sortorder`) VALUES
@@ -10357,7 +11834,7 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instances` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table contains one entry for every configured external ' AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `mdl_repository_instances`
+-- Volcar la base de datos para la tabla `mdl_repository_instances`
 --
 
 INSERT INTO `mdl_repository_instances` (`id`, `name`, `typeid`, `userid`, `contextid`, `username`, `password`, `timecreated`, `timemodified`, `readonly`) VALUES
@@ -10379,6 +11856,11 @@ CREATE TABLE IF NOT EXISTS `mdl_repository_instance_config` (
   `value` longtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The config for intances' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_repository_instance_config`
+--
+
 
 -- --------------------------------------------------------
 
@@ -10403,6 +11885,11 @@ CREATE TABLE IF NOT EXISTS `mdl_resource` (
   PRIMARY KEY (`id`),
   KEY `mdl_reso_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one resource and its config data' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_resource`
+--
+
 
 -- --------------------------------------------------------
 
@@ -10432,6 +11919,11 @@ CREATE TABLE IF NOT EXISTS `mdl_resource_old` (
   KEY `mdl_resoold_cmi_ix` (`cmid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='backup of all old resource instances from 1.9' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_resource_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -10452,7 +11944,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='moodle roles' AUTO_INCREMENT=9 ;
 
 --
--- Volcado de datos para la tabla `mdl_role`
+-- Volcar la base de datos para la tabla `mdl_role`
 --
 
 INSERT INTO `mdl_role` (`id`, `name`, `shortname`, `description`, `sortorder`, `archetype`) VALUES
@@ -10479,7 +11971,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_assign` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can assign what role' AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_allow_assign`
+-- Volcar la base de datos para la tabla `mdl_role_allow_assign`
 --
 
 INSERT INTO `mdl_role_allow_assign` (`id`, `roleid`, `allowassign`) VALUES
@@ -10507,7 +11999,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_override` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='this defines what role can override what role' AUTO_INCREMENT=12 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_allow_override`
+-- Volcar la base de datos para la tabla `mdl_role_allow_override`
 --
 
 INSERT INTO `mdl_role_allow_override` (`id`, `roleid`, `allowoverride`) VALUES
@@ -10531,7 +12023,7 @@ CREATE TABLE IF NOT EXISTS `mdl_role_allow_switch` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table stores which which other roles a user is allowed ' AUTO_INCREMENT=10 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_allow_switch`
+-- Volcar la base de datos para la tabla `mdl_role_allow_switch`
 --
 
 INSERT INTO `mdl_role_allow_switch` (`id`, `roleid`, `allowswitch`) VALUES
@@ -10566,10 +12058,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_assignments` (
   KEY `mdl_roleassi_rol_ix` (`roleid`),
   KEY `mdl_roleassi_con_ix` (`contextid`),
   KEY `mdl_roleassi_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=55 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='assigning roles in different context' AUTO_INCREMENT=56 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_assignments`
+-- Volcar la base de datos para la tabla `mdl_role_assignments`
 --
 
 INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `timemodified`, `modifierid`, `component`, `itemid`, `sortorder`) VALUES
@@ -10582,10 +12074,8 @@ INSERT INTO `mdl_role_assignments` (`id`, `roleid`, `contextid`, `userid`, `time
 (38, 5, 1, 17, 1319391210, 12, '', 0, 0),
 (49, 3, 153, 14, 1320296421, 12, '', 0, 0),
 (50, 3, 163, 14, 1320296440, 12, '', 0, 0),
-(51, 5, 153, 13, 1320296463, 14, '', 0, 0),
-(52, 5, 153, 15, 1320296465, 14, '', 0, 0),
-(53, 5, 153, 17, 1320296472, 14, '', 0, 0),
-(54, 5, 163, 13, 1320296485, 14, '', 0, 0);
+(54, 5, 163, 13, 1320296485, 14, '', 0, 0),
+(55, 5, 163, 15, 1320434511, 14, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10607,10 +12097,10 @@ CREATE TABLE IF NOT EXISTS `mdl_role_capabilities` (
   KEY `mdl_rolecapa_con_ix` (`contextid`),
   KEY `mdl_rolecapa_mod_ix` (`modifierid`),
   KEY `mdl_rolecapa_cap_ix` (`capability`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1349 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='permission has to be signed, overriding a capability for a p' AUTO_INCREMENT=1351 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_capabilities`
+-- Volcar la base de datos para la tabla `mdl_role_capabilities`
 --
 
 INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, `permission`, `timemodified`, `modifierid`) VALUES
@@ -11395,7 +12885,6 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 (1260, 36, 3, 'moodle/block:view', -1, 1317329845, 2),
 (1261, 7, 3, 'moodle/block:edit', -1, 1317329879, 2),
 (1262, 7, 8, 'moodle/block:edit', -1, 1317329883, 2),
-(1263, 7, 7, 'moodle/block:view', -1, 1317329888, 2),
 (1264, 7, 6, 'moodle/block:view', -1, 1317329892, 2),
 (1268, 8, 7, 'moodle/block:view', -1, 1317330019, 2),
 (1269, 8, 3, 'moodle/block:edit', -1, 1317330024, 2),
@@ -11476,7 +12965,9 @@ INSERT INTO `mdl_role_capabilities` (`id`, `contextid`, `roleid`, `capability`, 
 (1345, 17, 6, 'mod/forum:addnews', -1, 1319818735, 2),
 (1346, 1, 6, 'mod/forum:deleteownpost', 1, 1320171545, 2),
 (1347, 1, 6, 'mod/forum:initialsubscriptions', 1, 1320171545, 2),
-(1348, 1, 6, 'mod/forum:exportpost', 1, 1320172273, 2);
+(1348, 1, 6, 'mod/forum:exportpost', 1, 1320172273, 2),
+(1349, 1, 5, 'moodle/course:managegroups', 1, 1320434319, 2),
+(1350, 33, 3, 'moodle/block:view', -1000, 1320689159, 2);
 
 -- --------------------------------------------------------
 
@@ -11491,40 +12982,40 @@ CREATE TABLE IF NOT EXISTS `mdl_role_context_levels` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_rolecontleve_conrol_uix` (`contextlevel`,`roleid`),
   KEY `mdl_rolecontleve_rol_ix` (`roleid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=154 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Lists which roles can be assigned at which context levels. T' AUTO_INCREMENT=160 ;
 
 --
--- Volcado de datos para la tabla `mdl_role_context_levels`
+-- Volcar la base de datos para la tabla `mdl_role_context_levels`
 --
 
 INSERT INTO `mdl_role_context_levels` (`id`, `roleid`, `contextlevel`) VALUES
 (42, 3, 10),
-(64, 5, 10),
+(154, 5, 10),
 (148, 6, 10),
 (58, 7, 10),
 (76, 8, 10),
 (43, 3, 30),
-(65, 5, 30),
+(155, 5, 30),
 (149, 6, 30),
 (59, 7, 30),
 (77, 8, 30),
 (44, 3, 40),
-(66, 5, 40),
+(156, 5, 40),
 (150, 6, 40),
 (60, 7, 40),
 (78, 8, 40),
 (40, 3, 50),
-(67, 5, 50),
+(157, 5, 50),
 (151, 6, 50),
 (61, 7, 50),
 (79, 8, 50),
 (41, 3, 70),
-(68, 5, 70),
+(158, 5, 70),
 (152, 6, 70),
 (62, 7, 70),
 (80, 8, 70),
 (45, 3, 80),
-(69, 5, 80),
+(159, 5, 80),
 (153, 6, 80),
 (63, 7, 80),
 (81, 8, 80);
@@ -11546,6 +13037,11 @@ CREATE TABLE IF NOT EXISTS `mdl_role_names` (
   KEY `mdl_rolename_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='role names in native strings' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_role_names`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11564,6 +13060,11 @@ CREATE TABLE IF NOT EXISTS `mdl_role_sortorder` (
   KEY `mdl_rolesort_rol_ix` (`roleid`),
   KEY `mdl_rolesort_con_ix` (`contextid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='sort order of course managers in a course' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_role_sortorder`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11585,7 +13086,7 @@ CREATE TABLE IF NOT EXISTS `mdl_scale` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Defines grading scales' AUTO_INCREMENT=2 ;
 
 --
--- Volcado de datos para la tabla `mdl_scale`
+-- Volcar la base de datos para la tabla `mdl_scale`
 --
 
 INSERT INTO `mdl_scale` (`id`, `courseid`, `userid`, `name`, `scale`, `description`, `descriptionformat`, `timemodified`) VALUES
@@ -11615,6 +13116,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scale_history` (
   KEY `mdl_scalhist_cou_ix` (`courseid`),
   KEY `mdl_scalhist_log_ix` (`loggeduser`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='History table' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_scale_history`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11661,6 +13167,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm` (
   KEY `mdl_scor_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each table is one SCORM module and its configuration' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11681,6 +13192,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes` (
   KEY `mdl_scorscoe_sco_ix` (`scorm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each SCO part of the SCORM module' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_scoes`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11695,6 +13211,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_data` (
   PRIMARY KEY (`id`),
   KEY `mdl_scorscoedata_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Contains variable data get from packages' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_scoes_data`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11719,6 +13240,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_scoes_track` (
   KEY `mdl_scorscoetrac_sco2_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to track SCOes' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_scoes_track`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11740,6 +13266,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_mapinfo` (
   KEY `mdl_scorseqmapi_obj_ix` (`objectiveid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 objective mapinfo description' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_mapinfo`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11757,6 +13288,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_objective` (
   UNIQUE KEY `mdl_scorseqobje_scoid_uix` (`scoid`,`id`),
   KEY `mdl_scorseqobje_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 objective description' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_objective`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11777,6 +13313,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprule` (
   KEY `mdl_scorseqroll_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 sequencing rule' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_rolluprule`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11794,6 +13335,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rolluprulecond` (
   KEY `mdl_scorseqroll_sco2_ix` (`scoid`),
   KEY `mdl_scorseqroll_rol_ix` (`rollupruleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 sequencing rule' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_rolluprulecond`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11815,6 +13361,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_rulecond` (
   KEY `mdl_scorseqrule_rul_ix` (`ruleconditionsid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 rule condition' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_rulecond`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11831,6 +13382,11 @@ CREATE TABLE IF NOT EXISTS `mdl_scorm_seq_ruleconds` (
   UNIQUE KEY `mdl_scorseqrule_scoid_uix` (`scoid`,`id`),
   KEY `mdl_scorseqrule_sco_ix` (`scoid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='SCORM2004 rule conditions' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_scorm_seq_ruleconds`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11854,10 +13410,10 @@ CREATE TABLE IF NOT EXISTS `mdl_sessions` (
   KEY `mdl_sess_tim_ix` (`timecreated`),
   KEY `mdl_sess_tim2_ix` (`timemodified`),
   KEY `mdl_sess_use_ix` (`userid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=772 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Database based session storage - now recommended' AUTO_INCREMENT=878 ;
 
 --
--- Volcado de datos para la tabla `mdl_sessions`
+-- Volcar la base de datos para la tabla `mdl_sessions`
 --
 
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
@@ -11872,7 +13428,14 @@ INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecre
 INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
 (748, 0, 'os4uni0a46002fq7bpjoiljua3', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxMDp7czo0OiIvMTo2IjthOjI2OntzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7czoxOiIxIjtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjtzOjE4OiJtb29kbGUvYmxvZzpzZWFyY2giO3M6MToiMSI7czoxNjoibW9vZGxlL2Jsb2c6dmlldyI7czoxOiIxIjtzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7czoxOiIxIjtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTpleHBvcnRwb3N0IjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjtzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7fXM6ODoiLzEvMi80OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNjo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTc6NiI7YTozOntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMjAyOTY1NDE7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjU6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJzZXNza2V5IjtzOjEwOiJIRGszTklVRHJoIjt9', 1320296541, 1320296542, '0:0:0:0:0:0:0:1', '0:0:0:0:0:0:0:1'),
 (754, 0, '98dml0pqtdkl26m6g0dmhqo3h7', 1, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo2OntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czo4OiJuYXZjYWNoZSI7Tzo4OiJzdGRDbGFzcyI6MTp7czoxMDoibmF2aWdhdGlvbiI7YTo1OntzOjE3OiJjb3Vyc2Vfc2VjdGlvbnNfMSI7YTozOntpOjA7aToxMzIwMzU2Mzk5O2k6MTtzOjE6IjEiO2k6MjtzOjIyMzoiYToxOntpOjA7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6MjoiaWQiO3M6MToiMSI7czo2OiJjb3Vyc2UiO3M6MToiMSI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7czozOiIxLDUiO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MTt9fSI7fXM6MTg6ImNvdXJzZV9hY3Rpdml0ZXNfMSI7YTozOntpOjA7aToxMzIwMzU2Mzk5O2k6MTtzOjE6IjEiO2k6MjtzOjU2ODoiYToyOntpOjE7Tzo4OiJzdGRDbGFzcyI6MTA6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjQ6Im5hbWUiO3M6OToiQ2FydGVsZXJhIjtzOjQ6Imljb24iO3M6MDoiIjtzOjEzOiJpY29uY29tcG9uZW50IjtzOjA6IiI7czoyOiJpZCI7czoxOiIxIjtzOjY6ImhpZGRlbiI7YjowO3M6NzoibW9kbmFtZSI7czo1OiJmb3J1bSI7czo4OiJub2RldHlwZSI7aTowO3M6MzoidXJsIjtzOjQwOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD0xIjtzOjc6ImRpc3BsYXkiO2I6MTt9aTo1O086ODoic3RkQ2xhc3MiOjEwOntzOjc6InNlY3Rpb24iO3M6MToiMCI7czo0OiJuYW1lIjtzOjIyOiJGb3JvIEdlbmVyYWwgZGUgbGEgUmVkIjtzOjQ6Imljb24iO3M6MDoiIjtzOjEzOiJpY29uY29tcG9uZW50IjtzOjA6IiI7czoyOiJpZCI7czoxOiI1IjtzOjY6ImhpZGRlbiI7YjowO3M6NzoibW9kbmFtZSI7czo1OiJmb3J1bSI7czo4OiJub2RldHlwZSI7aTowO3M6MzoidXJsIjtzOjQwOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD01IjtzOjc6ImRpc3BsYXkiO2I6MTt9fSI7fXM6MTc6ImNvbnRleHRoYXNyZXBvczk0IjthOjM6e2k6MDtpOjEzMjAzNTYzOTk7aToxO3M6MToiMSI7aToyO3M6NDoiYjowOyI7fXM6MTg6ImNvdXJzZV9zZWN0aW9uc18xOCI7YTozOntpOjA7aToxMzIwMzU2NDA1O2k6MTtzOjE6IjEiO2k6MjtzOjM2MzA6ImE6MTc6e2k6MDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMCI7czoyOiJpZCI7czozOiIyMzAiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtOO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7czo1OiIzOSw0MCI7czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjoxO31pOjE7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjEiO3M6MjoiaWQiO3M6MzoiMjMxIjtzOjY6ImNvdXJzZSI7czoyOiIxOCI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MjtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMiI7czoyOiJpZCI7czozOiIyMzIiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTozO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIzIjtzOjI6ImlkIjtzOjM6IjIzMyI7czo2OiJjb3Vyc2UiO3M6MjoiMTgiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjQ7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjQiO3M6MjoiaWQiO3M6MzoiMjM0IjtzOjY6ImNvdXJzZSI7czoyOiIxOCI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NTtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNSI7czoyOiJpZCI7czozOiIyMzUiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo2O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI2IjtzOjI6ImlkIjtzOjM6IjIzNiI7czo2OiJjb3Vyc2UiO3M6MjoiMTgiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjc7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjciO3M6MjoiaWQiO3M6MzoiMjM3IjtzOjY6ImNvdXJzZSI7czoyOiIxOCI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6ODtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiOCI7czoyOiJpZCI7czozOiIyMzgiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo5O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI5IjtzOjI6ImlkIjtzOjM6IjIzOSI7czo2OiJjb3Vyc2UiO3M6MjoiMTgiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjEwO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxMCI7czoyOiJpZCI7czozOiIyNDAiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToxMTtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MjoiMTEiO3M6MjoiaWQiO3M6MzoiMjQxIjtzOjY6ImNvdXJzZSI7czoyOiIxOCI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MTI7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjI6IjEyIjtzOjI6ImlkIjtzOjM6IjI0MiI7czo2OiJjb3Vyc2UiO3M6MjoiMTgiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjEzO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxMyI7czoyOiJpZCI7czozOiIyNDMiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToxNDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MjoiMTQiO3M6MjoiaWQiO3M6MzoiMjQ0IjtzOjY6ImNvdXJzZSI7czoyOiIxOCI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MTU7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjI6IjE1IjtzOjI6ImlkIjtzOjM6IjI0NSI7czo2OiJjb3Vyc2UiO3M6MjoiMTgiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjE2O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxNiI7czoyOiJpZCI7czozOiIyNDYiO3M6NjoiY291cnNlIjtzOjI6IjE4IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9fSI7fXM6MTk6ImNvdXJzZV9hY3Rpdml0ZXNfMTgiO2E6Mzp7aTowO2k6MTMyMDM1NjQwNTtpOjE7czoxOiIxIjtpOjI7czo1NjU6ImE6Mjp7aTozOTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czo4OiJOb3RpY2lhcyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MjoiMzkiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTM5IjtzOjc6ImRpc3BsYXkiO2I6MTt9aTo0MDtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czoxNDoiRm9ybyBkZWwgQ3Vyc28iO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjI6IjQwIjtzOjY6ImhpZGRlbiI7YjowO3M6NzoibW9kbmFtZSI7czo1OiJmb3J1bSI7czo4OiJub2RldHlwZSI7aTowO3M6MzoidXJsIjtzOjQxOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD00MCI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO319fXM6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjowO3M6MTI6ImZsYXNodmVyc2lvbiI7czo2OiIxMS4wLjEiO3M6ODoid2FudHN1cmwiO3M6NDQ6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3Bvc3QucGhwP3JlcGx5PTIwIjtzOjExOiJlbnJvbGNhbmNlbCI7czo0MjoiaHR0cDovL2xvY2FsaG9zdC9tb2QvZm9ydW0vZGlzY3Vzcy5waHA/ZD02Ijt9VVNFUnxPOjg6InN0ZENsYXNzIjo2Mjp7czoyOiJpZCI7czoxOiIxIjtzOjQ6ImF1dGgiO3M6NjoibWFudWFsIjtzOjk6ImNvbmZpcm1lZCI7czoxOiIxIjtzOjEyOiJwb2xpY3lhZ3JlZWQiO3M6MToiMCI7czo3OiJkZWxldGVkIjtzOjE6IjAiO3M6OToic3VzcGVuZGVkIjtzOjE6IjAiO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czo4OiJ1c2VybmFtZSI7czo1OiJndWVzdCI7czo4OiJwYXNzd29yZCI7czozMjoiNzhiMTVhMjU4ZTcwOWQwYWM5ZDZiZDFlMDI0ZmNkYzMiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo4OiJJbnZpdGFkbyI7czo4OiJsYXN0bmFtZSI7czoxOiIgIjtzOjU6ImVtYWlsIjtzOjE0OiJyb290QGxvY2FsaG9zdCI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjA6IiI7czo3OiJjb3VudHJ5IjtzOjA6IiI7czo0OiJsYW5nIjtzOjU6ImVzX2FyIjtzOjU6InRoZW1lIjtzOjA6IiI7czo4OiJ0aW1lem9uZSI7czoyOiI5OSI7czoxMToiZmlyc3RhY2Nlc3MiO3M6MTA6IjEzMTY1NjY0MTMiO3M6MTA6Imxhc3RhY2Nlc3MiO2k6MTMyMDM1NjcxMDtzOjk6Imxhc3Rsb2dpbiI7czoxMDoiMTMyMDM1NjI4MyI7czoxMjoiY3VycmVudGxvZ2luIjtpOjEzMjAzNTYzOTg7czo2OiJsYXN0aXAiO3M6OToiMTI3LjAuMC4xIjtzOjY6InNlY3JldCI7czowOiIiO3M6NzoicGljdHVyZSI7czoxOiIwIjtzOjM6InVybCI7czowOiIiO3M6MTc6ImRlc2NyaXB0aW9uZm9ybWF0IjtzOjE6IjAiO3M6MTA6Im1haWxmb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGRpZ2VzdCI7czoxOiIwIjtzOjExOiJtYWlsZGlzcGxheSI7czoxOiIyIjtzOjEwOiJodG1sZWRpdG9yIjtzOjE6IjEiO3M6NDoiYWpheCI7czoxOiIxIjtzOjEzOiJhdXRvc3Vic2NyaWJlIjtzOjE6IjEiO3M6MTE6InRyYWNrZm9ydW1zIjtzOjE6IjAiO3M6MTE6InRpbWVjcmVhdGVkIjtzOjE6IjAiO3M6MTI6InRpbWVtb2RpZmllZCI7czoxMDoiMTMxNjU2NjQxMyI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO047czoxMjoic2NyZWVucmVhZGVyIjtzOjE6IjAiO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6MTp7aToxNztzOjEwOiIxMzIwMzU2Mjk4Ijt9czoxOToiY3VycmVudGNvdXJzZWFjY2VzcyI7YToxOntpOjE4O2k6MTMyMDM1NjYwODt9czoxMToiZ3JvdXBtZW1iZXIiO2E6MDp7fXM6NzoicHJvZmlsZSI7YTozOntzOjM6ImRuaSI7czowOiIiO3M6NjoicGFkcm9uIjtzOjA6IiI7czoxMzoicm9sc29saWNpdGFkbyI7czo3OiJNaWVtYnJvIjt9czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YToyOntzOjI6Ii8xIjthOjE6e2k6NjtzOjE6IjYiO31zOjEwOiIvMS8xMTAvMTYzIjthOjE6e2k6NjtzOjE6IjYiO319czo0OiJyZGVmIjthOjEwOntzOjQ6Ii8xOjYiO2E6MjY6e3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7czoxOiIxIjtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTpleHBvcnRwb3N0IjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjt9czo5OiIvMS8yLzUyOjYiO2E6NDp7czoxNzoibW9kL2ZvcnVtOmFkZG5ld3MiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjt9czo4OiIvMS8yLzQ6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzU6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNzo2IjthOjM6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjQ6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO2k6MztzOjEwOiIvMS8xMTAvMTYzIjt9czoyOiJkciI7czoxOiI2IjtzOjQ6InRpbWUiO2k6MTMyMDM1NjM5ODt9czo3OiJzZXNza2V5IjtzOjEwOiJvS0ZVYjhib09UIjtzOjEwOiJwcmVmZXJlbmNlIjthOjE6e3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMjAzNTY3NjE7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czo3OiJkaXNwbGF5IjthOjE6e2k6MTg7aTowO31zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjc6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazg1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrODZoaWRkZW4iO3M6NDoiYm9vbCI7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MTp7aToxODtpOjEzMjAzNTgyMDQ7fX1zOjc6ImVkaXRpbmciO2k6MDt9', 1320356398, 1320356761, '127.0.0.1', '127.0.0.1'),
-(771, 0, 'j2e9r25p865o8894usidd66sf2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZXMiO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Nzp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo2OiJhY2Nlc3MiO2E6NDp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NjtzOjE6IjYiO319czo0OiJyZGVmIjthOjEwOntzOjQ6Ii8xOjYiO2E6MjY6e3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjU6Ii0xMDAwIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czo1OiItMTAwMCI7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO3M6MToiMSI7czoyMDoibW9kL2ZvcnVtOmV4cG9ydHBvc3QiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3BhZ2U6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcXVpejp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7czoxOiIxIjtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjt9czo5OiIvMS8yLzUyOjYiO2E6NDp7czoxNzoibW9kL2ZvcnVtOmFkZG5ld3MiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjt9czo4OiIvMS8yLzQ6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzU6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNzo2IjthOjM6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjM6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO31zOjQ6InRpbWUiO2k6MTMyMDM1NzY1ODt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NTp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTZoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazMyaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6InNlc3NrZXkiO3M6MTA6InJxcWpyYzd3QXgiO30=', 1320357658, 1320357661, '127.0.0.1', '127.0.0.1');
+(771, 0, 'j2e9r25p865o8894usidd66sf2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoyOntzOjQ6ImxhbmciO3M6MjoiZXMiO3M6ODoid2FudHN1cmwiO047fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6Nzp7czoyOiJpZCI7aTowO3M6MTA6Im1uZXRob3N0aWQiO3M6MToiMSI7czoxMDoicHJlZmVyZW5jZSI7YTowOnt9czo2OiJhY2Nlc3MiO2E6NDp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NjtzOjE6IjYiO319czo0OiJyZGVmIjthOjEwOntzOjQ6Ii8xOjYiO2E6MjY6e3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOmNoYW5nZW93bnBhc3N3b3JkIjtzOjU6Ii0xMDAwIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MzM6Im1vb2RsZS91c2VyOmVkaXRvd25tZXNzYWdlcHJvZmlsZSI7czo1OiItMTAwMCI7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjE3OiJtb2QvZmVlZGJhY2s6dmlldyI7czoxOiIxIjtzOjIzOiJtb29kbGUvdXNlcjp2aWV3ZGV0YWlscyI7czoxOiIxIjtzOjE1OiJtb2QvZm9sZGVyOnZpZXciO3M6MToiMSI7czoyMzoibW9kL2ZvcnVtOmRlbGV0ZW93bnBvc3QiO3M6MToiMSI7czoyMDoibW9kL2ZvcnVtOmV4cG9ydHBvc3QiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czoxNDoibW9kL2ltc2NwOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3BhZ2U6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcXVpejp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC9yZXNvdXJjZTp2aWV3IjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjE3OiJtb2Qvd2lraTp2aWV3cGFnZSI7czoxOiIxIjtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7czoxOiIxIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoxOiIxIjt9czo5OiIvMS8yLzUyOjYiO2E6NDp7czoxNzoibW9kL2ZvcnVtOmFkZG5ld3MiO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjt9czo4OiIvMS8yLzQ6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzU6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8xNzo2IjthOjM6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjM6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO31zOjQ6InRpbWUiO2k6MTMyMDM1NzY1ODt9czo1OiJlbnJvbCI7YToyOntzOjg6ImVucm9sbGVkIjthOjA6e31zOjk6InRlbXBndWVzdCI7YTowOnt9fXM6MjU6ImFqYXhfdXBkYXRhYmxlX3VzZXJfcHJlZnMiO2E6NTp7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzQiO3M6MzoiaW50IjtzOjIzOiJkb2NrZWRfYmxvY2tfaW5zdGFuY2VfNSI7czozOiJpbnQiO3M6MTM6ImJsb2NrMTZoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2sxNWhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazMyaGlkZGVuIjtzOjQ6ImJvb2wiO31zOjc6InNlc3NrZXkiO3M6MTA6InJxcWpyYzd3QXgiO30=', 1320357658, 1320357661, '127.0.0.1', '127.0.0.1'),
+(788, 0, 'se8c3thrp379a9hj2j0vvj42d1', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxMDp7czo0OiIvMTo2IjthOjI2OntzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO3M6NToiLTEwMDAiO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjIzOiJtb2QvZm9ydW06ZGVsZXRlb3ducG9zdCI7czoxOiIxIjtzOjIwOiJtb2QvZm9ydW06ZXhwb3J0cG9zdCI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9xdWl6OnZpZXciO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC93aWtpOnZpZXdwYWdlIjtzOjE6IjEiO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnZpZXciO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7fXM6ODoiLzEvMi80OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNjo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTc6NiI7YTozOntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMjA0MzUwMzg7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjU6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJzZXNza2V5IjtzOjEwOiJ5a1EyM1hFd2lBIjt9', 1320435038, 1320435038, '127.0.0.1', '127.0.0.1'),
+(800, 0, '733gq7u2i447oudg10vhcubjj5', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6MjoiZXMiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxMDp7czo0OiIvMTo2IjthOjI2OntzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7czoxOiIxIjtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTpleHBvcnRwb3N0IjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7fXM6ODoiLzEvMi80OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNjo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTc6NiI7YTozOntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMjA0NDEyOTQ7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjU6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJzZXNza2V5IjtzOjEwOiJOUE9nbDJmOFc4Ijt9', 1320441294, 1320441295, '127.0.0.1', '127.0.0.1'),
+(803, 0, '71m47lulm2ro4e102gi376op17', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjowOnt9VVNFUnxPOjg6InN0ZENsYXNzIjoyOntzOjI6ImlkIjtpOjA7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjt9', 1320442277, 1320442277, '127.0.0.1', '127.0.0.1');
+INSERT INTO `mdl_sessions` (`id`, `state`, `sid`, `userid`, `sessdata`, `timecreated`, `timemodified`, `firstip`, `lastip`) VALUES
+(813, 0, 'pq09nhg4ueeafvqlbf7ae27tt1', 12, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjo3OntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czoyMjoiYWRtaW5fY3JpdGljYWxfd2FybmluZyI7aTowO3M6MjE6ImxvYWRfbmF2aWdhdGlvbl9hZG1pbiI7YjoxO3M6MTQ6ImZyb21kaXNjdXNzaW9uIjtzOjM4OiJodHRwOi8vbG9jYWxob3N0L2NvdXJzZS92aWV3LnBocD9pZD0xNiI7czoxMjoiZmxhc2h2ZXJzaW9uIjtzOjY6IjExLjAuMSI7czoxMToiYWN0aXZlZ3JvdXAiO2E6MTp7aToxNjthOjM6e2k6MTthOjA6e31pOjI7YTowOnt9czozOiJhYWciO2E6MTp7aTowO2k6MDt9fX1zOjg6Im5hdmNhY2hlIjtPOjg6InN0ZENsYXNzIjoxOntzOjEwOiJuYXZpZ2F0aW9uIjthOjQ6e3M6MTc6ImNvbnRleHRoYXNyZXBvczMyIjthOjM6e2k6MDtpOjEzMjA0NDM0MTE7aToxO3M6MjoiMTIiO2k6MjtzOjQ6ImI6MDsiO31zOjE4OiJjb3Vyc2Vfc2VjdGlvbnNfMTYiO2E6Mzp7aTowO2k6MTMyMDQ0MzQxODtpOjE7czoyOiIxMiI7aToyO3M6MzYzMDoiYToxNzp7aTowO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIwIjtzOjI6ImlkIjtzOjM6IjIyOCI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO047czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtzOjU6IjQxLDQyIjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjE7fWk6MTtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiMSI7czoyOiJpZCI7czozOiIyNDciO3M6NjoiY291cnNlIjtzOjI6IjE2IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToyO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiIyIjtzOjI6ImlkIjtzOjM6IjI0OCI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjM7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjMiO3M6MjoiaWQiO3M6MzoiMjQ5IjtzOjY6ImNvdXJzZSI7czoyOiIxNiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NDtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNCI7czoyOiJpZCI7czozOiIyNTAiO3M6NjoiY291cnNlIjtzOjI6IjE2IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo1O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI1IjtzOjI6ImlkIjtzOjM6IjI1MSI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjY7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjYiO3M6MjoiaWQiO3M6MzoiMjUyIjtzOjY6ImNvdXJzZSI7czoyOiIxNiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6NztPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MToiNyI7czoyOiJpZCI7czozOiIyNTMiO3M6NjoiY291cnNlIjtzOjI6IjE2IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aTo4O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoxOiI4IjtzOjI6ImlkIjtzOjM6IjI1NCI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjk7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjE6IjkiO3M6MjoiaWQiO3M6MzoiMjU1IjtzOjY6ImNvdXJzZSI7czoyOiIxNiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MTA7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjI6IjEwIjtzOjI6ImlkIjtzOjM6IjI1NiI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjExO086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxMSI7czoyOiJpZCI7czozOiIyNTciO3M6NjoiY291cnNlIjtzOjI6IjE2IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToxMjtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MjoiMTIiO3M6MjoiaWQiO3M6MzoiMjU4IjtzOjY6ImNvdXJzZSI7czoyOiIxNiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MTM7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjI6IjEzIjtzOjI6ImlkIjtzOjM6IjI1OSI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO31pOjE0O086ODoic3RkQ2xhc3MiOjk6e3M6Nzoic2VjdGlvbiI7czoyOiIxNCI7czoyOiJpZCI7czozOiIyNjAiO3M6NjoiY291cnNlIjtzOjI6IjE2IjtzOjQ6Im5hbWUiO047czo3OiJzdW1tYXJ5IjtzOjA6IiI7czoxMzoic3VtbWFyeWZvcm1hdCI7czoxOiIxIjtzOjg6InNlcXVlbmNlIjtOO3M6NzoidmlzaWJsZSI7czoxOiIxIjtzOjEyOiJoYXNhY3Rpdml0ZXMiO2I6MDt9aToxNTtPOjg6InN0ZENsYXNzIjo5OntzOjc6InNlY3Rpb24iO3M6MjoiMTUiO3M6MjoiaWQiO3M6MzoiMjYxIjtzOjY6ImNvdXJzZSI7czoyOiIxNiI7czo0OiJuYW1lIjtOO3M6Nzoic3VtbWFyeSI7czowOiIiO3M6MTM6InN1bW1hcnlmb3JtYXQiO3M6MToiMSI7czo4OiJzZXF1ZW5jZSI7TjtzOjc6InZpc2libGUiO3M6MToiMSI7czoxMjoiaGFzYWN0aXZpdGVzIjtiOjA7fWk6MTY7Tzo4OiJzdGRDbGFzcyI6OTp7czo3OiJzZWN0aW9uIjtzOjI6IjE2IjtzOjI6ImlkIjtzOjM6IjI2MiI7czo2OiJjb3Vyc2UiO3M6MjoiMTYiO3M6NDoibmFtZSI7TjtzOjc6InN1bW1hcnkiO3M6MDoiIjtzOjEzOiJzdW1tYXJ5Zm9ybWF0IjtzOjE6IjEiO3M6ODoic2VxdWVuY2UiO047czo3OiJ2aXNpYmxlIjtzOjE6IjEiO3M6MTI6Imhhc2FjdGl2aXRlcyI7YjowO319Ijt9czoxOToiY291cnNlX2FjdGl2aXRlc18xNiI7YTozOntpOjA7aToxMzIwNDQzNDE4O2k6MTtzOjI6IjEyIjtpOjI7czo1NjU6ImE6Mjp7aTo0MTtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czo4OiJOb3RpY2lhcyI7czo0OiJpY29uIjtzOjA6IiI7czoxMzoiaWNvbmNvbXBvbmVudCI7czowOiIiO3M6MjoiaWQiO3M6MjoiNDEiO3M6NjoiaGlkZGVuIjtiOjA7czo3OiJtb2RuYW1lIjtzOjU6ImZvcnVtIjtzOjg6Im5vZGV0eXBlIjtpOjA7czozOiJ1cmwiO3M6NDE6Imh0dHA6Ly9sb2NhbGhvc3QvbW9kL2ZvcnVtL3ZpZXcucGhwP2lkPTQxIjtzOjc6ImRpc3BsYXkiO2I6MTt9aTo0MjtPOjg6InN0ZENsYXNzIjoxMDp7czo3OiJzZWN0aW9uIjtzOjE6IjAiO3M6NDoibmFtZSI7czoxNDoiRm9ybyBkZWwgQ3Vyc28iO3M6NDoiaWNvbiI7czowOiIiO3M6MTM6Imljb25jb21wb25lbnQiO3M6MDoiIjtzOjI6ImlkIjtzOjI6IjQyIjtzOjY6ImhpZGRlbiI7YjowO3M6NzoibW9kbmFtZSI7czo1OiJmb3J1bSI7czo4OiJub2RldHlwZSI7aTowO3M6MzoidXJsIjtzOjQxOiJodHRwOi8vbG9jYWxob3N0L21vZC9mb3J1bS92aWV3LnBocD9pZD00MiI7czo3OiJkaXNwbGF5IjtiOjE7fX0iO31zOjE4OiJjb250ZXh0aGFzcmVwb3MxNTMiO2E6Mzp7aTowO2k6MTMyMDQ0MzQxODtpOjE7czoyOiIxMiI7aToyO3M6NDoiYjowOyI7fX19fVVTRVJ8Tzo4OiJzdGRDbGFzcyI6NjI6e3M6MjoiaWQiO3M6MjoiMTIiO3M6NDoiYXV0aCI7czo1OiJlbWFpbCI7czo5OiJjb25maXJtZWQiO3M6MToiMSI7czoxMjoicG9saWN5YWdyZWVkIjtzOjE6IjAiO3M6NzoiZGVsZXRlZCI7czoxOiIwIjtzOjk6InN1c3BlbmRlZCI7czoxOiIwIjtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6ODoidXNlcm5hbWUiO3M6MTI6ImFkbWlucG9wcGVyMSI7czo4OiJwYXNzd29yZCI7czozMjoiZTZkMGEyOThlMGUwNDU0NWM5MGY0ZmUyODcyMDViZDEiO3M6ODoiaWRudW1iZXIiO3M6MDoiIjtzOjk6ImZpcnN0bmFtZSI7czo2OiJhZG1pbjEiO3M6ODoibGFzdG5hbWUiO3M6NjoicG9wcGVyIjtzOjU6ImVtYWlsIjtzOjIyOiJhZG1pbnBvcHBlcjFAZ21haWwuY29tIjtzOjk6ImVtYWlsc3RvcCI7czoxOiIwIjtzOjM6ImljcSI7czowOiIiO3M6NToic2t5cGUiO3M6MDoiIjtzOjU6InlhaG9vIjtzOjA6IiI7czozOiJhaW0iO3M6MDoiIjtzOjM6Im1zbiI7czowOiIiO3M6NjoicGhvbmUxIjtzOjA6IiI7czo2OiJwaG9uZTIiO3M6MDoiIjtzOjExOiJpbnN0aXR1dGlvbiI7czowOiIiO3M6MTA6ImRlcGFydG1lbnQiO3M6MDoiIjtzOjc6ImFkZHJlc3MiO3M6MDoiIjtzOjQ6ImNpdHkiO3M6MTI6IkJ1ZW5vcyBBaXJlcyI7czo3OiJjb3VudHJ5IjtzOjI6IkFSIjtzOjQ6ImxhbmciO3M6NToiZXNfYXIiO3M6NToidGhlbWUiO3M6MDoiIjtzOjg6InRpbWV6b25lIjtzOjI6Ijk5IjtzOjExOiJmaXJzdGFjY2VzcyI7czoxMDoiMTMxNzI0NTU3NSI7czoxMDoibGFzdGFjY2VzcyI7aToxMzIwNDQzMzc4O3M6OToibGFzdGxvZ2luIjtzOjEwOiIxMzIwNDQyMjk5IjtzOjEyOiJjdXJyZW50bG9naW4iO2k6MTMyMDQ0MzM3NztzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjE1OiJoT29xRnB5aDBIdDEyTFMiO3M6NzoicGljdHVyZSI7czoxOiIwIjtzOjM6InVybCI7czowOiIiO3M6MTc6ImRlc2NyaXB0aW9uZm9ybWF0IjtzOjE6IjAiO3M6MTA6Im1haWxmb3JtYXQiO3M6MToiMSI7czoxMDoibWFpbGRpZ2VzdCI7czoxOiIwIjtzOjExOiJtYWlsZGlzcGxheSI7czoxOiIyIjtzOjEwOiJodG1sZWRpdG9yIjtzOjE6IjEiO3M6NDoiYWpheCI7czoxOiIxIjtzOjEzOiJhdXRvc3Vic2NyaWJlIjtzOjE6IjEiO3M6MTE6InRyYWNrZm9ydW1zIjtzOjE6IjAiO3M6MTE6InRpbWVjcmVhdGVkIjtzOjEwOiIxMzE3MjQ1NTQ1IjtzOjEyOiJ0aW1lbW9kaWZpZWQiO3M6MToiMCI7czoxMjoidHJ1c3RiaXRtYXNrIjtzOjE6IjAiO3M6ODoiaW1hZ2VhbHQiO047czoxMjoic2NyZWVucmVhZGVyIjtzOjE6IjAiO3M6MTY6Imxhc3Rjb3Vyc2VhY2Nlc3MiO2E6Mjp7aToxNjtzOjEwOiIxMzIwNDQyOTk4IjtpOjE4O3M6MTA6IjEzMjA0NDMxMjQiO31zOjE5OiJjdXJyZW50Y291cnNlYWNjZXNzIjthOjE6e2k6MTY7aToxMzIwNDQzNDAwO31zOjExOiJncm91cG1lbWJlciI7YTowOnt9czo3OiJwcm9maWxlIjthOjM6e3M6MzoiZG5pIjtzOjg6IjEyMzQ1Njc4IjtzOjY6InBhZHJvbiI7czo4OiIxMjM0NTY3OCI7czoxMzoicm9sc29saWNpdGFkbyI7czoxMzoiQWRtaW5pc3RyYWRvciI7fXM6NjoiYWNjZXNzIjthOjU6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToyOntpOjg7czoxOiI4IjtpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToyMDp7czo0OiIvMTo4IjthOjM2MTp7czoyNzoiYmxvY2svb25saW5lX3VzZXJzOnZpZXdsaXN0IjtzOjE6IjEiO3M6MzE6ImJsb2NrL3Jzc19jbGllbnQ6bWFuYWdlYW55ZmVlZHMiO3M6MToiMSI7czozMToiYmxvY2svcnNzX2NsaWVudDptYW5hZ2Vvd25mZWVkcyI7czoxOiIxIjtzOjI4OiJjb3Vyc2VyZXBvcnQvY29tcGxldGlvbjp2aWV3IjtzOjE6IjEiO3M6MjE6ImNvdXJzZXJlcG9ydC9sb2c6dmlldyI7czoxOiIxIjtzOjI1OiJjb3Vyc2VyZXBvcnQvbG9nOnZpZXdsaXZlIjtzOjE6IjEiO3M6MjY6ImNvdXJzZXJlcG9ydC9sb2c6dmlld3RvZGF5IjtzOjE6IjEiO3M6MjU6ImNvdXJzZXJlcG9ydC9vdXRsaW5lOnZpZXciO3M6MToiMSI7czozMToiY291cnNlcmVwb3J0L3BhcnRpY2lwYXRpb246dmlldyI7czoxOiIxIjtzOjI2OiJjb3Vyc2VyZXBvcnQvcHJvZ3Jlc3M6dmlldyI7czoxOiIxIjtzOjIzOiJjb3Vyc2VyZXBvcnQvc3RhdHM6dmlldyI7czoxOiIxIjtzOjIyOiJlbnJvbC9hdXRob3JpemU6Y29uZmlnIjtzOjE6IjEiO3M6MjI6ImVucm9sL2F1dGhvcml6ZTptYW5hZ2UiO3M6MToiMSI7czozMDoiZW5yb2wvYXV0aG9yaXplOm1hbmFnZXBheW1lbnRzIjtzOjE6IjEiO3M6MjM6ImVucm9sL2F1dGhvcml6ZTp1bmVucm9sIjtzOjE6IjEiO3M6Mjc6ImVucm9sL2F1dGhvcml6ZTp1bmVucm9sc2VsZiI7czoxOiIxIjtzOjI1OiJlbnJvbC9hdXRob3JpemU6dXBsb2FkY3N2IjtzOjE6IjEiO3M6Mjc6ImVucm9sL2NhdGVnb3J5OnN5bmNocm9uaXNlZCI7czoxOiIxIjtzOjE5OiJlbnJvbC9jb2hvcnQ6Y29uZmlnIjtzOjE6IjEiO3M6MTg6ImVucm9sL2d1ZXN0OmNvbmZpZyI7czoxOiIxIjtzOjE3OiJlbnJvbC9sZGFwOm1hbmFnZSI7czoxOiIxIjtzOjE5OiJlbnJvbC9tYW51YWw6Y29uZmlnIjtzOjE6IjEiO3M6MTg6ImVucm9sL21hbnVhbDplbnJvbCI7czoxOiIxIjtzOjE5OiJlbnJvbC9tYW51YWw6bWFuYWdlIjtzOjE6IjEiO3M6MjA6ImVucm9sL21hbnVhbDp1bmVucm9sIjtzOjE6IjEiO3M6MjQ6ImVucm9sL21hbnVhbDp1bmVucm9sc2VsZiI7czoxOiIxIjtzOjE3OiJlbnJvbC9tZXRhOmNvbmZpZyI7czoxOiIxIjtzOjI1OiJlbnJvbC9tZXRhOnNlbGVjdGFzbGlua2VkIjtzOjE6IjEiO3M6MTk6ImVucm9sL3BheXBhbDpjb25maWciO3M6MToiMSI7czoxOToiZW5yb2wvcGF5cGFsOm1hbmFnZSI7czoxOiIxIjtzOjIwOiJlbnJvbC9wYXlwYWw6dW5lbnJvbCI7czoxOiIxIjtzOjI0OiJlbnJvbC9wYXlwYWw6dW5lbnJvbHNlbGYiO3M6MToiMSI7czoxNzoiZW5yb2wvc2VsZjpjb25maWciO3M6MToiMSI7czoxNzoiZW5yb2wvc2VsZjptYW5hZ2UiO3M6MToiMSI7czoxODoiZW5yb2wvc2VsZjp1bmVucm9sIjtzOjE6IjEiO3M6MjI6ImVucm9sL3NlbGY6dW5lbnJvbHNlbGYiO3M6MToiMSI7czoyMzoiZ3JhZGVleHBvcnQvb2RzOnB1Ymxpc2giO3M6MToiMSI7czoyMDoiZ3JhZGVleHBvcnQvb2RzOnZpZXciO3M6MToiMSI7czoyMzoiZ3JhZGVleHBvcnQvdHh0OnB1Ymxpc2giO3M6MToiMSI7czoyMDoiZ3JhZGVleHBvcnQvdHh0OnZpZXciO3M6MToiMSI7czoyMzoiZ3JhZGVleHBvcnQveGxzOnB1Ymxpc2giO3M6MToiMSI7czoyMDoiZ3JhZGVleHBvcnQveGxzOnZpZXciO3M6MToiMSI7czoyMzoiZ3JhZGVleHBvcnQveG1sOnB1Ymxpc2giO3M6MToiMSI7czoyMDoiZ3JhZGVleHBvcnQveG1sOnZpZXciO3M6MToiMSI7czoyMDoiZ3JhZGVpbXBvcnQvY3N2OnZpZXciO3M6MToiMSI7czoyMzoiZ3JhZGVpbXBvcnQveG1sOnB1Ymxpc2giO3M6MToiMSI7czoyMDoiZ3JhZGVpbXBvcnQveG1sOnZpZXciO3M6MToiMSI7czoyMzoiZ3JhZGVyZXBvcnQvZ3JhZGVyOnZpZXciO3M6MToiMSI7czoyNToiZ3JhZGVyZXBvcnQvb3V0Y29tZXM6dmlldyI7czoxOiIxIjtzOjI1OiJncmFkZXJlcG9ydC9vdmVydmlldzp2aWV3IjtzOjE6IjEiO3M6MjE6ImdyYWRlcmVwb3J0L3VzZXI6dmlldyI7czoxOiIxIjtzOjM0OiJtb2QvYXNzaWdubWVudDpleHBvcnRvd25zdWJtaXNzaW9uIjtzOjE6IjEiO3M6MjA6Im1vZC9hc3NpZ25tZW50OmdyYWRlIjtzOjE6IjEiO3M6MjE6Im1vZC9hc3NpZ25tZW50OnN1Ym1pdCI7czoxOiIxIjtzOjE5OiJtb2QvYXNzaWdubWVudDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9jaGF0OmNoYXQiO3M6MToiMSI7czoxODoibW9kL2NoYXQ6ZGVsZXRlbG9nIjtzOjE6IjEiO3M6MzQ6Im1vZC9jaGF0OmV4cG9ydHBhcnRpY2lwYXRlZHNlc3Npb24iO3M6MToiMSI7czoyMjoibW9kL2NoYXQ6ZXhwb3J0c2Vzc2lvbiI7czoxOiIxIjtzOjE2OiJtb2QvY2hhdDpyZWFkbG9nIjtzOjE6IjEiO3M6MTc6Im1vZC9jaG9pY2U6Y2hvb3NlIjtzOjE6IjEiO3M6MjY6Im1vZC9jaG9pY2U6ZGVsZXRlcmVzcG9uc2VzIjtzOjE6IjEiO3M6Mjg6Im1vZC9jaG9pY2U6ZG93bmxvYWRyZXNwb25zZXMiO3M6MToiMSI7czoyNDoibW9kL2Nob2ljZTpyZWFkcmVzcG9uc2VzIjtzOjE6IjEiO3M6MTY6Im1vZC9kYXRhOmFwcHJvdmUiO3M6MToiMSI7czoxNjoibW9kL2RhdGE6Y29tbWVudCI7czoxOiIxIjtzOjI1OiJtb2QvZGF0YTpleHBvcnRhbGxlbnRyaWVzIjtzOjE6IjEiO3M6MjA6Im1vZC9kYXRhOmV4cG9ydGVudHJ5IjtzOjE6IjEiO3M6MjM6Im1vZC9kYXRhOmV4cG9ydG93bmVudHJ5IjtzOjE6IjEiO3M6MjM6Im1vZC9kYXRhOm1hbmFnZWNvbW1lbnRzIjtzOjE6IjEiO3M6MjI6Im1vZC9kYXRhOm1hbmFnZWVudHJpZXMiO3M6MToiMSI7czoyNDoibW9kL2RhdGE6bWFuYWdldGVtcGxhdGVzIjtzOjE6IjEiO3M6MjY6Im1vZC9kYXRhOm1hbmFnZXVzZXJwcmVzZXRzIjtzOjE6IjEiO3M6MTM6Im1vZC9kYXRhOnJhdGUiO3M6MToiMSI7czoyMzoibW9kL2RhdGE6dmlld2FsbHJhdGluZ3MiO3M6MToiMSI7czoyNzoibW9kL2RhdGE6dmlld2FsbHVzZXJwcmVzZXRzIjtzOjE6IjEiO3M6MjI6Im1vZC9kYXRhOnZpZXdhbnlyYXRpbmciO3M6MToiMSI7czoxODoibW9kL2RhdGE6dmlld2VudHJ5IjtzOjE6IjEiO3M6MTk6Im1vZC9kYXRhOnZpZXdyYXRpbmciO3M6MToiMSI7czoxOToibW9kL2RhdGE6d3JpdGVlbnRyeSI7czoxOiIxIjtzOjIxOiJtb2QvZmVlZGJhY2s6Y29tcGxldGUiO3M6MToiMSI7czozNDoibW9kL2ZlZWRiYWNrOmNyZWF0ZXByaXZhdGV0ZW1wbGF0ZSI7czoxOiIxIjtzOjMzOiJtb2QvZmVlZGJhY2s6Y3JlYXRlcHVibGljdGVtcGxhdGUiO3M6MToiMSI7czozMDoibW9kL2ZlZWRiYWNrOmRlbGV0ZXN1Ym1pc3Npb25zIjtzOjE6IjEiO3M6Mjc6Im1vZC9mZWVkYmFjazpkZWxldGV0ZW1wbGF0ZSI7czoxOiIxIjtzOjIyOiJtb2QvZmVlZGJhY2s6ZWRpdGl0ZW1zIjtzOjE6IjEiO3M6MjI6Im1vZC9mZWVkYmFjazptYXBjb3Vyc2UiO3M6MToiMSI7czoyNDoibW9kL2ZlZWRiYWNrOnJlY2VpdmVtYWlsIjtzOjE6IjEiO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtzOjE6IjEiO3M6Mjg6Im1vZC9mZWVkYmFjazp2aWV3YW5hbHlzZXBhZ2UiO3M6MToiMSI7czoyNDoibW9kL2ZlZWRiYWNrOnZpZXdyZXBvcnRzIjtzOjE6IjEiO3M6MjI6Im1vZC9mb2xkZXI6bWFuYWdlZmlsZXMiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjE6IjEiO3M6MjY6Im1vZC9mb3J1bTpjcmVhdGVhdHRhY2htZW50IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVhbnlwb3N0IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtzOjE6IjEiO3M6MjE6Im1vZC9mb3J1bTplZGl0YW55cG9zdCI7czoxOiIxIjtzOjI2OiJtb2QvZm9ydW06ZXhwb3J0ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjIzOiJtb2QvZm9ydW06ZXhwb3J0b3ducG9zdCI7czoxOiIxIjtzOjIwOiJtb2QvZm9ydW06ZXhwb3J0cG9zdCI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoyOToibW9kL2ZvcnVtOm1hbmFnZXN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoyNToibW9kL2ZvcnVtOm1vdmVkaXNjdXNzaW9ucyI7czoxOiIxIjtzOjMxOiJtb2QvZm9ydW06cG9zdHdpdGhvdXR0aHJvdHRsaW5nIjtzOjE6IjEiO3M6MTQ6Im1vZC9mb3J1bTpyYXRlIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseW5ld3MiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoxOiIxIjtzOjI2OiJtb2QvZm9ydW06c3BsaXRkaXNjdXNzaW9ucyI7czoxOiIxIjtzOjI1OiJtb2QvZm9ydW06c3RhcnRkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3YWxscmF0aW5ncyI7czoxOiIxIjtzOjIzOiJtb2QvZm9ydW06dmlld2FueXJhdGluZyI7czoxOiIxIjtzOjI0OiJtb2QvZm9ydW06dmlld2Rpc2N1c3Npb24iO3M6MToiMSI7czozMDoibW9kL2ZvcnVtOnZpZXdoaWRkZW50aW1lZHBvc3RzIjtzOjE6IjEiO3M6MzM6Im1vZC9mb3J1bTp2aWV3cWFuZGF3aXRob3V0cG9zdGluZyI7czoxOiIxIjtzOjIwOiJtb2QvZm9ydW06dmlld3JhdGluZyI7czoxOiIxIjtzOjI1OiJtb2QvZm9ydW06dmlld3N1YnNjcmliZXJzIjtzOjE6IjEiO3M6MjA6Im1vZC9nbG9zc2FyeTphcHByb3ZlIjtzOjE6IjEiO3M6MjA6Im1vZC9nbG9zc2FyeTpjb21tZW50IjtzOjE6IjEiO3M6MTk6Im1vZC9nbG9zc2FyeTpleHBvcnQiO3M6MToiMSI7czoyNDoibW9kL2dsb3NzYXJ5OmV4cG9ydGVudHJ5IjtzOjE6IjEiO3M6Mjc6Im1vZC9nbG9zc2FyeTpleHBvcnRvd25lbnRyeSI7czoxOiIxIjtzOjE5OiJtb2QvZ2xvc3Nhcnk6aW1wb3J0IjtzOjE6IjEiO3M6Mjk6Im1vZC9nbG9zc2FyeTptYW5hZ2VjYXRlZ29yaWVzIjtzOjE6IjEiO3M6Mjc6Im1vZC9nbG9zc2FyeTptYW5hZ2Vjb21tZW50cyI7czoxOiIxIjtzOjI2OiJtb2QvZ2xvc3Nhcnk6bWFuYWdlZW50cmllcyI7czoxOiIxIjtzOjE3OiJtb2QvZ2xvc3Nhcnk6cmF0ZSI7czoxOiIxIjtzOjI3OiJtb2QvZ2xvc3Nhcnk6dmlld2FsbHJhdGluZ3MiO3M6MToiMSI7czoyNjoibW9kL2dsb3NzYXJ5OnZpZXdhbnlyYXRpbmciO3M6MToiMSI7czoyMzoibW9kL2dsb3NzYXJ5OnZpZXdyYXRpbmciO3M6MToiMSI7czoxODoibW9kL2dsb3NzYXJ5OndyaXRlIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTU6Im1vZC9sZXNzb246ZWRpdCI7czoxOiIxIjtzOjE3OiJtb2QvbGVzc29uOm1hbmFnZSI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTY6Im1vZC9xdWl6OmF0dGVtcHQiO3M6MToiMSI7czoyMzoibW9kL3F1aXo6ZGVsZXRlYXR0ZW1wdHMiO3M6MToiMSI7czozMToibW9kL3F1aXo6ZW1haWxjb25maXJtc3VibWlzc2lvbiI7czoxOiIxIjtzOjMwOiJtb2QvcXVpejplbWFpbG5vdGlmeXN1Ym1pc3Npb24iO3M6MToiMSI7czoxNDoibW9kL3F1aXo6Z3JhZGUiO3M6MToiMSI7czoyNToibW9kL3F1aXo6aWdub3JldGltZWxpbWl0cyI7czoxOiIxIjtzOjE1OiJtb2QvcXVpejptYW5hZ2UiO3M6MToiMSI7czoyNDoibW9kL3F1aXo6bWFuYWdlb3ZlcnJpZGVzIjtzOjE6IjEiO3M6MTY6Im1vZC9xdWl6OnByZXZpZXciO3M6MToiMSI7czoxNjoibW9kL3F1aXo6cmVncmFkZSI7czoxOiIxIjtzOjI1OiJtb2QvcXVpejpyZXZpZXdteWF0dGVtcHRzIjtzOjE6IjEiO3M6MTM6Im1vZC9xdWl6OnZpZXciO3M6MToiMSI7czoyMDoibW9kL3F1aXo6dmlld3JlcG9ydHMiO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoyNToibW9kL3Njb3JtOmRlbGV0ZXJlc3BvbnNlcyI7czoxOiIxIjtzOjE5OiJtb2Qvc2Nvcm06c2F2ZXRyYWNrIjtzOjE6IjEiO3M6MTg6Im1vZC9zY29ybTpza2lwdmlldyI7czoxOiIxIjtzOjIwOiJtb2Qvc2Nvcm06dmlld3JlcG9ydCI7czoxOiIxIjtzOjIwOiJtb2Qvc2Nvcm06dmlld3Njb3JlcyI7czoxOiIxIjtzOjE5OiJtb2Qvc3VydmV5OmRvd25sb2FkIjtzOjE6IjEiO3M6MjI6Im1vZC9zdXJ2ZXk6cGFydGljaXBhdGUiO3M6MToiMSI7czoyNDoibW9kL3N1cnZleTpyZWFkcmVzcG9uc2VzIjtzOjE6IjEiO3M6MTI6Im1vZC91cmw6dmlldyI7czoxOiIxIjtzOjE5OiJtb2Qvd2lraTpjcmVhdGVwYWdlIjtzOjE6IjEiO3M6MjA6Im1vZC93aWtpOmVkaXRjb21tZW50IjtzOjE6IjEiO3M6MTc6Im1vZC93aWtpOmVkaXRwYWdlIjtzOjE6IjEiO3M6MjI6Im1vZC93aWtpOm1hbmFnZWNvbW1lbnQiO3M6MToiMSI7czoyMDoibW9kL3dpa2k6bWFuYWdlZmlsZXMiO3M6MToiMSI7czoxOToibW9kL3dpa2k6bWFuYWdld2lraSI7czoxOiIxIjtzOjIxOiJtb2Qvd2lraTpvdmVycmlkZWxvY2siO3M6MToiMSI7czoyMDoibW9kL3dpa2k6dmlld2NvbW1lbnQiO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoyMToibW9kL3dvcmtzaG9wOmFsbG9jYXRlIjtzOjE6IjEiO3M6Mjc6Im1vZC93b3Jrc2hvcDplZGl0ZGltZW5zaW9ucyI7czoxOiIxIjtzOjI4OiJtb2Qvd29ya3Nob3A6aWdub3JlZGVhZGxpbmVzIjtzOjE6IjEiO3M6Mjc6Im1vZC93b3Jrc2hvcDptYW5hZ2VleGFtcGxlcyI7czoxOiIxIjtzOjI3OiJtb2Qvd29ya3Nob3A6b3ZlcnJpZGVncmFkZXMiO3M6MToiMSI7czoyMzoibW9kL3dvcmtzaG9wOnBlZXJhc3Nlc3MiO3M6MToiMSI7czozMToibW9kL3dvcmtzaG9wOnB1Ymxpc2hzdWJtaXNzaW9ucyI7czoxOiIxIjtzOjE5OiJtb2Qvd29ya3Nob3A6c3VibWl0IjtzOjE6IjEiO3M6MjQ6Im1vZC93b3Jrc2hvcDpzd2l0Y2hwaGFzZSI7czoxOiIxIjtzOjE3OiJtb2Qvd29ya3Nob3A6dmlldyI7czoxOiIxIjtzOjMxOiJtb2Qvd29ya3Nob3A6dmlld2FsbGFzc2Vzc21lbnRzIjtzOjE6IjEiO3M6MzE6Im1vZC93b3Jrc2hvcDp2aWV3YWxsc3VibWlzc2lvbnMiO3M6MToiMSI7czoyODoibW9kL3dvcmtzaG9wOnZpZXdhdXRob3JuYW1lcyI7czoxOiIxIjtzOjMyOiJtb2Qvd29ya3Nob3A6dmlld2F1dGhvcnB1Ymxpc2hlZCI7czoxOiIxIjtzOjM3OiJtb2Qvd29ya3Nob3A6dmlld3B1Ymxpc2hlZHN1Ym1pc3Npb25zIjtzOjE6IjEiO3M6MzA6Im1vZC93b3Jrc2hvcDp2aWV3cmV2aWV3ZXJuYW1lcyI7czoxOiIxIjtzOjIzOiJtb29kbGUvYmFja3VwOmFub255bWlzZSI7czoxOiIxIjtzOjI4OiJtb29kbGUvYmFja3VwOmJhY2t1cGFjdGl2aXR5IjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9iYWNrdXA6YmFja3VwY291cnNlIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9iYWNrdXA6YmFja3Vwc2VjdGlvbiI7czoxOiIxIjtzOjI5OiJtb29kbGUvYmFja3VwOmJhY2t1cHRhcmdldGh1YiI7czoxOiIxIjtzOjMyOiJtb29kbGUvYmFja3VwOmJhY2t1cHRhcmdldGltcG9ydCI7czoxOiIxIjtzOjIzOiJtb29kbGUvYmFja3VwOmNvbmZpZ3VyZSI7czoxOiIxIjtzOjI2OiJtb29kbGUvYmFja3VwOmRvd25sb2FkZmlsZSI7czoxOiIxIjtzOjIyOiJtb29kbGUvYmFja3VwOnVzZXJpbmZvIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ibG9nOmFzc29jaWF0ZWNvdXJzZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvYmxvZzphc3NvY2lhdGVtb2R1bGUiO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6Y3JlYXRlIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9ibG9nOnZpZXdkcmFmdHMiO3M6MToiMSI7czoyOToibW9vZGxlL2NhbGVuZGFyOm1hbmFnZWVudHJpZXMiO3M6MToiMSI7czozNDoibW9vZGxlL2NhbGVuZGFyOm1hbmFnZWdyb3VwZW50cmllcyI7czoxOiIxIjtzOjMyOiJtb29kbGUvY2FsZW5kYXI6bWFuYWdlb3duZW50cmllcyI7czoxOiIxIjtzOjIyOiJtb29kbGUvY2F0ZWdvcnk6bWFuYWdlIjtzOjE6IjEiO3M6MzY6Im1vb2RsZS9jYXRlZ29yeTp2aWV3aGlkZGVuY2F0ZWdvcmllcyI7czoxOiIxIjtzOjIwOiJtb29kbGUvY29ob3J0OmFzc2lnbiI7czoxOiIxIjtzOjIwOiJtb29kbGUvY29ob3J0Om1hbmFnZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvY29ob3J0OnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL2NvbW1lbnQ6ZGVsZXRlIjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9jb21tZW50OnBvc3QiO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjIwOiJtb29kbGUvY29tbXVuaXR5OmFkZCI7czoxOiIxIjtzOjI1OiJtb29kbGUvY29tbXVuaXR5OmRvd25sb2FkIjtzOjE6IjEiO3M6MzI6Im1vb2RsZS9jb3Vyc2U6YWN0aXZpdHl2aXNpYmlsaXR5IjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9jb3Vyc2U6YnVsa21lc3NhZ2luZyI7czoxOiIxIjtzOjI4OiJtb29kbGUvY291cnNlOmNoYW5nZWNhdGVnb3J5IjtzOjE6IjEiO3M6Mjg6Im1vb2RsZS9jb3Vyc2U6Y2hhbmdlZnVsbG5hbWUiO3M6MToiMSI7czoyODoibW9vZGxlL2NvdXJzZTpjaGFuZ2VpZG51bWJlciI7czoxOiIxIjtzOjI5OiJtb29kbGUvY291cnNlOmNoYW5nZXNob3J0bmFtZSI7czoxOiIxIjtzOjI3OiJtb29kbGUvY291cnNlOmNoYW5nZXN1bW1hcnkiO3M6MToiMSI7czoyMDoibW9vZGxlL2NvdXJzZTpjcmVhdGUiO3M6MToiMSI7czoyMDoibW9vZGxlL2NvdXJzZTpkZWxldGUiO3M6MToiMSI7czoyNToibW9vZGxlL2NvdXJzZTplbnJvbGNvbmZpZyI7czoxOiIxIjtzOjI1OiJtb29kbGUvY291cnNlOmVucm9scmV2aWV3IjtzOjE6IjEiO3M6MzA6Im1vb2RsZS9jb3Vyc2U6bWFuYWdlYWN0aXZpdGllcyI7czoxOiIxIjtzOjI1OiJtb29kbGUvY291cnNlOm1hbmFnZWZpbGVzIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9jb3Vyc2U6bWFuYWdlZ3JvdXBzIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9jb3Vyc2U6bWFuYWdlc2NhbGVzIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9jb3Vyc2U6bWFya2NvbXBsZXRlIjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9jb3Vyc2U6cHVibGlzaCI7czoxOiIxIjtzOjIxOiJtb29kbGUvY291cnNlOnJlcXVlc3QiO3M6MToiMSI7czoxOToibW9vZGxlL2NvdXJzZTpyZXNldCI7czoxOiIxIjtzOjMxOiJtb29kbGUvY291cnNlOnNlY3Rpb252aXNpYmlsaXR5IjtzOjE6IjEiO3M6MzE6Im1vb2RsZS9jb3Vyc2U6c2V0Y3VycmVudHNlY3Rpb24iO3M6MToiMSI7czoyMDoibW9vZGxlL2NvdXJzZTp1cGRhdGUiO3M6MToiMSI7czoyMzoibW9vZGxlL2NvdXJzZTp1c2VyZW1haWwiO3M6MToiMSI7czoxODoibW9vZGxlL2NvdXJzZTp2aWV3IjtzOjE6IjEiO3M6MzQ6Im1vb2RsZS9jb3Vyc2U6dmlld2hpZGRlbmFjdGl2aXRpZXMiO3M6MToiMSI7czozMToibW9vZGxlL2NvdXJzZTp2aWV3aGlkZGVuY291cnNlcyI7czoxOiIxIjtzOjMyOiJtb29kbGUvY291cnNlOnZpZXdoaWRkZW5zZWN0aW9ucyI7czoxOiIxIjtzOjM0OiJtb29kbGUvY291cnNlOnZpZXdoaWRkZW51c2VyZmllbGRzIjtzOjE6IjEiO3M6MzA6Im1vb2RsZS9jb3Vyc2U6dmlld3BhcnRpY2lwYW50cyI7czoxOiIxIjtzOjI0OiJtb29kbGUvY291cnNlOnZpZXdzY2FsZXMiO3M6MToiMSI7czoyNDoibW9vZGxlL2NvdXJzZTp2aXNpYmlsaXR5IjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9maWx0ZXI6bWFuYWdlIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ncmFkZTplZGl0IjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9ncmFkZTpleHBvcnQiO3M6MToiMSI7czoxNzoibW9vZGxlL2dyYWRlOmhpZGUiO3M6MToiMSI7czoxOToibW9vZGxlL2dyYWRlOmltcG9ydCI7czoxOiIxIjtzOjE3OiJtb29kbGUvZ3JhZGU6bG9jayI7czoxOiIxIjtzOjE5OiJtb29kbGUvZ3JhZGU6bWFuYWdlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS9ncmFkZTptYW5hZ2VsZXR0ZXJzIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS9ncmFkZTptYW5hZ2VvdXRjb21lcyI7czoxOiIxIjtzOjE5OiJtb29kbGUvZ3JhZGU6dW5sb2NrIjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ncmFkZTp2aWV3IjtzOjE6IjEiO3M6MjA6Im1vb2RsZS9ncmFkZTp2aWV3YWxsIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9ncmFkZTp2aWV3aGlkZGVuIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9teTpjb25maWdzeXNwYWdlcyI7czoxOiIxIjtzOjIyOiJtb29kbGUvbXk6bWFuYWdlYmxvY2tzIjtzOjE6IjEiO3M6MTk6Im1vb2RsZS9ub3RlczptYW5hZ2UiO3M6MToiMSI7czoxNzoibW9vZGxlL25vdGVzOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3BvcnRmb2xpbzpleHBvcnQiO3M6MToiMSI7czoxOToibW9vZGxlL3F1ZXN0aW9uOmFkZCI7czoxOiIxIjtzOjIyOiJtb29kbGUvcXVlc3Rpb246Y29uZmlnIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9xdWVzdGlvbjplZGl0YWxsIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9xdWVzdGlvbjplZGl0bWluZSI7czoxOiIxIjtzOjIwOiJtb29kbGUvcXVlc3Rpb246ZmxhZyI7czoxOiIxIjtzOjMwOiJtb29kbGUvcXVlc3Rpb246bWFuYWdlY2F0ZWdvcnkiO3M6MToiMSI7czoyMzoibW9vZGxlL3F1ZXN0aW9uOm1vdmVhbGwiO3M6MToiMSI7czoyNDoibW9vZGxlL3F1ZXN0aW9uOm1vdmVtaW5lIjtzOjE6IjEiO3M6MjI6Im1vb2RsZS9xdWVzdGlvbjp1c2VhbGwiO3M6MToiMSI7czoyMzoibW9vZGxlL3F1ZXN0aW9uOnVzZW1pbmUiO3M6MToiMSI7czoyMzoibW9vZGxlL3F1ZXN0aW9uOnZpZXdhbGwiO3M6MToiMSI7czoyNDoibW9vZGxlL3F1ZXN0aW9uOnZpZXdtaW5lIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yYXRpbmc6cmF0ZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvcmF0aW5nOnZpZXciO3M6MToiMSI7czoyMToibW9vZGxlL3JhdGluZzp2aWV3YWxsIjtzOjE6IjEiO3M6MjE6Im1vb2RsZS9yYXRpbmc6dmlld2FueSI7czoxOiIxIjtzOjI0OiJtb29kbGUvcmVzdG9yZTpjb25maWd1cmUiO3M6MToiMSI7czoyNToibW9vZGxlL3Jlc3RvcmU6Y3JlYXRldXNlciI7czoxOiIxIjtzOjMwOiJtb29kbGUvcmVzdG9yZTpyZXN0b3JlYWN0aXZpdHkiO3M6MToiMSI7czoyODoibW9vZGxlL3Jlc3RvcmU6cmVzdG9yZWNvdXJzZSI7czoxOiIxIjtzOjI5OiJtb29kbGUvcmVzdG9yZTpyZXN0b3Jlc2VjdGlvbiI7czoxOiIxIjtzOjMxOiJtb29kbGUvcmVzdG9yZTpyZXN0b3JldGFyZ2V0aHViIjtzOjE6IjEiO3M6MzQ6Im1vb2RsZS9yZXN0b3JlOnJlc3RvcmV0YXJnZXRpbXBvcnQiO3M6MToiMSI7czoyNDoibW9vZGxlL3Jlc3RvcmU6cm9sbGRhdGVzIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS9yZXN0b3JlOnVwbG9hZGZpbGUiO3M6MToiMSI7czoyMzoibW9vZGxlL3Jlc3RvcmU6dXNlcmluZm8iO3M6MToiMSI7czozNjoibW9vZGxlL3Jlc3RvcmU6dmlld2F1dG9tYXRlZGZpbGVhcmVhIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9yb2xlOmFzc2lnbiI7czoxOiIxIjtzOjE4OiJtb29kbGUvcm9sZTptYW5hZ2UiO3M6MToiMSI7czoyMDoibW9vZGxlL3JvbGU6b3ZlcnJpZGUiO3M6MToiMSI7czoxODoibW9vZGxlL3JvbGU6cmV2aWV3IjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9yb2xlOnNhZmVvdmVycmlkZSI7czoxOiIxIjtzOjIzOiJtb29kbGUvcm9sZTpzd2l0Y2hyb2xlcyI7czoxOiIxIjtzOjI3OiJtb29kbGUvc2l0ZTphY2Nlc3NhbGxncm91cHMiO3M6MToiMSI7czoyNToibW9vZGxlL3NpdGU6YXBwcm92ZWNvdXJzZSI7czoxOiIxIjtzOjE4OiJtb29kbGUvc2l0ZTpjb25maWciO3M6MToiMSI7czoyMDoibW9vZGxlL3NpdGU6ZG9jbGlua3MiO3M6MToiMSI7czoyOToibW9vZGxlL3NpdGU6bW5ldGxvZ2ludG9yZW1vdGUiO3M6MToiMSI7czoyNzoibW9vZGxlL3NpdGU6cmVhZGFsbG1lc3NhZ2VzIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS9zaXRlOnNlbmRtZXNzYWdlIjtzOjE6IjEiO3M6MjQ6Im1vb2RsZS9zaXRlOnRydXN0Y29udGVudCI7czoxOiIxIjtzOjIzOiJtb29kbGUvc2l0ZTp1cGxvYWR1c2VycyI7czoxOiIxIjtzOjI1OiJtb29kbGUvc2l0ZTp2aWV3ZnVsbG5hbWVzIjtzOjE6IjEiO3M6Mjg6Im1vb2RsZS9zaXRlOnZpZXdwYXJ0aWNpcGFudHMiO3M6MToiMSI7czoyMzoibW9vZGxlL3NpdGU6dmlld3JlcG9ydHMiO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzpjcmVhdGUiO3M6MToiMSI7czoxNzoibW9vZGxlL3RhZzptYW5hZ2UiO3M6MToiMSI7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO3M6MToiMSI7czoxODoibW9vZGxlL3VzZXI6Y3JlYXRlIjtzOjE6IjEiO3M6MTg6Im1vb2RsZS91c2VyOmRlbGV0ZSI7czoxOiIxIjtzOjMwOiJtb29kbGUvdXNlcjplZGl0bWVzc2FnZXByb2ZpbGUiO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOmVkaXRvd25wcm9maWxlIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOmVkaXRwcm9maWxlIjtzOjE6IjEiO3M6MTk6Im1vb2RsZS91c2VyOmxvZ2luYXMiO3M6MToiMSI7czoyNDoibW9vZGxlL3VzZXI6bWFuYWdlYmxvY2tzIjtzOjE6IjEiO3M6Mjc6Im1vb2RsZS91c2VyOm1hbmFnZW93bmJsb2NrcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjptYW5hZ2Vvd25maWxlcyI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjptYW5hZ2VzeXNwYWdlcyI7czoxOiIxIjtzOjI1OiJtb29kbGUvdXNlcjpyZWFkdXNlcmJsb2dzIjtzOjE6IjEiO3M6MjU6Im1vb2RsZS91c2VyOnJlYWR1c2VycG9zdHMiO3M6MToiMSI7czoxODoibW9vZGxlL3VzZXI6dXBkYXRlIjtzOjE6IjEiO3M6MjY6Im1vb2RsZS91c2VyOnZpZXdhbGxkZXRhaWxzIjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6Mjk6Im1vb2RsZS91c2VyOnZpZXdoaWRkZW5kZXRhaWxzIjtzOjE6IjEiO3M6MzY6Im1vb2RsZS91c2VyOnZpZXd1c2VyYWN0aXZpdGllc3JlcG9ydCI7czoxOiIxIjtzOjM1OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGVtb2JpbGV0b2tlbiI7czoxOiIxIjtzOjI5OiJtb29kbGUvd2Vic2VydmljZTpjcmVhdGV0b2tlbiI7czoxOiIxIjtzOjI1OiJxdWl6L2dyYWRpbmc6dmlld2lkbnVtYmVyIjtzOjE6IjEiO3M6Mjk6InF1aXovZ3JhZGluZzp2aWV3c3R1ZGVudG5hbWVzIjtzOjE6IjEiO3M6MjA6InF1aXovc3RhdGlzdGljczp2aWV3IjtzOjE6IjEiO3M6MjY6InJlcG9ydC9jb3Vyc2VvdmVydmlldzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9ydC9jdXN0b21sYW5nOmVkaXQiO3M6MToiMSI7czoyMjoicmVwb3J0L2N1c3RvbWxhbmc6dmlldyI7czoxOiIxIjtzOjI5OiJyZXBvcnQvcXVlc3Rpb25pbnN0YW5jZXM6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvcnQvc2VjdXJpdHk6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvcnQvdW5pdHRlc3Q6dmlldyI7czoxOiIxIjtzOjI0OiJyZXBvc2l0b3J5L2FsZnJlc2NvOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9ib3huZXQ6dmlldyI7czoxOiIxIjtzOjI3OiJyZXBvc2l0b3J5L2NvdXJzZWZpbGVzOnZpZXciO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS9kcm9wYm94OnZpZXciO3M6MToiMSI7czoyNjoicmVwb3NpdG9yeS9maWxlc3lzdGVtOnZpZXciO3M6MToiMSI7czoyOToicmVwb3NpdG9yeS9mbGlja3JfcHVibGljOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9mbGlja3I6dmlldyI7czoxOiIxIjtzOjI2OiJyZXBvc2l0b3J5L2dvb2dsZWRvY3M6dmlldyI7czoxOiIxIjtzOjIxOiJyZXBvc2l0b3J5L2xvY2FsOnZpZXciO3M6MToiMSI7czoyMjoicmVwb3NpdG9yeS9tZXJsb3Q6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3BpY2FzYTp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvcmVjZW50OnZpZXciO3M6MToiMSI7czoxODoicmVwb3NpdG9yeS9zMzp2aWV3IjtzOjE6IjEiO3M6MjI6InJlcG9zaXRvcnkvdXBsb2FkOnZpZXciO3M6MToiMSI7czoxOToicmVwb3NpdG9yeS91cmw6dmlldyI7czoxOiIxIjtzOjIwOiJyZXBvc2l0b3J5L3VzZXI6dmlldyI7czoxOiIxIjtzOjIyOiJyZXBvc2l0b3J5L3dlYmRhdjp2aWV3IjtzOjE6IjEiO3M6MjU6InJlcG9zaXRvcnkvd2lraW1lZGlhOnZpZXciO3M6MToiMSI7czoyMzoicmVwb3NpdG9yeS95b3V0dWJlOnZpZXciO3M6MToiMSI7czoxODoid2Vic2VydmljZS9hbWY6dXNlIjtzOjE6IjEiO3M6MTk6IndlYnNlcnZpY2UvcmVzdDp1c2UiO3M6MToiMSI7czoxOToid2Vic2VydmljZS9zb2FwOnVzZSI7czoxOiIxIjtzOjIxOiJ3ZWJzZXJ2aWNlL3htbHJwYzp1c2UiO3M6MToiMSI7fXM6NDoiLzE6NiI7YToyNjp7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO3M6NToiLTEwMDAiO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjIzOiJtb2QvZm9ydW06ZGVsZXRlb3ducG9zdCI7czoxOiIxIjtzOjIwOiJtb2QvZm9ydW06ZXhwb3J0cG9zdCI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9xdWl6OnZpZXciO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vZC93aWtpOnZpZXdwYWdlIjtzOjE6IjEiO3M6MTc6Im1vZC93b3Jrc2hvcDp2aWV3IjtzOjE6IjEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjE6IjEiO3M6MTg6Im1vb2RsZS9ibG9nOnNlYXJjaCI7czoxOiIxIjtzOjE2OiJtb29kbGUvYmxvZzp2aWV3IjtzOjE6IjEiO31zOjk6Ii8xLzIvNTI6NiI7YTo0OntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO31zOjk6Ii8xLzIvNTI6OCI7YToxOntzOjI2OiJtb2QvZm9ydW06Y3JlYXRlYXR0YWNobWVudCI7czoyOiItMSI7fXM6ODoiLzEvMi80OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjg6Ii8xLzIvNDo4IjthOjI6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjtzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7fXM6OToiLzEvMi8zNzo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM3OjgiO2E6Mjp7czoxNzoibW9vZGxlL2Jsb2NrOmVkaXQiO3M6MjoiLTEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM2OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzY6OCI7YToyOntzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6NToiLTEwMDAiO31zOjk6Ii8xLzIvMzU6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNTo4IjthOjI6e3M6MTc6Im1vb2RsZS9ibG9jazplZGl0IjtzOjI6Ii0xIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czo1OiItMTAwMCI7fXM6OToiLzEvMi8zNDo4IjthOjI6e3M6MTc6Im1vb2RsZS9ibG9jazplZGl0IjtzOjI6Ii0xIjtzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czo1OiItMTAwMCI7fXM6OToiLzEvMi8xNzo2IjthOjM6e3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MjoiLTEiO3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjI6Ii0xIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjI6Ii0xIjt9czo5OiIvMS8yLzE3OjgiO2E6NTp7czoyNjoibW9kL2ZvcnVtOmV4cG9ydGRpc2N1c3Npb24iO3M6MjoiLTEiO3M6MjM6Im1vZC9mb3J1bTpleHBvcnRvd25wb3N0IjtzOjI6Ii0xIjtzOjIwOiJtb2QvZm9ydW06ZXhwb3J0cG9zdCI7czoyOiItMSI7czozMDoibW9kL2ZvcnVtOmluaXRpYWxzdWJzY3JpcHRpb25zIjtzOjI6Ii0xIjtzOjI5OiJtb2QvZm9ydW06bWFuYWdlc3Vic2NyaXB0aW9ucyI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzc6OCI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6ZWRpdCI7czoyOiItMSI7fXM6NjoiLzEvODo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS84OjgiO2E6Mjp7czoxNzoibW9vZGxlL2Jsb2NrOmVkaXQiO3M6MjoiLTEiO3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9fXM6NjoibG9hZGVkIjthOjQ6e2k6MDtzOjQ6Ii8xLzIiO2k6MTtzOjQ6Ii8xLzciO2k6MjtzOjQ6Ii8xLzgiO2k6MztzOjk6Ii8xLzIzLzE1MyI7fXM6MjoiZHIiO3M6MToiNiI7czo0OiJ0aW1lIjtpOjEzMjA0NDMzNzc7fXM6Nzoic2Vzc2tleSI7czoxMDoiZlA2Z2RkbUw1USI7czoxMDoicHJlZmVyZW5jZSI7YTo2OntzOjEyOiJibG9jazZoaWRkZW4iO3M6MToiMCI7czoyOToibW9kX3VybF9tb2RfZm9ybV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoyOToidXNlcnNlbGVjdG9yX2F1dG9zZWxlY3R1bmlxdWUiO3M6MToiMCI7czoyOToidXNlcnNlbGVjdG9yX3ByZXNlcnZlc2VsZWN0ZWQiO3M6MToiMCI7czoyNzoidXNlcnNlbGVjdG9yX3NlYXJjaGFueXdoZXJlIjtzOjE6IjAiO3M6MTE6Il9sYXN0bG9hZGVkIjtpOjEzMjA0NDM0MTg7fXM6MTc6Im1lc3NhZ2VfbGFzdHBvcHVwIjtpOjA7czo3OiJkaXNwbGF5IjthOjE6e2k6MTY7aTowO31zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjg6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazEwaGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTI6ImJsb2NrNGhpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazE1aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMzJoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2s3N2hpZGRlbiI7czo0OiJib29sIjtzOjEzOiJibG9jazc4aGlkZGVuIjtzOjQ6ImJvb2wiO31zOjU6ImVucm9sIjthOjI6e3M6ODoiZW5yb2xsZWQiO2E6MDp7fXM6OToidGVtcGd1ZXN0IjthOjA6e319czo3OiJlZGl0aW5nIjtpOjA7fQ==', 1320443377, 1320443419, '127.0.0.1', '127.0.0.1'),
+(844, 0, 'galacukn2fc43vpfdkjuuun565', 2, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjozOntzOjEwOiJsb2dpbmNvdW50IjtpOjA7czoxMjoianVzdGxvZ2dlZGluIjtiOjE7czo4OiJ3YW50c3VybCI7czoxNzoiaHR0cDovL2xvY2FsaG9zdC8iO31VU0VSfE86ODoic3RkQ2xhc3MiOjU3OntzOjI6ImlkIjtzOjE6IjIiO3M6NDoiYXV0aCI7czo2OiJtYW51YWwiO3M6OToiY29uZmlybWVkIjtzOjE6IjEiO3M6MTI6InBvbGljeWFncmVlZCI7czoxOiIwIjtzOjc6ImRlbGV0ZWQiO3M6MToiMCI7czo5OiJzdXNwZW5kZWQiO3M6MToiMCI7czoxMDoibW5ldGhvc3RpZCI7czoxOiIxIjtzOjg6InVzZXJuYW1lIjtzOjU6ImFkbWluIjtzOjg6InBhc3N3b3JkIjtzOjMyOiJlNmQwYTI5OGUwZTA0NTQ1YzkwZjRmZTI4NzIwNWJkMSI7czo4OiJpZG51bWJlciI7czowOiIiO3M6OToiZmlyc3RuYW1lIjtzOjU6ImFkbWluIjtzOjg6Imxhc3RuYW1lIjtzOjc6IlVzdWFyaW8iO3M6NToiZW1haWwiO3M6NDg6InRhbGxlcmRlcHJvZ3JhbWFjaW9uaWlmaXViYTIwMTFAZ29vZ2xlZ3JvdXBzLmNvbSI7czo5OiJlbWFpbHN0b3AiO3M6MToiMCI7czozOiJpY3EiO3M6MDoiIjtzOjU6InNreXBlIjtzOjA6IiI7czo1OiJ5YWhvbyI7czowOiIiO3M6MzoiYWltIjtzOjA6IiI7czozOiJtc24iO3M6MDoiIjtzOjY6InBob25lMSI7czowOiIiO3M6NjoicGhvbmUyIjtzOjA6IiI7czoxMToiaW5zdGl0dXRpb24iO3M6MDoiIjtzOjEwOiJkZXBhcnRtZW50IjtzOjA6IiI7czo3OiJhZGRyZXNzIjtzOjA6IiI7czo0OiJjaXR5IjtzOjEyOiJCdWVub3MgQWlyZXMiO3M6NzoiY291bnRyeSI7czoyOiJBUiI7czo0OiJsYW5nIjtzOjU6ImVzX2FyIjtzOjU6InRoZW1lIjtzOjA6IiI7czo4OiJ0aW1lem9uZSI7czoyOiI5OSI7czoxMToiZmlyc3RhY2Nlc3MiO3M6MTA6IjEzMTY1Njc1MDMiO3M6MTA6Imxhc3RhY2Nlc3MiO3M6MTA6IjEzMjA2ODI3MzQiO3M6OToibGFzdGxvZ2luIjtzOjEwOiIxMzIwNjgyMTk5IjtzOjEyOiJjdXJyZW50bG9naW4iO2k6MTMyMDY4NjAyNztzOjY6Imxhc3RpcCI7czo5OiIxMjcuMC4wLjEiO3M6Njoic2VjcmV0IjtzOjA6IiI7czo3OiJwaWN0dXJlIjtzOjE6IjAiO3M6MzoidXJsIjtzOjA6IiI7czoxNzoiZGVzY3JpcHRpb25mb3JtYXQiO3M6MToiMCI7czoxMDoibWFpbGZvcm1hdCI7czoxOiIxIjtzOjEwOiJtYWlsZGlnZXN0IjtzOjE6IjAiO3M6MTE6Im1haWxkaXNwbGF5IjtzOjE6IjEiO3M6MTA6Imh0bWxlZGl0b3IiO3M6MToiMSI7czo0OiJhamF4IjtzOjE6IjEiO3M6MTM6ImF1dG9zdWJzY3JpYmUiO3M6MToiMSI7czoxMToidHJhY2tmb3J1bXMiO3M6MToiMCI7czoxMToidGltZWNyZWF0ZWQiO3M6MToiMCI7czoxMjoidGltZW1vZGlmaWVkIjtzOjEwOiIxMzE2NTY3NTAzIjtzOjEyOiJ0cnVzdGJpdG1hc2siO3M6MToiMCI7czo4OiJpbWFnZWFsdCI7TjtzOjEyOiJzY3JlZW5yZWFkZXIiO3M6MToiMSI7czoxNjoibGFzdGNvdXJzZWFjY2VzcyI7YTozOntpOjE2O3M6MTA6IjEzMjAyOTYzMzkiO2k6MTc7czoxMDoiMTMyMDI5NjM2MiI7aToxODtzOjEwOiIxMzIwNjgyNzM0Ijt9czoxOToiY3VycmVudGNvdXJzZWFjY2VzcyI7YTowOnt9czoxMToiZ3JvdXBtZW1iZXIiO2E6MDp7fXM6NzoicHJvZmlsZSI7YTozOntzOjM6ImRuaSI7czowOiIiO3M6NjoicGFkcm9uIjtzOjA6IiI7czoxMzoicm9sc29saWNpdGFkbyI7czo3OiJNaWVtYnJvIjt9czo2OiJhY2Nlc3MiO2E6NTp7czoyOiJyYSI7YToxOntzOjI6Ii8xIjthOjE6e2k6NjtzOjE6IjYiO319czo0OiJyZGVmIjthOjE6e3M6NDoiLzE6NiI7YToyNjp7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7czoxOToibW9vZGxlL2NvbW1lbnQ6dmlldyI7czoxOiIxIjtzOjI3OiJibG9jay9vbmxpbmVfdXNlcnM6dmlld2xpc3QiO3M6MToiMSI7czoyOToibW9vZGxlL3VzZXI6Y2hhbmdlb3ducGFzc3dvcmQiO3M6NToiLTEwMDAiO3M6MTk6Im1vZC9hc3NpZ25tZW50OnZpZXciO3M6MToiMSI7czozMzoibW9vZGxlL3VzZXI6ZWRpdG93bm1lc3NhZ2Vwcm9maWxlIjtzOjU6Ii0xMDAwIjtzOjE4OiJtb2QvZGF0YTp2aWV3ZW50cnkiO3M6MToiMSI7czoyNjoibW9vZGxlL3VzZXI6ZWRpdG93bnByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTc6Im1vZC9mZWVkYmFjazp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vb2RsZS91c2VyOnZpZXdkZXRhaWxzIjtzOjE6IjEiO3M6MTU6Im1vZC9mb2xkZXI6dmlldyI7czoxOiIxIjtzOjIzOiJtb2QvZm9ydW06ZGVsZXRlb3ducG9zdCI7czoxOiIxIjtzOjIwOiJtb2QvZm9ydW06ZXhwb3J0cG9zdCI7czoxOiIxIjtzOjMwOiJtb2QvZm9ydW06aW5pdGlhbHN1YnNjcmlwdGlvbnMiO3M6MToiMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHlwb3N0IjtzOjE6IjEiO3M6MjQ6Im1vZC9mb3J1bTp2aWV3ZGlzY3Vzc2lvbiI7czoxOiIxIjtzOjE0OiJtb2QvaW1zY3A6dmlldyI7czoxOiIxIjtzOjEzOiJtb2QvcGFnZTp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9xdWl6OnZpZXciO3M6MToiMSI7czoxNzoibW9kL3Jlc291cmNlOnZpZXciO3M6MToiMSI7czoxMjoibW9kL3VybDp2aWV3IjtzOjE6IjEiO319czo2OiJsb2FkZWQiO2E6MDp7fXM6MjoiZHIiO3M6MToiNiI7czo0OiJ0aW1lIjtpOjEzMjA2ODYwMjc7fXM6Nzoic2Vzc2tleSI7czoxMDoibTRNOFZ0N252YyI7czoxMDoicHJlZmVyZW5jZSI7YToxMTp7czoyMzoiZGVmaW5lcm9sZV9zaG93YWR2YW5jZWQiO3M6MToiMSI7czoyNDoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzEwIjtzOjE6IjAiO3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV81IjtzOjE6IjAiO3M6MTg6ImVtYWlsX2JvdW5jZV9jb3VudCI7czoxOiIxIjtzOjE2OiJlbWFpbF9zZW5kX2NvdW50IjtzOjE6IjEiO3M6NDA6ImdyYWRlX3JlcG9ydF9ncmFkZXJfY29sbGFwc2VkX2NhdGVnb3JpZXMiO3M6NzA6ImE6Mjp7czoxNDoiYWdncmVnYXRlc29ubHkiO2E6MDp7fXM6MTA6ImdyYWRlc29ubHkiO2E6MTp7aTowO3M6MToiMiI7fX0iO3M6MzY6Im1vZF9hc3NpZ25tZW50X21vZF9mb3JtX3Nob3dhZHZhbmNlZCI7czoxOiIxIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfYXV0b3NlbGVjdHVuaXF1ZSI7czoxOiIwIjtzOjI5OiJ1c2Vyc2VsZWN0b3JfcHJlc2VydmVzZWxlY3RlZCI7czoxOiIwIjtzOjI3OiJ1c2Vyc2VsZWN0b3Jfc2VhcmNoYW55d2hlcmUiO3M6MToiMCI7czoxMToiX2xhc3Rsb2FkZWQiO2k6MTMyMDY4NjAyNzt9fQ==', 1320686027, 1320686027, '127.0.0.1', '127.0.0.1'),
+(877, 0, 'u6q6duoki72c46dfenkfenfhk2', 0, 'U0VTU0lPTnxPOjg6InN0ZENsYXNzIjoxOntzOjQ6ImxhbmciO3M6NToiZXNfYXIiO31VU0VSfE86ODoic3RkQ2xhc3MiOjc6e3M6MjoiaWQiO2k6MDtzOjEwOiJtbmV0aG9zdGlkIjtzOjE6IjEiO3M6MTA6InByZWZlcmVuY2UiO2E6MDp7fXM6NjoiYWNjZXNzIjthOjQ6e3M6MjoicmEiO2E6MTp7czoyOiIvMSI7YToxOntpOjY7czoxOiI2Ijt9fXM6NDoicmRlZiI7YToxMDp7czo0OiIvMTo2IjthOjI2OntzOjE5OiJtb29kbGUvY29tbWVudDp2aWV3IjtzOjE6IjEiO3M6Mjc6ImJsb2NrL29ubGluZV91c2Vyczp2aWV3bGlzdCI7czoxOiIxIjtzOjI5OiJtb29kbGUvdXNlcjpjaGFuZ2Vvd25wYXNzd29yZCI7czo1OiItMTAwMCI7czoxOToibW9kL2Fzc2lnbm1lbnQ6dmlldyI7czoxOiIxIjtzOjMzOiJtb29kbGUvdXNlcjplZGl0b3dubWVzc2FnZXByb2ZpbGUiO3M6NToiLTEwMDAiO3M6MTg6Im1vZC9kYXRhOnZpZXdlbnRyeSI7czoxOiIxIjtzOjI2OiJtb29kbGUvdXNlcjplZGl0b3ducHJvZmlsZSI7czo1OiItMTAwMCI7czoxNzoibW9kL2ZlZWRiYWNrOnZpZXciO3M6MToiMSI7czoyMzoibW9vZGxlL3VzZXI6dmlld2RldGFpbHMiO3M6MToiMSI7czoxNToibW9kL2ZvbGRlcjp2aWV3IjtzOjE6IjEiO3M6MjM6Im1vZC9mb3J1bTpkZWxldGVvd25wb3N0IjtzOjE6IjEiO3M6MjA6Im1vZC9mb3J1bTpleHBvcnRwb3N0IjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7czoyNDoibW9kL2ZvcnVtOnZpZXdkaXNjdXNzaW9uIjtzOjE6IjEiO3M6MTQ6Im1vZC9pbXNjcDp2aWV3IjtzOjE6IjEiO3M6MTM6Im1vZC9wYWdlOnZpZXciO3M6MToiMSI7czoxMzoibW9kL3F1aXo6dmlldyI7czoxOiIxIjtzOjE3OiJtb2QvcmVzb3VyY2U6dmlldyI7czoxOiIxIjtzOjEyOiJtb2QvdXJsOnZpZXciO3M6MToiMSI7czoxNzoibW9kL3dpa2k6dmlld3BhZ2UiO3M6MToiMSI7czoxNzoibW9kL3dvcmtzaG9wOnZpZXciO3M6MToiMSI7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MToiMSI7czoxODoibW9vZGxlL2Jsb2c6c2VhcmNoIjtzOjE6IjEiO3M6MTY6Im1vb2RsZS9ibG9nOnZpZXciO3M6MToiMSI7fXM6OToiLzEvMi81Mjo2IjthOjQ6e3M6MTc6Im1vZC9mb3J1bTphZGRuZXdzIjtzOjE6IjEiO3M6MzA6Im1vZC9mb3J1bTppbml0aWFsc3Vic2NyaXB0aW9ucyI7czoxOiIxIjtzOjE5OiJtb2QvZm9ydW06cmVwbHluZXdzIjtzOjE6IjEiO3M6MTk6Im1vZC9mb3J1bTpyZXBseXBvc3QiO3M6MToiMSI7fXM6ODoiLzEvMi80OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMzc6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fXM6OToiLzEvMi8zNjo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo5OiIvMS8yLzM1OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjk6Ii8xLzIvMTc6NiI7YTozOntzOjE3OiJtb2QvZm9ydW06YWRkbmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5bmV3cyI7czoyOiItMSI7czoxOToibW9kL2ZvcnVtOnJlcGx5cG9zdCI7czoyOiItMSI7fXM6OToiLzEvMi8xNTo2IjthOjE6e3M6MTc6Im1vb2RsZS9ibG9jazp2aWV3IjtzOjI6Ii0xIjt9czo2OiIvMS83OjYiO2E6MTp7czoxNzoibW9vZGxlL2Jsb2NrOnZpZXciO3M6MjoiLTEiO31zOjY6Ii8xLzg6NiI7YToxOntzOjE3OiJtb29kbGUvYmxvY2s6dmlldyI7czoyOiItMSI7fX1zOjY6ImxvYWRlZCI7YTozOntpOjA7czo0OiIvMS8yIjtpOjE7czo0OiIvMS83IjtpOjI7czo0OiIvMS84Ijt9czo0OiJ0aW1lIjtpOjEzMjA2ODk5MTg7fXM6NToiZW5yb2wiO2E6Mjp7czo4OiJlbnJvbGxlZCI7YTowOnt9czo5OiJ0ZW1wZ3Vlc3QiO2E6MDp7fX1zOjI1OiJhamF4X3VwZGF0YWJsZV91c2VyX3ByZWZzIjthOjU6e3M6MjM6ImRvY2tlZF9ibG9ja19pbnN0YW5jZV80IjtzOjM6ImludCI7czoyMzoiZG9ja2VkX2Jsb2NrX2luc3RhbmNlXzUiO3M6MzoiaW50IjtzOjEzOiJibG9jazE2aGlkZGVuIjtzOjQ6ImJvb2wiO3M6MTM6ImJsb2NrMTVoaWRkZW4iO3M6NDoiYm9vbCI7czoxMzoiYmxvY2szMmhpZGRlbiI7czo0OiJib29sIjt9czo3OiJzZXNza2V5IjtzOjEwOiJOcjZheG1mSW9PIjt9', 1320689917, 1320689918, '127.0.0.1', '127.0.0.1');
 
 -- --------------------------------------------------------
 
@@ -11887,7 +13450,7 @@ CREATE TABLE IF NOT EXISTS `mdl_solicitud` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `mdl_solicitud`
+-- Volcar la base de datos para la tabla `mdl_solicitud`
 --
 
 INSERT INTO `mdl_solicitud` (`userid`, `courseid`) VALUES
@@ -11919,6 +13482,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_daily` (
   KEY `mdl_statdail_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='to accumulate daily stats' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_stats_daily`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11938,6 +13506,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_monthly` (
   KEY `mdl_statmont_tim_ix` (`timeend`),
   KEY `mdl_statmont_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate monthly stats' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_stats_monthly`
+--
+
 
 -- --------------------------------------------------------
 
@@ -11961,6 +13534,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_daily` (
   KEY `mdl_statuserdail_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate daily stats per course/user' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_stats_user_daily`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -11982,6 +13560,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_monthly` (
   KEY `mdl_statusermont_rol_ix` (`roleid`),
   KEY `mdl_statusermont_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate monthly stats per course/user' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_stats_user_monthly`
+--
+
 
 -- --------------------------------------------------------
 
@@ -12005,6 +13588,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_user_weekly` (
   KEY `mdl_statuserweek_tim_ix` (`timeend`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate weekly stats per course/user' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_stats_user_weekly`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -12024,6 +13612,11 @@ CREATE TABLE IF NOT EXISTS `mdl_stats_weekly` (
   KEY `mdl_statweek_tim_ix` (`timeend`),
   KEY `mdl_statweek_rol_ix` (`roleid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To accumulate weekly stats' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_stats_weekly`
+--
+
 
 -- --------------------------------------------------------
 
@@ -12047,7 +13640,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Each record is one SURVEY module with its configuration' AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `mdl_survey`
+-- Volcar la base de datos para la tabla `mdl_survey`
 --
 
 INSERT INTO `mdl_survey` (`id`, `course`, `template`, `days`, `timecreated`, `timemodified`, `name`, `intro`, `introformat`, `questions`) VALUES
@@ -12073,6 +13666,11 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_analysis` (
   KEY `mdl_survanal_sur_ix` (`survey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='text about each survey submission' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_survey_analysis`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -12093,6 +13691,11 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_answers` (
   KEY `mdl_survansw_que_ix` (`question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the answers to each questions filled by the users' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_survey_answers`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -12111,7 +13714,7 @@ CREATE TABLE IF NOT EXISTS `mdl_survey_questions` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='the questions conforming one survey' AUTO_INCREMENT=74 ;
 
 --
--- Volcado de datos para la tabla `mdl_survey_questions`
+-- Volcar la base de datos para la tabla `mdl_survey_questions`
 --
 
 INSERT INTO `mdl_survey_questions` (`id`, `text`, `shorttext`, `multi`, `intro`, `type`, `options`) VALUES
@@ -12210,6 +13813,11 @@ CREATE TABLE IF NOT EXISTS `mdl_tag` (
   KEY `mdl_tag_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Tag table - this generic table will replace the old "tags" t' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_tag`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -12223,6 +13831,11 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_correlation` (
   PRIMARY KEY (`id`),
   KEY `mdl_tagcorr_tag_ix` (`tagid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The rationale for the ''tag_correlation'' table is performance' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_tag_correlation`
+--
+
 
 -- --------------------------------------------------------
 
@@ -12242,6 +13855,11 @@ CREATE TABLE IF NOT EXISTS `mdl_tag_instance` (
   UNIQUE KEY `mdl_taginst_iteitetagtiu_uix` (`itemtype`,`itemid`,`tagid`,`tiuserid`),
   KEY `mdl_taginst_tag_ix` (`tagid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='tag_instance table holds the information of associations bet' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_tag_instance`
+--
+
 
 -- --------------------------------------------------------
 
@@ -12269,6 +13887,11 @@ CREATE TABLE IF NOT EXISTS `mdl_timezone` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Rules for calculating local wall clock time for users' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_timezone`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -12293,7 +13916,7 @@ CREATE TABLE IF NOT EXISTS `mdl_upgrade_log` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Upgrade logging' AUTO_INCREMENT=461 ;
 
 --
--- Volcado de datos para la tabla `mdl_upgrade_log`
+-- Volcar la base de datos para la tabla `mdl_upgrade_log`
 --
 
 INSERT INTO `mdl_upgrade_log` (`id`, `type`, `plugin`, `version`, `targetversion`, `info`, `details`, `backtrace`, `userid`, `timemodified`) VALUES
@@ -12778,7 +14401,14 @@ CREATE TABLE IF NOT EXISTS `mdl_url` (
   `timemodified` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `mdl_url_cou_ix` (`course`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one url resource' AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='each record is one url resource' AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_url`
+--
+
+INSERT INTO `mdl_url` (`id`, `course`, `name`, `intro`, `introformat`, `externalurl`, `display`, `displayoptions`, `parameters`, `timemodified`) VALUES
+(1, 18, 'Google', '<p>Pagina de google</p>', 1, 'http://www.google.com.ar', 0, 'a:2:{s:12:"printheading";i:0;s:10:"printintro";i:1;}', 'a:0:{}', 1320433745);
 
 -- --------------------------------------------------------
 
@@ -12853,12 +14483,12 @@ CREATE TABLE IF NOT EXISTS `mdl_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='One record for each person' AUTO_INCREMENT=19 ;
 
 --
--- Volcado de datos para la tabla `mdl_user`
+-- Volcar la base de datos para la tabla `mdl_user`
 --
 
 INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `suspended`, `mnethostid`, `username`, `password`, `idnumber`, `firstname`, `lastname`, `email`, `emailstop`, `icq`, `skype`, `yahoo`, `aim`, `msn`, `phone1`, `phone2`, `institution`, `department`, `address`, `city`, `country`, `lang`, `theme`, `timezone`, `firstaccess`, `lastaccess`, `lastlogin`, `currentlogin`, `lastip`, `secret`, `picture`, `url`, `description`, `descriptionformat`, `mailformat`, `maildigest`, `maildisplay`, `htmleditor`, `ajax`, `autosubscribe`, `trackforums`, `timecreated`, `timemodified`, `trustbitmask`, `imagealt`, `screenreader`) VALUES
-(1, 'manual', 1, 0, 0, 0, 1, 'guest', '78b15a258e709d0ac9d6bd1e024fcdc3', '', 'Invitado', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'es_ar', '', '99', 1316566413, 1320357481, 1320357340, 1320357480, '127.0.0.1', '', 0, '', 'Este usuario sólo tiene acceso de lectura en ciertos cursos.', 0, 1, 0, 2, 1, 1, 1, 0, 0, 1316566413, 0, NULL, 0),
-(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1320357453, 1320357242, 1320357388, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
+(1, 'manual', 1, 0, 0, 0, 1, 'guest', '78b15a258e709d0ac9d6bd1e024fcdc3', '', 'Invitado', ' ', 'root@localhost', 0, '', '', '', '', '', '', '', '', '', '', '', '', 'es_ar', '', '99', 1316566413, 1320689887, 1320440616, 1320689886, '127.0.0.1', '', 0, '', 'Este usuario sólo tiene acceso de lectura en ciertos cursos.', 0, 1, 0, 2, 1, 1, 1, 0, 0, 1316566413, 0, NULL, 0),
+(2, 'manual', 1, 0, 0, 0, 1, 'admin', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin', 'Usuario', 'tallerdeprogramacioniifiuba2011@googlegroups.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316567503, 1320689798, 1320689584, 1320689798, '127.0.0.1', '', 0, '', '', 0, 1, 0, 1, 1, 1, 1, 0, 0, 1316567503, 0, NULL, 1),
 (3, 'email', 1, 0, 1, 0, 1, 'damiancalabresi@gmail.com.1316715379', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '8dc07c4331811471f76c7afd1ef2d9a8', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es', '', '99', 1316650555, 0, 0, 0, '', 'kyQ4Tj9nnkgXyOO', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316644852, 1316715379, 0, NULL, 0),
 (4, 'email', 0, 0, 1, 0, 1, 'damiancalabresi2@gmail.com.1316715386', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '1eb69a1a1b94c672d7514a810b76823a', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316713930, 0, 0, 0, '', 'rQM8FnJPP6TbON5', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316713930, 1316715386, 0, NULL, 0),
 (5, 'email', 0, 0, 1, 0, 1, 'damiancalabresi3@gmail.com.1316715393', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', '4e4561b6b5529ff7b8a1ee20aaf91609', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316714434, 0, 0, 0, '', '06qcs0poh4XB5rk', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316714434, 1316715393, 0, NULL, 0),
@@ -12868,10 +14498,10 @@ INSERT INTO `mdl_user` (`id`, `auth`, `confirmed`, `policyagreed`, `deleted`, `s
 (9, 'email', 1, 0, 1, 0, 1, 'damiancalabresi8@gmail.com.1317244268', '4534e390f895b4fa9c7f99b2b6ef44b5', '', 'Damian', 'Calabresi', 'a9ab9eeefb9bca93de9ca1a00e5ee190', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316715595, 1316715616, 0, 1316715616, '127.0.0.1', 'wqsh6JdivNkvD7A', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316715339, 1317244268, 0, NULL, 0),
 (10, 'email', 1, 0, 1, 0, 1, 'damiancalabresi10@gmail.com.1317244276', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Damian', 'Aprendiz', 'fcf26a5b2d50663445ff481a1c2ae0fa', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1316813116, 0, 0, 0, '', '5LFPbQXnijqNGzZ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1316813040, 1317244276, 0, NULL, 0),
 (11, 'email', 1, 0, 0, 0, 1, 'miembropopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'miembro1', 'popper', 'miembropopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245578, 1320357595, 1319751501, 1320357503, '127.0.0.1', 'mSyBn4xM9cT3SkB', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245146, 0, 0, NULL, 0),
-(12, 'email', 1, 0, 0, 0, 1, 'adminpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin1', 'popper', 'adminpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245575, 1320356332, 1320296408, 1320356332, '127.0.0.1', 'hOoqFpyh0Ht12LS', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245545, 0, 0, NULL, 0),
-(13, 'email', 1, 0, 0, 0, 1, 'aprendizpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Aprendiz1', 'Popper', 'aprendizpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326186, 1320205567, 1319837599, 1320205566, '0:0:0:0:0:0:0:1', 'YHCeWP8scedX9dJ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317326067, 0, 0, NULL, 0),
-(14, 'email', 1, 0, 0, 0, 1, 'mediadorpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'mediador1', 'popper', 'mediadorpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326189, 1320296526, 1320291836, 1320296449, '0:0:0:0:0:0:0:1', 'Lnh6L6eeMC02M8u', 0, '', '', 0, 1, 0, 2, 1, 1, 1, 0, 1317326147, 1317329502, 0, '', 0),
-(15, 'email', 1, 0, 0, 0, 1, 'aprendizpopper2', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Pepe', 'Garcia', 'aprendizpopper2@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Capital Federal', 'AR', 'es_ar', '', '99', 1318614958, 1320173274, 1319822542, 1320173274, '127.0.0.1', 'qReWmp7jtzUPw1S', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1318614926, 0, 0, NULL, 0),
+(12, 'email', 1, 0, 0, 0, 1, 'adminpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'admin1', 'popper', 'adminpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317245575, 1320443378, 1320442299, 1320443377, '127.0.0.1', 'hOoqFpyh0Ht12LS', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317245545, 0, 0, NULL, 0),
+(13, 'email', 1, 0, 0, 0, 1, 'aprendizpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Aprendiz1', 'Popper', 'aprendizpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326186, 1320686994, 1320685669, 1320686994, '127.0.0.1', 'YHCeWP8scedX9dJ', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1317326067, 0, 0, NULL, 0),
+(14, 'email', 1, 0, 0, 0, 1, 'mediadorpopper1', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'mediador1', 'popper', 'mediadorpopper1@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es_ar', '', '99', 1317326189, 1320689742, 1320689175, 1320689741, '127.0.0.1', 'Lnh6L6eeMC02M8u', 0, '', '', 0, 1, 0, 2, 1, 1, 1, 0, 1317326147, 1317329502, 0, '', 0),
+(15, 'email', 1, 0, 0, 0, 1, 'aprendizpopper2', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Pepe', 'Garcia', 'aprendizpopper2@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Capital Federal', 'AR', 'es_ar', '', '99', 1318614958, 1320687258, 1320687030, 1320687191, '127.0.0.1', 'qReWmp7jtzUPw1S', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1318614926, 0, 0, NULL, 0),
 (16, 'email', 1, 0, 0, 0, 1, 'mediadorpopper2', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'Mercedes', 'Benz', 'mediador2@gmail.com', 0, '', '', '', '', '', '', '', '', '', '', 'Capital Federal', 'AR', 'es_ar', '', '99', 1318615672, 1320173300, 1318627128, 1320173299, '127.0.0.1', 'ahI2NkryBthtjj9', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1318615432, 0, 0, NULL, 0),
 (17, 'email', 1, 0, 0, 0, 1, '123456', 'e6d0a298e0e04545c90f4fe287205bd1', '', '123', '456', 'a@a.net', 0, '', '', '', '', '', '', '', '', '', '', '123456', 'DE', 'es_ar', '', '99', 1319391138, 1319392487, 1319391365, 1319392400, '0:0:0:0:0:0:0:1', 'lkH3qac2vhae889', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1319391082, 0, 0, NULL, 0),
 (18, 'email', 1, 0, 1, 0, 1, 'asd@asds.com.1319823657', 'e6d0a298e0e04545c90f4fe287205bd1', '', 'asdas', 'zdcsdf', '2c3e93df0fad9ca88dda25fa8b7614b4', 0, '', '', '', '', '', '', '', '', '', '', 'Buenos Aires', 'AR', 'es', '', '99', 1319748835, 0, 0, 0, '', 'so8pjRjayeLVu10', 0, '', NULL, 0, 1, 0, 2, 1, 1, 1, 0, 1319748268, 1319823657, 0, NULL, 0);
@@ -12897,19 +14527,17 @@ CREATE TABLE IF NOT EXISTS `mdl_user_enrolments` (
   KEY `mdl_userenro_enr_ix` (`enrolid`),
   KEY `mdl_userenro_use_ix` (`userid`),
   KEY `mdl_userenro_mod_ix` (`modifierid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=48 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users participating in courses (aka enrolled users) - everyb' AUTO_INCREMENT=49 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_enrolments`
+-- Volcar la base de datos para la tabla `mdl_user_enrolments`
 --
 
 INSERT INTO `mdl_user_enrolments` (`id`, `status`, `enrolid`, `userid`, `timestart`, `timeend`, `modifierid`, `timecreated`, `timemodified`) VALUES
 (42, 0, 31, 14, 1320274800, 0, 12, 1320296421, 1320296421),
 (43, 0, 35, 14, 1320274800, 0, 12, 1320296440, 1320296440),
-(44, 0, 31, 13, 1320274800, 0, 14, 1320296463, 1320296463),
-(45, 0, 31, 15, 1320274800, 0, 14, 1320296465, 1320296465),
-(46, 0, 31, 17, 1320274800, 0, 14, 1320296472, 1320296472),
-(47, 0, 35, 13, 1320274800, 0, 14, 1320296485, 1320296485);
+(47, 0, 35, 13, 1320274800, 0, 14, 1320296485, 1320296485),
+(48, 0, 35, 15, 1320361200, 0, 14, 1320434511, 1320434511);
 
 -- --------------------------------------------------------
 
@@ -12925,7 +14553,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_category` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Customisable fields categories' AUTO_INCREMENT=3 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_info_category`
+-- Volcar la base de datos para la tabla `mdl_user_info_category`
 --
 
 INSERT INTO `mdl_user_info_category` (`id`, `name`, `sortorder`) VALUES
@@ -12949,7 +14577,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_data` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Data for the customisable user fields' AUTO_INCREMENT=46 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_info_data`
+-- Volcar la base de datos para la tabla `mdl_user_info_data`
 --
 
 INSERT INTO `mdl_user_info_data` (`id`, `userid`, `fieldid`, `data`, `dataformat`) VALUES
@@ -13006,7 +14634,7 @@ CREATE TABLE IF NOT EXISTS `mdl_user_info_field` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Customisable user profile fields' AUTO_INCREMENT=6 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_info_field`
+-- Volcar la base de datos para la tabla `mdl_user_info_field`
 --
 
 INSERT INTO `mdl_user_info_field` (`id`, `shortname`, `name`, `datatype`, `description`, `descriptionformat`, `categoryid`, `sortorder`, `required`, `locked`, `visible`, `forceunique`, `signup`, `defaultdata`, `defaultdataformat`, `param1`, `param2`, `param3`, `param4`, `param5`) VALUES
@@ -13029,24 +14657,29 @@ CREATE TABLE IF NOT EXISTS `mdl_user_lastaccess` (
   UNIQUE KEY `mdl_userlast_usecou_uix` (`userid`,`courseid`),
   KEY `mdl_userlast_use_ix` (`userid`),
   KEY `mdl_userlast_cou_ix` (`courseid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=65 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='To keep track of course page access times, used in online pa' AUTO_INCREMENT=71 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_lastaccess`
+-- Volcar la base de datos para la tabla `mdl_user_lastaccess`
 --
 
 INSERT INTO `mdl_user_lastaccess` (`id`, `userid`, `courseid`, `timeaccess`) VALUES
 (54, 2, 16, 1320296339),
-(55, 2, 17, 1320296362),
-(56, 2, 18, 1320296385),
-(57, 12, 16, 1320296416),
-(58, 12, 18, 1320356348),
-(59, 14, 16, 1320296526),
-(60, 14, 18, 1320296474),
+(55, 2, 17, 1320689610),
+(56, 2, 18, 1320686955),
+(57, 12, 16, 1320443400),
+(58, 12, 18, 1320443124),
+(59, 14, 16, 1320689753),
+(60, 14, 18, 1320689747),
 (61, 1, 17, 1320356298),
-(62, 1, 18, 1320357323),
+(62, 1, 18, 1320689903),
 (63, 11, 16, 1320357595),
-(64, 11, 18, 1320357615);
+(64, 11, 18, 1320357615),
+(65, 1, 16, 1320689887),
+(66, 13, 18, 1320687002),
+(68, 13, 17, 1320433671),
+(69, 14, 17, 1320689064),
+(70, 15, 18, 1320687037);
 
 -- --------------------------------------------------------
 
@@ -13061,10 +14694,10 @@ CREATE TABLE IF NOT EXISTS `mdl_user_preferences` (
   `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_userpref_usenam_uix` (`userid`,`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Allows modules to store arbitrary user preferences' AUTO_INCREMENT=35 ;
 
 --
--- Volcado de datos para la tabla `mdl_user_preferences`
+-- Volcar la base de datos para la tabla `mdl_user_preferences`
 --
 
 INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
@@ -13088,7 +14721,19 @@ INSERT INTO `mdl_user_preferences` (`id`, `userid`, `name`, `value`) VALUES
 (19, 16, 'userselector_preserveselected', '0'),
 (20, 16, 'userselector_autoselectunique', '0'),
 (21, 16, 'userselector_searchanywhere', '0'),
-(22, 14, 'course_reset_form_showadvanced', '1');
+(22, 14, 'course_reset_form_showadvanced', '1'),
+(23, 13, 'userselector_preserveselected', '0'),
+(24, 13, 'userselector_autoselectunique', '0'),
+(25, 13, 'userselector_searchanywhere', '0'),
+(26, 14, 'grade_report_grader_collapsed_categories', 'a:2:{s:14:"aggregatesonly";a:0:{}s:10:"gradesonly";a:1:{i:0;s:1:"2";}}'),
+(27, 2, 'mod_assignment_mod_form_showadvanced', '1'),
+(28, 2, 'grade_report_grader_collapsed_categories', 'a:2:{s:14:"aggregatesonly";a:0:{}s:10:"gradesonly";a:1:{i:0;s:1:"2";}}'),
+(29, 14, 'quiz_reordertab', '0'),
+(30, 14, 'quiz_qbanktool_open', '1'),
+(31, 14, 'assignment_perpage', '10'),
+(32, 14, 'assignment_quickgrade', '0'),
+(33, 14, 'assignment_filter', '0'),
+(34, 14, 'block7hidden', '0');
 
 -- --------------------------------------------------------
 
@@ -13109,6 +14754,11 @@ CREATE TABLE IF NOT EXISTS `mdl_user_private_key` (
   KEY `mdl_userprivkey_scrval_ix` (`script`,`value`),
   KEY `mdl_userprivkey_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='access keys used in cookieless scripts - rss, etc.' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_user_private_key`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13132,6 +14782,11 @@ CREATE TABLE IF NOT EXISTS `mdl_webdav_locks` (
   KEY `mdl_webdlock_pat_ix` (`path`),
   KEY `mdl_webdlock_exp_ix` (`expiry`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Resource locks for WebDAV users' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_webdav_locks`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13157,6 +14812,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki` (
   KEY `mdl_wiki_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores Wiki activity configuration' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_wiki`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13174,6 +14834,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_links` (
   KEY `mdl_wikilink_sub_ix` (`subwikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Page wiki links' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_links`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13188,6 +14853,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_locks` (
   `lockedat` bigint(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Manages page locks' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_locks`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13211,6 +14881,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_pages` (
   KEY `mdl_wikipage_sub_ix` (`subwikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki pages' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_pages`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13227,6 +14902,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_subwikis` (
   KEY `mdl_wikisubw_wik_ix` (`wikiid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores subwiki instances' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_subwikis`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13241,6 +14921,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_synonyms` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_wikisyno_pagpag_uix` (`pageid`,`pagesynonym`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki pages synonyms' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_synonyms`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13259,6 +14944,11 @@ CREATE TABLE IF NOT EXISTS `mdl_wiki_versions` (
   PRIMARY KEY (`id`),
   KEY `mdl_wikivers_pag_ix` (`pageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Stores wiki page history' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_wiki_versions`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13298,6 +14988,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop` (
   KEY `mdl_work_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This table keeps information about the module instances and ' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13311,6 +15006,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopeval_best_settings` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_workbestsett_wor_uix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Settings for the grading evaluation subplugin Comparison wit' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshopeval_best_settings`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13330,6 +15030,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_accumulative` (
   KEY `mdl_workaccu_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Accumulative gradin' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_accumulative`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13345,6 +15050,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_comments` (
   PRIMARY KEY (`id`),
   KEY `mdl_workcomm_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Comments strategy f' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_comments`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13366,6 +15076,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors` (
   KEY `mdl_worknume_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Number of errors gr' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_numerrors`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13381,6 +15096,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_numerrors_map` (
   UNIQUE KEY `mdl_worknumemap_wornon_uix` (`workshopid`,`nonegative`),
   KEY `mdl_worknumemap_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='This maps the number of errors to a percentual grade for sub' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_numerrors_map`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13398,6 +15118,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric` (
   KEY `mdl_workrubr_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The assessment dimensions definitions of Rubric grading stra' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_rubric`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13411,6 +15136,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_config` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `mdl_workrubrconf_wor_uix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Configuration table for the Rubric grading strategy' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_rubric_config`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13427,6 +15157,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshopform_rubric_levels` (
   PRIMARY KEY (`id`),
   KEY `mdl_workrubrleve_dim_ix` (`dimensionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='The definition of rubric rating scales' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshopform_rubric_levels`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13445,6 +15180,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_aggregations` (
   KEY `mdl_workaggr_wor_ix` (`workshopid`),
   KEY `mdl_workaggr_use_ix` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Aggregated grades for assessment are stored here. The aggreg' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_aggregations`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13472,6 +15212,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments` (
   KEY `mdl_workasse_gra_ix` (`gradinggradeoverby`),
   KEY `mdl_workasse_rev_ix` (`reviewerid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about the made assessment and automatically calculated ' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_assessments`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13504,6 +15249,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_assessments_old` (
   KEY `mdl_workasseold_sub_ix` (`submissionid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_assessments table to be dropped later in Moo' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_assessments_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13527,6 +15277,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_comments_old` (
   KEY `mdl_workcommold_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_comments table to be dropped later in Moodle' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_comments_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13549,6 +15304,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_elements_old` (
   KEY `mdl_workelemold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_elements table to be dropped later in Moodle' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_elements_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13567,6 +15327,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades` (
   UNIQUE KEY `mdl_workgrad_assstrdim_uix` (`assessmentid`,`strategy`,`dimensionid`),
   KEY `mdl_workgrad_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='How the reviewers filled-up the grading forms, given grades ' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_grades`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13587,6 +15352,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_grades_old` (
   KEY `mdl_workgradold_wor_ix` (`workshopid`),
   KEY `mdl_workgradold_ass_ix` (`assessmentid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_grades table to be dropped later in Moodle 2' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_grades_old`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13633,6 +15403,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_old` (
   KEY `mdl_workold_cou_ix` (`course`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop table to be dropped later in Moodle 2.x' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13651,6 +15426,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_rubrics_old` (
   KEY `mdl_workrubrold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_rubrics table to be dropped later in Moodle ' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_rubrics_old`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13667,6 +15447,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_stockcomments_old` (
   PRIMARY KEY (`id`),
   KEY `mdl_workstocold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_stockcomments table to be dropped later in M' AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_stockcomments_old`
+--
+
 
 -- --------------------------------------------------------
 
@@ -13700,6 +15485,11 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions` (
   KEY `mdl_worksubm_aut_ix` (`authorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Info about the submission and the aggregation of the grade f' AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_submissions`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -13726,6 +15516,7 @@ CREATE TABLE IF NOT EXISTS `mdl_workshop_submissions_old` (
   KEY `mdl_worksubmold_wor_ix` (`workshopid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Legacy workshop_submissions table to be dropped later in Moo' AUTO_INCREMENT=1 ;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Volcar la base de datos para la tabla `mdl_workshop_submissions_old`
+--
+

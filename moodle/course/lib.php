@@ -1793,7 +1793,7 @@ function print_section_add_menus($course, $section, $modnames, $vertical=false, 
 		//echo $modname." ";
 	
 		if ($modname == "data" or $modname == "chat" or $modname == "label" or $modname == "lesson" or $modname == "page" 
-				or $modname == "imscp" or $modname == "scorm" or $modname == "workshop"  or $modname == "assignment" or $modname == "wiki"){
+				or $modname == "imscp" or $modname == "scorm" or $modname == "workshop" or $modname == "wiki"){
 			continue;
 		}
 	

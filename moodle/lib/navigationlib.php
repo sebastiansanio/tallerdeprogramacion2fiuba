@@ -1043,11 +1043,65 @@ class global_navigation extends navigation_node {
                 $this->rootnodes['home']->action->param('redirect', '0');
             }
         }
+
+	//Verifica si es miembro, aprendiz, mediador o admin
+
+	$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+	mysql_select_db($CFG->dbname, $con);
+	$query = "select roleid
+		from mdl_role_assignments
+		where userid='".$USER->id."'
+		and contextid=1";
+	$resultado = mysql_query($query);
+
+	while($row = mysql_fetch_array($resultado))
+	{
+		if($row['roleid'] == 3){
+			$useresmediador=true;
+		}
+		if($row['roleid'] == 5){
+			$useresaprendiz=true;
+		}
+		if($row['roleid'] == 6){
+			$useresvisitante=true;
+		}
+		if($row['roleid'] == 7){
+			$useresmiembro=true;
+		}
+		if($row['roleid'] == 8){
+			$useresadministrador=true;
+		}
+  	}
+
+	mysql_close($con);
+
+	if($useresmediador){
+	        $this->rootnodes['home'] = $this->add('Acciones', null, self::TYPE_USER, null, 'home');
+	        $this->rootnodes['home']->add('Agregar aprendices', new moodle_url('/course/enrolment.php'), self::TYPE_SETTING);
+	        $this->rootnodes['home']->add('Aceptar solicitudes', new moodle_url('/course/enrolmentsolicitudes.php'), self::TYPE_SETTING);
+	}
+	if($useresadministrador){
+	        $this->rootnodes['home'] = $this->add('Acciones', null, self::TYPE_USER, null, 'home');
+		$this->rootnodes['home']->add('Cartelera', new moodle_url('/mod/forum/view.php?id=1'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Configuracion', new moodle_url('/admin/settings.php?section=coursesettings'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Materias', new moodle_url('/course/'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Miembros', new moodle_url('/admin/user.php'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Asignar roles', new moodle_url('/admin/roles/assign.php?contextid=1'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Asignar mediadores', new moodle_url('/course/enrolment.php'), self::TYPE_SETTING);
+		$this->rootnodes['home']->add('Ciclo de conservacion de calificaciones', new moodle_url('/admin/cicloConservacion.php?section=coursesettings'), self::TYPE_SETTING);
+	}
+	if($useresaprendiz){
+	        $this->rootnodes['home'] = $this->add('Acciones', null, self::TYPE_USER, null, 'home');
+		$this->rootnodes['home']->add('Registrarse en curso', new moodle_url('/course/solicitud.php'), self::TYPE_SETTING);
+	}
+
         $this->rootnodes['site']      = $this->add_course($SITE);
         $this->rootnodes['myprofile'] = $this->add(get_string('myprofile'), null, self::TYPE_USER, null, 'myprofile');
         $this->rootnodes['mycourses'] = $this->add(get_string('mycourses'), null, self::TYPE_ROOTNODE, null, 'mycourses');
         $this->rootnodes['courses']   = $this->add(get_string('courses'), null, self::TYPE_ROOTNODE, null, 'courses');
         $this->rootnodes['users']     = $this->add(get_string('users'), null, self::TYPE_ROOTNODE, null, 'users');
+
+
 
         // Fetch all of the users courses.
         $limit = 20;

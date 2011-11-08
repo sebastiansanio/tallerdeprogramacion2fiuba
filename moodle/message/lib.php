@@ -1483,7 +1483,7 @@ function message_search_users($courseid, $searchtext, $sort='', $exceptions='') 
     $ufields = user_picture::fields('u');
     if (!$courseid or $courseid == SITEID) {
         $params = array($USER->id, "%$searchtext%");
-        return $DB->get_records_sql("SELECT $ufields, mc.id as contactlistid, mc.blocked
+        $users = $DB->get_records_sql("SELECT $ufields, mc.id as contactlistid, mc.blocked
                                        FROM {user} u
                                        LEFT JOIN {message_contacts} mc
                                             ON mc.contactid = u.id AND mc.userid = ?
@@ -1509,8 +1509,16 @@ function message_search_users($courseid, $searchtext, $sort='', $exceptions='') 
                                               $except
                                        $order", $params);
 
-        return $users;
+        
     }
+	
+	foreach ($users as $user){
+		if(isguestusercorrect($user)){
+			$key = array_search($user,$users,TRUE);
+			unset($users[$key]);
+		}
+	}
+	return $users;
 }
 
 /**

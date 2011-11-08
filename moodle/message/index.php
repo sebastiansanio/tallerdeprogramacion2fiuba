@@ -29,7 +29,7 @@ require_once('send_form.php');
 
 require_login(0, false);
 
-if (isguestuser()) {
+if (isguestusercorrect()) {
     redirect($CFG->wwwroot);
 }
 

@@ -2253,7 +2253,38 @@ class global_navigation extends navigation_node {
      * @return bool
      */
     public function add_course_essentials($coursenode, stdClass $course) {
-        global $CFG;
+        global $CFG, $USER;
+
+	//Verifica si es miembro, aprendiz, mediador o admin
+
+	$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+	mysql_select_db($CFG->dbname, $con);
+	$query = "select roleid
+		from mdl_role_assignments
+		where userid='".$USER->id."'
+		and contextid=1";
+	$resultado = mysql_query($query);
+
+	while($row = mysql_fetch_array($resultado))
+	{
+		if($row['roleid'] == 3){
+			$useresmediador=true;
+		}
+		if($row['roleid'] == 5){
+			$useresaprendiz=true;
+		}
+		if($row['roleid'] == 6){
+			$useresvisitante=true;
+		}
+		if($row['roleid'] == 7){
+			$useresmiembro=true;
+		}
+		if($row['roleid'] == 8){
+			$useresadministrador=true;
+		}
+  	}
+
+	mysql_close($con);
 
         if ($course->id == SITEID) {
             return $this->add_front_page_course_essentials($coursenode, $course);
@@ -2262,6 +2293,22 @@ class global_navigation extends navigation_node {
         if ($coursenode == false || !($coursenode instanceof navigation_node) || $coursenode->get('participants', navigation_node::TYPE_CONTAINER)) {
             return true;
         }
+
+	if($useresmediador){
+		$coursenode->add('Calificar', new moodle_url('/grade/report/grader/index.php?id='.$course->id), self::TYPE_CONTAINER, 'Calificar', 'calificar');
+		$coursenode->add('Calificaciones', new moodle_url('/grade/report/grader/calificacionesAnteriores.php?id='.$course->id), self::TYPE_CONTAINER, 'Calificaciones', 'calificaciones');
+
+                $fechaVieja = date('Y-m-d',$course->startdate);
+		$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+		mysql_select_db($CFG->dbname, $con);
+                $query = "SELECT num_cuat, ano FROM cuatrimestres WHERE fecha_inicio=\"".$fechaVieja."\"";
+                $resultado = mysql_query($query);
+                $fila = mysql_fetch_array($resultado);
+                mysql_close($con);
+                if ($fila['num_cuat']==1){$terminacion = "ro.";} else {$terminacion = "do.";}
+
+		$coursenode->add('Consolidar cuatrimestre ('.$fila['num_cuat'].$terminacion.' de '.$fila['ano'].')', new moodle_url('/course/reset.php?id='.$course->id), self::TYPE_CONTAINER, 'Consolidar cuatrimestre ('.$fila['num_cuat'].$terminacion.' de '.$fila['ano'].')', 'consolidar');
+	}
 
 		//Grupos
 		if (has_capability('moodle/course:managegroups', $this->page->context)) {

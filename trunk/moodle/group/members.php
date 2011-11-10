@@ -33,9 +33,44 @@ if ($cancel) {
     redirect($returnurl);
 }
 
+//Verifica si es miembro, aprendiz, mediador o admin
+
+$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+mysql_select_db($CFG->dbname, $con);
+$query = "select roleid
+	from mdl_role_assignments
+	where userid='".$USER->id."'
+	and contextid=1";
+$resultado = mysql_query($query);
+
+while($row = mysql_fetch_array($resultado))
+{
+	if($row['roleid'] == 3){
+		$useresmediador=true;
+	}
+	if($row['roleid'] == 5){
+		$useresaprendiz=true;
+	}
+	if($row['roleid'] == 6){
+		$useresvisitante=true;
+	}
+	if($row['roleid'] == 7){
+		$useresmiembro=true;
+	}
+	if($row['roleid'] == 8){
+		$useresadministrador=true;
+	}
+}
+
+mysql_close($con);
+
 $groupmembersselector = new group_members_selector('removeselect', array('groupid' => $groupid, 'courseid' => $course->id));
 $groupmembersselector->set_extra_fields(array());
-$potentialmembersselector = new group_non_members_selector('addselect', array('groupid' => $groupid, 'courseid' => $course->id));
+if($useresaprendiz){
+	$potentialmembersselector = new group_non_members_selector_aprendiz('addselect', array('groupid' => $groupid, 'courseid' => $course->id, 'userid' => $USER->id));
+} else {
+	$potentialmembersselector = new group_non_members_selector('addselect', array('groupid' => $groupid, 'courseid' => $course->id));
+}
 $potentialmembersselector->set_extra_fields(array());
 
 if (optional_param('add', false, PARAM_BOOL) && confirm_sesskey()) {
@@ -52,15 +87,19 @@ if (optional_param('add', false, PARAM_BOOL) && confirm_sesskey()) {
 }
 
 if (optional_param('remove', false, PARAM_BOOL) && confirm_sesskey()) {
-    $userstoremove = $groupmembersselector->get_selected_users();
-    if (!empty($userstoremove)) {
-        foreach ($userstoremove as $user) {
-            if (!groups_remove_member($groupid, $user->id)) {
-                print_error('erroraddremoveuser', 'group', $returnurl);
-            }
-            $groupmembersselector->invalidate_selected_users();
-            $potentialmembersselector->invalidate_selected_users();
-        }
+    if($useresaprendiz){
+	echo "<script type=\"text/javascript\">alert(\"No posee los permisos para realizar esta operacion\");</script>";
+    } else {
+	    $userstoremove = $groupmembersselector->get_selected_users();
+	    if (!empty($userstoremove)) {
+		foreach ($userstoremove as $user) {
+		    if (!groups_remove_member($groupid, $user->id)) {
+		        print_error('erroraddremoveuser', 'group', $returnurl);
+		    }
+		    $groupmembersselector->invalidate_selected_users();
+		    $potentialmembersselector->invalidate_selected_users();
+		}
+	    }
     }
 }
 
@@ -123,7 +162,11 @@ echo html_writer::table($groupinfotable);
       <td id='buttonscell'>
         <p class="arrow_button">
             <input name="add" id="add" type="submit" value="<?php echo $OUTPUT->larrow().'&nbsp;'.get_string('add'); ?>" title="<?php print_string('add'); ?>" /><br />
+
+
             <input name="remove" id="remove" type="submit" value="<?php echo get_string('remove').'&nbsp;'.$OUTPUT->rarrow(); ?>" title="<?php print_string('remove'); ?>" />
+
+
         </p>
       </td>
       <td id='potentialcell'>

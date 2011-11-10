@@ -713,6 +713,72 @@ class group_members_selector extends groups_user_selector_base {
     }
 }
 
+class group_non_members_selector_aprendiz extends group_non_members_selector {
+    public function find_users($search) {
+        global $DB, $USER;
+
+        // Get list of allowed roles.
+        $context = get_context_instance(CONTEXT_COURSE, $this->courseid);
+        if ($validroleids = groups_get_possible_roles($context)) {
+            list($roleids, $roleparams) = $DB->get_in_or_equal($validroleids, SQL_PARAMS_NAMED, 'r');
+        } else {
+            $roleids = " = -1";
+            $roleparams = array();
+        }
+
+        // Get the search condition.
+        list($searchcondition, $searchparams) = $this->search_sql($search, 'u');
+
+        // Build the SQL
+        list($enrolsql, $enrolparams) = get_enrolled_sql($context);
+        $fields = "SELECT r.id AS roleid, r.shortname AS roleshortname, r.name AS rolename, u.id AS userid,
+                          " . $this->required_fields_sql('u') . ",
+                          (SELECT count(igm.groupid)
+                             FROM {groups_members} igm
+                             JOIN {groups} ig ON igm.groupid = ig.id
+                            WHERE igm.userid = u.id AND ig.courseid = :courseid) AS numgroups";
+        $sql = "   FROM {user} u
+                   JOIN ($enrolsql) e ON e.id = u.id
+              LEFT JOIN {role_assignments} ra ON (ra.userid = u.id AND ra.contextid " . get_related_contexts_string($context) . " AND ra.roleid $roleids)
+              LEFT JOIN {role} r ON r.id = ra.roleid
+                  WHERE u.deleted = 0
+			AND u.id = ".$USER->id."
+                        AND u.id NOT IN (SELECT userid
+                                          FROM {groups_members}
+                                         WHERE groupid = :groupid)
+                        AND $searchcondition";
+        $orderby = "ORDER BY u.lastname, u.firstname";
+        $params = array_merge($searchparams, $roleparams, $enrolparams);
+        $params['courseid'] = $this->courseid;
+        $params['groupid']  = $this->groupid;
+
+        if (!$this->is_validating()) {
+            $potentialmemberscount = $DB->count_records_sql("SELECT COUNT(DISTINCT u.id) $sql", $params);
+            if ($potentialmemberscount > group_non_members_selector::MAX_USERS_PER_PAGE) {
+                return $this->too_many_results($search, $potentialmemberscount);
+            }
+        }
+
+        $rs = $DB->get_recordset_sql("$fields $sql $orderby", $params);
+        $roles =  groups_calculate_role_people($rs, $context);
+
+        //don't hold onto user IDs if we're doing validation
+        if (empty($this->validatinguserids) ) {
+            if($roles) {
+                foreach($roles as $k=>$v) {
+                    if($v) {
+                        foreach($v->users as $uid=>$userobject) {
+                            $this->potentialmembersids[] = $uid;
+                        }
+                    }
+                }
+            }
+        }
+
+        return $this->convert_array_format($roles, $search);
+    }
+}
+
 /**
  * User selector subclass for the list of users who are not in a certain group.
  * Used on the add group members page.

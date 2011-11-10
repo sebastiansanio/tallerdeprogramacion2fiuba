@@ -102,7 +102,7 @@ $table->data  = $data;
 echo html_writer::table($table);
 
 echo $OUTPUT->container_start('buttons');
-echo $OUTPUT->single_button(new moodle_url('grouping.php', array('courseid'=>$courseid)), $srtnewgrouping);
+//echo $OUTPUT->single_button(new moodle_url('grouping.php', array('courseid'=>$courseid)), $srtnewgrouping);
 echo $OUTPUT->container_end();
 
 echo $OUTPUT->footer();

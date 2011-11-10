@@ -61,6 +61,38 @@ if (!$singlegroup) {
     }
 }
 
+//Verifica si es miembro, aprendiz, mediador o admin
+
+$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+mysql_select_db($CFG->dbname, $con);
+$query = "select roleid
+	from mdl_role_assignments
+	where userid='".$USER->id."'
+	and contextid=1";
+$resultado = mysql_query($query);
+
+while($row = mysql_fetch_array($resultado))
+{
+	if($row['roleid'] == 3){
+		$useresmediador=true;
+	}
+	if($row['roleid'] == 5){
+		$useresaprendiz=true;
+	}
+	if($row['roleid'] == 6){
+		$useresvisitante=true;
+	}
+	if($row['roleid'] == 7){
+		$useresmiembro=true;
+	}
+	if($row['roleid'] == 8){
+		$useresadministrador=true;
+	}
+}
+
+mysql_close($con);
+
+
 switch ($action) {
     case false: //OK, display form.
         break;
@@ -85,11 +117,15 @@ switch ($action) {
         die;  // Client side JavaScript takes it from here.
 
     case 'deletegroup':
-        if (count($groupids) == 0) {
-            print_error('errorselectsome','group',$returnurl);
-        }
-        $groupidlist = implode(',', $groupids);
-        redirect(new moodle_url('/group/delete.php', array('courseid'=>$courseid, 'groups'=>$groupidlist)));
+	if($useresaprendiz){
+		echo "<script type=\"text/javascript\">alert(\"No posee los permisos para realizar esta operacion\");</script>";
+	} else {
+		if (count($groupids) == 0) {
+		    print_error('errorselectsome','group',$returnurl);
+		}
+		$groupidlist = implode(',', $groupids);
+		redirect(new moodle_url('/group/delete.php', array('courseid'=>$courseid, 'groups'=>$groupidlist)));
+	}
         break;
 
     case 'showcreateorphangroupform':
@@ -97,15 +133,27 @@ switch ($action) {
         break;
 
     case 'showautocreategroupsform':
-        redirect(new moodle_url('/group/autogroup.php', array('courseid'=>$courseid)));
+	if($useresaprendiz){
+		echo "<script type=\"text/javascript\">alert(\"No posee los permisos para realizar esta operacion\");</script>";
+	} else {
+        	redirect(new moodle_url('/group/autogroup.php', array('courseid'=>$courseid)));
+	}
         break;
 
     case 'showimportgroups':
-        redirect(new moodle_url('/group/import.php', array('id'=>$courseid)));
+	if($useresaprendiz){
+		echo "<script type=\"text/javascript\">alert(\"No posee los permisos para realizar esta operacion\");</script>";
+	} else {
+        	redirect(new moodle_url('/group/import.php', array('id'=>$courseid)));
+	}
         break;
 
     case 'showgroupsettingsform':
-        redirect(new moodle_url('/group/group.php', array('courseid'=>$courseid, 'id'=>$groupids[0])));
+	if($useresaprendiz){
+		echo "<script type=\"text/javascript\">alert(\"No posee los permisos para realizar esta operacion\");</script>";
+	} else {
+        	redirect(new moodle_url('/group/group.php', array('courseid'=>$courseid, 'id'=>$groupids[0])));
+	}	
         break;
 
     case 'updategroups': //Currently reloading.

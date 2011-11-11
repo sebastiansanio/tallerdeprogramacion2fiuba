@@ -137,12 +137,20 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
         message_print_blocked_users($blockedusers, $PAGE->url, $showcontactactionlinks, null, $user2);
     } else if (substr($viewing, 0, 7) == MESSAGE_VIEW_COURSE) {
         $courseidtoshow = intval(substr($viewing, 7));
+		
+		$esGrupo = false;
+		$numeroGrupo = 0;
+	if(substr($viewing, 9,6) =='group_'){
+		$esGrupo = true;
+		$numeroGrupo = substr($viewing, 15,2);
+	}
+
 
         if (!empty($courseidtoshow)
             && array_key_exists($courseidtoshow, $coursecontexts)
             && has_capability('moodle/course:viewparticipants', $coursecontexts[$courseidtoshow])) {
 
-            message_print_participants($coursecontexts[$courseidtoshow], $courseidtoshow, $PAGE->url, $showcontactactionlinks, null, $page, $user2);
+            message_print_participants($coursecontexts[$courseidtoshow], $courseidtoshow, $PAGE->url, $showcontactactionlinks, null, $page, $user2, $esGrupo, $numeroGrupo);
         } else {
             //shouldn't get here. User trying to access a course they're not in perhaps.
             add_to_log(SITEID, 'message', 'view', 'index.php', $viewing);
@@ -176,7 +184,7 @@ function message_print_contact_selector($countunreadtotal, $viewing, $user1, $us
  * @param object $user2 the user $user1 is talking to. They will be highlighted if they appear in the list of participants
  * @return void
  */
-function message_print_participants($context, $courseid, $contactselecturl=null, $showactionlinks=true, $titletodisplay=null, $page=0, $user2=null) {
+function message_print_participants($context, $courseid, $contactselecturl=null, $showactionlinks=true, $titletodisplay=null, $page=0, $user2=null, $esGrupo, $numeroGrupo) {
     global $DB, $USER, $PAGE, $OUTPUT;
 
     if (empty($titletodisplay)) {
@@ -185,7 +193,7 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
 
     $countparticipants = count_enrolled_users($context);
     $participants = get_enrolled_users($context, '', 0, 'u.*', '', $page*MESSAGE_CONTACTS_PER_PAGE, MESSAGE_CONTACTS_PER_PAGE);
-
+	
     $pagingbar = new paging_bar($countparticipants, $page, MESSAGE_CONTACTS_PER_PAGE, $PAGE->url, 'page');
     echo $OUTPUT->render($pagingbar);
 
@@ -198,13 +206,35 @@ function message_print_participants($context, $courseid, $contactselecturl=null,
     //todo these need to come from somewhere if the course participants list is to show users with unread messages
     $iscontact = true;
     $isblocked = false;
-    foreach ($participants as $participant) {
-        if ($participant->id != $USER->id) {
-            $participant->messagecount = 0;//todo it would be nice if the course participant could report new messages
-            message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2);
-        }
-    }
-
+	if (! $esGrupo){
+		foreach ($participants as $participant) {
+			if ($participant->id != $USER->id) {
+				$participant->messagecount = 0;//todo it would be nice if the course participant could report new messages
+				message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2);
+			}
+		}
+	}
+	
+	else{
+	
+		foreach ($participants as $participant) {
+		
+			$gruposparticipant = groups_get_user_groups($courseid, $participant->id);
+			$grupos = $gruposparticipant[0];
+		
+			foreach ($grupos as $grupo){
+			
+			if ($grupo == $numeroGrupo){
+					if ($participant->id != $USER->id) {
+						$participant->messagecount = 0;//todo it would be nice if the course participant could report new messages
+						message_print_contactlist_user($participant, $iscontact, $isblocked, $contactselecturl, $showactionlinks, $user2);
+					}
+				}
+			}
+		
+		}
+	
+	}
     echo html_writer::end_tag('table');
 }
 
@@ -468,6 +498,7 @@ function message_print_contacts($onlinecontacts, $offlinecontacts, $strangers, $
  * @return void
  */
 function message_print_usergroup_selector($viewing, $courses, $coursecontexts, $countunreadtotal, $countblocked, $strunreadmessages) {
+	global $USER;
     $options = array();
     $textlib = textlib_get_instance(); // going to use textlib services
 
@@ -492,6 +523,19 @@ function message_print_usergroup_selector($viewing, $courses, $coursecontexts, $
                 } else {
                     $courses_options[MESSAGE_VIEW_COURSE.$course->id] = $course->shortname;
                 }
+				
+				$coursegroups = groups_get_user_groups($course->id, $USER->id);
+				$grupos = $coursegroups[0];
+//print_r($grupos);
+
+				foreach($grupos as $g){
+	
+					$grupo = groups_get_group_name($g);
+		
+					$courses_options[MESSAGE_VIEW_COURSE.$course->id.'group_'.$g] = "Grupo: ".$grupo;
+	
+				}
+				
             }
         }
 

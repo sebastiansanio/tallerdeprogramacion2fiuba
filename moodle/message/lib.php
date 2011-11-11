@@ -524,18 +524,12 @@ function message_print_usergroup_selector($viewing, $courses, $coursecontexts, $
                     $courses_options[MESSAGE_VIEW_COURSE.$course->id] = $course->shortname;
                 }
 				
-				$coursegroups = groups_get_user_groups($course->id, $USER->id);
+				/*$coursegroups = groups_get_user_groups($course->id, $USER->id);
 				$grupos = $coursegroups[0];
-//print_r($grupos);
-
 				foreach($grupos as $g){
-	
 					$grupo = groups_get_group_name($g);
-		
 					$courses_options[MESSAGE_VIEW_COURSE.$course->id.'group_'.$g] = "Grupo: ".$grupo;
-	
-				}
-				
+				}*/	
             }
         }
 

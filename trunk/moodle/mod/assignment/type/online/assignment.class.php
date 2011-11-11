@@ -116,19 +116,21 @@ class assignment_online extends assignment_base {
                         $button->render();
                     }
                 } else if ($this->isopen()){    //fix for #4206
-                    echo '<div style="text-align:center">'.get_string('emptysubmission', 'assignment').'</div>';
+                    //echo '<div style="text-align:center">'.get_string('emptysubmission', 'assignment').'</div>';
                 }
             }
             echo $OUTPUT->box_end();
             if (!$editmode && $editable) {
                 if (!empty($submission)) {
                     $submitbutton = "editmysubmission";
+					
                 } else {
                     $submitbutton = "addsubmission";
+					echo "<div style='text-align:center'>";
+					echo $OUTPUT->single_button(new moodle_url('view.php', array('id'=>$this->cm->id, 'edit'=>'1')), get_string($submitbutton, 'assignment'));
+					echo "</div>";
                 }
-                echo "<div style='text-align:center'>";
-                echo $OUTPUT->single_button(new moodle_url('view.php', array('id'=>$this->cm->id, 'edit'=>'1')), get_string($submitbutton, 'assignment'));
-                echo "</div>";
+                
             }
 
         }
@@ -434,10 +436,12 @@ class mod_assignment_online_edit_form extends moodleform {
         list($data, $editoroptions) = $this->_customdata;
 
         // visible elements
-        $mform->addElement('editor', 'text_editor', get_string('submission', 'assignment'), null, $editoroptions);
-        $mform->setType('text_editor', PARAM_RAW); // to be cleaned before display
-        $mform->addRule('text_editor', get_string('required'), 'required', null, 'client');
+        //$mform->addElement('editor', 'text_editor', get_string('submission', 'assignment'), null, $editoroptions);
+        //$mform->setType('text_editor', PARAM_RAW); // to be cleaned before display
+        //$mform->addRule('text_editor', get_string('required'), 'required', null, 'client');
 
+		$mform->addElement('html', '<h4>' .  'Si desea registrarse al examen utilice la opcion Guardar cambios' . '</h4>');
+		
         // hidden params
         $mform->addElement('hidden', 'id');
         $mform->setType('id', PARAM_INT);

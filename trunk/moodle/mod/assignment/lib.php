@@ -3550,7 +3550,7 @@ function assignment_get_types() {
     $type->typestr = '--'.get_string('modulenameplural', 'assignment');
     $types[] = $type;
 
-    $standardassignments = array('upload','online','uploadsingle','offline');
+    $standardassignments = array('online');
     foreach ($standardassignments as $assignmenttype) {
         $type = new stdClass();
         $type->modclass = MOD_CLASS_ACTIVITY;
@@ -3562,6 +3562,13 @@ function assignment_get_types() {
     /// Drop-in extra assignment types
     $assignmenttypes = get_list_of_plugins('mod/assignment/type');
     foreach ($assignmenttypes as $assignmenttype) {
+		
+		/*if($assignmenttype != 'online'){
+		
+			$key = array_search($assignmenttype,$assignmenttypes,TRUE);  
+			unset($assignmenttypes[$key]); 
+		
+		}*/
         if (!empty($CFG->{'assignment_hide_'.$assignmenttype})) {  // Not wanted
             continue;
         }

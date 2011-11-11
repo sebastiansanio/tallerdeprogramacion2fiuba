@@ -69,7 +69,7 @@ class mod_assignment_mod_form extends moodleform_mod {
 
         $mform->addElement('header', 'typedesc', $typetitle);
 
-        $assignmentinstance->setup_elements($mform);
+        //$assignmentinstance->setup_elements($mform);
 
         $this->standard_coursemodule_elements();
 

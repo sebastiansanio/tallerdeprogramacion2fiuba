@@ -38,8 +38,9 @@ require_capability('moodle/grade:viewall', $context);
 print_grade_page_head($COURSE->id, 'report', 'grader', $reportname, false, $buttons);
 
 //Leer duracion del ciclo de conservacion
-$con = mysql_connect("localhost","root","");
-mysql_select_db("moodle", $con);
+global $CFG, $USER;
+$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+mysql_select_db($CFG->dbname, $con);
 $query = "SELECT duracion FROM ciclo_conservacion";
 $resultado = mysql_query($query);
 $fila = mysql_fetch_array($resultado);

@@ -241,14 +241,15 @@
         // Include the actual course format.
     require($CFG->dirroot .'/course/format/'. $course->format .'/format.php');
     // Content wrapper end.
-    
+   global $CFG, $USER;
    $userpermissions = $DB->get_records('role_assignments');
 	  foreach ($userpermissions as $userdata) {
 				if(($userdata->userid==$USER->id) and ($userdata->contextid==$context->id) and ($userdata->roleid==3)){
             $fechaVieja = date('Y-m-d',$course->startdate);
             $query = "SELECT num_cuat, ano FROM cuatrimestres WHERE fecha_inicio=\"".$fechaVieja."\"";
-            $con = mysql_connect("localhost","root","");
-             mysql_select_db("moodle", $con);
+           
+			$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+			mysql_select_db($CFG->dbname, $con);
              $resultado = mysql_query($query);
              $fila = mysql_fetch_array($resultado);
              mysql_close($con);

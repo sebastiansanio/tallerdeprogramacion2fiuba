@@ -81,9 +81,9 @@ if (empty($SITE->fullname)) {
     // ---------------------------------------------------------------------------------------------------------------
 
 }
-
-$con = mysql_connect("localhost","root","");
-mysql_select_db("moodle", $con);
+global $CFG, $USER;
+$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+mysql_select_db($CFG->dbname, $con);
 $query = "SELECT duracion FROM ciclo_conservacion";
 $resultado = mysql_query($query);
 $fila = mysql_fetch_array($resultado);

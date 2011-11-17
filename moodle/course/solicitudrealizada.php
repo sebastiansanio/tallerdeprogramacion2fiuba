@@ -241,7 +241,7 @@ function usuario_guardarsolicitud($courseid){
 	global $USER, $DB;
 	$sql = "INSERT INTO mdl_solicitud (userid, courseid)
 VALUES (".$USER->id.",".$courseid.")";
-	$con = mysql_connect("localhost","root","");
-	mysql_select_db("moodle", $con);
+	$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+	mysql_select_db($CFG->dbname, $con);
 	mysql_query($sql);
 }

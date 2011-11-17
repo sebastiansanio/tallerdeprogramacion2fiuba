@@ -53,7 +53,7 @@ $PAGE->set_heading($course->fullname.': '.$strresetcourse);
 
 $mform = new course_reset_form();
 $mform->load_defaults();
-
+ global $CFG, $USER;
 if ($mform->is_cancelled()) {
     redirect($CFG->wwwroot.'/course/view.php?id='.$id);
 
@@ -74,8 +74,9 @@ if ($mform->is_cancelled()) {
 
          $fechaVieja = date('Y-m-d',$course->startdate);
          $query = "SELECT num_cuat, ano FROM cuatrimestres WHERE fecha_inicio=\"".$fechaVieja."\"";
-	       $con = mysql_connect("localhost","root","");
-	       mysql_select_db("moodle", $con);
+	      
+			$con = mysql_connect($CFG->dbhost,$CFG->dbuser,$CFG->dbpass);
+			mysql_select_db($CFG->dbname, $con);
 	       $resultado = mysql_query($query);
 	       $fila = mysql_fetch_array($resultado);
 	       $numCuatViejo = $fila['num_cuat'];
